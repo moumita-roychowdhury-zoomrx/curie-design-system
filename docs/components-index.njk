@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: Components
+nav: components
+permalink: /components/
+---
+<div class="ds-eyebrow">Component library</div>
+<h1 class="ds-title">Components</h1>
+<p class="ds-lede">A new Curie page is an arrangement of existing components on the dark canvas — you compose, you don't invent painted components. Each entry below carries a live preview, its anatomy, and the judgment for when to reach for it.</p>
+<div class="ds-example-grid">
+{% for c in manifest.components %}
+  <a class="ds-component-card" href="/components/{{ c.id }}/">
+    <span class="cat">{{ c.category }}</span>
+    <h3>{{ c.name }}</h3>
+    <p>{{ c.purpose }}</p>
+  </a>
+{% endfor %}
+</div>

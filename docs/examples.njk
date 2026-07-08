@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: Page examples
+nav: examples
+permalink: /examples/
+---
+<div class="ds-eyebrow">Reference</div>
+<h1 class="ds-title">Canonical pages</h1>
+<p class="ds-lede">The golden Curie pages, served byte-identical from the package. These are proof of the system applied well — reference material, not templates to replicate.</p>
+<div class="ds-example-grid">
+{% set pages = [
+  {file: "index.html", name: "Home", desc: "Landing hub — hero banner plus featured sections."},
+  {file: "briefs.html", name: "Briefs", desc: "Featured brief plus filterable card grid."},
+  {file: "brief-detail.html", name: "Brief detail", desc: "Full article with sticky header and progress bar."},
+  {file: "editorial.html", name: "Editorial", desc: "Three-column grid of editorial cards."},
+  {file: "editorial-detail.html", name: "Editorial detail", desc: "Hero, methodology, profiles, newsletter form."},
+  {file: "podcasts.html", name: "Podcasts", desc: "Horizontal-scroll rails with audio player."},
+  {file: "games.html", name: "Games", desc: "Grid of game cards."},
+  {file: "newsletter.html", name: "Newsletter", desc: "Split-layout signup form."}
+] %}
+{% for p in pages %}
+  <a class="ds-component-card" href="/examples/pages/{{ p.file }}" target="_blank" rel="noopener">
+    <span class="cat">golden page</span>
+    <h3>{{ p.name }}</h3>
+    <p>{{ p.desc }}</p>
+  </a>
+{% endfor %}
+</div>

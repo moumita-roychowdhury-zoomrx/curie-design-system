@@ -1,0 +1,1223 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-04-16",
+  "assets": [
+    {
+      "id": "logo-curie-white",
+      "name": "Curie Logo White",
+      "type": "icon",
+      "category": "branding",
+      "path": "Assets/curie-logo-white.svg",
+      "source": "file",
+      "tags": [
+        "branding",
+        "logo",
+        "sidebar",
+        "navigation",
+        "identity"
+      ],
+      "description": "Curie C logomark — stylized letter C with curved notch and extending tail, white filled",
+      "usedIn": [
+        "index.html",
+        "briefs.html",
+        "editorial.html",
+        "editorial-detail.html",
+        "podcasts.html",
+        "games.html",
+        "newsletter.html"
+      ],
+      "context": "Sidebar navigation logo, always visible at top of side-nav",
+      "dimensions": {
+        "width": 32,
+        "height": 33
+      }
+    },
+    {
+      "id": "logo-white-large",
+      "name": "Curie Logo White (Large)",
+      "type": "icon",
+      "category": "branding",
+      "path": "Assets/logo/logo white.svg",
+      "source": "file",
+      "tags": [
+        "branding",
+        "logo",
+        "identity",
+        "large"
+      ],
+      "description": "Larger version of the Curie C logomark, white filled, same swirl shape without clip-path",
+      "usedIn": [],
+      "context": "Available for marketing materials, splash screens, or larger branding placements",
+      "dimensions": {
+        "width": 82,
+        "height": 82
+      }
+    },
+    {
+      "id": "icon-home",
+      "name": "Home Icon",
+      "type": "icon",
+      "category": "navigation",
+      "path": "Assets/icons/home.svg",
+      "source": "file",
+      "tags": [
+        "navigation",
+        "sidebar",
+        "home",
+        "house"
+      ],
+      "description": "House icon with peaked roof and rectangular door cutout, white stroked outline",
+      "usedIn": [],
+      "context": "Alternative home icon for sidebar navigation (inline SVG version used instead)",
+      "dimensions": {
+        "width": 34,
+        "height": 34
+      }
+    },
+    {
+      "id": "icon-brief",
+      "name": "Brief Icon",
+      "type": "icon",
+      "category": "navigation",
+      "path": "Assets/icons/brief.svg",
+      "source": "file",
+      "tags": [
+        "navigation",
+        "sidebar",
+        "document",
+        "briefs",
+        "articles",
+        "medical"
+      ],
+      "description": "Rounded square with three horizontal text lines inside, representing medical briefs and articles",
+      "usedIn": [
+        "index.html",
+        "briefs.html",
+        "editorial.html",
+        "editorial-detail.html",
+        "podcasts.html",
+        "games.html",
+        "newsletter.html"
+      ],
+      "context": "Sidebar navigation icon for the Briefs section (inactive state)",
+      "dimensions": {
+        "width": 34,
+        "height": 34
+      }
+    },
+    {
+      "id": "icon-podcast",
+      "name": "Podcast Icon",
+      "type": "icon",
+      "category": "navigation",
+      "path": "Assets/icons/podcast.svg",
+      "source": "file",
+      "tags": [
+        "navigation",
+        "sidebar",
+        "headphones",
+        "podcast",
+        "audio"
+      ],
+      "description": "Headphones icon with over-ear cups and connecting headband arc, white stroked outline",
+      "usedIn": [
+        "index.html",
+        "briefs.html",
+        "editorial.html",
+        "editorial-detail.html",
+        "podcasts.html",
+        "games.html",
+        "newsletter.html"
+      ],
+      "context": "Sidebar navigation icon for the Podcasts section (inactive state)",
+      "dimensions": {
+        "width": 28,
+        "height": 25
+      }
+    },
+    {
+      "id": "icon-game",
+      "name": "Game Icon",
+      "type": "icon",
+      "category": "navigation",
+      "path": "Assets/icons/game.svg",
+      "source": "file",
+      "tags": [
+        "navigation",
+        "sidebar",
+        "game",
+        "controller",
+        "play"
+      ],
+      "description": "Game controller with D-pad on left and two circular buttons on right, white stroked outline",
+      "usedIn": [
+        "index.html",
+        "briefs.html",
+        "editorial.html",
+        "editorial-detail.html",
+        "podcasts.html",
+        "games.html",
+        "newsletter.html"
+      ],
+      "context": "Sidebar navigation icon for the Games section (inactive state)",
+      "dimensions": {
+        "width": 36,
+        "height": 36
+      }
+    },
+    {
+      "id": "icon-newsletter",
+      "name": "Newsletter Icon",
+      "type": "icon",
+      "category": "navigation",
+      "path": "Assets/icons/newesletter.svg",
+      "source": "file",
+      "tags": [
+        "navigation",
+        "sidebar",
+        "envelope",
+        "mail",
+        "newsletter",
+        "email"
+      ],
+      "description": "Envelope/mail icon with rectangular body and V-shaped flap line, white stroked outline",
+      "usedIn": [
+        "index.html",
+        "briefs.html",
+        "editorial.html",
+        "editorial-detail.html",
+        "podcasts.html",
+        "games.html",
+        "newsletter.html"
+      ],
+      "context": "Sidebar navigation icon for the Newsletter section (inactive state)",
+      "dimensions": {
+        "width": 31,
+        "height": 25
+      }
+    },
+    {
+      "id": "icon-media",
+      "name": "Media / Editorial Icon",
+      "type": "icon",
+      "category": "navigation",
+      "path": "Assets/icons/media.svg",
+      "source": "file",
+      "tags": [
+        "editorial",
+        "media",
+        "megaphone",
+        "broadcast",
+        "header",
+        "section-icon"
+      ],
+      "description": "Microphone with radiating sound lines, ear cup, and circular knob — represents media/broadcast with gradient fills (teal to pink to purple)",
+      "usedIn": [
+        "editorial.html",
+        "editorial-detail.html"
+      ],
+      "context": "Page header icon for the Editorial section, displayed next to 'Curie Editorial' title",
+      "dimensions": {
+        "width": 74,
+        "height": 61
+      }
+    },
+    {
+      "id": "icon-curie-brief",
+      "name": "Curie Brief Section Icon",
+      "type": "icon",
+      "category": "navigation",
+      "path": "Assets/icons/curie brief icon.svg",
+      "source": "file",
+      "tags": [
+        "briefs",
+        "section-icon",
+        "header",
+        "document"
+      ],
+      "description": "Brief-related icon inside a pill/capsule-shaped rounded rect, used for Briefs section headers",
+      "usedIn": [
+        "index.html",
+        "briefs.html",
+        "brief-detail.html"
+      ],
+      "context": "Page header icon for the Briefs section, displayed next to 'Curie Brief' title",
+      "dimensions": {
+        "width": 86,
+        "height": 82
+      }
+    },
+    {
+      "id": "icon-podcast-section",
+      "name": "Podcast Section Icon",
+      "type": "icon",
+      "category": "navigation",
+      "path": "Assets/icons/podcast icon.svg",
+      "source": "file",
+      "tags": [
+        "podcast",
+        "section-icon",
+        "header",
+        "equalizer"
+      ],
+      "description": "Podcast-themed icon with equalizer bars inside a square frame (embedded raster)",
+      "usedIn": [
+        "index.html",
+        "podcasts.html"
+      ],
+      "context": "Page header icon for the Podcasts section",
+      "dimensions": {
+        "width": 122,
+        "height": 122
+      }
+    },
+    {
+      "id": "icon-email-banner",
+      "name": "Email Sign Up Banner Icon",
+      "type": "icon",
+      "category": "signup",
+      "path": "Assets/icons/email sign up banner icon.svg",
+      "source": "file",
+      "tags": [
+        "email",
+        "signup",
+        "banner",
+        "envelope",
+        "gradient"
+      ],
+      "description": "Envelope icon inside a rounded rectangle with gradient border (white to dark blue)",
+      "usedIn": [],
+      "context": "Newsletter signup banner decoration, alternative to inline envelope SVG",
+      "dimensions": {
+        "width": 56,
+        "height": 51
+      }
+    },
+    {
+      "id": "icon-down-arrow",
+      "name": "Down Arrow",
+      "type": "icon",
+      "category": "interaction",
+      "path": "Assets/icons/down arrow.svg",
+      "source": "file",
+      "tags": [
+        "interaction",
+        "vote",
+        "downvote",
+        "dislike",
+        "arrow"
+      ],
+      "description": "Downward-pointing chevron arrow for downvote/dislike interactions",
+      "usedIn": [
+        "briefs.html",
+        "brief-detail.html"
+      ],
+      "context": "Brief card and detail page voting control — downvote button",
+      "dimensions": {
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "icon-up-arrow",
+      "name": "Up Arrow",
+      "type": "icon",
+      "category": "interaction",
+      "path": "Assets/icons/up arrow.svg",
+      "source": "file",
+      "tags": [
+        "interaction",
+        "vote",
+        "upvote",
+        "like",
+        "arrow"
+      ],
+      "description": "Upward-pointing chevron arrow for upvote/like interactions",
+      "usedIn": [
+        "briefs.html",
+        "brief-detail.html"
+      ],
+      "context": "Brief card and detail page voting control — upvote button",
+      "dimensions": {
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "icon-bookmark",
+      "name": "Bookmark Icon",
+      "type": "icon",
+      "category": "interaction",
+      "path": "Assets/icons/BookMark.svg",
+      "source": "file",
+      "tags": [
+        "interaction",
+        "bookmark",
+        "save",
+        "flag",
+        "favorite"
+      ],
+      "description": "Bookmark ribbon icon with pointed bottom tab, light gray filled",
+      "usedIn": [
+        "briefs.html",
+        "brief-detail.html"
+      ],
+      "context": "Save/bookmark action on brief cards and detail pages",
+      "dimensions": {
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "icon-history",
+      "name": "History Icon",
+      "type": "icon",
+      "category": "interaction",
+      "path": "Assets/icons/lucide/history.svg",
+      "source": "file",
+      "tags": [
+        "interaction",
+        "history",
+        "clock",
+        "undo",
+        "recent"
+      ],
+      "description": "Clock with counter-clockwise arrow representing history/recently viewed",
+      "usedIn": [
+        "briefs.html"
+      ],
+      "context": "Recently viewed briefs filter or history toggle",
+      "dimensions": {
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "icon-fullscreen",
+      "name": "Full Screen Icon",
+      "type": "icon",
+      "category": "interaction",
+      "path": "Assets/icons/full screen.svg",
+      "source": "file",
+      "tags": [
+        "interaction",
+        "fullscreen",
+        "expand",
+        "maximize",
+        "player"
+      ],
+      "description": "Four corner brackets forming a fullscreen/expand icon",
+      "usedIn": [
+        "podcasts.html"
+      ],
+      "context": "Podcast player fullscreen toggle button",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "icon-star-signup",
+      "name": "Star Sparkle",
+      "type": "icon",
+      "category": "signup",
+      "path": "Assets/icons/Sign up/star.svg",
+      "source": "file",
+      "tags": [
+        "signup",
+        "decoration",
+        "sparkle",
+        "star",
+        "gradient"
+      ],
+      "description": "Two four-pointed sparkle/star shapes with gradient fills (pink to white to purple), decorative element",
+      "usedIn": [],
+      "context": "Decorative sparkle for signup/onboarding flows",
+      "dimensions": {
+        "width": 200,
+        "height": 200
+      }
+    },
+    {
+      "id": "illust-games",
+      "name": "Games Illustration",
+      "type": "illustration",
+      "category": "illustration",
+      "path": "Assets/icons/games illustration.svg",
+      "source": "file",
+      "tags": [
+        "games",
+        "illustration",
+        "decoration",
+        "abstract",
+        "geometric"
+      ],
+      "description": "Games-themed illustration with abstract geometric shapes and gradient elements (embedded raster)",
+      "usedIn": [
+        "index.html",
+        "games.html"
+      ],
+      "context": "Game card decoration and home page games section visual",
+      "dimensions": {
+        "width": 124,
+        "height": 124
+      }
+    },
+    {
+      "id": "illust-connections",
+      "name": "Connections Illustration",
+      "type": "illustration",
+      "category": "illustration",
+      "path": "Assets/illustration/connections.svg",
+      "source": "file",
+      "tags": [
+        "connections",
+        "network",
+        "illustration",
+        "decoration",
+        "abstract"
+      ],
+      "description": "Interconnected nodes and network-like design illustration (embedded raster at 78% opacity)",
+      "usedIn": [
+        "index.html",
+        "games.html"
+      ],
+      "context": "Game card visual showing connected network/puzzle theme",
+      "dimensions": {
+        "width": 253,
+        "height": 253
+      }
+    },
+    {
+      "id": "illust-strands",
+      "name": "Curie Strands Illustration",
+      "type": "illustration",
+      "category": "illustration",
+      "path": "Assets/illustration/curie strands.svg",
+      "source": "file",
+      "tags": [
+        "strands",
+        "DNA",
+        "illustration",
+        "decoration",
+        "abstract",
+        "game"
+      ],
+      "description": "Abstract DNA/strand-like shapes illustration representing the Strands word game (embedded raster)",
+      "usedIn": [
+        "index.html",
+        "games.html"
+      ],
+      "context": "Strands game card visual decoration",
+      "dimensions": {
+        "width": 294,
+        "height": 294
+      }
+    },
+    {
+      "id": "illust-mental-healthcare",
+      "name": "Mental Healthcare Illustration",
+      "type": "illustration",
+      "category": "illustration",
+      "path": "Assets/illustration/mental healthcare.svg",
+      "source": "file",
+      "tags": [
+        "mental-health",
+        "healthcare",
+        "illustration",
+        "decoration",
+        "people"
+      ],
+      "description": "Mental healthcare themed illustration with multiple human figures and gradient elements (embedded raster)",
+      "usedIn": [],
+      "context": "Available for mental health content sections or articles",
+      "dimensions": {
+        "width": 396,
+        "height": 396
+      }
+    },
+    {
+      "id": "illust-podcast",
+      "name": "Podcast Illustration",
+      "type": "illustration",
+      "category": "illustration",
+      "path": "Assets/illustration/podcast illustration.svg",
+      "source": "file",
+      "tags": [
+        "podcast",
+        "recording",
+        "illustration",
+        "headphones",
+        "microphone",
+        "desk"
+      ],
+      "description": "Person wearing headphones at recording desk with microphone, scissors (editing metaphor), concentric arcs, sparkle — podcast/recording scene in blue-purple gradients",
+      "usedIn": [],
+      "context": "Available for podcast section hero or feature areas",
+      "dimensions": {
+        "width": 620,
+        "height": 336
+      }
+    },
+    {
+      "id": "illust-medical-podcast",
+      "name": "Medical Podcast Illustration",
+      "type": "illustration",
+      "category": "illustration",
+      "path": "Assets/illustration/medical podcast.svg",
+      "source": "file",
+      "tags": [
+        "podcast",
+        "medical",
+        "audio",
+        "cassette",
+        "illustration",
+        "retro"
+      ],
+      "description": "Cassette tape/boombox with audio waveform bars, connecting wires, play button — retro medical audio player in blue-purple gradients",
+      "usedIn": [],
+      "context": "Available for podcast player decoration or audio content sections",
+      "dimensions": {
+        "width": 248,
+        "height": 171
+      }
+    },
+    {
+      "id": "illust-curie-podcast",
+      "name": "Curie Podcast Illustration",
+      "type": "illustration",
+      "category": "illustration",
+      "path": "Assets/illustration/curie podcast.svg",
+      "source": "file",
+      "tags": [
+        "podcast",
+        "robot",
+        "turntable",
+        "illustration",
+        "production",
+        "film"
+      ],
+      "description": "Robotic arm/turntable with globe/lens head, film strip, pendulum elements — stylized media production scene in teal, pink, and blue gradients",
+      "usedIn": [],
+      "context": "Available for podcast feature or production content areas",
+      "dimensions": {
+        "width": 192,
+        "height": 200
+      }
+    },
+    {
+      "id": "illust-curie-podcast-signup",
+      "name": "Curie Podcast Signup Illustration",
+      "type": "illustration",
+      "category": "signup",
+      "path": "Assets/illustration/Sign up/curie podcast.svg",
+      "source": "file",
+      "tags": [
+        "podcast",
+        "signup",
+        "illustration",
+        "onboarding"
+      ],
+      "description": "Podcast-themed illustration for sign-up page (embedded raster)",
+      "usedIn": [],
+      "context": "Signup/onboarding flow decoration for podcast subscription",
+      "dimensions": {
+        "width": 265,
+        "height": 184
+      }
+    },
+    {
+      "id": "illust-home-footer",
+      "name": "Home Footer Illustration",
+      "type": "illustration",
+      "category": "illustration",
+      "path": "Assets/illustration/home footer illustration.svg",
+      "source": "file",
+      "tags": [
+        "footer",
+        "home",
+        "illustration",
+        "recording",
+        "desk"
+      ],
+      "description": "Person with headphones at recording desk — same scene as podcast illustration, used in home page footer section",
+      "usedIn": [
+        "index.html"
+      ],
+      "context": "Home page footer decoration, large visual above copyright",
+      "dimensions": {
+        "width": 620,
+        "height": 336
+      }
+    },
+    {
+      "id": "inline-envelope",
+      "name": "Envelope Icon (inline)",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "email",
+        "envelope",
+        "newsletter",
+        "banner",
+        "subscribe"
+      ],
+      "description": "Email envelope with V-shaped flap, stroked outline — used in top notification banner",
+      "usedIn": [
+        "index.html",
+        "briefs.html",
+        "editorial.html",
+        "editorial-detail.html",
+        "podcasts.html",
+        "games.html"
+      ],
+      "context": "Top banner newsletter signup prompt icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"><path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"/><polyline points=\"22,6 12,13 2,6\"/></svg>"
+    },
+    {
+      "id": "inline-home-stroked",
+      "name": "Home Icon (stroked)",
+      "type": "icon",
+      "category": "navigation",
+      "source": "inline",
+      "tags": [
+        "navigation",
+        "sidebar",
+        "home",
+        "house",
+        "inactive"
+      ],
+      "description": "House outline icon for sidebar navigation inactive state",
+      "usedIn": [
+        "briefs.html",
+        "editorial.html",
+        "editorial-detail.html",
+        "podcasts.html",
+        "games.html",
+        "newsletter.html"
+      ],
+      "context": "Sidebar home link when not on the home page",
+      "svg": "<svg viewBox=\"0 0 34 34\" fill=\"none\" stroke=\"white\" stroke-width=\"2\" style=\"width:22px;height:22px\"><path d=\"M15.17 4.34C16.24 3.54 17.7 3.54 18.77 4.34L28.09 11.33C28.84 11.9 29.29 12.78 29.29 13.73V27.7C29.29 29.36 27.94 30.7 26.29 30.7H23.21C21.56 30.7 20.21 29.36 20.21 27.7V21.8C20.21 21.25 19.77 20.8 19.21 20.8H14.73C14.18 20.8 13.73 21.25 13.73 21.8V27.7C13.73 29.36 12.39 30.7 10.73 30.7H7.66C6 30.7 4.66 29.36 4.66 27.7V13.73C4.66 12.78 5.1 11.9 5.86 11.33L15.17 4.34Z\"/></svg>"
+    },
+    {
+      "id": "inline-home-filled",
+      "name": "Home Icon (filled)",
+      "type": "icon",
+      "category": "navigation",
+      "source": "inline",
+      "tags": [
+        "navigation",
+        "sidebar",
+        "home",
+        "house",
+        "active"
+      ],
+      "description": "House filled icon for sidebar navigation active state on home page",
+      "usedIn": [
+        "index.html"
+      ],
+      "context": "Sidebar home link when on the home page (active state)",
+      "svg": "<svg viewBox=\"0 0 34 34\" fill=\"white\" style=\"width:22px;height:22px\"><path d=\"M15.1719 4.34247C16.2384 3.54282 17.705 3.54274 18.7715 4.34247L28.0859 11.3288C28.8412 11.8953 29.286 12.7841 29.2861 13.7282V27.6999C29.2861 29.3567 27.9429 30.6997 26.2861 30.6999H23.2148C21.558 30.6999 20.2148 29.3567 20.2148 27.6999V21.8005C20.2148 21.2483 19.7669 20.8007 19.2148 20.8005H14.7285C14.1763 20.8006 13.7285 21.2482 13.7285 21.8005V27.6999C13.7285 29.3567 12.3854 30.6999 10.7285 30.6999H7.65723C6.00037 30.6999 4.65723 29.3567 4.65723 27.6999V13.7282C4.65735 12.7841 5.10211 11.8953 5.85742 11.3288L15.1719 4.34247Z\"/></svg>"
+    },
+    {
+      "id": "inline-editorial-stroked",
+      "name": "Editorial/Megaphone Icon (stroked)",
+      "type": "icon",
+      "category": "navigation",
+      "source": "inline",
+      "tags": [
+        "navigation",
+        "sidebar",
+        "editorial",
+        "megaphone",
+        "announcement",
+        "inactive"
+      ],
+      "description": "Megaphone with sound bar, stroked outline — sidebar editorial link inactive state",
+      "usedIn": [
+        "index.html",
+        "briefs.html",
+        "podcasts.html",
+        "games.html",
+        "newsletter.html"
+      ],
+      "context": "Sidebar editorial link when not on the editorial page",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"width:22px;height:22px\"><path d=\"M18 3v18l-7-4H5a2 2 0 01-2-2V9a2 2 0 012-2h6l7-4z\"/><line x1=\"21\" y1=\"9\" x2=\"21\" y2=\"15\"/><path d=\"M9 17v4\"/></svg>"
+    },
+    {
+      "id": "inline-editorial-filled",
+      "name": "Editorial/Megaphone Icon (filled)",
+      "type": "icon",
+      "category": "navigation",
+      "source": "inline",
+      "tags": [
+        "navigation",
+        "sidebar",
+        "editorial",
+        "megaphone",
+        "announcement",
+        "active"
+      ],
+      "description": "Megaphone with sound bar, white filled — sidebar editorial link active state",
+      "usedIn": [
+        "editorial.html",
+        "editorial-detail.html"
+      ],
+      "context": "Sidebar editorial link when on editorial pages (active state)",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"white\" style=\"width:22px;height:22px\"><path d=\"M18 3v18l-7-4H5a2 2 0 01-2-2V9a2 2 0 012-2h6l7-4z\"/><line x1=\"21\" y1=\"9\" x2=\"21\" y2=\"15\" stroke=\"white\" stroke-width=\"1.5\"/></svg>"
+    },
+    {
+      "id": "inline-share",
+      "name": "Share/Network Icon",
+      "type": "icon",
+      "category": "action",
+      "source": "inline",
+      "tags": [
+        "action",
+        "share",
+        "network",
+        "social",
+        "distribute"
+      ],
+      "description": "Three connected nodes forming a share/network icon",
+      "usedIn": [
+        "briefs.html",
+        "brief-detail.html",
+        "editorial-detail.html",
+        "podcasts.html"
+      ],
+      "context": "Share button on cards, detail pages, and the editorial hero section",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"/><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"/></svg>"
+    },
+    {
+      "id": "inline-checkmark",
+      "name": "Checkmark Icon",
+      "type": "icon",
+      "category": "action",
+      "source": "inline",
+      "tags": [
+        "action",
+        "checkmark",
+        "read",
+        "done",
+        "complete"
+      ],
+      "description": "Checkmark/tick mark for marking items as read or complete",
+      "usedIn": [
+        "briefs.html",
+        "brief-detail.html"
+      ],
+      "context": "Mark as read action on brief cards and detail pages",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"20,6 9,17 4,12\"/></svg>"
+    },
+    {
+      "id": "inline-bookmark-outline",
+      "name": "Bookmark Icon (outline)",
+      "type": "icon",
+      "category": "action",
+      "source": "inline",
+      "tags": [
+        "action",
+        "bookmark",
+        "save",
+        "flag",
+        "outline"
+      ],
+      "description": "Bookmark/flag outline icon for save actions",
+      "usedIn": [
+        "editorial-detail.html"
+      ],
+      "context": "Subscribe to Curie button icon in editorial hero section",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/></svg>"
+    },
+    {
+      "id": "inline-clock",
+      "name": "Clock/Time Icon",
+      "type": "icon",
+      "category": "metadata",
+      "source": "inline",
+      "tags": [
+        "metadata",
+        "clock",
+        "time",
+        "duration",
+        "read-time"
+      ],
+      "description": "Clock face with hour and minute hands indicating reading time or duration",
+      "usedIn": [
+        "editorial-detail.html"
+      ],
+      "context": "Read time metadata in editorial hero section (e.g., '5 min read')",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>"
+    },
+    {
+      "id": "inline-users",
+      "name": "Users/People Icon",
+      "type": "icon",
+      "category": "metadata",
+      "source": "inline",
+      "tags": [
+        "metadata",
+        "users",
+        "people",
+        "group",
+        "contributors",
+        "featured"
+      ],
+      "description": "Multiple people/users icon indicating contributor count or featured voices",
+      "usedIn": [
+        "editorial-detail.html"
+      ],
+      "context": "Featured voices count in editorial hero section (e.g., '10 Voices Featured')",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M23 21v-2a4 4 0 00-3-3.87\"/><path d=\"M16 3.13a4 4 0 010 7.75\"/></svg>"
+    },
+    {
+      "id": "inline-x-twitter",
+      "name": "X (Twitter) Logo",
+      "type": "icon",
+      "category": "social",
+      "source": "inline",
+      "tags": [
+        "social",
+        "twitter",
+        "x",
+        "footer",
+        "profile"
+      ],
+      "description": "X (formerly Twitter) social media logo",
+      "usedIn": [
+        "index.html",
+        "briefs.html",
+        "editorial.html",
+        "editorial-detail.html",
+        "podcasts.html",
+        "games.html",
+        "newsletter.html"
+      ],
+      "context": "Footer social links and profile card social icons",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z\"/></svg>"
+    },
+    {
+      "id": "inline-linkedin-square",
+      "name": "LinkedIn Logo (square)",
+      "type": "icon",
+      "category": "social",
+      "source": "inline",
+      "tags": [
+        "social",
+        "linkedin",
+        "footer",
+        "square"
+      ],
+      "description": "LinkedIn social media logo in square format, used in footers",
+      "usedIn": [
+        "index.html",
+        "briefs.html",
+        "editorial.html",
+        "podcasts.html",
+        "games.html",
+        "newsletter.html"
+      ],
+      "context": "Footer social links",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z\"/></svg>"
+    },
+    {
+      "id": "inline-linkedin-round",
+      "name": "LinkedIn Logo (round)",
+      "type": "icon",
+      "category": "social",
+      "source": "inline",
+      "tags": [
+        "social",
+        "linkedin",
+        "profile",
+        "round",
+        "circle"
+      ],
+      "description": "LinkedIn social media logo in circular format, used in profile cards",
+      "usedIn": [
+        "editorial-detail.html"
+      ],
+      "context": "Profile card social icons for oncologist profiles",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM9.2 17.2H6.8V9.8h2.4v7.4zM8 8.8a1.4 1.4 0 110-2.8 1.4 1.4 0 010 2.8zm9.2 8.4h-2.4v-3.6c0-.86-.016-1.96-1.2-1.96-1.2 0-1.38.936-1.38 1.9v3.66H9.8V9.8h2.3v1.01h.032c.32-.608 1.1-1.25 2.268-1.25 2.424 0 2.872 1.596 2.872 3.67v3.97z\"/></svg>"
+    },
+    {
+      "id": "inline-facebook",
+      "name": "Facebook Logo",
+      "type": "icon",
+      "category": "social",
+      "source": "inline",
+      "tags": [
+        "social",
+        "facebook",
+        "footer"
+      ],
+      "description": "Facebook social media logo",
+      "usedIn": [
+        "index.html",
+        "briefs.html",
+        "editorial.html",
+        "editorial-detail.html",
+        "podcasts.html",
+        "games.html",
+        "newsletter.html"
+      ],
+      "context": "Footer social links",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z\"/></svg>"
+    },
+    {
+      "id": "inline-back-arrow",
+      "name": "Back Arrow",
+      "type": "icon",
+      "category": "navigation",
+      "source": "inline",
+      "tags": [
+        "navigation",
+        "back",
+        "arrow",
+        "chevron",
+        "left",
+        "return"
+      ],
+      "description": "Left-pointing chevron arrow for back/return navigation",
+      "usedIn": [
+        "brief-detail.html",
+        "editorial-detail.html"
+      ],
+      "context": "Page header back button on detail pages",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15,18 9,12 15,6\"/></svg>"
+    },
+    {
+      "id": "inline-right-arrow",
+      "name": "Right Arrow (with line)",
+      "type": "icon",
+      "category": "navigation",
+      "source": "inline",
+      "tags": [
+        "navigation",
+        "arrow",
+        "right",
+        "read-more",
+        "view-more"
+      ],
+      "description": "Right-pointing arrow with horizontal line for read more and view more actions",
+      "usedIn": [
+        "briefs.html",
+        "editorial.html"
+      ],
+      "context": "Read more links on editorial cards, View More Briefs button",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg>"
+    },
+    {
+      "id": "inline-play",
+      "name": "Play Triangle",
+      "type": "icon",
+      "category": "media",
+      "source": "inline",
+      "tags": [
+        "media",
+        "play",
+        "triangle",
+        "audio",
+        "video",
+        "podcast"
+      ],
+      "description": "Play button triangle for media playback overlays",
+      "usedIn": [
+        "index.html",
+        "podcasts.html"
+      ],
+      "context": "Podcast card thumbnail play overlay, audio player play button",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"white\"><polygon points=\"9,6 18,12 9,18\"/></svg>"
+    },
+    {
+      "id": "inline-pause",
+      "name": "Pause Icon",
+      "type": "icon",
+      "category": "media",
+      "source": "inline",
+      "tags": [
+        "media",
+        "pause",
+        "audio",
+        "player"
+      ],
+      "description": "Two vertical bars for pause state in media player",
+      "usedIn": [
+        "podcasts.html"
+      ],
+      "context": "Podcast player main play/pause toggle (pause state)",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"white\"><rect x=\"6\" y=\"4\" width=\"4\" height=\"16\"/><rect x=\"14\" y=\"4\" width=\"4\" height=\"16\"/></svg>"
+    },
+    {
+      "id": "inline-rewind",
+      "name": "Rewind Icon",
+      "type": "icon",
+      "category": "media",
+      "source": "inline",
+      "tags": [
+        "media",
+        "rewind",
+        "skip-back",
+        "10s",
+        "audio"
+      ],
+      "description": "Counter-clockwise arrow for skip backward/rewind 10 seconds",
+      "usedIn": [
+        "podcasts.html"
+      ],
+      "context": "Podcast player rewind control",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M1 4v6h6\"/><path d=\"M3.51 15a9 9 0 105.64-8.36L1 10\"/></svg>"
+    },
+    {
+      "id": "inline-forward",
+      "name": "Fast Forward Icon",
+      "type": "icon",
+      "category": "media",
+      "source": "inline",
+      "tags": [
+        "media",
+        "forward",
+        "skip-forward",
+        "10s",
+        "audio"
+      ],
+      "description": "Clockwise arrow for skip forward/fast-forward 10 seconds",
+      "usedIn": [
+        "podcasts.html"
+      ],
+      "context": "Podcast player fast-forward control",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M23 4v6h-6\"/><path d=\"M20.49 15a9 9 0 11-5.64-8.36L23 10\"/></svg>"
+    },
+    {
+      "id": "inline-lightbulb",
+      "name": "Lightbulb/Summary Icon",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "content",
+        "lightbulb",
+        "idea",
+        "summary",
+        "insight"
+      ],
+      "description": "Lightbulb icon representing summary or key insight sections",
+      "usedIn": [
+        "brief-detail.html"
+      ],
+      "context": "Summary section header icon in brief detail pages",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6\"/><path d=\"M10 22h4\"/><path d=\"M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 01-1 1h-6a1 1 0 01-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z\"/></svg>"
+    },
+    {
+      "id": "inline-editorial-tag",
+      "name": "Editorial Tag Icon (small)",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "content",
+        "editorial",
+        "megaphone",
+        "tag",
+        "pill",
+        "label"
+      ],
+      "description": "Small megaphone icon used inline within the Curie Editorial pill tag in hero sections",
+      "usedIn": [
+        "editorial-detail.html"
+      ],
+      "context": "Inside the 'CURIE EDITORIAL' hero tag badge, to the left of the text",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\" style=\"width:12px;height:12px;vertical-align:-1px;margin-right:4px\"><path d=\"M18 3v18l-7-4H5a2 2 0 01-2-2V9a2 2 0 012-2h6l7-4z\"/><line x1=\"21\" y1=\"9\" x2=\"21\" y2=\"15\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg>"
+    },
+    {
+      "id": "inline-down-chevron",
+      "name": "Down Chevron",
+      "type": "icon",
+      "category": "navigation",
+      "source": "inline",
+      "tags": [
+        "navigation",
+        "chevron",
+        "down",
+        "dropdown",
+        "expand",
+        "collapse"
+      ],
+      "description": "Downward-pointing chevron for dropdowns, expand/collapse, and see-more toggles",
+      "usedIn": [
+        "index.html",
+        "briefs.html",
+        "brief-detail.html"
+      ],
+      "context": "FAQ expand/collapse, dropdown menus, source list toggle",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6,9 12,15 18,9\"/></svg>"
+    },
+    {
+      "id": "inline-right-chevron",
+      "name": "Right Chevron",
+      "type": "icon",
+      "category": "navigation",
+      "source": "inline",
+      "tags": [
+        "navigation",
+        "chevron",
+        "right",
+        "view-all",
+        "next"
+      ],
+      "description": "Right-pointing chevron for view all links and next navigation",
+      "usedIn": [
+        "index.html",
+        "podcasts.html",
+        "editorial.html"
+      ],
+      "context": "View All links, carousel next, Read more indicators",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9,6 15,12 9,18\"/></svg>"
+    },
+    {
+      "id": "inline-close",
+      "name": "Close/X Button",
+      "type": "icon",
+      "category": "action",
+      "source": "inline",
+      "tags": [
+        "action",
+        "close",
+        "dismiss",
+        "x",
+        "cancel"
+      ],
+      "description": "X/close button for dismissing modals, players, and overlays",
+      "usedIn": [
+        "podcasts.html"
+      ],
+      "context": "Podcast player close button",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg>"
+    },
+    {
+      "id": "illust-pinpoint",
+      "name": "Curie Pinpoint",
+      "type": "illustration",
+      "category": "games",
+      "path": "Assets/illustration/pinpoint.png",
+      "source": "file",
+      "tags": [
+        "games",
+        "pinpoint",
+        "puzzle",
+        "illustration"
+      ],
+      "description": "Stylized blue P pin-drop glyph for the Curie Pinpoint game",
+      "usedIn": [
+        "games.html"
+      ],
+      "context": "Game card icon for Curie Pinpoint",
+      "dimensions": {
+        "width": 80,
+        "height": 80
+      }
+    }
+  ]
+}

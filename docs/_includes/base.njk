@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} · Curie Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/docs-theme.css">
+</head>
+<body>
+  <aside class="ds-sidebar">
+    <a class="ds-logo" href="/">
+      <img src="/assets/curie-logo-white.svg" alt="Curie">
+      <span>Design<br>System</span>
+    </a>
+    <nav class="ds-nav">
+      <a href="/" class="{{ 'active' if nav == 'home' }}">Overview</a>
+      <a href="/foundations/" class="{{ 'active' if nav == 'foundations' }}">Foundations</a>
+      <div class="ds-nav-group">
+        <a href="/components/" class="{{ 'active' if nav == 'components' and not componentId }}">Components</a>
+        {% for c in manifest.components %}
+        <a class="ds-nav-sub {{ 'active' if componentId == c.id }}" href="/components/{{ c.id }}/">{{ c.name }}</a>
+        {% endfor %}
+      </div>
+      <div class="ds-nav-group">
+        <a href="/assets-library/" class="{{ 'active' if nav == 'assets' }}">Assets</a>
+        <a class="ds-nav-sub" href="/assets-library/#icons">Icons</a>
+        <a class="ds-nav-sub" href="/assets-library/#illustrations">Illustrations</a>
+      </div>
+      <a href="/examples/" class="{{ 'active' if nav == 'examples' }}">Page examples</a>
+      <a href="/api/tokens.json" class="ds-nav-sub">tokens.json ↗</a>
+      <a href="/api/components-manifest.json" class="ds-nav-sub">manifest.json ↗</a>
+    </nav>
+    <div class="ds-version">v{{ site.version }}</div>
+  </aside>
+  <main class="ds-main">
+    {{ content | safe }}
+  </main>
+  <script>
+    // Keep the sidebar's own scroll position across page navigations, so clicking
+    // a nav item doesn't reset the (long) list back to the top.
+    (function () {
+      var bar = document.querySelector('.ds-sidebar');
+      if (!bar) return;
+      var KEY = 'dsSidebarScroll';
+      var saved = sessionStorage.getItem(KEY);
+      if (saved !== null) {
+        bar.scrollTop = parseInt(saved, 10) || 0;
+      } else {
+        var active = bar.querySelector('.ds-nav a.active');
+        if (active) bar.scrollTop = Math.max(0, active.offsetTop - bar.clientHeight / 2);
+      }
+      function save() { sessionStorage.setItem(KEY, bar.scrollTop); }
+      bar.addEventListener('click', function (e) { if (e.target.closest('a')) save(); });
+      window.addEventListener('pagehide', save);
+    })();
+  </script>
+</body>
+</html>

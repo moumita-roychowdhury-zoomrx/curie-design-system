@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curie | Medical Podcasts, News & Games for Healthcare Professionals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../layout.css">
+  <link rel="stylesheet" href="../components.css">
+  <link rel="stylesheet" href="../utilities.css">
+</head>
+<body class="pg-home">
+
+  <!-- ========== NEWSLETTER TOP BAR ========== -->
+  <div class="newsletter-banner">
+    <div class="newsletter-banner__inner">
+      <div class="newsletter-banner__left">
+        <div class="newsletter-banner__title-group">
+          <div class="newsletter-banner__icon">
+            <div class="newsletter-banner__icon-inner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+          </div>
+          <span class="newsletter-banner__headline">Stay current in minutes</span>
+        </div>
+        <div class="newsletter-banner__sub-group">
+          <span class="newsletter-banner__sub">All the week's key medical news in one email.</span>
+        </div>
+      </div>
+      <div class="newsletter-banner__right">
+        <div class="newsletter-banner__form">
+          <div class="newsletter-banner__input-wrapper">
+            <div class="newsletter-banner__input-field">
+              <svg class="newsletter-banner__mail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <input class="newsletter-banner__input" type="email" placeholder="Email">
+            </div>
+          </div>
+          <button class="newsletter-banner__btn">Subscribe free</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SIDE NAVIGATION ========== -->
+  <nav class="side-nav">
+    <div class="side-nav__logo">
+      <img src="../Assets/curie-logo-white.svg" alt="Curie" style="width:28px; height:28px;">
+      <span class="side-nav__logo-label">Curie</span>
+    </div>
+
+    <ul class="side-nav__list">
+      <li><a class="side-nav__link active" href="#">
+        <svg viewBox="0 0 34 34" fill="white" style="width:22px; height:22px;">
+          <path d="M15.1719 4.34247C16.2384 3.54282 17.705 3.54274 18.7715 4.34247L28.0859 11.3288C28.8412 11.8953 29.286 12.7841 29.2861 13.7282V27.6999C29.2861 29.3567 27.9429 30.6997 26.2861 30.6999H23.2148C21.558 30.6999 20.2148 29.3567 20.2148 27.6999V21.8005C20.2148 21.2483 19.7669 20.8007 19.2148 20.8005H14.7285C14.1763 20.8006 13.7285 21.2482 13.7285 21.8005V27.6999C13.7285 29.3567 12.3854 30.6999 10.7285 30.6999H7.65723C6.00037 30.6999 4.65723 29.3567 4.65723 27.6999V13.7282C4.65735 12.7841 5.10211 11.8953 5.85742 11.3288L15.1719 4.34247Z"/>
+        </svg>
+        <span class="side-nav__label">Home</span>
+      </a></li>
+      <li><a class="side-nav__link" href="briefs.html">
+        <img src="../Assets/icons/brief.svg" alt="Briefs" style="width:22px; height:22px;">
+        <span class="side-nav__label">Briefs</span>
+      </a></li>
+      <li><a class="side-nav__link" href="podcasts.html">
+        <img src="../Assets/icons/podcast.svg" alt="Podcasts" style="width:22px; height:22px;">
+        <span class="side-nav__label">Podcasts</span>
+      </a></li>
+      <li><a class="side-nav__link" href="editorial.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:22px; height:22px;">
+          <path d="M18 3v18l-7-4H5a2 2 0 01-2-2V9a2 2 0 012-2h6l7-4z"/>
+          <line x1="21" y1="9" x2="21" y2="15"/>
+          <path d="M9 17v4"/>
+        </svg>
+        <span class="side-nav__label">Editorial</span>
+      </a></li>
+      <li><a class="side-nav__link" href="games.html">
+        <img src="../Assets/icons/game.svg" alt="Games" style="width:22px; height:22px;">
+        <span class="side-nav__label">Games</span>
+      </a></li>
+      <li><a class="side-nav__link" href="newsletter.html">
+        <img src="../Assets/icons/newesletter.svg" alt="Newsletter" style="width:22px; height:22px;">
+        <span class="side-nav__label">Newsletter</span>
+      </a></li>
+    </ul>
+
+    <div class="side-nav__bottom"></div>
+  </nav>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <div class="home-view-container">
+
+    <!-- ========== HERO BANNER CAROUSEL ========== -->
+    <div class="home-banner podcast-active" id="heroBanner">
+      <!-- User Bar -->
+      <div class="user-bar" onclick="document.getElementById('userDropdown').classList.toggle('open')">
+        <div class="user-avatar">mr</div>
+        <span class="user-name">moumitra roychowdhury</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,6 15,12 9,18"/></svg>
+        <!-- Dropdown -->
+        <div class="user-dropdown" id="userDropdown" onclick="event.stopPropagation()">
+          <div class="user-dropdown__header">
+            <div class="user-dropdown__avatar">mr</div>
+            <span class="user-dropdown__name">moumitra roychowdhury</span>
+          </div>
+          <div class="user-dropdown__options">
+            <div class="user-dropdown__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" y1="6" x2="20" y2="6"/>
+                <line x1="4" y1="12" x2="20" y2="12"/>
+                <line x1="4" y1="18" x2="20" y2="18"/>
+                <circle cx="8" cy="6" r="2" fill="currentColor"/>
+                <circle cx="16" cy="12" r="2" fill="currentColor"/>
+                <circle cx="10" cy="18" r="2" fill="currentColor"/>
+              </svg>
+              Profile & Preferences
+            </div>
+            <div class="user-dropdown__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="8" height="18" rx="1"/>
+                <path d="M11 12h10M17 8l4 4-4 4"/>
+              </svg>
+              Logout
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 1: Podcast -->
+      <div class="banner-slide podcast-theme active" data-slide="0">
+        <div class="banner-background"></div>
+        <div class="gradient-overlay"></div>
+        <div class="content-overlay"></div>
+        <div class="banner-content">
+          <div class="content-section">
+            <div class="content-badge">
+              <span class="content-type">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>
+                PODCAST
+              </span>
+              <span class="content-date">Dec 2, 2025</span>
+            </div>
+            <h1 class="content-title">What an Active Shooter Taught an Oncologist</h1>
+            <p class="content-description">When an active-shooter alert swept across her hospital campus, oncologist and educator Dr. Beatrice Preti found herself experiencing a level of fear she'd never encountered in medicine before, even after years of caring for patients with life-limiting diagnoses. In this conversation, Dr. Preti reflects...</p>
+            <div class="action-section">
+              <button class="primary-action-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>
+                Listen Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Brief -->
+      <div class="banner-slide brief-theme" data-slide="1">
+        <div class="banner-background"></div>
+        <div class="gradient-overlay"></div>
+        <div class="content-overlay"></div>
+        <div class="banner-content">
+          <div class="content-section">
+            <div class="content-badge">
+              <span class="content-type">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="7" x2="13" y2="7"/><line x1="7" y1="11" x2="17" y2="11"/><line x1="7" y1="15" x2="14" y2="15"/></svg>
+                BRIEF
+              </span>
+              <span class="content-date">Apr 13, 2026</span>
+            </div>
+            <h1 class="content-title">Two surgical approaches for bone metastases show timing-based advantages</h1>
+            <p class="content-description">A new meta-analysis comparing surgical options for femoral bone metastases found that both intramedullary nailing and endoprosthetic reconstruction are effective, but with different timing advantages. IM nailing showed fewer early complications within 6 months, while...</p>
+            <div class="action-section">
+              <button class="primary-action-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="7" x2="13" y2="7"/><line x1="7" y1="11" x2="17" y2="11"/><line x1="7" y1="15" x2="14" y2="15"/></svg>
+                Read Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Game -->
+      <div class="banner-slide game-theme" data-slide="2">
+        <div class="banner-background"></div>
+        <div class="gradient-overlay"></div>
+        <div class="content-overlay"></div>
+        <div class="banner-content">
+          <div class="content-section">
+            <div class="content-badge">
+              <span class="content-type">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="3"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="10" r="1"/><circle cx="16" cy="14" r="1"/></svg>
+                GAME
+              </span>
+              <span class="content-date">Apr 13, 2026</span>
+            </div>
+            <h1 class="content-title">Daily Connections Puzzle</h1>
+            <p class="content-description">Exercise your brain with this addictive word association game. Find the connecting threads between seemingly unrelated words. From obvious groupings to cleverly disguised categories, each puzzle will challenge your lateral thinking and vocabulary knowledge.</p>
+            <div class="action-section">
+              <button class="primary-action-btn">
+                <img src="../Assets/icons/game.svg" alt="" style="width:20px; height:20px; filter: brightness(0) invert(1);">
+                Play Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thumbnail Navigation -->
+      <div class="thumbnail-navigation">
+        <button class="nav-arrow" onclick="changeSlide(-1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg>
+        </button>
+        <div class="thumbnail-strip">
+          <div class="thumbnail-item active" onclick="goToSlide(0)" data-index="0"><div class="thumbnail-item-bg" style="background: url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=120&q=70') center/cover; border-radius:6px;"></div></div>
+          <div class="thumbnail-item" onclick="goToSlide(1)" data-index="1"><div class="thumbnail-item-bg" style="background: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=120&q=70') center/cover; border-radius:6px;"></div></div>
+          <div class="thumbnail-item" onclick="goToSlide(2)" data-index="2"><div class="thumbnail-item-bg" style="background: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=120&q=70') center/cover; border-radius:6px;"></div></div>
+          <div class="thumbnail-item" onclick="goToSlide(0)" data-index="0"><div class="thumbnail-item-bg" style="background: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=120&q=70') center/cover; border-radius:6px;"></div></div>
+          <div class="thumbnail-item" onclick="goToSlide(1)" data-index="1"><div class="thumbnail-item-bg" style="background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=120&q=70') center/cover; border-radius:6px;"></div></div>
+          <div class="thumbnail-item" onclick="goToSlide(2)" data-index="2"><div class="thumbnail-item-bg" style="background: url('https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=120&q=70') center/cover; border-radius:6px;"></div></div>
+          <div class="thumbnail-item" onclick="goToSlide(0)" data-index="0"><div class="thumbnail-item-bg" style="background: url('https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=120&q=70') center/cover; border-radius:6px;"></div></div>
+        </div>
+        <button class="nav-arrow" onclick="changeSlide(1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,18 15,12 9,6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ========== CURIE BRIEFS ========== -->
+    <div class="home-section">
+      <div class="section-title">
+        <img src="../Assets/icons/curie brief icon.svg" alt="Curie Briefs" style="width:42px; height:42px;">
+        Curie Briefs
+      </div>
+      <div class="brief-items-scroll">
+        <div class="brief-item">
+          <div class="brief-item-icon-wrapper">
+            <img class="brief-item-icon" src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=400&q=70" alt="">
+            <div class="brief-item-overlay-icon"><img src="../Assets/icons/brief.svg" alt=""></div>
+          </div>
+          <div class="brief-item-info">
+            <div class="brief-item-date">Apr 15, 2026</div>
+            <div class="brief-item-title">Two surgical approaches for bone...</div>
+            <div class="brief-item-source">Ortiz.inc</div>
+          </div>
+        </div>
+        <div class="brief-item">
+          <div class="brief-item-icon-wrapper">
+            <img class="brief-item-icon" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=70" alt="">
+            <div class="brief-item-overlay-icon"><img src="../Assets/icons/brief.svg" alt=""></div>
+          </div>
+          <div class="brief-item-info">
+            <div class="brief-item-date">Apr 15, 2026</div>
+            <div class="brief-item-title">New 20-minute test could revolutionize...</div>
+            <div class="brief-item-source">www.medical.net</div>
+          </div>
+        </div>
+        <div class="brief-item">
+          <div class="brief-item-icon-wrapper">
+            <img class="brief-item-icon" src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=400&q=70" alt="">
+            <div class="brief-item-overlay-icon"><img src="../Assets/icons/brief.svg" alt=""></div>
+          </div>
+          <div class="brief-item-info">
+            <div class="brief-item-date">Apr 15, 2026</div>
+            <div class="brief-item-title">UK approves Kerendia for heart failure with...</div>
+            <div class="brief-item-source">2 Sources</div>
+          </div>
+        </div>
+        <div class="brief-item">
+          <div class="brief-item-icon-wrapper">
+            <img class="brief-item-icon" src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400&q=70" alt="">
+            <div class="brief-item-overlay-icon"><img src="../Assets/icons/brief.svg" alt=""></div>
+          </div>
+          <div class="brief-item-info">
+            <div class="brief-item-date">Apr 15, 2026</div>
+            <div class="brief-item-title">Allogene's off-the-shelf CAR-T therapy...</div>
+            <div class="brief-item-source">Reuters | Health & Pharma</div>
+          </div>
+        </div>
+        <div class="brief-item">
+          <div class="brief-item-icon-wrapper">
+            <img class="brief-item-icon" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&q=70" alt="">
+            <div class="brief-item-overlay-icon"><img src="../Assets/icons/brief.svg" alt=""></div>
+          </div>
+          <div class="brief-item-info">
+            <div class="brief-item-date">Apr 13, 2026</div>
+            <div class="brief-item-title">Spyre's experimental ulcerative colitis drug...</div>
+            <div class="brief-item-source">Reuters | Health & Pharma</div>
+          </div>
+        </div>
+        <div class="brief-item">
+          <div class="brief-item-icon-wrapper">
+            <img class="brief-item-icon" src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&q=70" alt="">
+            <div class="brief-item-overlay-icon"><img src="../Assets/icons/brief.svg" alt=""></div>
+          </div>
+          <div class="brief-item-info">
+            <div class="brief-item-date">Apr 15, 2026</div>
+            <div class="brief-item-title">IDEAYA's eye cancer drug combo hits the...</div>
+            <div class="brief-item-source">Reuters | Health & Pharma</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== CURIE PODCASTS ========== -->
+    <div class="home-section shows-section">
+      <div class="section-title">
+        <img src="../Assets/icons/podcast icon.svg" alt="Curie Podcasts" style="width:62px; height:62px;">
+        Curie Podcasts
+        <a class="view-all" href="#">
+          View All
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,6 15,12 9,18"/></svg>
+        </a>
+      </div>
+      <div class="show-content">
+        <div class="podcast-item">
+          <div class="podcast-view">
+            <div class="podcast-thumbnail">
+              <img class="podcast-thumbnail-bg" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=70" alt="">
+              <div class="play-pause-overlay"><div class="pause-play__button"><svg viewBox="0 0 24 24" fill="white"><polygon points="9,6 18,12 9,18"/></svg></div></div>
+            </div>
+            <div class="podcast-info">
+              <p class="podcast-title">What Tennis Teaches Doctors About Medicine</p>
+              <div class="podcast-meta"><span class="date">Jan 13, 2025</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="podcast-item">
+          <div class="podcast-view">
+            <div class="podcast-thumbnail">
+              <img class="podcast-thumbnail-bg" src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=400&q=70" alt="">
+              <div class="play-pause-overlay"><div class="pause-play__button"><svg viewBox="0 0 24 24" fill="white"><polygon points="9,6 18,12 9,18"/></svg></div></div>
+            </div>
+            <div class="podcast-info">
+              <p class="podcast-title">What an Active Shooter Taught an Oncologist</p>
+              <div class="podcast-meta"><span class="date">Dec 2, 2025</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="podcast-item">
+          <div class="podcast-view">
+            <div class="podcast-thumbnail">
+              <img class="podcast-thumbnail-bg" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&q=70" alt="">
+              <div class="play-pause-overlay"><div class="pause-play__button"><svg viewBox="0 0 24 24" fill="white"><polygon points="9,6 18,12 9,18"/></svg></div></div>
+            </div>
+            <div class="podcast-info">
+              <p class="podcast-title">Can Private Practice Be Saved?</p>
+              <div class="podcast-meta"><span class="date">Nov 18, 2025</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="podcast-item">
+          <div class="podcast-view">
+            <div class="podcast-thumbnail">
+              <img class="podcast-thumbnail-bg" src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=400&q=70" alt="">
+              <div class="play-pause-overlay"><div class="pause-play__button"><svg viewBox="0 0 24 24" fill="white"><polygon points="9,6 18,12 9,18"/></svg></div></div>
+            </div>
+            <div class="podcast-info">
+              <p class="podcast-title">Is AI Really Going to Solve Medicine?</p>
+              <div class="podcast-meta"><span class="date">Nov 11, 2025</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="podcast-item">
+          <div class="podcast-view">
+            <div class="podcast-thumbnail">
+              <img class="podcast-thumbnail-bg" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=70" alt="">
+              <div class="play-pause-overlay"><div class="pause-play__button"><svg viewBox="0 0 24 24" fill="white"><polygon points="9,6 18,12 9,18"/></svg></div></div>
+            </div>
+            <div class="podcast-info">
+              <p class="podcast-title">The Preconception Revolution with Dr. Ann Shippy</p>
+              <div class="podcast-meta"><span class="date">Nov 4, 2025</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="podcast-item">
+          <div class="podcast-view">
+            <div class="podcast-thumbnail">
+              <img class="podcast-thumbnail-bg" src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&q=70" alt="">
+              <div class="play-pause-overlay"><div class="pause-play__button"><svg viewBox="0 0 24 24" fill="white"><polygon points="9,6 18,12 9,18"/></svg></div></div>
+            </div>
+            <div class="podcast-info">
+              <p class="podcast-title">From Burnout to Breakthrough in Reckoning</p>
+              <div class="podcast-meta"><span class="date">Oct 31, 2025</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== CURIE GAMES ========== -->
+    <div class="home-section games-section">
+      <div class="section-title">
+        <img src="../Assets/icons/games illustration.svg" alt="Curie Games" style="width:42px; height:42px;">
+        Curie Games
+      </div>
+      <div class="games-scroll">
+        <div class="game-card">
+          <div class="game-card__title">Curie Connections</div>
+          <div class="game-card__icon">
+            <img src="../Assets/illustration/connections.svg" alt="Connections" style="width:90px; height:90px; object-fit:contain;">
+          </div>
+          <button class="game-card__play-button">Play</button>
+        </div>
+        <div class="game-card">
+          <div class="game-card__title">Curie Pinpoint</div>
+          <div class="game-card__icon">
+            <img src="../Assets/illustration/connections.svg" alt="Pinpoint" style="width:90px; height:90px; object-fit:contain;">
+          </div>
+          <button class="game-card__play-button">Play</button>
+        </div>
+        <div class="game-card">
+          <div class="game-card__title">Curie Strands</div>
+          <div class="game-card__icon">
+            <img src="../Assets/illustration/curie strands.svg" alt="Strands" style="width:90px; height:90px; object-fit:contain;">
+          </div>
+          <button class="game-card__play-button">Play</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== FAQ ========== -->
+    <div class="home-section faq-section">
+      <div class="faq-container">
+        <div class="faq-title-container">
+          <svg class="faq-main-icon" viewBox="0 0 42 42" fill="none" width="42" height="42">
+            <circle cx="21" cy="21" r="18" stroke="#6153bd" stroke-width="2"/>
+            <text x="21" y="28" text-anchor="middle" fill="#a18aff" font-family="Manrope, sans-serif" font-size="22" font-weight="700">?</text>
+          </svg>
+          <h2 class="section-title" style="margin-bottom:0">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item" onclick="this.classList.toggle('open')">
+            <button class="faq-question">
+              <span>What is Curie and who is it for?</span>
+              <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span>
+            </button>
+            <div class="faq-answer"><p>Curie is a medical news and education platform designed for healthcare professionals. It delivers curated news briefs, expert podcasts, and medical knowledge games to help clinicians stay current in their field.</p></div>
+          </div>
+          <div class="faq-item" onclick="this.classList.toggle('open')">
+            <button class="faq-question">
+              <span>How do I sign up for Curie?</span>
+              <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span>
+            </button>
+            <div class="faq-answer"><p>You can sign up for Curie by downloading the app from the App Store or Google Play, or by subscribing to our email newsletter using the form at the top of this page.</p></div>
+          </div>
+          <div class="faq-item" onclick="this.classList.toggle('open')">
+            <button class="faq-question">
+              <span>What are Curie Briefs?</span>
+              <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span>
+            </button>
+            <div class="faq-answer"><p>Curie Briefs are concise, AI-curated summaries of the latest medical news and research. Each brief distills key findings from multiple sources into a quick, digestible format.</p></div>
+          </div>
+          <div class="faq-item" onclick="this.classList.toggle('open')">
+            <button class="faq-question">
+              <span>Can I customize the topics I see in my Curie Briefs?</span>
+              <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span>
+            </button>
+            <div class="faq-answer"><p>Yes! You can personalize your Curie Briefs by selecting your medical specialty and areas of interest. Curie will tailor your news feed to match your preferences.</p></div>
+          </div>
+        </div>
+        <button class="see-more-button">
+          See More FAQs
+          <span class="see-more-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ========== FOOTER CTA ========== -->
+    <div class="home-footer">
+      <div class="home-footer__content">
+        <h2 class="home-footer__headline">
+          Turn spare minutes into<br>
+          <span class="home-footer__headline--highlight">clinical confidence.</span>
+        </h2>
+        <p class="home-footer__subheadline">Join thousands of clinicians who rely on Curie's quick news, podcasts, and games to stay ahead in their field.</p>
+        <button class="home-footer__button">Download Now</button>
+      </div>
+      <div class="home-footer__image-wrapper">
+        <img class="home-footer__image" src="../Assets/illustration/home footer illustration.svg" alt="Curie illustration">
+      </div>
+    </div>
+
+    <!-- ========== LAYOUT FOOTER ========== -->
+    <footer class="layout-footer">
+      <div class="layout-footer__main">
+        <span>All rights reserved ZoomRx - 2024</span>
+        <div class="layout-footer__social">
+          <a class="layout-footer__social-link" href="#">
+            <svg viewBox="0 0 24 24" fill="#b3a6c8"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a class="layout-footer__social-link" href="#">
+            <svg viewBox="0 0 24 24" fill="#b3a6c8"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a class="layout-footer__social-link" href="#">
+            <svg viewBox="0 0 24 24" fill="#b3a6c8"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+        <div class="layout-footer__links">
+          <a class="layout-footer__link" href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.banner-slide');
+    const thumbs = document.querySelectorAll('.thumbnail-item');
+    const banner = document.getElementById('heroBanner');
+    const themes = ['podcast', 'brief', 'game'];
+    let current = 0;
+    let autoTimer;
+
+    function goToSlide(index) {
+      slides.forEach(s => s.classList.remove('active'));
+      thumbs.forEach(t => t.classList.remove('active'));
+      current = index % slides.length;
+      slides[current].classList.add('active');
+      // Highlight matching thumbnails
+      thumbs.forEach(t => {
+        if (parseInt(t.dataset.index) === current) t.classList.add('active');
+      });
+      // Update banner theme class
+      banner.className = 'home-banner ' + themes[current] + '-active';
+      resetAutoPlay();
+    }
+
+    function changeSlide(dir) {
+      goToSlide((current + dir + slides.length) % slides.length);
+    }
+
+    function resetAutoPlay() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => changeSlide(1), 6000);
+    }
+
+    // Start auto-play
+    resetAutoPlay();
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      var dropdown = document.getElementById('userDropdown');
+      var userBar = document.querySelector('.user-bar');
+      if (dropdown && !userBar.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+  </script>
+
+</body>
+</html>

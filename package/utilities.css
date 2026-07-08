@@ -1,0 +1,14 @@
+/* ===== UTILITIES ===== */
+
+.hidden { display: none; }
+
+.foryou-view.hidden { display: none; }
+.latest-view { display: none; }
+.latest-view.active { display: block; }
+
+.bookmarked-view { display: none; }
+.bookmarked-view.active, .history-view.active {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; min-height: 400px; text-align: center;
+}
+.history-view { display: none; }

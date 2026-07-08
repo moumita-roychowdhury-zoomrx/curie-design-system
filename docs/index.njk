@@ -1,0 +1,29 @@
+---
+layout: base.njk
+title: Overview
+nav: home
+---
+<div class="ds-eyebrow">Single source of truth</div>
+<h1 class="ds-title">The <em>Curie</em> design system</h1>
+<p class="ds-lede">Curie is ZoomRx's dark-themed medical-content platform for healthcare professionals. This site documents its visual language — tokens, components, and canonical pages — generated directly from the design-system package, so it can never drift from the code it describes.</p>
+
+<div class="ds-example-grid">
+  <a class="ds-component-card" href="/foundations/">
+    <span class="cat">Foundations</span>
+    <h3>Tokens</h3>
+    <p>{{ tokens.groups.length }} groups — color, typography, spacing, radius, elevation, motion. The vocabulary every Curie surface is built from.</p>
+  </a>
+  <a class="ds-component-card" href="/components/">
+    <span class="cat">Components</span>
+    <h3>Component library</h3>
+    <p>{{ manifest.components.length }} documented components with live previews, anatomy, and usage judgment.</p>
+  </a>
+  <a class="ds-component-card" href="/examples/">
+    <span class="cat">Reference</span>
+    <h3>Page examples</h3>
+    <p>The canonical Curie pages, rendered byte-identical — proof of the system applied, not templates to clone.</p>
+  </a>
+</div>
+
+<h2 class="ds-section">For machines as well as people</h2>
+<p>Everything on this site is generated from two structured files, published for AI agents and plugins to consume directly: <a href="/api/tokens.json" style="color: var(--color-purple-light)">tokens.json</a> and <a href="/api/components-manifest.json" style="color: var(--color-purple-light)">components-manifest.json</a>. The git repository is the canonical source; this site and those endpoints are derived output of version {{ site.version }}.</p>

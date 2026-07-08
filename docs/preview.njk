@@ -1,0 +1,56 @@
+---
+pagination:
+  data: manifest.components
+  size: 1
+  alias: c
+permalink: "/previews/{{ c.id }}/index.html"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/utilities.css">
+<style>
+  html { height: 100%; }
+  /* Isolated specimen stage: neutral canvas, top-aligned so nothing clips,
+     page background gradients (bg-briefs etc.) neutralized for a consistent gallery. */
+  body { margin: 0; min-height: 100%; box-sizing: border-box;
+         display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+         gap: 28px; padding: 40px 32px;
+         background: var(--color-bg-primary) !important; background-attachment: initial !important;
+         font-family: var(--font-primary); }
+  .preview-stage { width: 100%; max-width: {{ c.previewWidth }}px; }
+  .preview-variants { display: flex; flex-wrap: wrap; gap: 32px 28px;
+         align-items: flex-start; justify-content: center; width: 100%; }
+  .preview-variant { margin: 0; display: flex; flex-direction: column; gap: 12px; max-width: 100%; }
+  .preview-variant .preview-stage { max-width: none; }
+  .preview-variant figcaption { font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+         color: var(--text-muted, #b3a6c8); text-align: center; }
+  /* De-fix chrome that is position:fixed in-product so it renders as an in-flow specimen. */
+  .top-banner { position: static !important; }
+  .side-nav { position: static !important; height: auto !important; }
+  /* home-banner is 85vh + edge-bleed width in-product; constrain to a specimen box. */
+  .home-banner { height: 440px !important; min-height: 0 !important; width: 100% !important; margin: 0 !important; }
+</style>
+</head>
+<body class="{{ c.bodyClass }}">
+{% if c.variants %}
+  <div class="preview-variants">
+  {% for v in c.variants %}
+    <figure class="preview-variant" style="width:{{ v.previewWidth or c.previewWidth }}px;">
+      <div class="preview-stage">{{ v.snippet | safe }}</div>
+      <figcaption>{{ v.label }}</figcaption>
+    </figure>
+  {% endfor %}
+  </div>
+{% else %}
+  <div class="preview-stage">
+  {{ c.snippet | safe }}
+  </div>
+{% endif %}
+</body>
+</html>

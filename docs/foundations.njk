@@ -1,0 +1,76 @@
+---
+layout: base.njk
+title: Foundations
+nav: foundations
+permalink: /foundations/
+---
+<div class="ds-eyebrow">Foundations</div>
+<h1 class="ds-title">Tokens</h1>
+<p class="ds-lede">Every color, typeface, radius, space, blur, shadow, and timing in Curie is a CSS custom property. Nothing is hardcoded; these are the only values the system speaks in. Canonical source: <code>package/tokens.css</code>.</p>
+
+{% for group in tokens.groups %}
+<h2 class="ds-section">{{ group.name }}</h2>
+
+{% if group.name == "Typography" %}
+  <div class="ds-type-specimen">
+    <div class="name">--font-primary · Manrope</div>
+    <div style="font-family: var(--font-primary); color: var(--text-primary); font-size: 26px; font-weight: 700;">Evidence, briefly. For clinicians between patients.</div>
+  </div>
+  <div class="ds-type-specimen">
+    <div class="name">--font-accent · Playfair Display — one accent per view</div>
+    <div style="font-family: var(--font-accent); font-style: italic; color: var(--text-primary); font-size: 26px;">Rising voices in oncology</div>
+  </div>
+
+{% elif group.name == "Text" %}
+  <table class="ds-row-table">
+  {% for t in group.tokens %}
+    <tr>
+      <td>{{ t.name }}</td>
+      <td><span class="ds-text-sample" style="color: {{ t.value }}">The quick brown fox — ladder step</span></td>
+      <td>{{ t.value }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+
+{% elif group.name == "Spacing" %}
+  <table class="ds-row-table">
+  {% for t in group.tokens %}
+    <tr><td>{{ t.name }}</td><td><div class="ds-space-bar" style="width: calc({{ t.value }} * 4)"></div></td><td>{{ t.value }}</td></tr>
+  {% endfor %}
+  </table>
+
+{% elif group.name == "Radius" %}
+  <table class="ds-row-table">
+  {% for t in group.tokens %}
+    <tr><td>{{ t.name }}</td><td><div class="ds-radius-box" style="border-radius: {{ t.value }}"></div></td><td>{{ t.value }}</td></tr>
+  {% endfor %}
+  </table>
+
+{% elif group.name == "Shadows" %}
+  <table class="ds-row-table">
+  {% for t in group.tokens %}
+    <tr><td>{{ t.name }}</td><td><div class="ds-shadow-box" style="box-shadow: {{ t.value }}"></div></td><td>{{ t.value }}</td></tr>
+  {% endfor %}
+  </table>
+
+{% elif group.name == "Backgrounds" or group.name == "Purple" or group.name == "Semantic" %}
+  <div class="ds-token-grid">
+  {% for t in group.tokens %}
+    <div class="ds-swatch">
+      <div class="ds-swatch-chip" style="background: {{ t.value }}"></div>
+      <div class="ds-swatch-meta">
+        <div class="ds-token-name">{{ t.name }}</div>
+        <div class="ds-token-value">{{ t.value }}</div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+
+{% else %}
+  <table class="ds-row-table">
+  {% for t in group.tokens %}
+    <tr><td>{{ t.name }}</td><td>{{ t.value }}</td></tr>
+  {% endfor %}
+  </table>
+{% endif %}
+{% endfor %}

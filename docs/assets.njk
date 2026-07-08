@@ -1,0 +1,38 @@
+---
+layout: base.njk
+title: Assets
+nav: assets
+permalink: /assets-library/
+---
+<div class="ds-eyebrow">Asset library</div>
+<h1 class="ds-title">Icons &amp; Illustrations</h1>
+<p class="ds-lede">Every icon and illustration used across Curie components and pages — the file-based SVGs/PNGs plus the inline SVG glyphs baked into components — pulled straight from the design-system asset catalog.</p>
+
+<h2 class="ds-section" id="icons">Icons <span class="ds-count">{{ assets.icons.length }}</span></h2>
+<div class="ds-asset-grid">
+{% for a in assets.icons %}
+  {% if a.source == 'file' %}
+  <a class="ds-asset" href="/{{ a.path | replace('Assets/','assets/') }}" title="/{{ a.path | replace('Assets/','assets/') }}" target="_blank" rel="noopener">
+    <div class="ds-asset__tile"><img src="/{{ a.path | replace('Assets/','assets/') }}" alt="{{ a.name }}" loading="lazy"></div>
+    <figcaption><span class="ds-asset__name">{{ a.name }}</span><span class="ds-asset__meta">file · {{ a.category }}</span></figcaption>
+  </a>
+  {% else %}
+  <figure class="ds-asset">
+    <div class="ds-asset__tile">{{ a.svg | safe }}</div>
+    <figcaption><span class="ds-asset__name">{{ a.name }}</span><span class="ds-asset__meta">inline · {{ a.category }}</span></figcaption>
+  </figure>
+  {% endif %}
+{% endfor %}
+</div>
+
+<h2 class="ds-section" id="illustrations">Illustrations <span class="ds-count">{{ assets.illustrations.length }}</span></h2>
+<div class="ds-asset-grid ds-asset-grid--illust">
+{% for a in assets.illustrations %}
+  <a class="ds-asset" href="/{{ a.path | replace('Assets/','assets/') }}" title="/{{ a.path | replace('Assets/','assets/') }}" target="_blank" rel="noopener">
+    <div class="ds-asset__tile ds-asset__tile--illust"><img src="/{{ a.path | replace('Assets/','assets/') }}" alt="{{ a.name }}" loading="lazy"></div>
+    <figcaption><span class="ds-asset__name">{{ a.name }}</span><span class="ds-asset__meta">{{ a.category }}</span></figcaption>
+  </a>
+{% endfor %}
+</div>
+
+<p class="ds-meta-line">Source of truth: <code>assets-catalog.json</code> · files served under <code>/assets/</code> · published at <code>/api/assets-catalog.json</code></p>
