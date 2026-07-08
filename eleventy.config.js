@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { HtmlBasePlugin } from "@11ty/eleventy";
 
 const OUT = "_site";
 
@@ -11,6 +12,12 @@ const OUT = "_site";
 const CSS_FILES = ["tokens.css", "components.css", "layout.css", "utilities.css"];
 
 export default function (eleventyConfig) {
+  // Rewrites root-absolute URLs in generated HTML to respect --pathprefix, so the
+  // site works when served from a GitHub Pages subpath (/curie-design-system/).
+  // No-op locally (pathPrefix defaults to "/"). The golden example pages are
+  // passthrough-copied and already use relative URLs, so they're unaffected.
+  eleventyConfig.addPlugin(HtmlBasePlugin);
+
   // The design-system CSS, served at /css/ for docs + previews
   for (const f of CSS_FILES) {
     eleventyConfig.addPassthroughCopy({ [`package/${f}`]: `css/${f}` });

@@ -56,53 +56,31 @@ npm run tokens     # regenerates package/tokens.json from tokens.css only
 - **Add an icon / illustration** → drop the file in `package/assets/…` and add an entry to `package/assets-catalog.json` (`source: "file"` with a `path`, or `source: "inline"` with an `svg` string). It appears in the Assets gallery automatically.
 - Bump `version` in `package.json` on releases and tag (`git tag v0.2.0`); the site header shows the version it was built from.
 
-## Deploying
+## Deploying (GitHub Pages via GitHub Actions)
 
-The site is a static build (`_site/`), so any static host works. Build command `npm run build`, output directory `_site`.
+The repo ships a workflow at **`.github/workflows/deploy.yml`** that builds the site in the cloud and publishes it to GitHub Pages on every push to `main` — you never run Eleventy yourself. The published URL is:
 
-### Cloudflare Pages + Access (recommended for internal use)
+**https://moumita-roychowdhury-zoomrx.github.io/curie-design-system/**
 
-1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** → select this repo.
-   - Build command: `npm run build`
-   - Output directory: `_site`
-2. Every push to `main` auto-deploys; other branches get preview URLs.
-3. Gate it: **Zero Trust → Access → Applications → Add → self-hosted**, point at the Pages domain (and `*.pages.dev` previews). Login: ZoomRx SSO. Policy: allow emails ending `@zoomrx.com`. (Free up to 50 users.)
-4. Optional: add a custom domain (e.g. `curie-design.zoomrx.com`) in Pages settings — one CNAME from whoever manages DNS.
+### Requirements
 
-### GitHub Pages
+GitHub Pages for a **private** repo requires a paid plan (**GitHub Pro / Team / Enterprise**). On the free plan, Pages only serves public repos. So either be on Pro/Team, or make the repo public.
 
-Add `.github/workflows/deploy.yml`:
+### One-time setup
 
-```yaml
-name: Deploy docs
-on:
-  push: { branches: [main] }
-permissions: { contents: read, pages: write, id-token: write }
-jobs:
-  build-deploy:
-    runs-on: ubuntu-latest
-    environment: { name: github-pages, url: "${{ steps.deploy.outputs.page_url }}" }
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 20, cache: npm }
-      - run: npm ci
-      - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
-        with: { path: _site }
-      - id: deploy
-        uses: actions/deploy-pages@v4
-```
+1. Ensure the account is on a plan that allows private Pages (or make the repo public).
+2. **Settings → Pages → Build and deployment → Source: GitHub Actions.** (The workflow's `actions/configure-pages` step also enables this automatically once the plan allows it.)
+3. Push to `main` — or run the workflow manually from the **Actions** tab (`Deploy to GitHub Pages → Run workflow`). After it finishes, the site is live at the URL above.
 
-Then enable **Settings → Pages → Source: GitHub Actions**. (Note: GitHub Pages is public unless the repo is private on a plan that supports private Pages — for internal-only, prefer Cloudflare Access.)
+### How the subpath is handled
 
-### Netlify / Vercel
+A project Pages site serves under `/curie-design-system/`, so the workflow builds with `--pathprefix="/curie-design-system/"`. Eleventy's **`HtmlBasePlugin`** (wired up in `eleventy.config.js`) rewrites every internal URL — including those inside component snippets and preview iframes — to that prefix. Local `npm run dev` / `npm run build` stay at root (no prefix), so nothing changes for local work.
 
-Same settings — build command `npm run build`, publish/output directory `_site`.
+### Alternatives (if you'd rather not pay for private Pages)
 
-### Any host
-
-`npm run build`, then upload the contents of `_site/` (e.g. to S3 + CloudFront, nginx, etc.).
+- **Make the repo public** — free GitHub Pages works immediately with the same workflow.
+- **Cloudflare Pages + Access** — free, keeps the repo private, gates the site behind ZoomRx SSO. Connect the repo, build command `npm run build`, output `_site`; add a custom domain to avoid the subpath entirely.
+- **Netlify / Vercel / any static host** — build `npm run build`, publish `_site/`.
 
 ## Consumers
 
