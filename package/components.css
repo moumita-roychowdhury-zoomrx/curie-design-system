@@ -2692,7 +2692,9 @@ body.pg-editorial-detail .user-name { color: rgba(255,255,255,0.85); font-size: 
       max-width: 600px; margin: 12px 0 40px; }
 
 /* Podcasts page-header title override */
-body.pg-podcasts .page-header { padding: 16px 0 0 0; }
+/* Right padding keeps the user name off the extreme edge — the podcasts
+   content column has 0 right padding so its scroll rows can bleed to the edge. */
+body.pg-podcasts .page-header { padding: 16px 2.5rem 0 0; }
 
 body.pg-podcasts .page-header__title { font-size: 2rem; }
 
