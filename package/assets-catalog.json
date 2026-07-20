@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-04-16",
+  "lastUpdated": "2026-07-20",
   "assets": [
     {
       "id": "logo-curie-white",
@@ -1218,6 +1218,346 @@
         "width": 80,
         "height": 80
       }
+    },
+    {
+      "id": "inline-file-text",
+      "name": "File Text Icon (inline)",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "document",
+        "handout",
+        "ai-tool",
+        "file"
+      ],
+      "description": "Document with folded corner and text lines, stroked — AI tool card icon",
+      "usedIn": "index.html",
+      "context": "Patient Handout Generator tool card icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z\"/><polyline points=\"14,2 14,8 20,8\"/><line x1=\"8\" y1=\"13\" x2=\"16\" y2=\"13\"/><line x1=\"8\" y1=\"17\" x2=\"14\" y2=\"17\"/></svg>"
+    },
+    {
+      "id": "inline-shield",
+      "name": "Shield Icon (inline)",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "shield",
+        "prior-authorization",
+        "ai-tool",
+        "protection"
+      ],
+      "description": "Shield outline, stroked — AI tool card icon",
+      "usedIn": "index.html",
+      "context": "Prior Authorization tool card icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/></svg>"
+    },
+    {
+      "id": "inline-capsule",
+      "name": "Capsule Icon (inline)",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "pill",
+        "capsule",
+        "drug",
+        "lookup",
+        "ai-tool"
+      ],
+      "description": "Diagonal capsule/pill with split line, stroked — AI tool card icon",
+      "usedIn": "index.html",
+      "context": "PeerRx Drug Lookup tool card icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M10.5 20.5L3.5 13.5a5 5 0 017-7l7 7a5 5 0 01-7 7z\"/><line x1=\"8.5\" y1=\"8.5\" x2=\"15.5\" y2=\"15.5\"/></svg>"
+    },
+    {
+      "id": "inline-sparkle",
+      "name": "Sparkle Icon (inline)",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "sparkle",
+        "ai",
+        "powered-by-ai",
+        "star"
+      ],
+      "description": "Four-point sparkle/star, stroked — AI provenance meta icon",
+      "usedIn": "index.html",
+      "context": "AI tool card 'Powered by AI' meta icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z\"/></svg>"
+    },
+    {
+      "id": "inline-star-filled",
+      "name": "Star Filled Icon (inline)",
+      "type": "icon",
+      "category": "metadata",
+      "source": "inline",
+      "tags": [
+        "star",
+        "must-track",
+        "tier",
+        "almanac"
+      ],
+      "description": "Five-point filled star — almanac must-track tier badge",
+      "usedIn": "index.html",
+      "context": "Almanac card MUST-TRACK tier badge icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/></svg>"
+    },
+    {
+      "id": "inline-globe",
+      "name": "Globe Icon (inline)",
+      "type": "icon",
+      "category": "metadata",
+      "source": "inline",
+      "tags": [
+        "globe",
+        "field-wide",
+        "tier",
+        "almanac"
+      ],
+      "description": "Globe with meridians, stroked — almanac field-wide tier badge",
+      "usedIn": "index.html",
+      "context": "Almanac card FIELD-WIDE tier badge icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"/><path d=\"M12 2a15.3 15.3 0 010 20 15.3 15.3 0 010-20z\"/></svg>"
+    },
+    {
+      "id": "inline-target",
+      "name": "Target Icon (inline)",
+      "type": "icon",
+      "category": "metadata",
+      "source": "inline",
+      "tags": [
+        "target",
+        "niche",
+        "tier",
+        "almanac"
+      ],
+      "description": "Concentric-circle target, stroked — almanac niche tier badge",
+      "usedIn": "index.html",
+      "context": "Almanac card NICHE tier badge icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><circle cx=\"12\" cy=\"12\" r=\"6\"/><circle cx=\"12\" cy=\"12\" r=\"2\"/></svg>"
+    },
+    {
+      "id": "inline-calendar",
+      "name": "Calendar Icon (inline)",
+      "type": "icon",
+      "category": "metadata",
+      "source": "inline",
+      "tags": [
+        "calendar",
+        "date",
+        "almanac",
+        "meeting"
+      ],
+      "description": "Calendar grid, stroked — meeting date meta",
+      "usedIn": "index.html",
+      "context": "Almanac card date meta icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"/><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"/><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"/></svg>"
+    },
+    {
+      "id": "inline-map-pin",
+      "name": "Map Pin Icon (inline)",
+      "type": "icon",
+      "category": "metadata",
+      "source": "inline",
+      "tags": [
+        "location",
+        "map-pin",
+        "almanac",
+        "venue"
+      ],
+      "description": "Map pin with center dot, stroked — meeting location meta",
+      "usedIn": "index.html",
+      "context": "Almanac card location meta icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/></svg>"
+    },
+    {
+      "id": "inline-quote",
+      "name": "Quote Icon (inline)",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "quote",
+        "editors-take",
+        "almanac"
+      ],
+      "description": "Double quotation mark, filled — Editor's Take header",
+      "usedIn": "index.html",
+      "context": "Almanac card Editor's Take header icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M7.17 6A5.17 5.17 0 002 11.17V18h6.83v-6.83H5.5A3.67 3.67 0 019.17 7.5V6H7.17zm10 0A5.17 5.17 0 0012 11.17V18h6.83v-6.83H15.5a3.67 3.67 0 013.67-3.67V6h-2z\"/></svg>"
+    },
+    {
+      "id": "inline-bookmark-plus",
+      "name": "Bookmark Plus Icon (inline)",
+      "type": "icon",
+      "category": "action",
+      "source": "inline",
+      "tags": [
+        "bookmark",
+        "track",
+        "add",
+        "almanac"
+      ],
+      "description": "Bookmark with plus, stroked — track action",
+      "usedIn": "index.html",
+      "context": "Almanac card Track button icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/><line x1=\"12\" y1=\"7\" x2=\"12\" y2=\"13\"/><line x1=\"9\" y1=\"10\" x2=\"15\" y2=\"10\"/></svg>"
+    },
+    {
+      "id": "inline-link",
+      "name": "Link Icon (inline)",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "link",
+        "connect",
+        "matching",
+        "game-mode"
+      ],
+      "description": "Two linked chain segments, stroked — matching game mode",
+      "usedIn": "games.html",
+      "context": "Game mode card MATCHING badge icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1\"/><path d=\"M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1\"/></svg>"
+    },
+    {
+      "id": "inline-search",
+      "name": "Search Insight Icon (inline)",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "search",
+        "myth",
+        "game-mode",
+        "investigate"
+      ],
+      "description": "Magnifier with exclamation, stroked — myth-or-bust game mode",
+      "usedIn": "games.html",
+      "context": "Game mode card MYTH OR BUST badge icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/><line x1=\"11\" y1=\"8\" x2=\"11\" y2=\"12\"/><line x1=\"11\" y1=\"15\" x2=\"11\" y2=\"15\"/></svg>"
+    },
+    {
+      "id": "inline-flame",
+      "name": "Flame Icon (inline)",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "flame",
+        "confidence",
+        "hot-take",
+        "game-mode"
+      ],
+      "description": "Flame, stroked — confidence/hot-take game mode",
+      "usedIn": "games.html",
+      "context": "Game mode card CONFIDENCE badge icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z\"/></svg>"
+    },
+    {
+      "id": "inline-graduation-cap",
+      "name": "Graduation Cap Icon (inline)",
+      "type": "icon",
+      "category": "metadata",
+      "source": "inline",
+      "tags": [
+        "learning-points",
+        "education",
+        "game-mode",
+        "stats"
+      ],
+      "description": "Graduation cap, stroked — learning-points stat",
+      "usedIn": "games.html",
+      "context": "Game mode card learning-points stat icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 10L12 5 2 10l10 5 10-5z\"/><path d=\"M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5\"/></svg>"
+    },
+    {
+      "id": "inline-book",
+      "name": "Book Icon (inline)",
+      "type": "icon",
+      "category": "metadata",
+      "source": "inline",
+      "tags": [
+        "credits",
+        "book",
+        "cme",
+        "game-mode",
+        "stats"
+      ],
+      "description": "Closed book, stroked — credits stat",
+      "usedIn": "games.html",
+      "context": "Game mode card credits stat icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5A2.5 2.5 0 016.5 17H20\"/><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z\"/></svg>"
+    },
+    {
+      "id": "inline-play-circle",
+      "name": "Play Circle Icon (inline)",
+      "type": "icon",
+      "category": "media",
+      "source": "inline",
+      "tags": [
+        "play",
+        "game",
+        "start",
+        "play-now"
+      ],
+      "description": "Circle with play triangle, stroked — play-now action",
+      "usedIn": "games.html",
+      "context": "Game mode card Play Now icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"10,8 16,12 10,16\"/></svg>"
+    },
+    {
+      "id": "inline-warning-triangle",
+      "name": "Warning Triangle Icon (inline)",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "warning",
+        "alert",
+        "toast",
+        "offline"
+      ],
+      "description": "Filled warning triangle with exclamation — warning toast",
+      "usedIn": "newsletter.html",
+      "context": "Warning toast icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z\"/></svg>"
+    },
+    {
+      "id": "inline-alert-circle",
+      "name": "Alert Circle Icon (inline)",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "error",
+        "validation",
+        "alert",
+        "form"
+      ],
+      "description": "Filled circle with exclamation — inline form error message",
+      "usedIn": "newsletter.html",
+      "context": "Form error message icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z\"/></svg>"
+    },
+    {
+      "id": "inline-info",
+      "name": "Info Icon (inline)",
+      "type": "icon",
+      "category": "content",
+      "source": "inline",
+      "tags": [
+        "info",
+        "toast",
+        "notification"
+      ],
+      "description": "Lowercase i glyph (dot + stem) — info toast disc",
+      "usedIn": "newsletter.html",
+      "context": "Info toast disc icon",
+      "svg": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M11 7h2v2h-2V7zm0 4h2v6h-2v-6z\"/></svg>"
     }
   ]
 }
