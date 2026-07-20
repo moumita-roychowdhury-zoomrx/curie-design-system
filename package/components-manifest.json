@@ -490,6 +490,39 @@
       ]
     },
     {
+      "id": "input-error",
+      "name": "Error Input Field",
+      "category": "forms",
+      "status": "stable",
+      "purpose": "A labelled form input in its invalid state — rose fill and border on the control, paired with an inline error message that names the fix.",
+      "whenToUse": "Whenever a field fails validation and the user must correct it before proceeding (malformed NPI or email, an unselected required option).",
+      "whenNotToUse": "For neutral guidance (use form-help) or page-level / transient feedback (use toast). For the message row on its own, see form-error.",
+      "anatomy": [
+        "form-group (field wrapper)",
+        "form-label + req (required asterisk)",
+        "form-input.is-error / form-select.is-error (rose fill + border)",
+        "form-error (inline validation row: alert icon + message)"
+      ],
+      "interactions": "Add .is-error to the form-input or form-select to switch it to the rose error surface (--color-error-surface) with a --color-error border, then render a form-error row directly beneath. Remove .is-error and the form-error row once the field becomes valid. Same building blocks as the form-field Error variant, documented here as a standalone state.",
+      "sourcePage": "newsletter.html",
+      "bodyClass": "pg-newsletter",
+      "previewHeight": 320,
+      "previewWidth": 420,
+      "snippet": "<div class=\"form-group\">\n  <label class=\"form-label\">NPI number <span class=\"req\">*</span></label>\n  <input class=\"form-input is-error\" type=\"text\" value=\"12345\">\n  <div class=\"form-error\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z\"/></svg>Enter a valid 10-digit NPI number</div>\n</div>",
+      "variants": [
+        {
+          "label": "Text input error",
+          "previewWidth": 420,
+          "snippet": "<div class=\"form-group\">\n  <label class=\"form-label\">NPI number <span class=\"req\">*</span></label>\n  <input class=\"form-input is-error\" type=\"text\" value=\"12345\">\n  <div class=\"form-error\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z\"/></svg>Enter a valid 10-digit NPI number</div>\n</div>"
+        },
+        {
+          "label": "Select error",
+          "previewWidth": 420,
+          "snippet": "<div class=\"form-group\">\n  <label class=\"form-label\">Specialty <span class=\"req\">*</span></label>\n  <select class=\"form-select is-error\">\n    <option value=\"\">Select a specialty...</option>\n    <option>Cardiology</option>\n    <option>Oncology</option>\n    <option>Neurology</option>\n  </select>\n  <div class=\"form-error\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z\"/></svg>Please select your specialty</div>\n</div>"
+        }
+      ]
+    },
+    {
       "id": "nl-bar",
       "name": "Inline Newsletter Bar",
       "category": "cta",

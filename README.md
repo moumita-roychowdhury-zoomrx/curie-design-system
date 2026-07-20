@@ -89,4 +89,4 @@ A project Pages site serves under `/curie-design-system/`, so the workflow build
 
 ## Status
 
-v0.2.0 — design tokens across 16 groups, **34 documented components** (with variants for side-nav states, page-header sections, editorial-header back-nav, form-field states, brief-card widths, almanac tiers, the AI-tool / game-mode / game-tile sets, toggle states, and toast variants), an asset library of **62 icons + 10 illustrations**, and 8 golden reference pages.
+v0.2.0 — design tokens across 16 groups, **35 documented components** (with variants for side-nav states, page-header sections, editorial-header back-nav, form-field states, the standalone error input field, brief-card widths, almanac tiers, the AI-tool / game-mode / game-tile sets, toggle states, and toast variants), an asset library of **62 icons + 10 illustrations**, and 8 golden reference pages.
