@@ -1,6 +1,6 @@
 {
   "name": "curie-design-system",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Curie design system — single source of truth (tokens, components, brand principles) plus the generated documentation site.",
   "scripts": {
     "tokens": "node scripts/build-tokens.js",
