@@ -17,6 +17,7 @@
   --gradient-progress: linear-gradient(90deg, #3b82f6, #10b981);
   --gradient-briefs-card: linear-gradient(135deg, rgba(44,38,66,0.95) 0%, rgba(35,51,145,0.8) 100%);
   --gradient-summary: linear-gradient(180deg, rgba(55,60,130,0.95), rgba(40,48,110,0.95));
+  --gradient-take: linear-gradient(180deg, rgba(55,60,130,0.45), rgba(40,48,110,0.45)); /* almanac Editor's Take panel */
 
   /* Purple */
   --color-purple-dark: #4b3fa7;
@@ -36,6 +37,38 @@
   --color-blue: #3b82f6;
   --color-green: #10b981;
   --color-pink: #ec4899;
+
+  /* Semantic status (forms, toasts) */
+  --color-error: #f43f5e;                 /* validation error / required marker / error toast */
+  --color-error-surface: #4a1f2e;         /* fill of an errored input */
+  --color-warning: #f59e0b;               /* warning toast */
+  --color-success: var(--color-teal-primary); /* success toast (Curie uses teal as positive) */
+  --color-info: var(--color-blue);        /* info toast */
+
+  /* Accent badge tints (tier / game-mode badges) */
+  --color-purple-badge-text: #c4b5fd;
+  --color-blue-light: #7ab0ff;
+  --color-pink-light: #f472b6;
+  --color-teal-tag-bg: rgba(0,212,170,0.12);
+  --color-teal-tag-border: rgba(0,212,170,0.35);
+  --color-blue-tag-bg: rgba(59,130,246,0.14);
+  --color-blue-tag-border: rgba(59,130,246,0.30);
+  --color-pink-tag-bg: rgba(236,72,153,0.14);
+  --color-pink-tag-border: rgba(236,72,153,0.32);
+
+  /* White-alpha surfaces (chips, ghost buttons, tracks, dividers) */
+  --surface-white-03: rgba(255,255,255,0.03);
+  --surface-white-05: rgba(255,255,255,0.05);
+  --surface-white-06: rgba(255,255,255,0.06);
+  --surface-white-08: rgba(255,255,255,0.08);
+  --surface-white-border-12: rgba(255,255,255,0.12);
+  --surface-white-border-18: rgba(255,255,255,0.18);
+  --surface-white-border-22: rgba(255,255,255,0.22);
+  --color-divider: rgba(255,255,255,0.07);
+
+  /* Form input surface */
+  --color-input-surface: rgba(150,159,182,0.1);
+  --text-emphasis: rgba(255,255,255,0.9);
 
   /* Text */
   --text-primary: #fff;
@@ -62,6 +95,7 @@
   --radius-2xl: 20px;
   --radius-3xl: 24px;
   --radius-pill: 22px;
+  --radius-btn: 10px;
 
   /* Spacing (commonly used) */
   --space-1: 6px;
