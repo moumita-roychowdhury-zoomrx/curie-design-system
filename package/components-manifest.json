@@ -2,7 +2,7 @@
   "$schema": "curie-components-manifest/v1",
   "name": "Curie Component Manifest",
   "description": "Machine-readable catalog of Curie UI components. Each entry carries identity (what it is), usage judgment (when to reach for it), anatomy, and a canonical HTML snippet extracted verbatim from the golden pages. Styling lives in components.css / layout.css — snippets carry no inline paint. This file drives the docs site build AND is the primary consumption surface for AI agents/plugins.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "cssDependencies": [
     "tokens.css",
     "components.css",
@@ -132,7 +132,7 @@
       "whenNotToUse": "On non-Editorial sections; use the generic page-header there.",
       "anatomy": [
         "editorial-header (flex row)",
-        "editorial-header__left (editorial-header__icon img + editorial-header__title h1)",
+        "editorial-header__left (optional editorial-header__back circle + editorial-header__icon img + editorial-header__title h1)",
         "editorial-header__right (user-avatar chip + user-name)"
       ],
       "interactions": "Static header; identifies the section and current user.",
@@ -140,7 +140,19 @@
       "bodyClass": "pg-editorial",
       "previewWidth": 900,
       "previewHeight": 190,
-      "snippet": "<div class=\"editorial-header\">\n  <div class=\"editorial-header__left\">\n    <img class=\"editorial-header__icon\" src=\"/assets/icons/media.svg\" alt=\"\">\n    <h1 class=\"editorial-header__title\">Curie Editorial</h1>\n  </div>\n  <div class=\"editorial-header__right\">\n    <div class=\"user-avatar\">mr</div>\n    <span class=\"user-name\">moumitra roychowdhury</span>\n  </div>\n</div>"
+      "snippet": "<div class=\"editorial-header\">\n  <div class=\"editorial-header__left\">\n    <img class=\"editorial-header__icon\" src=\"/assets/icons/media.svg\" alt=\"\">\n    <h1 class=\"editorial-header__title\">Curie Editorial</h1>\n  </div>\n  <div class=\"editorial-header__right\">\n    <div class=\"user-avatar\">mr</div>\n    <span class=\"user-name\">moumitra roychowdhury</span>\n  </div>\n</div>",
+      "variants": [
+        {
+          "label": "Default",
+          "previewWidth": 900,
+          "snippet": "<div class=\"editorial-header\">\n  <div class=\"editorial-header__left\">\n    <img class=\"editorial-header__icon\" src=\"/assets/icons/media.svg\" alt=\"\">\n    <h1 class=\"editorial-header__title\">Curie Editorial</h1>\n  </div>\n  <div class=\"editorial-header__right\">\n    <div class=\"user-avatar\">mr</div>\n    <span class=\"user-name\">moumitra roychowdhury</span>\n  </div>\n</div>"
+        },
+        {
+          "label": "With back button",
+          "previewWidth": 900,
+          "snippet": "<div class=\"editorial-header\">\n  <div class=\"editorial-header__left\">\n    <a class=\"editorial-header__back\" href=\"editorial.html\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15,18 9,12 15,6\"/></svg></a>\n    <img class=\"editorial-header__icon\" src=\"/assets/icons/media.svg\" alt=\"\">\n    <h1 class=\"editorial-header__title\">Curie Editorial</h1>\n  </div>\n  <div class=\"editorial-header__right\">\n    <div class=\"user-avatar\">mr</div>\n    <span class=\"user-name\">moumitra roychowdhury</span>\n  </div>\n</div>"
+        }
+      ]
     },
     {
       "id": "footer",
@@ -326,6 +338,52 @@
       "snippet": "<div class=\"latest-card\" onclick=\"window.location='brief-detail.html'\">\n  <div class=\"latest-card__top\">\n    <div class=\"latest-card__content\">\n      <h2 class=\"latest-card__title\">Remote heart monitoring device slashes hospital readmissions by 69%</h2>\n      <div class=\"latest-card__meta\">\n        <span class=\"latest-card__date\">about 17 hours ago</span>\n        <span class=\"latest-card__sep\">&middot;</span>\n        <span class=\"latest-card__source\">Medscape</span>\n      </div>\n      <p class=\"latest-card__desc\">A wireless heart device that monitors pressure in the lungs' blood vessels is proving to be a game-changer for heart failure patients. The CardioMEMS system helped slash hospital readmissions by 69% in a major study of 304 patients across Europe and Australia. The implantable sensor lets doctors adjust medications remotely based on daily pressure readings, keeping patients out of the hospital while improving their quality of life.</p>\n      <a class=\"latest-card__dive\" href=\"#\">Dive in <span class=\"arrow\">&rarr;</span></a>\n    </div>\n    <img class=\"latest-card__thumb\" src=\"https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=70\" alt=\"\">\n  </div>\n  <div class=\"actions\">\n    <div class=\"act read\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"20,6 9,17 4,12\"/></svg></div>\n    <div class=\"act bmark\"><img src=\"/assets/icons/BookMark.svg\" alt=\"Bookmark\" style=\"width:20px;height:20px;\"></div>\n    <div class=\"votes\"><button class=\"vbtn up\"><img src=\"/assets/icons/up arrow.svg\" alt=\"Like\" style=\"width:15px;height:15px;\"></button><button class=\"vbtn dn\"><img src=\"/assets/icons/down arrow.svg\" alt=\"Dislike\" style=\"width:15px;height:15px;\"></button></div>\n    <div class=\"act share\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"/><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"/></svg></div>\n  </div>\n</div>"
     },
     {
+      "id": "brief-card",
+      "name": "Brief Card",
+      "category": "cards",
+      "status": "stable",
+      "purpose": "The personalized 'For You' briefs-feed card: a thumbnail-led clinical brief with title, relative-date + source-count meta, and a compact actions row (read, bookmark, up/down vote, share). Comes in four widths for the mixed feed grid.",
+      "whenToUse": "For each item in the personalized 'For You' briefs feed, across the mixed-width grid — a featured hero card, a wide row, compact stacked cards, and 3-up vertical grid tiles.",
+      "whenNotToUse": "For the single-column 'Latest' feed (use latest-card, which shows a named source, description, Dive-in link and share/read actions) or compact related-reads tiles (use related-story-card).",
+      "anatomy": [
+        "card (container; width modifier: feat-main | wcard | hcard | gcard)",
+        "card-img (thumbnail; wrapped in img-wrap for the wide variant)",
+        "body",
+        "title (h2 on featured, h3 otherwise)",
+        "meta (date + src source-count)",
+        "desc (featured variant only)",
+        "actions (act read, act bmark, votes with vbtn up/dn, act share)"
+      ],
+      "interactions": "The card navigates to the brief detail (onclick on the featured variant). The actions row — mark-read, bookmark, up/down vote, share — are individually interactive. Hover raises the surface (components.css).",
+      "sourcePage": "briefs.html",
+      "bodyClass": "pg-briefs bg-briefs",
+      "previewWidth": 660,
+      "previewHeight": 440,
+      "snippet": "<div class=\"card feat-main\" onclick=\"window.location='brief-detail.html'\">\n  <img class=\"card-img\" src=\"https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=70\" alt=\"\">\n  <div class=\"body\">\n    <h2 class=\"title\">Lower cholesterol targets cut heart events by one-third in landmark study</h2>\n    <div class=\"meta\"><span class=\"date\">about 17 hours ago</span><span class=\"src\">8 Sources</span></div>\n    <p class=\"desc\">Targeting LDL cholesterol below 55 mg/dL instead of 70 mg/dL reduced major cardiovascular events by 33% in patients with heart disease, according to the Ez-PAVE trial. The South Korean study of over 3,000 patients used mostly statins and ezetimibe to achieve these aggressive targets.</p>\n    <div class=\"actions\">\n      <div class=\"act read\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"20,6 9,17 4,12\"/></svg></div>\n      <div class=\"act bmark\"><img src=\"/assets/icons/BookMark.svg\" alt=\"Bookmark\" style=\"width:20px;height:20px;\"></div>\n      <div class=\"votes\"><button class=\"vbtn up\"><img src=\"/assets/icons/up arrow.svg\" alt=\"Like\" style=\"width:15px;height:15px;\"></button><button class=\"vbtn dn\"><img src=\"/assets/icons/down arrow.svg\" alt=\"Dislike\" style=\"width:15px;height:15px;\"></button></div>\n      <div class=\"act share\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"/><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"/></svg></div>\n    </div>\n  </div>\n</div>",
+      "variants": [
+        {
+          "label": "Featured",
+          "previewWidth": 660,
+          "snippet": "<div class=\"card feat-main\" onclick=\"window.location='brief-detail.html'\"><img class=\"card-img\" src=\"https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=70\" alt=\"\"><div class=\"body\"><h2 class=\"title\">Lower cholesterol targets cut heart events by one-third in landmark study</h2><div class=\"meta\"><span class=\"date\">about 17 hours ago</span><span class=\"src\">8 Sources</span></div><p class=\"desc\">Targeting LDL cholesterol below 55 mg/dL instead of 70 mg/dL reduced major cardiovascular events by 33% in patients with heart disease.</p><div class=\"actions\"><div class=\"act read\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"20,6 9,17 4,12\"/></svg></div><div class=\"act bmark\"><img src=\"/assets/icons/BookMark.svg\" alt=\"Bookmark\" style=\"width:20px;height:20px;\"></div><div class=\"votes\"><button class=\"vbtn up\"><img src=\"/assets/icons/up arrow.svg\" alt=\"Like\" style=\"width:15px;height:15px;\"></button><button class=\"vbtn dn\"><img src=\"/assets/icons/down arrow.svg\" alt=\"Dislike\" style=\"width:15px;height:15px;\"></button></div></div></div></div>"
+        },
+        {
+          "label": "Compact",
+          "previewWidth": 440,
+          "snippet": "<div class=\"card hcard\"><img class=\"card-img\" src=\"https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=400&q=70\" alt=\"\"><div class=\"body\"><h3 class=\"title\">UK approves Kerendia for heart failure with preserved ejection fraction</h3><div class=\"meta\"><span class=\"date\">1 day ago</span><span class=\"src\">5 Sources</span></div><div class=\"actions\"><div class=\"act read\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"20,6 9,17 4,12\"/></svg></div><div class=\"act bmark\"><img src=\"/assets/icons/BookMark.svg\" alt=\"Bookmark\" style=\"width:20px;height:20px;\"></div><div class=\"votes\"><button class=\"vbtn up\"><img src=\"/assets/icons/up arrow.svg\" alt=\"Like\" style=\"width:15px;height:15px;\"></button><button class=\"vbtn dn\"><img src=\"/assets/icons/down arrow.svg\" alt=\"Dislike\" style=\"width:15px;height:15px;\"></button></div></div></div></div>"
+        },
+        {
+          "label": "Wide",
+          "previewWidth": 660,
+          "snippet": "<div class=\"card wcard\"><div class=\"img-wrap\"><img class=\"card-img\" src=\"https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&q=70\" alt=\"\"></div><div class=\"body\"><h3 class=\"title\">Modern breast cancer radiation shows minimal heart risks</h3><div class=\"meta\"><span class=\"date\">5 days ago</span><span class=\"src\">7 Sources</span></div><div class=\"actions\"><div class=\"act read\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"20,6 9,17 4,12\"/></svg></div><div class=\"act bmark\"><img src=\"/assets/icons/BookMark.svg\" alt=\"Bookmark\" style=\"width:20px;height:20px;\"></div><div class=\"votes\"><button class=\"vbtn up\"><img src=\"/assets/icons/up arrow.svg\" alt=\"Like\" style=\"width:15px;height:15px;\"></button><button class=\"vbtn dn\"><img src=\"/assets/icons/down arrow.svg\" alt=\"Dislike\" style=\"width:15px;height:15px;\"></button></div></div></div></div>"
+        },
+        {
+          "label": "Vertical",
+          "previewWidth": 340,
+          "snippet": "<div class=\"card gcard\"><img class=\"card-img\" src=\"https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=500&q=70\" alt=\"\"><div class=\"body\"><h3 class=\"title\">CTO PCI beats medical therapy for heart patients with blocked arteries</h3><div class=\"meta\"><span class=\"date\">5 days ago</span><span class=\"src\">7 Sources</span></div><div class=\"actions\"><div class=\"act read\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"20,6 9,17 4,12\"/></svg></div><div class=\"act bmark\"><img src=\"/assets/icons/BookMark.svg\" alt=\"Bookmark\" style=\"width:20px;height:20px;\"></div><div class=\"votes\"><button class=\"vbtn up\"><img src=\"/assets/icons/up arrow.svg\" alt=\"Like\" style=\"width:15px;height:15px;\"></button><button class=\"vbtn dn\"><img src=\"/assets/icons/down arrow.svg\" alt=\"Dislike\" style=\"width:15px;height:15px;\"></button></div></div></div></div>"
+        }
+      ]
+    },
+    {
       "id": "brief-detail-image",
       "name": "Brief Detail Hero Image",
       "category": "cards",
@@ -399,16 +457,37 @@
       "anatomy": [
         "form-group",
         "form-label",
-        "req",
+        "req (required asterisk)",
         "form-input",
-        "form-select"
+        "form-select",
+        "form-input-wrap + form-input__icon (optional leading icon; input gets form-input--icon)",
+        "is-error modifier (rose fill + border on input/select)",
+        "form-help (neutral helper text)",
+        "form-error (inline validation row — see the form-error component)"
       ],
-      "interactions": "Focus ring from components.css; validation states TBD in system.",
+      "interactions": "Focus ring from components.css. Add .is-error to the input/select for the error state (rose fill + border) and pair it with a form-error row. A form-input-wrap with a form-input__icon adds a leading icon (input gets form-input--icon to reserve space); form-help shows supporting text below the field.",
       "sourcePage": "newsletter.html",
       "bodyClass": "pg-newsletter",
       "previewHeight": 200,
       "previewWidth": 420,
-      "snippet": "<div class=\"form-group\">\n  <label class=\"form-label\">Name <span class=\"req\">*</span></label>\n  <input class=\"form-input\" type=\"text\" placeholder=\"Enter your name\">\n</div>"
+      "snippet": "<div class=\"form-group\">\n  <label class=\"form-label\">Name <span class=\"req\">*</span></label>\n  <input class=\"form-input\" type=\"text\" placeholder=\"Enter your name\">\n</div>",
+      "variants": [
+        {
+          "label": "Default",
+          "previewWidth": 420,
+          "snippet": "<div class=\"form-group\">\n  <label class=\"form-label\">Name <span class=\"req\">*</span></label>\n  <input class=\"form-input\" type=\"text\" placeholder=\"Enter your name\">\n</div>"
+        },
+        {
+          "label": "With icon & help",
+          "previewWidth": 420,
+          "snippet": "<div class=\"form-group\">\n  <label class=\"form-label\">Email <span class=\"req\">*</span></label>\n  <div class=\"form-input-wrap\">\n    <span class=\"form-input__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"/><polyline points=\"22,6 12,13 2,6\"/></svg></span>\n    <input class=\"form-input form-input--icon\" type=\"email\" placeholder=\"you@hospital.org\">\n  </div>\n  <div class=\"form-help\">We'll never share your email.</div>\n</div>"
+        },
+        {
+          "label": "Error",
+          "previewWidth": 420,
+          "snippet": "<div class=\"form-group\">\n  <label class=\"form-label\">NPI number</label>\n  <input class=\"form-input is-error\" type=\"text\" value=\"12345\">\n  <div class=\"form-error\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z\"/></svg>Enter a valid 10-digit NPI number</div>\n</div>"
+        }
+      ]
     },
     {
       "id": "nl-bar",
@@ -581,6 +660,332 @@
           "label": "Game",
           "previewWidth": 1000,
           "snippet": "<div class=\"home-banner game-active\">\n  <div class=\"banner-slide game-theme active\" data-slide=\"0\">\n    <div class=\"banner-background\"></div>\n    <div class=\"gradient-overlay\"></div>\n    <div class=\"content-overlay\"></div>\n    <div class=\"banner-content\">\n      <div class=\"content-section\">\n        <div class=\"content-badge\"><span class=\"content-type\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"2\" y=\"6\" width=\"20\" height=\"12\" rx=\"3\"/><circle cx=\"8\" cy=\"12\" r=\"2\"/><circle cx=\"16\" cy=\"10\" r=\"1\"/><circle cx=\"16\" cy=\"14\" r=\"1\"/></svg> GAME</span><span class=\"content-date\">Apr 13, 2026</span></div>\n        <h1 class=\"content-title\">Daily Connections Puzzle</h1>\n        <p class=\"content-description\">Exercise your brain with this addictive word association game. Find the connecting threads between seemingly unrelated words. From obvious groupings to cleverly disguised categories, each puzzle will challenge your lateral thinking.</p>\n        <div class=\"action-section\"><button class=\"primary-action-btn\"><img src=\"/assets/icons/game.svg\" alt=\"\" style=\"width:20px; height:20px; filter: brightness(0) invert(1);\"> Play Now</button></div>\n      </div>\n    </div>\n  </div>\n</div>"
+        }
+      ]
+    },
+    {
+      "id": "almanac-card",
+      "name": "Almanac Meeting Card",
+      "category": "cards",
+      "status": "stable",
+      "purpose": "A wide list-row card that triages a medical conference for HCPs — event date, name, specialty domain, an editorial priority tier (must-track / field-wide / niche), an Editor's Take blurb, and Track / View-details actions.",
+      "whenToUse": "In a 'Conferences to track' / almanac list where an HCP scans upcoming congresses and decides which are worth their time. One row per meeting.",
+      "whenNotToUse": "For a podcast recap of a conference (use conf-card / pod-card) or any non-event content.",
+      "anatomy": [
+        "almanac-card (row container)",
+        "almanac-card__date (month / day / range column)",
+        "almanac-card__content",
+        "almanac-card__badges (almanac-card__tier--{must|field|niche} + almanac-card__domain chip)",
+        "almanac-card__title",
+        "almanac-card__meta (date + location, each with icon)",
+        "almanac-card__take (almanac-card__take-header with EDITOR'S TAKE label + almanac-card__take-body)",
+        "almanac-card__actions (almanac-card__track button + almanac-card__details link)"
+      ],
+      "interactions": "Track bookmarks the meeting; View details opens the meeting page. Tier badge and Editor's Take are informational. Purple palette; the Editor's Take accent rail is teal in every tier.",
+      "sourcePage": "index.html",
+      "bodyClass": "pg-home",
+      "previewWidth": 1080,
+      "previewHeight": 320,
+      "snippet": "<div class=\"almanac-card\">\n  <div class=\"almanac-card__date\"><div class=\"almanac-card__date-month\">SEP</div><div class=\"almanac-card__date-day\">12</div><div class=\"almanac-card__date-range\">–16</div></div>\n  <div class=\"almanac-card__content\">\n    <div class=\"almanac-card__badges\"><span class=\"almanac-card__tier almanac-card__tier--must\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/></svg>MUST-TRACK</span><span class=\"almanac-card__domain\">Translational neurology</span></div>\n    <h3 class=\"almanac-card__title\">ANA 2026 · American Neurological Association Annual Meeting</h3>\n    <div class=\"almanac-card__meta\"><span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"/><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"/><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"/></svg>Sep 12–16, 2026</span><span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/></svg>Baltimore, MD</span></div>\n    <div class=\"almanac-card__take\"><div class=\"almanac-card__take-header\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M7.17 6A5.17 5.17 0 002 11.17V18h6.83v-6.83H5.5A3.67 3.67 0 019.17 7.5V6H7.17zm10 0A5.17 5.17 0 0012 11.17V18h6.83v-6.83H15.5a3.67 3.67 0 013.67-3.67V6h-2z\"/></svg><span class=\"almanac-card__take-label\">EDITOR'S TAKE</span></div><p class=\"almanac-card__take-body\">The one neurology meeting where practice-changing trials actually debut — clear your calendar for the late-breakers.</p></div>\n    <div class=\"almanac-card__actions\"><button class=\"almanac-card__track\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/><line x1=\"12\" y1=\"7\" x2=\"12\" y2=\"13\"/><line x1=\"9\" y1=\"10\" x2=\"15\" y2=\"10\"/></svg>Track</button><a class=\"almanac-card__details\" href=\"#\">View details<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></a></div>\n  </div>\n</div>",
+      "variants": [
+        {
+          "label": "Must-track",
+          "previewWidth": 1080,
+          "snippet": "<div class=\"almanac-card\">\n  <div class=\"almanac-card__date\"><div class=\"almanac-card__date-month\">SEP</div><div class=\"almanac-card__date-day\">12</div><div class=\"almanac-card__date-range\">–16</div></div>\n  <div class=\"almanac-card__content\">\n    <div class=\"almanac-card__badges\"><span class=\"almanac-card__tier almanac-card__tier--must\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/></svg>MUST-TRACK</span><span class=\"almanac-card__domain\">Translational neurology</span></div>\n    <h3 class=\"almanac-card__title\">ANA 2026 · American Neurological Association Annual Meeting</h3>\n    <div class=\"almanac-card__meta\"><span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"/><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"/><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"/></svg>Sep 12–16, 2026</span><span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/></svg>Baltimore, MD</span></div>\n    <div class=\"almanac-card__take\"><div class=\"almanac-card__take-header\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M7.17 6A5.17 5.17 0 002 11.17V18h6.83v-6.83H5.5A3.67 3.67 0 019.17 7.5V6H7.17zm10 0A5.17 5.17 0 0012 11.17V18h6.83v-6.83H15.5a3.67 3.67 0 013.67-3.67V6h-2z\"/></svg><span class=\"almanac-card__take-label\">EDITOR'S TAKE</span></div><p class=\"almanac-card__take-body\">The one neurology meeting where practice-changing trials actually debut — clear your calendar for the late-breakers.</p></div>\n    <div class=\"almanac-card__actions\"><button class=\"almanac-card__track\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/><line x1=\"12\" y1=\"7\" x2=\"12\" y2=\"13\"/><line x1=\"9\" y1=\"10\" x2=\"15\" y2=\"10\"/></svg>Track</button><a class=\"almanac-card__details\" href=\"#\">View details<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></a></div>\n  </div>\n</div>"
+        },
+        {
+          "label": "Field-wide",
+          "previewWidth": 1080,
+          "snippet": "<div class=\"almanac-card\">\n  <div class=\"almanac-card__date\"><div class=\"almanac-card__date-month\">MAY</div><div class=\"almanac-card__date-day\">29</div><div class=\"almanac-card__date-range\">–Jun 2</div></div>\n  <div class=\"almanac-card__content\">\n    <div class=\"almanac-card__badges\"><span class=\"almanac-card__tier almanac-card__tier--field\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"/><path d=\"M12 2a15.3 15.3 0 010 20 15.3 15.3 0 010-20z\"/></svg>FIELD-WIDE</span><span class=\"almanac-card__domain\">General oncology</span></div>\n    <h3 class=\"almanac-card__title\">ASCO 2026 · American Society of Clinical Oncology Annual Meeting</h3>\n    <div class=\"almanac-card__meta\"><span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"/><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"/><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"/></svg>May 29–Jun 2, 2026</span><span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/></svg>Chicago, IL</span></div>\n    <div class=\"almanac-card__take\"><div class=\"almanac-card__take-header\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M7.17 6A5.17 5.17 0 002 11.17V18h6.83v-6.83H5.5A3.67 3.67 0 019.17 7.5V6H7.17zm10 0A5.17 5.17 0 0012 11.17V18h6.83v-6.83H15.5a3.67 3.67 0 013.67-3.67V6h-2z\"/></svg><span class=\"almanac-card__take-label\">EDITOR'S TAKE</span></div><p class=\"almanac-card__take-body\">Broad relevance across tumor types — worth following the plenary even if you're not in the room.</p></div>\n    <div class=\"almanac-card__actions\"><button class=\"almanac-card__track\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/><line x1=\"12\" y1=\"7\" x2=\"12\" y2=\"13\"/><line x1=\"9\" y1=\"10\" x2=\"15\" y2=\"10\"/></svg>Track</button><a class=\"almanac-card__details\" href=\"#\">View details<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></a></div>\n  </div>\n</div>"
+        },
+        {
+          "label": "Niche",
+          "previewWidth": 1080,
+          "snippet": "<div class=\"almanac-card\">\n  <div class=\"almanac-card__date\"><div class=\"almanac-card__date-month\">NOV</div><div class=\"almanac-card__date-day\">19</div><div class=\"almanac-card__date-range\">–22</div></div>\n  <div class=\"almanac-card__content\">\n    <div class=\"almanac-card__badges\"><span class=\"almanac-card__tier almanac-card__tier--niche\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><circle cx=\"12\" cy=\"12\" r=\"6\"/><circle cx=\"12\" cy=\"12\" r=\"2\"/></svg>NICHE</span><span class=\"almanac-card__domain\">Neuro-oncology</span></div>\n    <h3 class=\"almanac-card__title\">SNO 2026 · Society for Neuro-Oncology Annual Meeting</h3>\n    <div class=\"almanac-card__meta\"><span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"/><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"/><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"/></svg>Nov 19–22, 2026</span><span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/></svg>Houston, TX</span></div>\n    <div class=\"almanac-card__take\"><div class=\"almanac-card__take-header\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M7.17 6A5.17 5.17 0 002 11.17V18h6.83v-6.83H5.5A3.67 3.67 0 019.17 7.5V6H7.17zm10 0A5.17 5.17 0 0012 11.17V18h6.83v-6.83H15.5a3.67 3.67 0 013.67-3.67V6h-2z\"/></svg><span class=\"almanac-card__take-label\">EDITOR'S TAKE</span></div><p class=\"almanac-card__take-body\">Highly specialized — essential if neuro-onc is your focus, comfortably skippable otherwise.</p></div>\n    <div class=\"almanac-card__actions\"><button class=\"almanac-card__track\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/><line x1=\"12\" y1=\"7\" x2=\"12\" y2=\"13\"/><line x1=\"9\" y1=\"10\" x2=\"15\" y2=\"10\"/></svg>Track</button><a class=\"almanac-card__details\" href=\"#\">View details<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></a></div>\n  </div>\n</div>"
+        }
+      ]
+    },
+    {
+      "id": "ai-tool-card",
+      "name": "AI Tool Card",
+      "category": "cards",
+      "status": "stable",
+      "purpose": "A launcher tile for an AI-powered clinical utility — icon, title, description, optional capability tags, a speed/provenance meta line, and a full-width primary CTA.",
+      "whenToUse": "In a 'Curie Tools' grid where HCPs pick a productivity tool (handout generation, prior-auth drafting, drug lookup). One card per tool.",
+      "whenNotToUse": "For content (briefs, editorials, podcasts) — use the relevant content card. Tags are optional and may be omitted (e.g. the drug-lookup variant).",
+      "anatomy": [
+        "ai-tool-card (column container)",
+        "ai-tool-card__icon (tinted glyph tile)",
+        "ai-tool-card__title",
+        "ai-tool-card__desc",
+        "ai-tool-card__tags (optional; ai-tool-card__tag chips)",
+        "ai-tool-card__meta (speed / provenance line with icon)",
+        "ai-tool-card__btn (full-width primary CTA)"
+      ],
+      "interactions": "The CTA button launches the tool. Card lifts on hover. Purple palette across every variant.",
+      "sourcePage": "index.html",
+      "bodyClass": "pg-home",
+      "previewWidth": 380,
+      "previewHeight": 380,
+      "snippet": "<div class=\"ai-tool-card\">\n  <div class=\"ai-tool-card__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z\"/><polyline points=\"14,2 14,8 20,8\"/><line x1=\"8\" y1=\"13\" x2=\"16\" y2=\"13\"/><line x1=\"8\" y1=\"17\" x2=\"14\" y2=\"17\"/></svg></div>\n  <h3 class=\"ai-tool-card__title\">Patient Handout Generator</h3>\n  <p class=\"ai-tool-card__desc\">Generate a patient-ready handout for any regimen in seconds — written in plain language and sourced from approved labeling.</p>\n  <div class=\"ai-tool-card__tags\"><span class=\"ai-tool-card__tag\">Regimen-specific</span><span class=\"ai-tool-card__tag\">FDA-sourced</span><span class=\"ai-tool-card__tag\">For oncologists</span></div>\n  <div class=\"ai-tool-card__meta\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>&lt;60 seconds · Built from FDA-approved labeling</div>\n  <button class=\"ai-tool-card__btn\">Generate Handout<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></button>\n</div>",
+      "variants": [
+        {
+          "label": "Patient Handout",
+          "previewWidth": 380,
+          "snippet": "<div class=\"ai-tool-card\">\n  <div class=\"ai-tool-card__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z\"/><polyline points=\"14,2 14,8 20,8\"/><line x1=\"8\" y1=\"13\" x2=\"16\" y2=\"13\"/><line x1=\"8\" y1=\"17\" x2=\"14\" y2=\"17\"/></svg></div>\n  <h3 class=\"ai-tool-card__title\">Patient Handout Generator</h3>\n  <p class=\"ai-tool-card__desc\">Generate a patient-ready handout for any regimen in seconds — written in plain language and sourced from approved labeling.</p>\n  <div class=\"ai-tool-card__tags\"><span class=\"ai-tool-card__tag\">Regimen-specific</span><span class=\"ai-tool-card__tag\">FDA-sourced</span><span class=\"ai-tool-card__tag\">For oncologists</span></div>\n  <div class=\"ai-tool-card__meta\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>&lt;60 seconds · Built from FDA-approved labeling</div>\n  <button class=\"ai-tool-card__btn\">Generate Handout<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></button>\n</div>"
+        },
+        {
+          "label": "Prior Authorization",
+          "previewWidth": 380,
+          "snippet": "<div class=\"ai-tool-card\">\n  <div class=\"ai-tool-card__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/></svg></div>\n  <h3 class=\"ai-tool-card__title\">Prior Authorization</h3>\n  <p class=\"ai-tool-card__desc\">Draft a payer-specific prior-authorization letter, auto-populated from the patient’s chart and the plan’s coverage criteria.</p>\n  <div class=\"ai-tool-card__tags\"><span class=\"ai-tool-card__tag\">Payer-specific criteria</span><span class=\"ai-tool-card__tag\">Auto-populated</span><span class=\"ai-tool-card__tag\">120+ combinations</span></div>\n  <div class=\"ai-tool-card__meta\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>~45 seconds · Powered by AI</div>\n  <button class=\"ai-tool-card__btn\">Create Letter<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></button>\n</div>"
+        },
+        {
+          "label": "Drug Lookup (no tags)",
+          "previewWidth": 380,
+          "snippet": "<div class=\"ai-tool-card\">\n  <div class=\"ai-tool-card__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M10.5 20.5L3.5 13.5a5 5 0 017-7l7 7a5 5 0 01-7 7z\"/><line x1=\"8.5\" y1=\"8.5\" x2=\"15.5\" y2=\"15.5\"/></svg></div>\n  <h3 class=\"ai-tool-card__title\">PeerRx Drug Lookup</h3>\n  <p class=\"ai-tool-card__desc\">Look up dosing, interactions, and how your peers are actually prescribing any drug — in one place.</p>\n  \n  <div class=\"ai-tool-card__meta\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z\"/></svg>Powered by AI</div>\n  <button class=\"ai-tool-card__btn\">Look Up Drugs<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></button>\n</div>"
+        }
+      ]
+    },
+    {
+      "id": "game-mode-card",
+      "name": "Game Mode Card",
+      "category": "cards",
+      "status": "stable",
+      "purpose": "A dense game-mode tile for a specific learning game — a color-coded mode badge, title, description, a progress bar, a stats row (time, learning points, credits) and a prominent Play Now CTA.",
+      "whenToUse": "On the Games page, in a 'More ways to play' grid, to present the different modes of a game (matching, myth-or-bust, confidence) with progress and reward context.",
+      "whenNotToUse": "For the illustration-led game launcher (use game-card) or the compact preview tile (use game-tile).",
+      "anatomy": [
+        "game-mode-card (column container)",
+        "game-mode-card__badge--{matching|myth|confidence} (mode badge)",
+        "game-mode-card__title",
+        "game-mode-card__desc",
+        "game-mode-card__bottom",
+        "game-mode-card__progress-row (label + value)",
+        "game-mode-card__progress-track > game-mode-card__progress-fill",
+        "game-mode-card__stats (game-mode-card__stat × time / LP / credits)",
+        "game-mode-card__play (Play Now CTA)"
+      ],
+      "interactions": "Play Now starts the mode. The progress bar reflects completion. Badge accent is teal / blue / pink per mode; the Play button is purple in every mode.",
+      "sourcePage": "games.html",
+      "bodyClass": "pg-games",
+      "previewWidth": 360,
+      "previewHeight": 470,
+      "snippet": "<div class=\"game-mode-card\">\n  <span class=\"game-mode-card__badge game-mode-card__badge--matching\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1\"/><path d=\"M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1\"/></svg>MATCHING</span>\n  <h3 class=\"game-mode-card__title\">Primary Care Match the Pairs</h3>\n  <p class=\"game-mode-card__desc\">Match each clinical sign to the condition it most points to, against the clock.</p>\n  <div class=\"game-mode-card__bottom\">\n    <div class=\"game-mode-card__progress-row\"><span class=\"lbl\">Progress</span><span class=\"val\">0/8 sets</span></div>\n    <div class=\"game-mode-card__progress-track\"><div class=\"game-mode-card__progress-fill\" style=\"width:0%\"></div></div>\n    <div class=\"game-mode-card__stats\"><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>5 min</span><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 10L12 5 2 10l10 5 10-5z\"/><path d=\"M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5\"/></svg>20 LP</span><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5A2.5 2.5 0 016.5 17H20\"/><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z\"/></svg>0.25 Cr</span></div>\n    <button class=\"game-mode-card__play\"><span class=\"game-mode-card__play-label\"><svg class=\"play-circle\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"10,8 16,12 10,16\"/></svg>Play Now</span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></button>\n  </div>\n</div>",
+      "variants": [
+        {
+          "label": "Matching",
+          "previewWidth": 360,
+          "snippet": "<div class=\"game-mode-card\">\n  <span class=\"game-mode-card__badge game-mode-card__badge--matching\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1\"/><path d=\"M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1\"/></svg>MATCHING</span>\n  <h3 class=\"game-mode-card__title\">Primary Care Match the Pairs</h3>\n  <p class=\"game-mode-card__desc\">Match each clinical sign to the condition it most points to, against the clock.</p>\n  <div class=\"game-mode-card__bottom\">\n    <div class=\"game-mode-card__progress-row\"><span class=\"lbl\">Progress</span><span class=\"val\">0/8 sets</span></div>\n    <div class=\"game-mode-card__progress-track\"><div class=\"game-mode-card__progress-fill\" style=\"width:0%\"></div></div>\n    <div class=\"game-mode-card__stats\"><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>5 min</span><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 10L12 5 2 10l10 5 10-5z\"/><path d=\"M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5\"/></svg>20 LP</span><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5A2.5 2.5 0 016.5 17H20\"/><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z\"/></svg>0.25 Cr</span></div>\n    <button class=\"game-mode-card__play\"><span class=\"game-mode-card__play-label\"><svg class=\"play-circle\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"10,8 16,12 10,16\"/></svg>Play Now</span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></button>\n  </div>\n</div>"
+        },
+        {
+          "label": "Myth or Bust",
+          "previewWidth": 360,
+          "snippet": "<div class=\"game-mode-card\">\n  <span class=\"game-mode-card__badge game-mode-card__badge--myth\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/><line x1=\"11\" y1=\"8\" x2=\"11\" y2=\"12\"/><line x1=\"11\" y1=\"15\" x2=\"11\" y2=\"15\"/></svg>MYTH OR BUST</span>\n  <h3 class=\"game-mode-card__title\">Primary Care Myth or Bust</h3>\n  <p class=\"game-mode-card__desc\">Decide whether each common primary-care belief holds up to the current evidence.</p>\n  <div class=\"game-mode-card__bottom\">\n    <div class=\"game-mode-card__progress-row\"><span class=\"lbl\">Progress</span><span class=\"val\">0/8 sets</span></div>\n    <div class=\"game-mode-card__progress-track\"><div class=\"game-mode-card__progress-fill\" style=\"width:0%\"></div></div>\n    <div class=\"game-mode-card__stats\"><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>5 min</span><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 10L12 5 2 10l10 5 10-5z\"/><path d=\"M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5\"/></svg>20 LP</span><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5A2.5 2.5 0 016.5 17H20\"/><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z\"/></svg>0.25 Cr</span></div>\n    <button class=\"game-mode-card__play\"><span class=\"game-mode-card__play-label\"><svg class=\"play-circle\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"10,8 16,12 10,16\"/></svg>Play Now</span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></button>\n  </div>\n</div>"
+        },
+        {
+          "label": "Confidence",
+          "previewWidth": 360,
+          "snippet": "<div class=\"game-mode-card\">\n  <span class=\"game-mode-card__badge game-mode-card__badge--confidence\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z\"/></svg>CONFIDENCE</span>\n  <h3 class=\"game-mode-card__title\">Primary Care Hot Take</h3>\n  <p class=\"game-mode-card__desc\">Rate how confident you are in each call, then see how the evidence actually lands.</p>\n  <div class=\"game-mode-card__bottom\">\n    <div class=\"game-mode-card__progress-row\"><span class=\"lbl\">Progress</span><span class=\"val\">0/8 sets</span></div>\n    <div class=\"game-mode-card__progress-track\"><div class=\"game-mode-card__progress-fill\" style=\"width:0%\"></div></div>\n    <div class=\"game-mode-card__stats\"><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>5 min</span><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 10L12 5 2 10l10 5 10-5z\"/><path d=\"M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5\"/></svg>20 LP</span><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5A2.5 2.5 0 016.5 17H20\"/><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z\"/></svg>0.25 Cr</span></div>\n    <button class=\"game-mode-card__play\"><span class=\"game-mode-card__play-label\"><svg class=\"play-circle\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"10,8 16,12 10,16\"/></svg>Play Now</span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></button>\n  </div>\n</div>"
+        }
+      ]
+    },
+    {
+      "id": "game-tile",
+      "name": "Game Tile",
+      "category": "cards",
+      "status": "stable",
+      "purpose": "A compact square game-preview tile — centered title, illustration, and a full-width Play button. A denser, description-less sibling of game-card for quick-play rails.",
+      "whenToUse": "In a horizontal 'Quick play' rail (Games page or a Home game rail) where space is tight and the game is already familiar.",
+      "whenNotToUse": "For the full games grid with descriptions (use game-card) or a game with modes/progress (use game-mode-card).",
+      "anatomy": [
+        "game-tile (square tile)",
+        "game-tile__title",
+        "game-tile__icon (illustration img)",
+        "game-tile__play (full-width Play button)"
+      ],
+      "interactions": "Play starts the game; the tile scales slightly on hover. Purple-translucent surface.",
+      "sourcePage": "games.html",
+      "bodyClass": "pg-games",
+      "previewWidth": 280,
+      "previewHeight": 280,
+      "snippet": "<div class=\"game-tile\"><div class=\"game-tile__title\">Curie Connections</div><div class=\"game-tile__icon\"><img src=\"/assets/illustration/connections.svg\" alt=\"Connections\"></div><button class=\"game-tile__play\">Play</button></div>",
+      "variants": [
+        {
+          "label": "Connections",
+          "previewWidth": 280,
+          "snippet": "<div class=\"game-tile\"><div class=\"game-tile__title\">Curie Connections</div><div class=\"game-tile__icon\"><img src=\"/assets/illustration/connections.svg\" alt=\"Connections\"></div><button class=\"game-tile__play\">Play</button></div>"
+        },
+        {
+          "label": "Pinpoint",
+          "previewWidth": 280,
+          "snippet": "<div class=\"game-tile\"><div class=\"game-tile__title\">Curie Pinpoint</div><div class=\"game-tile__icon\"><img src=\"/assets/illustration/pinpoint.png\" alt=\"Pinpoint\"></div><button class=\"game-tile__play\">Play</button></div>"
+        },
+        {
+          "label": "Strands",
+          "previewWidth": 280,
+          "snippet": "<div class=\"game-tile\"><div class=\"game-tile__title\">Curie Strands</div><div class=\"game-tile__icon\"><img src=\"/assets/illustration/curie strands.svg\" alt=\"Strands\"></div><button class=\"game-tile__play\">Play</button></div>"
+        }
+      ]
+    },
+    {
+      "id": "coming-soon-note",
+      "name": "Coming Soon Note",
+      "category": "indicators",
+      "status": "stable",
+      "purpose": "A full-width dashed-border notice bar that closes out a list, signalling more content is on the way.",
+      "whenToUse": "At the end of a grid or feed (e.g. below the games grid) to set the expectation that the list will grow.",
+      "whenNotToUse": "For actionable empty states that need a CTA, or per-item status (use a badge).",
+      "anatomy": [
+        "coming-soon-note (dashed bar)",
+        "svg (leading icon)",
+        "text (message)"
+      ],
+      "interactions": "Static, non-interactive.",
+      "sourcePage": "games.html",
+      "bodyClass": "pg-games",
+      "previewWidth": 900,
+      "previewHeight": 120,
+      "snippet": "<div class=\"coming-soon-note\">\n  <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>\n  More games coming soon — check back for new challenges!\n</div>"
+    },
+    {
+      "id": "multiselect",
+      "name": "Multi-select Chips",
+      "category": "forms",
+      "status": "stable",
+      "purpose": "A pick-many form control that shows selected values as removable chips inside an input-styled field with a chevron.",
+      "whenToUse": "When an HCP selects several values from a set (therapeutic areas, specialties) and needs to see and remove each selection.",
+      "whenNotToUse": "For a single choice (use form-select) or on/off state (use toggle).",
+      "anatomy": [
+        "multiselect (input-styled container)",
+        "chip (selected value) with chip__remove (× button)",
+        "multiselect__chevron (open indicator)"
+      ],
+      "interactions": "Clicking the field opens the option menu (product); each chip's × removes that value. Chips use the purple primary fill.",
+      "sourcePage": "newsletter.html",
+      "bodyClass": "pg-newsletter",
+      "previewWidth": 460,
+      "previewHeight": 160,
+      "snippet": "<div class=\"multiselect\">\n  <span class=\"chip\">Oncology <span class=\"chip__remove\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></span></span>\n  <span class=\"chip\">Neurology <span class=\"chip__remove\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></span></span>\n  <span class=\"multiselect__chevron\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6,9 12,15 18,9\"/></svg></span>\n</div>"
+    },
+    {
+      "id": "toggle",
+      "name": "Toggle Switch",
+      "category": "forms",
+      "status": "stable",
+      "purpose": "A single on/off switch for a boolean preference, with an adjacent label.",
+      "whenToUse": "For opt-in / opt-out preferences (notifications, digests). Add .is-on for the on state, .is-disabled for a locked control.",
+      "whenNotToUse": "For choosing among options (use radio-group) or multiple selections (use multiselect).",
+      "anatomy": [
+        "toggle-row (switch + label)",
+        "toggle (track; .is-on / .is-disabled)",
+        "toggle__knob (sliding thumb)",
+        "toggle__label"
+      ],
+      "interactions": "Clicking the track flips it and slides the knob; the on state fills the track purple. Disabled dims the control and label.",
+      "sourcePage": "newsletter.html",
+      "bodyClass": "pg-newsletter",
+      "previewWidth": 360,
+      "previewHeight": 200,
+      "snippet": "<div class=\"toggle-row\"><button class=\"toggle is-on\" type=\"button\"><span class=\"toggle__knob\"></span></button><span class=\"toggle__label\">Daily briefing notifications</span></div>",
+      "variants": [
+        {
+          "label": "On",
+          "previewWidth": 360,
+          "snippet": "<div class=\"toggle-row\"><button class=\"toggle is-on\" type=\"button\"><span class=\"toggle__knob\"></span></button><span class=\"toggle__label\">Daily briefing notifications</span></div>"
+        },
+        {
+          "label": "Off",
+          "previewWidth": 360,
+          "snippet": "<div class=\"toggle-row\"><button class=\"toggle\" type=\"button\"><span class=\"toggle__knob\"></span></button><span class=\"toggle__label\">Weekly digest</span></div>"
+        },
+        {
+          "label": "Disabled",
+          "previewWidth": 360,
+          "snippet": "<div class=\"toggle-row is-disabled\"><button class=\"toggle is-disabled\" type=\"button\" disabled><span class=\"toggle__knob\"></span></button><span class=\"toggle__label\">Marketing emails</span></div>"
+        }
+      ]
+    },
+    {
+      "id": "radio-group",
+      "name": "Radio Group",
+      "category": "forms",
+      "status": "stable",
+      "purpose": "A pick-one control for a small set of options, each optionally carrying a supporting description.",
+      "whenToUse": "For mutually-exclusive choices (newsletter frequency, role). Mark the chosen option's row with .is-selected.",
+      "whenNotToUse": "For many/searchable options (use form-select) or multi-select (use multiselect).",
+      "anatomy": [
+        "radio-group (column of options)",
+        "radio (option row; .is-selected on the chosen one)",
+        "radio__control (circle)",
+        "radio__text (radio__title + optional radio__desc)"
+      ],
+      "interactions": "Selecting a row moves the filled ring to it (purple accent). Can be paired with a form-error row for group validation.",
+      "sourcePage": "newsletter.html",
+      "bodyClass": "pg-newsletter",
+      "previewWidth": 360,
+      "previewHeight": 220,
+      "snippet": "<div class=\"radio-group\">\n  <label class=\"radio is-selected\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Daily</span><span class=\"radio__desc\">Every weekday morning</span></span></label>\n  <label class=\"radio\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Weekly</span></span></label>\n  <label class=\"radio\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Never</span></span></label>\n</div>"
+    },
+    {
+      "id": "form-error",
+      "name": "Field Error Message",
+      "category": "forms",
+      "status": "stable",
+      "purpose": "An inline validation row — a rose alert icon plus a short message — shown beneath an errored field.",
+      "whenToUse": "Directly under any form control in its error state (input, select, multiselect, radio, toggle) to explain what needs fixing. Pair with .is-error on the control.",
+      "whenNotToUse": "For page-level or transient feedback (use toast) or neutral help text (use form-help).",
+      "anatomy": [
+        "form-error (row: icon + message)",
+        "svg (alert glyph)",
+        "message text"
+      ],
+      "interactions": "Static; appears/disappears with the field's validity. Uses --color-error.",
+      "sourcePage": "newsletter.html",
+      "bodyClass": "pg-newsletter",
+      "previewWidth": 400,
+      "previewHeight": 120,
+      "snippet": "<div class=\"form-error\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z\"/></svg>Enter a valid 10-digit NPI number</div>"
+    },
+    {
+      "id": "toast",
+      "name": "Toast Notification",
+      "category": "feedback",
+      "status": "stable",
+      "purpose": "A transient, dismissible status message in four semantic variants — success, error, warning, info — with an accent icon disc, title/message, and a close affordance.",
+      "whenToUse": "For feedback on an action or a system event (subscribe confirmed, save failed, offline, new content). Stack in a toast-stack.",
+      "whenNotToUse": "For field-level validation (use form-error) or persistent page content.",
+      "anatomy": [
+        "toast (container; toast--success | toast--error | toast--warning | toast--info)",
+        "toast__disc (semantic icon disc; warning uses a bare toast__icon-warning instead)",
+        "toast__body (toast__title + toast__msg; warning is message-only)",
+        "toast__close (dismiss; omitted on info)"
+      ],
+      "interactions": "Auto-dismisses or is closed via toast__close. The disc/icon color and glyph encode the semantic: teal success, rose error, amber warning, blue info.",
+      "sourcePage": "newsletter.html",
+      "bodyClass": "pg-newsletter",
+      "previewWidth": 520,
+      "previewHeight": 140,
+      "snippet": "<div class=\"toast toast--success\"><div class=\"toast__disc\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20,6 9,17 4,12\"/></svg></div><div class=\"toast__body\"><div class=\"toast__title\">Subscribed</div><div class=\"toast__msg\">Check your inbox to confirm.</div></div><button class=\"toast__close\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button></div>",
+      "variants": [
+        {
+          "label": "Success",
+          "previewWidth": 520,
+          "snippet": "<div class=\"toast toast--success\"><div class=\"toast__disc\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20,6 9,17 4,12\"/></svg></div><div class=\"toast__body\"><div class=\"toast__title\">Subscribed</div><div class=\"toast__msg\">Check your inbox to confirm.</div></div><button class=\"toast__close\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button></div>"
+        },
+        {
+          "label": "Error",
+          "previewWidth": 520,
+          "snippet": "<div class=\"toast toast--error\"><div class=\"toast__disc\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M11 7h2v8h-2V7zm0 10h2v2h-2v-2z\"/></svg></div><div class=\"toast__body\"><div class=\"toast__title\">Something went wrong</div><div class=\"toast__msg\">Couldn't save your answer.</div></div><button class=\"toast__close\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button></div>"
+        },
+        {
+          "label": "Warning",
+          "previewWidth": 520,
+          "snippet": "<div class=\"toast toast--warning\"><span class=\"toast__icon-warning\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z\"/></svg></span><div class=\"toast__body\"><div class=\"toast__msg\">You're offline — progress won't sync.</div></div><button class=\"toast__close\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button></div>"
+        },
+        {
+          "label": "Info (no close)",
+          "previewWidth": 520,
+          "snippet": "<div class=\"toast toast--info\"><div class=\"toast__disc\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M11 7h2v2h-2V7zm0 4h2v6h-2v-6z\"/></svg></div><div class=\"toast__body\"><div class=\"toast__title\">New daily brief</div><div class=\"toast__msg\">Today's oncology briefing is ready.</div></div></div>"
         }
       ]
     }

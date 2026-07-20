@@ -2717,3 +2717,149 @@ body.pg-editorial-detail .footer { width: 100%; }
 
 /* Home user-avatar uses different background */
 body.pg-home .user-avatar { background: #4b3fa7; }
+
+/* ==========================================================
+   FIGMA SYNC — NEW COMPONENTS (var(--token) convention)
+   ========================================================== */
+
+/* ----- Almanac Meeting Card (Home · Conferences) ----- */
+.almanac-list { display: flex; flex-direction: column; gap: var(--space-6); max-width: 1080px; }
+.almanac-card { display: flex; gap: var(--space-9); align-items: flex-start; padding: var(--space-9);
+  background: var(--color-bg-card); border: 1.5px solid var(--color-purple-card-border);
+  border-radius: var(--radius-xl); }
+.almanac-card__date { flex: 0 0 66px; text-align: center; }
+.almanac-card__date-month { font-size: 11px; font-weight: 700; letter-spacing: 1.32px; color: var(--color-purple-light); }
+.almanac-card__date-day { font-family: var(--font-accent); font-weight: 700; font-size: 36px; line-height: 1.05; color: var(--text-primary); }
+.almanac-card__date-range { font-size: 12px; color: var(--text-faint); }
+.almanac-card__content { flex: 1; display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+.almanac-card__badges { display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap; }
+.almanac-card__tier { display: inline-flex; align-items: center; gap: var(--space-1); padding: 5px var(--space-4); border-radius: var(--radius-2xl); font-size: 10.5px; font-weight: 700; letter-spacing: 1.05px; border: 1px solid transparent; }
+.almanac-card__tier svg { width: 14px; height: 14px; }
+.almanac-card__tier--must { background: var(--color-purple-tag-bg); border-color: var(--color-purple-tag-border); color: var(--color-purple-badge-text); }
+.almanac-card__tier--field { background: var(--color-teal-tag-bg); border-color: var(--color-teal-tag-border); color: var(--color-cyan); }
+.almanac-card__tier--niche { background: var(--surface-white-06); border-color: var(--surface-white-border-18); color: var(--text-secondary); }
+.almanac-card__domain { padding: 4px 11px; background: var(--surface-white-05); border: 1px solid var(--surface-white-border-12); border-radius: var(--radius-lg); font-size: 11px; font-weight: 600; color: var(--text-muted); }
+.almanac-card__title { font-size: 21.5px; font-weight: 700; line-height: 1.25; color: var(--text-primary); }
+.almanac-card__meta { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+.almanac-card__meta span { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--text-tertiary); }
+.almanac-card__meta svg { width: 16px; height: 16px; }
+.almanac-card__take { background: var(--gradient-take); border-left: 3px solid var(--color-cyan); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: var(--space-5) var(--space-7); display: flex; flex-direction: column; gap: var(--space-2); }
+.almanac-card__take-header { display: flex; align-items: center; gap: var(--space-1); }
+.almanac-card__take-header svg { width: 17px; height: 17px; color: var(--color-cyan); }
+.almanac-card__take-label { font-size: 10px; font-weight: 700; letter-spacing: 1.6px; color: var(--color-cyan); }
+.almanac-card__take-body { font-size: 15.5px; line-height: 1.6; color: var(--text-emphasis); }
+.almanac-card__actions { display: flex; gap: var(--space-5); align-items: center; }
+.almanac-card__track { display: inline-flex; align-items: center; gap: 7px; padding: var(--space-2) var(--space-6); background: var(--surface-white-06); border: 1px solid var(--surface-white-border-22); border-radius: var(--radius-2xl); font-size: 12.5px; font-weight: 600; color: var(--text-bright); cursor: pointer; font-family: inherit; transition: background var(--duration-standard) var(--easing-standard); }
+.almanac-card__track:hover { background: var(--surface-white-08); }
+.almanac-card__track svg { width: 17px; height: 17px; }
+.almanac-card__details { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 600; color: var(--color-purple-light); }
+.almanac-card__details svg { width: 17px; height: 17px; }
+
+/* ----- AI Tool Card (Home · Curie Tools) ----- */
+.ai-tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8); max-width: 1140px; }
+.ai-tool-card { display: flex; flex-direction: column; gap: var(--space-5); padding: 26px var(--space-9) var(--space-9); background: var(--color-bg-card); border: 1.5px solid var(--color-purple-card-border); border-radius: var(--radius-xl); transition: transform var(--duration-standard) var(--easing-standard), border-color var(--duration-standard) var(--easing-standard); }
+.ai-tool-card:hover { transform: translateY(-2px); border-color: var(--color-purple-tag-border); }
+.ai-tool-card__icon { width: 54px; height: 52px; display: flex; align-items: center; justify-content: center; background: var(--color-purple-tag-bg); border: 1px solid var(--color-purple-tag-border); border-radius: var(--radius-md); }
+.ai-tool-card__icon svg { width: 28px; height: 28px; color: var(--color-purple-light); }
+.ai-tool-card__title { font-size: 20px; font-weight: 700; letter-spacing: -0.2px; color: var(--text-primary); }
+.ai-tool-card__desc { font-size: 13.5px; line-height: 1.55; color: var(--text-tertiary); }
+.ai-tool-card__tags { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.ai-tool-card__tag { padding: 4px 11px; background: var(--color-purple-tag-bg); border: 1px solid var(--color-purple-tag-border); border-radius: var(--radius-lg); font-size: 10.5px; font-weight: 600; color: var(--text-bright); }
+.ai-tool-card__meta { display: inline-flex; align-items: center; gap: var(--space-1); font-size: 12px; color: var(--text-muted); }
+.ai-tool-card__meta svg { width: 15px; height: 15px; }
+.ai-tool-card__btn { margin-top: auto; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: 11px; width: 100%; background: var(--color-purple-primary); border: none; border-radius: var(--radius-btn); font-size: 15px; font-weight: 600; color: var(--text-primary); font-family: inherit; cursor: pointer; transition: background var(--duration-standard) var(--easing-standard); }
+.ai-tool-card__btn:hover { background: var(--color-purple-hover); }
+.ai-tool-card__btn svg { width: 18px; height: 18px; }
+
+/* ----- Game Mode Card (Games) ----- */
+.game-modes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8); max-width: 1100px; }
+.game-mode-card { display: flex; flex-direction: column; gap: var(--space-4); min-height: 436px; padding: 26px; background: var(--color-bg-card); border: 1px solid var(--color-purple-card-border); border-radius: var(--radius-3xl); box-shadow: var(--shadow-card-glow); transition: transform var(--duration-standard) var(--easing-standard); }
+.game-mode-card:hover { transform: translateY(-2px); }
+.game-mode-card__badge { align-self: flex-start; display: inline-flex; align-items: center; gap: 7px; padding: var(--space-1) 13px; border-radius: var(--radius-pill); font-size: 11.5px; font-weight: 700; letter-spacing: 0.575px; border: 1px solid transparent; }
+.game-mode-card__badge svg { width: 17px; height: 17px; }
+.game-mode-card__badge--matching { background: var(--color-teal-tag-bg); border-color: var(--color-teal-tag-border); color: var(--color-cyan); }
+.game-mode-card__badge--myth { background: var(--color-blue-tag-bg); border-color: var(--color-blue-tag-border); color: var(--color-blue-light); }
+.game-mode-card__badge--confidence { background: var(--color-pink-tag-bg); border-color: var(--color-pink-tag-border); color: var(--color-pink-light); }
+.game-mode-card__title { font-size: 22px; font-weight: 700; letter-spacing: -0.44px; line-height: 1.2; color: var(--text-primary); }
+.game-mode-card__desc { font-size: 14px; line-height: 1.55; color: var(--text-muted); }
+.game-mode-card__bottom { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-4); }
+.game-mode-card__progress-row { display: flex; justify-content: space-between; font-size: 12px; }
+.game-mode-card__progress-row .lbl { font-weight: 600; color: var(--text-secondary); }
+.game-mode-card__progress-row .val { color: var(--text-dim); }
+.game-mode-card__progress-track { height: 6px; background: var(--surface-white-08); border-radius: var(--radius-xs); overflow: hidden; }
+.game-mode-card__progress-fill { height: 100%; background: var(--gradient-progress); border-radius: var(--radius-xs); }
+.game-mode-card__stats { display: flex; flex-wrap: wrap; gap: var(--space-5); padding-top: var(--space-6); border-top: 1px solid var(--color-divider); }
+.game-mode-card__stat { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; color: var(--text-muted); }
+.game-mode-card__stat svg { width: 17px; height: 17px; }
+.game-mode-card__play { display: flex; align-items: center; justify-content: space-between; padding: 13px var(--space-7); background: var(--color-purple-primary); border: none; border-radius: var(--radius-lg); font-size: 15px; font-weight: 700; color: var(--text-primary); font-family: inherit; cursor: pointer; transition: background var(--duration-standard) var(--easing-standard); }
+.game-mode-card__play:hover { background: var(--color-purple-hover); }
+.game-mode-card__play-label { display: inline-flex; align-items: center; gap: var(--space-2); }
+.game-mode-card__play svg { width: 20px; height: 20px; }
+.game-mode-card__play .play-circle { width: 22px; height: 22px; }
+
+/* ----- Game Tile (compact game preview) ----- */
+.game-tiles { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+.game-tile { display: flex; flex-direction: column; align-items: center; gap: var(--space-4); width: 250px; height: 250px; padding: var(--space-8); background: var(--color-purple-tag-bg); border: 2px solid var(--color-purple-primary); border-radius: var(--radius-md); text-align: center; transition: transform var(--duration-standard) var(--easing-standard); }
+.game-tile:hover { transform: scale(1.02); }
+.game-tile__title { font-size: 18px; font-weight: 700; letter-spacing: -0.54px; color: var(--text-primary); }
+.game-tile__icon { flex: 1; display: flex; align-items: center; justify-content: center; }
+.game-tile__icon img { width: 70px; height: 70px; object-fit: contain; }
+.game-tile__play { width: 100%; padding: var(--space-3) 0; background: var(--color-purple-primary); border: none; border-radius: var(--radius-3xl); font-size: 16px; font-weight: 700; color: var(--text-primary); font-family: inherit; cursor: pointer; transition: background var(--duration-standard) var(--easing-standard); }
+.game-tile__play:hover { background: var(--color-purple-hover); }
+
+/* ----- Coming Soon Note (end-of-list bar) ----- */
+.coming-soon-note { display: flex; align-items: center; justify-content: center; gap: var(--space-3); min-height: 58px; padding: var(--space-7) var(--space-9); background: var(--surface-white-03); border: 1px dashed var(--surface-white-border-12); border-radius: var(--radius-xl); font-size: 14px; color: var(--text-muted); }
+.coming-soon-note svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+/* ----- Form Field states (error / help / leading icon) ----- */
+.form-input-wrap { position: relative; }
+.form-input-wrap .form-input { width: 100%; }
+.form-input--icon { padding-left: 44px; }
+.form-input__icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--text-tertiary); pointer-events: none; }
+.form-input.is-error, .form-select.is-error { background: var(--color-error-surface); border: 1.5px solid var(--color-error); }
+.form-help { margin-top: var(--space-2); font-size: 13px; color: var(--text-tertiary); }
+.form-error { display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-2); font-size: 13px; font-weight: 500; color: var(--color-error); }
+.form-error svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+/* ----- Multi-select Chips ----- */
+.multiselect { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2); min-height: 44px; padding: 6px 40px 6px var(--space-4); background: var(--color-input-surface); border: 1px solid var(--surface-white-08); border-radius: var(--radius-md); }
+.multiselect__chevron { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; color: var(--text-tertiary); pointer-events: none; }
+.chip { display: inline-flex; align-items: center; gap: var(--space-2); padding: 7px var(--space-4); background: var(--color-purple-primary); border-radius: var(--radius-lg); font-size: 14px; font-weight: 600; color: var(--text-primary); }
+.chip__remove { display: inline-flex; cursor: pointer; }
+.chip__remove svg { width: 14px; height: 14px; }
+
+/* ----- Toggle Switch ----- */
+.toggle-row { display: flex; align-items: center; gap: var(--space-5); }
+.toggle-row.is-disabled .toggle__label { color: var(--text-faint); }
+.toggle { position: relative; flex-shrink: 0; width: 52px; height: 30px; border-radius: var(--radius-pill); background: var(--color-input-surface); border: none; cursor: pointer; padding: 0; transition: background var(--duration-standard) var(--easing-standard); }
+.toggle__knob { position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: var(--text-primary); transition: transform var(--duration-standard) var(--easing-standard); }
+.toggle.is-on { background: var(--color-purple-primary); }
+.toggle.is-on .toggle__knob { transform: translateX(22px); }
+.toggle.is-disabled { opacity: 0.5; cursor: not-allowed; }
+.toggle__label { font-size: 16px; color: var(--text-primary); }
+
+/* ----- Radio Group ----- */
+.radio-group { display: flex; flex-direction: column; gap: var(--space-7); }
+.radio { display: flex; align-items: flex-start; gap: var(--space-4); cursor: pointer; }
+.radio__control { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--text-whisper); position: relative; transition: border-color var(--duration-standard) var(--easing-standard); }
+.radio.is-selected .radio__control { border-color: var(--color-purple-accent); }
+.radio.is-selected .radio__control::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--color-purple-accent); }
+.radio__text { display: flex; flex-direction: column; gap: 2px; }
+.radio__title { font-size: 16px; color: var(--text-primary); }
+.radio__desc { font-size: 14px; color: var(--text-tertiary); }
+
+/* ----- Toast Notification ----- */
+.toast-stack { display: flex; flex-direction: column; gap: var(--space-6); max-width: 520px; }
+.toast { display: flex; align-items: center; gap: var(--space-6); width: 100%; padding: var(--space-8) 20px var(--space-8) 22px; background: var(--color-bg-card); border: 1px solid var(--color-divider); border-radius: var(--radius-xl); }
+.toast__disc { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.toast__disc svg { width: 22px; height: 22px; color: var(--text-primary); }
+.toast--success .toast__disc { background: var(--color-success); }
+.toast--error .toast__disc { background: var(--color-error); }
+.toast--info .toast__disc { background: var(--color-info); }
+.toast__icon-warning { flex-shrink: 0; width: 32px; height: 32px; color: var(--color-warning); }
+.toast__body { flex: 1; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.toast__title { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+.toast__msg { font-size: 15px; color: var(--text-muted); }
+.toast--warning .toast__msg { font-size: 16px; color: var(--text-bright); }
+.toast__close { flex-shrink: 0; display: inline-flex; align-items: center; cursor: pointer; color: var(--text-tertiary); background: none; border: none; padding: 0; }
+.toast__close svg { width: 22px; height: 22px; }
