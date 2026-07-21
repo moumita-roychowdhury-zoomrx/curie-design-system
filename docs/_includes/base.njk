@@ -18,6 +18,7 @@
     <nav class="ds-nav">
       <a href="/" class="{{ 'active' if nav == 'home' }}">Overview</a>
       <a href="/foundations/" class="{{ 'active' if nav == 'foundations' }}">Foundations</a>
+      <a href="/responsive/" class="{{ 'active' if nav == 'responsive' }}">Responsive layouts</a>
       <div class="ds-nav-group">
         <a href="/components/" class="{{ 'active' if nav == 'components' and not componentId }}">Components</a>
         {% for c in manifest.components %}

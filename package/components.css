@@ -2936,3 +2936,1211 @@ body.pg-home .user-avatar { background: #4b3fa7; }
   width: 20px; height: 20px; padding: 2px; background: rgba(97,83,189,0.15);
   border-radius: 50%; transition: transform var(--duration-smooth); }
 .see-more-icon svg { width: 12px; height: 12px; }
+
+
+/* ============================================================================
+   COMPONENT LIBRARY — primitives, patterns & standard components (v0.3.0)
+   Added per the developer review. Token-driven, dark-canvas, full state
+   coverage (real pseudo-classes paired with pinned .is-* helpers).
+   ============================================================================ */
+/* =====================================================================
+   Curie Design System — Batch A (Tier-2 extractions)
+   Standalone, token-driven, on-brand components.
+   State pattern mirrors the golden .btn: every interactive state is
+   expressed with BOTH the real pseudo-class AND a pinned helper class
+   (:hover/.is-hover, :focus-visible/.is-focus, :active/.is-active,
+   :disabled/.is-disabled, :checked/.is-checked) so states render
+   statically in specimens.
+   ===================================================================== */
+
+
+/* ===================================================================
+   ===== Modal =====
+   Overlay + centered dialog card. Visual language of golden .fs-overlay.
+   =================================================================== */
+.modal__overlay {
+  position: fixed; inset: 0; z-index: var(--z-dropdown);
+  display: none; align-items: center; justify-content: center;
+  padding: var(--space-9);
+  background: rgba(10, 8, 24, 0.72);
+  backdrop-filter: blur(var(--blur-subtle));
+  -webkit-backdrop-filter: blur(var(--blur-subtle));
+}
+.modal__overlay.is-open,
+.modal__overlay:target { display: flex; }
+
+.modal {
+  position: relative; box-sizing: border-box;
+  width: 100%; max-width: 440px;
+  display: flex; flex-direction: column;
+  background: var(--gradient-summary);
+  border: 1px solid var(--color-purple-card-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-featured);
+  backdrop-filter: blur(var(--blur-medium));
+  -webkit-backdrop-filter: blur(var(--blur-medium));
+  color: var(--text-body);
+  overflow: hidden;
+}
+.modal__header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: var(--space-6);
+  padding: var(--space-8) var(--space-9) var(--space-4);
+}
+.modal__title {
+  margin: 0; font-family: var(--font-primary);
+  font-size: 19px; font-weight: 700; line-height: 1.3;
+  color: var(--text-primary); letter-spacing: -0.01em;
+}
+.modal__close {
+  flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; padding: 0;
+  background: var(--surface-white-05); color: var(--text-secondary);
+  border: 1px solid var(--surface-white-border-12); border-radius: 50%;
+  cursor: pointer;
+  transition: background var(--duration-standard) var(--easing-standard),
+              color var(--duration-standard) var(--easing-standard),
+              border-color var(--duration-standard) var(--easing-standard),
+              transform var(--duration-fast) var(--easing-standard);
+}
+.modal__close svg { width: 15px; height: 15px; }
+.modal__close:hover,
+.modal__close.is-hover {
+  background: var(--surface-white-08); color: var(--text-primary);
+  border-color: var(--surface-white-border-22); transform: scale(1.08);
+}
+.modal__close:focus-visible,
+.modal__close.is-focus { outline: none; box-shadow: 0 0 0 3px rgba(124,92,252,0.45); }
+.modal__close:active,
+.modal__close.is-active { transform: scale(0.94); }
+
+.modal__body {
+  padding: 0 var(--space-9) var(--space-4);
+  font-size: 14px; line-height: 1.6; color: var(--text-secondary);
+}
+.modal__body p { margin: 0 0 var(--space-4); }
+.modal__footer {
+  display: flex; align-items: center; justify-content: flex-end;
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-9) var(--space-8);
+  border-top: 1px solid var(--color-divider);
+  margin-top: var(--space-2);
+}
+
+
+/* ===================================================================
+   ===== Accordion =====
+   Stacked disclosure panels. Language of golden .faq-* blocks.
+   =================================================================== */
+.accordion { display: flex; flex-direction: column; gap: var(--space-2); width: 100%; }
+
+.accordion__item {
+  background: var(--surface-white-03);
+  border: 1px solid var(--surface-white-05);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(var(--blur-subtle));
+  -webkit-backdrop-filter: blur(var(--blur-subtle));
+  transition: background var(--duration-smooth) var(--easing-standard),
+              border-color var(--duration-smooth) var(--easing-standard),
+              box-shadow var(--duration-smooth) var(--easing-standard),
+              transform var(--duration-fast) var(--easing-standard);
+}
+.accordion__item:hover,
+.accordion__item.is-hover {
+  background: var(--surface-white-08);
+  border-color: rgba(97,83,189,0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(97,83,189,0.15);
+}
+.accordion__item.is-open {
+  background: var(--surface-white-06);
+  border-color: var(--color-purple-card-border);
+}
+
+.accordion__trigger {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-6); width: 100%; box-sizing: border-box;
+  padding: var(--space-7) var(--space-9);
+  background: none; border: none; cursor: pointer;
+  text-align: left; font-family: var(--font-primary);
+  font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--text-primary);
+  transition: color var(--duration-smooth) var(--easing-standard);
+}
+.accordion__trigger:hover,
+.accordion__trigger.is-hover { color: var(--text-emphasis); }
+.accordion__trigger:focus-visible,
+.accordion__trigger.is-focus { outline: none; box-shadow: 0 0 0 3px rgba(124,92,252,0.45); border-radius: var(--radius-md); }
+
+.accordion__icon {
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(97,83,189,0.12);
+  transition: background var(--duration-smooth) var(--easing-standard),
+              transform var(--duration-smooth) var(--easing-standard);
+}
+.accordion__icon svg { width: 14px; height: 14px; color: var(--color-purple-muted);
+  transition: transform var(--duration-smooth) var(--easing-standard); }
+.accordion__trigger:hover .accordion__icon,
+.accordion__item.is-hover .accordion__icon { background: rgba(97,83,189,0.3); transform: scale(1.1); }
+.accordion__item.is-open .accordion__icon { background: rgba(97,83,189,0.3); }
+.accordion__item.is-open .accordion__icon svg { transform: rotate(180deg); }
+
+.accordion__panel {
+  display: none;
+  padding: 0 var(--space-9) var(--space-7);
+  font-size: 14px; line-height: 1.6; color: var(--text-bright);
+}
+.accordion__item.is-open .accordion__panel { display: block; }
+.accordion__panel p {
+  margin: 0; padding: var(--space-4) var(--space-6);
+  background: var(--surface-white-03);
+  border-left: 3px solid rgba(97,83,189,0.5);
+  border-radius: var(--radius-xs);
+}
+
+
+/* ===================================================================
+   ===== Tooltip =====
+   Wrapper + floating bubble on hover/focus. Language of golden .fab-tooltip.
+   =================================================================== */
+.tooltip { position: relative; display: inline-flex; }
+.tooltip__bubble {
+  position: absolute; bottom: calc(100% + var(--space-3)); left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  z-index: var(--z-dropdown);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-bg-card);
+  border: 1px solid var(--surface-white-border-12);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-dropdown);
+  font-family: var(--font-primary);
+  font-size: 12px; font-weight: 600; line-height: 1.3; color: var(--text-primary);
+  white-space: nowrap; pointer-events: none;
+  opacity: 0; visibility: hidden;
+  transition: opacity var(--duration-standard) var(--easing-standard),
+              transform var(--duration-standard) var(--easing-standard),
+              visibility var(--duration-standard) var(--easing-standard);
+}
+.tooltip__bubble::after {
+  content: ""; position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent; border-top-color: var(--color-bg-card);
+}
+.tooltip:hover .tooltip__bubble,
+.tooltip:focus-within .tooltip__bubble,
+.tooltip.is-open .tooltip__bubble {
+  opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+}
+
+
+/* ===================================================================
+   ===== Dropdown menu =====
+   Trigger + floating menu of items. Language of golden .filter-menu.
+   =================================================================== */
+.dropdown { position: relative; display: inline-flex; }
+.dropdown__trigger {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  box-sizing: border-box; padding: var(--space-3) var(--space-5);
+  background: var(--surface-white-05); color: var(--text-body);
+  border: 1px solid var(--surface-white-border-12); border-radius: var(--radius-btn);
+  font-family: var(--font-primary); font-size: 14px; font-weight: 600; line-height: 1;
+  cursor: pointer;
+  transition: background var(--duration-standard) var(--easing-standard),
+              border-color var(--duration-standard) var(--easing-standard),
+              color var(--duration-standard) var(--easing-standard);
+}
+.dropdown__trigger svg { width: 12px; height: 12px; flex-shrink: 0;
+  transition: transform var(--duration-standard) var(--easing-standard); }
+.dropdown__trigger:hover,
+.dropdown__trigger.is-hover { background: var(--surface-white-08);
+  border-color: var(--surface-white-border-18); color: var(--text-primary); }
+.dropdown__trigger:focus-visible,
+.dropdown__trigger.is-focus { outline: none; box-shadow: 0 0 0 3px rgba(124,92,252,0.45); }
+.dropdown.is-open .dropdown__trigger svg { transform: rotate(180deg); }
+
+.dropdown__menu {
+  position: absolute; top: calc(100% + var(--space-2)); left: 0;
+  z-index: var(--z-dropdown); min-width: 200px; box-sizing: border-box;
+  display: flex; flex-direction: column; gap: var(--space-1);
+  padding: var(--space-2);
+  background: rgba(42,31,77,0.95);
+  border: 1px solid var(--surface-white-border-12);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-dropdown);
+  backdrop-filter: blur(var(--blur-light));
+  -webkit-backdrop-filter: blur(var(--blur-light));
+  opacity: 0; visibility: hidden; transform: translateY(-4px);
+  transition: opacity var(--duration-smooth) var(--easing-standard),
+              transform var(--duration-smooth) var(--easing-standard),
+              visibility var(--duration-smooth) var(--easing-standard);
+}
+.dropdown.is-open .dropdown__menu,
+.dropdown__menu.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.dropdown__item {
+  display: flex; align-items: center; gap: var(--space-3); width: 100%; box-sizing: border-box;
+  padding: var(--space-3) var(--space-5);
+  background: none; border: none; border-radius: var(--radius-sm);
+  text-align: left; font-family: var(--font-primary);
+  font-size: 13px; font-weight: 500; color: var(--text-body); cursor: pointer;
+  transition: background var(--duration-fast) var(--easing-standard),
+              color var(--duration-fast) var(--easing-standard);
+}
+.dropdown__item:hover:not(.is-active),
+.dropdown__item.is-hover:not(.is-active) { background: var(--surface-white-08); color: var(--text-primary); }
+.dropdown__item:focus-visible,
+.dropdown__item.is-focus { outline: none; box-shadow: 0 0 0 2px rgba(124,92,252,0.45) inset; }
+.dropdown__item:active,
+.dropdown__item.is-pressed { background: rgba(97,83,190,0.18); }
+.dropdown__item.is-active {
+  background: rgba(124,92,252,0.15); color: var(--color-purple-light); font-weight: 600;
+}
+.dropdown__item:disabled,
+.dropdown__item.is-disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+
+/* ===================================================================
+   ===== Tabs =====
+   N-tab control. Generalizes golden .seg-toggle.
+   =================================================================== */
+.tabs { display: flex; flex-direction: column; gap: var(--space-6); width: 100%; }
+.tabs__list {
+  display: inline-flex; align-items: center; gap: var(--space-1); width: fit-content;
+  padding: var(--space-1); box-sizing: border-box;
+  background: rgba(15,20,60,0.55);
+  border: 1px solid var(--surface-white-08);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(var(--blur-light));
+  -webkit-backdrop-filter: blur(var(--blur-light));
+}
+.tab {
+  position: relative; display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-3) var(--space-7);
+  background: none; border: none; border-radius: var(--radius-sm);
+  font-family: var(--font-primary); font-size: 13px; font-weight: 600; line-height: 1;
+  color: var(--text-tertiary); white-space: nowrap; cursor: pointer;
+  transition: color var(--duration-standard) var(--easing-standard),
+              background var(--duration-standard) var(--easing-standard);
+}
+.tab:hover:not(.is-active),
+.tab.is-hover:not(.is-active) { color: var(--text-body); background: var(--surface-white-05); }
+.tab:focus-visible,
+.tab.is-focus { outline: none; box-shadow: 0 0 0 3px rgba(124,92,252,0.45); }
+.tab:active,
+.tab.is-pressed { transform: scale(0.98); }
+.tab.is-active {
+  color: var(--text-primary);
+  background: var(--surface-white-12, rgba(255,255,255,0.12));
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.tab:disabled,
+.tab.is-disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+.tabs__panel {
+  font-size: 14px; line-height: 1.6; color: var(--text-secondary);
+}
+.tabs__panel[hidden] { display: none; }
+
+
+/* ===================================================================
+   ===== Progress =====
+   Determinate bar. Uses --gradient-progress. Width set inline in snippet.
+   =================================================================== */
+.progress { display: flex; flex-direction: column; gap: var(--space-2); width: 100%; }
+.progress__label {
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--font-primary); font-size: 12px; font-weight: 600;
+  color: var(--text-secondary);
+}
+.progress__track {
+  position: relative; width: 100%; height: 8px; overflow: hidden;
+  background: var(--surface-white-08);
+  border-radius: var(--radius-pill);
+}
+.progress__fill {
+  height: 100%; width: 0;
+  background: var(--gradient-progress);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-glow);
+  transition: width var(--duration-smooth) var(--easing-out);
+}
+
+
+/* ===================================================================
+   ===== Avatar =====
+   Sized avatar w/ image + initials fallback, and overlapping group.
+   Language of golden .user-avatar.
+   =================================================================== */
+.avatar {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0; overflow: hidden;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--color-purple-primary);
+  border: 1px solid var(--surface-white-border-12);
+  font-family: var(--font-primary); font-weight: 700; color: var(--text-primary);
+  transition: transform var(--duration-fast) var(--easing-standard),
+              box-shadow var(--duration-standard) var(--easing-standard);
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.avatar__fallback {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%; font-size: 11px; letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.avatar:hover,
+.avatar.is-hover { transform: translateY(-1px); box-shadow: var(--shadow-card-glow); }
+.avatar:focus-visible,
+.avatar.is-focus { outline: none; box-shadow: 0 0 0 3px rgba(124,92,252,0.45); }
+
+.avatar--sm { width: 24px; height: 24px; }
+.avatar--sm .avatar__fallback { font-size: 9px; }
+.avatar--md { width: 40px; height: 40px; }
+.avatar--md .avatar__fallback { font-size: 14px; }
+.avatar--lg { width: 56px; height: 56px; }
+.avatar--lg .avatar__fallback { font-size: 19px; }
+
+.avatar-group { display: inline-flex; align-items: center; }
+.avatar-group .avatar {
+  border: 2px solid var(--color-bg-primary);
+  margin-left: -10px;
+  transition: transform var(--duration-fast) var(--easing-standard);
+}
+.avatar-group .avatar:first-child { margin-left: 0; }
+.avatar-group .avatar:hover,
+.avatar-group .avatar.is-hover { transform: translateY(-2px); z-index: 1; }
+
+
+/* ===================================================================
+   ===== Badge =====
+   Tint variants + removable tag. Language of golden .content-badge +
+   purple/teal/blue/pink tag tokens.
+   =================================================================== */
+.badge {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  box-sizing: border-box; padding: var(--space-1) var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-family: var(--font-primary); font-size: 12px; font-weight: 700; line-height: 1.4;
+  letter-spacing: 0.02em; white-space: nowrap;
+}
+.badge svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+.badge--neutral { background: var(--surface-white-06); color: var(--text-body);
+  border-color: var(--surface-white-border-12); }
+.badge--purple { background: var(--color-purple-tag-bg); color: var(--color-purple-badge-text);
+  border-color: var(--color-purple-tag-border); }
+.badge--teal { background: var(--color-teal-tag-bg); color: var(--color-teal-secondary);
+  border-color: var(--color-teal-tag-border); }
+.badge--blue { background: var(--color-blue-tag-bg); color: var(--color-blue-light);
+  border-color: var(--color-blue-tag-border); }
+.badge--pink { background: var(--color-pink-tag-bg); color: var(--color-pink-light);
+  border-color: var(--color-pink-tag-border); }
+
+/* Removable tag variant */
+.badge--tag { padding-right: var(--space-2); }
+.badge__remove {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px; padding: 0; margin-left: var(--space-1);
+  background: none; border: none; border-radius: 50%;
+  color: currentColor; cursor: pointer; opacity: 0.7;
+  transition: background var(--duration-fast) var(--easing-standard),
+              opacity var(--duration-fast) var(--easing-standard),
+              transform var(--duration-fast) var(--easing-standard);
+}
+.badge__remove svg { width: 10px; height: 10px; }
+.badge__remove:hover,
+.badge__remove.is-hover { background: rgba(255,255,255,0.15); opacity: 1; transform: scale(1.1); }
+.badge__remove:focus-visible,
+.badge__remove.is-focus { outline: none; box-shadow: 0 0 0 2px rgba(124,92,252,0.5); }
+.badge__remove:active,
+.badge__remove.is-active { transform: scale(0.9); }
+/* ===================================================================
+   CURIE — Batch B · Tier-1 primitives
+   Token-driven, dark/medical, purple/teal. Every color is a var(--…)
+   token; translucent tints/rings use color-mix() over a token so no raw
+   hex/rgba is invented. Each interactive pairs its real pseudo-class with
+   a pinned .is-* helper (the .btn state pattern), so docs specimens and
+   JS-driven controls can force any state.
+   =================================================================== */
+
+
+/* ===================================================================
+   1 · ICON BUTTON  (id: icon-button · actions)
+   NO NEW PAINT. The circular icon button already exists as the
+   .btn.btn--round family in components.css (ghost · +.btn--primary solid
+   purple · +.btn--glass frosted; sizes .btn--sm 36 / 40 / .btn--lg 48).
+   Compose those classes with an inline SVG — states via
+   .is-hover / .is-focus / .is-active / .is-disabled. The only helper
+   below keeps a labelled icon button's accessible text visually hidden
+   without dropping it from the a11y tree.
+   ------------------------------------------------------------------- */
+.btn--round .btn__sr { position: absolute; width: 1px; height: 1px; padding: 0;
+  margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+
+/* ===================================================================
+   2 · CHECKBOX  (id: checkbox · forms)
+   Net-new. A real <input type="checkbox"> styled with appearance:none so
+   the native control still carries state/keyboard/a11y. On-brand purple
+   fill + white check when :checked/.is-checked; a purple dash when
+   .is-indeterminate; focus ring + disabled dim.
+   ------------------------------------------------------------------- */
+.checkbox { display: inline-flex; align-items: flex-start; gap: var(--space-3);
+  cursor: pointer; font-family: var(--font-primary); }
+
+.checkbox__control {
+  flex-shrink: 0; appearance: none; -webkit-appearance: none;
+  width: 20px; height: 20px; margin: 0;
+  background: var(--color-input-surface);
+  border: 1.5px solid var(--surface-white-border-22);
+  border-radius: var(--radius-xs);
+  cursor: pointer; position: relative;
+  transition: background var(--duration-standard) var(--easing-standard),
+              border-color var(--duration-standard) var(--easing-standard),
+              box-shadow var(--duration-standard) var(--easing-standard); }
+
+.checkbox__control:hover,
+.checkbox__control.is-hover { border-color: var(--color-purple-light); }
+
+/* Checked — purple fill, white check */
+.checkbox__control:checked,
+.checkbox__control.is-checked {
+  background-color: var(--color-purple-primary);
+  border-color: var(--color-purple-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center; }
+
+/* Indeterminate — purple fill, single dash */
+.checkbox__control:indeterminate,
+.checkbox__control.is-indeterminate {
+  background-color: var(--color-purple-primary);
+  border-color: var(--color-purple-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center; }
+
+.checkbox__control:focus-visible,
+.checkbox__control.is-focus { outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-purple-accent) 45%, transparent); }
+
+.checkbox__control:disabled,
+.checkbox__control.is-disabled { opacity: 0.4; cursor: not-allowed; }
+.checkbox:has(.checkbox__control:disabled),
+.checkbox.is-disabled { cursor: not-allowed; }
+.checkbox:has(.checkbox__control:disabled) .checkbox__label,
+.checkbox.is-disabled .checkbox__label { color: var(--text-faint); }
+
+.checkbox__label { font-size: 15px; line-height: 1.3; color: var(--text-body);
+  padding-top: 1px; user-select: none; }
+
+
+/* ===================================================================
+   3 · TEXTAREA  (id: textarea · forms)
+   Net-new multiline input on the Curie form surface. States
+   default / focus (:focus/.is-focus) / error (.is-error) / disabled.
+   ------------------------------------------------------------------- */
+.textarea {
+  display: block; width: 100%; min-height: 104px; box-sizing: border-box;
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-input-surface);
+  border: 1px solid transparent; border-radius: var(--radius-md);
+  color: var(--text-emphasis);
+  font-family: var(--font-primary); font-size: 14px; font-weight: 400;
+  line-height: 1.5; resize: vertical; outline: none;
+  transition: background var(--duration-standard) var(--easing-standard),
+              border-color var(--duration-standard) var(--easing-standard),
+              box-shadow var(--duration-standard) var(--easing-standard); }
+
+.textarea::placeholder { color: var(--text-ghost); }
+
+.textarea:hover,
+.textarea.is-hover { border-color: var(--surface-white-border-12); }
+
+.textarea:focus,
+.textarea.is-focus { background: var(--surface-white-08);
+  border-color: var(--color-purple-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-purple-accent) 30%, transparent); }
+
+.textarea.is-error { background: var(--color-error-surface);
+  border-color: var(--color-error); }
+.textarea.is-error:focus,
+.textarea.is-error.is-focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-error) 30%, transparent); }
+
+.textarea:disabled,
+.textarea.is-disabled { opacity: 0.5; cursor: not-allowed; resize: none; }
+
+
+/* ===================================================================
+   4 · SEARCH INPUT  (id: search-input · forms)
+   Net-new. .search wrapper holds a leading magnifier, the .search__input,
+   and an optional trailing .search__clear. The whole wrapper lights up on
+   focus-within (or pinned .is-focus). States focus / disabled.
+   ------------------------------------------------------------------- */
+.search { position: relative; display: flex; align-items: center; width: 100%;
+  background: var(--color-input-surface);
+  border: 1px solid transparent; border-radius: var(--radius-pill);
+  transition: background var(--duration-standard) var(--easing-standard),
+              border-color var(--duration-standard) var(--easing-standard),
+              box-shadow var(--duration-standard) var(--easing-standard); }
+
+.search__icon { flex-shrink: 0; margin-left: var(--space-5);
+  width: 18px; height: 18px; color: var(--text-tertiary); pointer-events: none; }
+
+.search__input { flex: 1; min-width: 0; height: 44px;
+  padding: 0 var(--space-4); background: transparent; border: none; outline: none;
+  color: var(--text-emphasis);
+  font-family: var(--font-primary); font-size: 14px; font-weight: 400; }
+.search__input::placeholder { color: var(--text-ghost); }
+
+.search__clear { flex-shrink: 0; display: inline-flex; align-items: center;
+  justify-content: center; margin-right: var(--space-3);
+  width: 26px; height: 26px; padding: 0; border: none; border-radius: 50%;
+  background: transparent; color: var(--text-tertiary); cursor: pointer;
+  transition: background var(--duration-fast) var(--easing-standard),
+              color var(--duration-fast) var(--easing-standard); }
+.search__clear svg { width: 15px; height: 15px; }
+.search__clear:hover,
+.search__clear.is-hover { background: var(--surface-white-08); color: var(--text-primary); }
+
+.search:focus-within,
+.search.is-focus { background: var(--surface-white-08);
+  border-color: var(--color-purple-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-purple-accent) 30%, transparent); }
+
+.search.is-disabled { opacity: 0.5; }
+.search.is-disabled .search__input,
+.search.is-disabled .search__clear { cursor: not-allowed; pointer-events: none; }
+
+
+/* ===================================================================
+   5 · SELECT  (id: select · forms)
+   Net-new styled native <select> with a token chevron. States
+   default / focus (:focus/.is-focus) / disabled / error (.is-error).
+   .select--multi drops the chevron and lets the list grow (size>1 / multiple).
+   ------------------------------------------------------------------- */
+.select {
+  display: block; width: 100%; height: 44px; box-sizing: border-box;
+  padding: 0 var(--space-10) 0 var(--space-5);
+  background-color: var(--color-input-surface);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right var(--space-5) center;
+  border: 1px solid transparent; border-radius: var(--radius-md);
+  color: var(--text-emphasis);
+  font-family: var(--font-primary); font-size: 14px; font-weight: 400;
+  cursor: pointer; outline: none;
+  appearance: none; -webkit-appearance: none;
+  transition: background var(--duration-standard) var(--easing-standard),
+              border-color var(--duration-standard) var(--easing-standard),
+              box-shadow var(--duration-standard) var(--easing-standard); }
+
+.select option { background: var(--color-bg-card); color: var(--text-primary); }
+
+.select:hover,
+.select.is-hover { border-color: var(--surface-white-border-12); }
+
+.select:focus,
+.select.is-focus { background-color: var(--surface-white-08);
+  border-color: var(--color-purple-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-purple-accent) 30%, transparent); }
+
+.select.is-error { background-color: var(--color-error-surface);
+  border-color: var(--color-error); }
+
+.select:disabled,
+.select.is-disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Multi-select — real <select multiple> / size>1: no chevron, scrolling list */
+.select--multi { height: auto; min-height: 112px; padding: var(--space-2) 0;
+  background-image: none; cursor: default; }
+.select--multi option { padding: var(--space-2) var(--space-5); }
+.select--multi option:checked {
+  background: linear-gradient(var(--color-purple-primary), var(--color-purple-primary));
+  color: var(--text-primary); }
+
+
+/* ===================================================================
+   6 · LINK  (id: link · actions)
+   Net-new inline text link, purple accent. States
+   default / hover / focus (:focus-visible/.is-focus) / visited.
+   .lnk--external appends a trailing ↗ glyph.
+   ------------------------------------------------------------------- */
+.lnk { color: var(--color-purple-light);
+  font-family: inherit; font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-purple-light) 45%, transparent);
+  text-underline-offset: 2px; border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--easing-standard),
+              text-decoration-color var(--duration-fast) var(--easing-standard); }
+
+.lnk:hover,
+.lnk.is-hover { color: var(--color-purple-accent);
+  text-decoration-color: var(--color-purple-accent); }
+
+.lnk:active,
+.lnk.is-active { color: var(--color-purple-primary); }
+
+.lnk:visited { color: var(--color-purple-muted); }
+
+.lnk:focus-visible,
+.lnk.is-focus { outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-purple-accent) 45%, transparent); }
+
+/* External — trailing arrow that inherits the link color */
+.lnk--external::after { content: "\2197"; display: inline-block;
+  margin-left: 3px; font-size: 0.85em; font-weight: 700; }
+/* ===================================================================
+   Curie — Batch C · Tier-3 atoms (feedback + layout)
+   Token-driven. Dark medical canvas, purple brand / teal positive.
+   Components: spinner · skeleton · empty-state · inline-alert · divider
+   =================================================================== */
+
+
+/* ===================================================================
+   1. Spinner — rotating accent ring
+   Purple ring with a transparent top segment, spun by @keyframes.
+   Sizes: .spinner--sm 18 · .spinner--md 28 (default) · .spinner--lg 44.
+   =================================================================== */
+.spinner {
+  display: inline-block;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 3px solid var(--surface-white-08);
+  border-top-color: var(--color-purple-accent);
+  box-sizing: border-box;
+  animation: spinner-rotate 0.7s linear infinite;
+}
+.spinner--sm { width: 18px; height: 18px; border-width: 2px; }
+.spinner--md { width: 28px; height: 28px; border-width: 3px; }
+.spinner--lg { width: 44px; height: 44px; border-width: 4px; }
+
+@keyframes spinner-rotate {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ===================================================================
+   2. Skeleton — shimmer placeholder
+   White-alpha surface with a sweeping highlight (shimmer @keyframes).
+   Shapes: .skeleton--text (short line) · .skeleton--circle · .skeleton--rect.
+   =================================================================== */
+.skeleton {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-white-06);
+  border-radius: var(--radius-sm);
+}
+.skeleton::after {
+  content: "";
+  position: absolute; inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    var(--surface-white-08) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: skeleton-shimmer 1.4s var(--easing-standard) infinite;
+}
+.skeleton--text { height: 12px; width: 100%; border-radius: var(--radius-xs); }
+.skeleton--text:last-child { width: 70%; }
+.skeleton--circle { width: 44px; height: 44px; border-radius: 50%; }
+.skeleton--rect { width: 100%; height: 120px; border-radius: var(--radius-md); }
+
+@keyframes skeleton-shimmer {
+  100% { transform: translateX(100%); }
+}
+
+
+/* ===================================================================
+   3. Empty state — centered "nothing here yet" block
+   Icon disc · title · description · action (compose with .btn).
+   =================================================================== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-5);
+  max-width: 360px;
+  margin: 0 auto;
+  padding: var(--space-11) var(--space-8);
+}
+.empty-state__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--surface-white-05);
+  border: 1px solid var(--surface-white-border-12);
+  color: var(--text-tertiary);
+}
+.empty-state__icon svg { width: 30px; height: 30px; }
+.empty-state__title {
+  font-family: var(--font-primary);
+  font-size: 18px; font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+.empty-state__desc {
+  font-family: var(--font-primary);
+  font-size: 14px; line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0;
+}
+.empty-state__action { margin-top: var(--space-2); }
+
+
+/* ===================================================================
+   4. Inline alert — banner with semantic status accent
+   Tinted surface + left accent bar + icon slot + body + optional close.
+   Variants: .alert--info · .alert--success (teal) · .alert--warning · .alert--error.
+   Mirrors the toast feedback look, flattened into an inline banner.
+   =================================================================== */
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-divider);
+  border-left: 3px solid var(--color-info);
+  border-radius: var(--radius-md);
+}
+.alert__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px; height: 22px;
+  margin-top: 1px;
+  color: var(--color-info);
+}
+.alert__icon svg { width: 22px; height: 22px; }
+.alert__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.alert__title {
+  font-family: var(--font-primary);
+  font-size: 15px; font-weight: 700;
+  color: var(--text-primary);
+}
+.alert__msg {
+  font-family: var(--font-primary);
+  font-size: 14px; line-height: 1.45;
+  color: var(--text-muted);
+}
+.alert__close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: color var(--duration-standard) var(--easing-standard);
+}
+.alert__close svg { width: 18px; height: 18px; }
+.alert__close:hover,
+.alert__close.is-hover { color: var(--text-primary); }
+
+/* Variant accents — left bar + icon tint pulled from the semantic tokens */
+.alert--info    { border-left-color: var(--color-info); }
+.alert--info    .alert__icon { color: var(--color-info); }
+.alert--success { border-left-color: var(--color-success); }
+.alert--success .alert__icon { color: var(--color-success); }
+.alert--warning { border-left-color: var(--color-warning); }
+.alert--warning .alert__icon { color: var(--color-warning); }
+.alert--error   { border-left-color: var(--color-error); }
+.alert--error   .alert__icon { color: var(--color-error); }
+
+
+/* ===================================================================
+   5. Divider — separators
+   Default horizontal rule · .divider--vertical · .divider--label
+   (centered text flanked by lines). Uses --color-divider.
+   =================================================================== */
+.divider {
+  border: none;
+  height: 1px;
+  width: 100%;
+  margin: var(--space-6) 0;
+  background: var(--color-divider);
+}
+.divider--vertical {
+  width: 1px;
+  height: auto;
+  align-self: stretch;
+  min-height: 24px;
+  margin: 0 var(--space-6);
+  background: var(--color-divider);
+}
+.divider--label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: auto;
+  background: none;
+  font-family: var(--font-primary);
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.divider--label::before,
+.divider--label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-divider);
+}
+/* ===================================================================
+   Curie — Batch D · Tier-3 composites (net-new, token-driven, dark)
+   All color/space/radius/motion via var(--…) from tokens.css.
+   State pattern mirrors .btn: each real pseudo-class is paired with a
+   pinned .is-* helper so docs specimens render states statically.
+   =================================================================== */
+
+
+/* ===================================================================
+   1. TABLE  (data-display) — .table
+   Readable dark data grid. Header cell .table__cell--head, zebra via
+   .table--zebra, row hover, right-align helper .table__cell--right.
+   Divider rules come from --color-divider so it reads on the canvas.
+   =================================================================== */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  color: var(--text-body);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-purple-card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card-glow);
+}
+.table__head { background: var(--surface-white-03); }
+.table__cell {
+  padding: var(--space-4) var(--space-6);
+  text-align: left;
+  border-bottom: 1px solid var(--color-divider);
+  vertical-align: middle;
+}
+.table__cell--head {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.table__cell--right { text-align: right; }
+/* last row loses its rule so it sits flush to the rounded frame */
+.table__row:last-child .table__cell { border-bottom: none; }
+/* zebra: tint odd body rows with a whisper-thin white surface */
+.table--zebra .table__row:nth-child(odd) .table__cell { background: var(--surface-white-03); }
+/* row hover (real + pinned) */
+.table__row:hover .table__cell,
+.table__row.is-hover .table__cell {
+  background: var(--surface-white-06);
+  color: var(--text-bright);
+  transition: background var(--duration-standard) var(--easing-standard),
+              color var(--duration-standard) var(--easing-standard);
+}
+
+
+/* ===================================================================
+   2. PAGINATION  (navigation) — .pagination
+   Pill page items; purple current (.is-active); dimmed .is-disabled.
+   prev/next .pagination__nav carry chevrons.
+   =================================================================== */
+.pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-primary);
+}
+.pagination__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 var(--space-3);
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--surface-white-05);
+  border: 1px solid var(--surface-white-border-12);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition: background var(--duration-standard) var(--easing-standard),
+              border-color var(--duration-standard) var(--easing-standard),
+              color var(--duration-standard) var(--easing-standard),
+              transform var(--duration-fast) var(--easing-standard);
+}
+.pagination__item:hover,
+.pagination__item.is-hover {
+  background: var(--surface-white-08);
+  border-color: var(--surface-white-border-18);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+/* current page — the single purple accent */
+.pagination__item.is-active {
+  background: var(--color-purple-primary);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(75,63,167,0.28);
+  cursor: default;
+}
+.pagination__item.is-active:hover { transform: none; }
+/* disabled (typically prev at page 1 / next at last) */
+.pagination__item.is-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+/* prev / next arrows — same pill, holds an svg chevron */
+.pagination__nav svg { width: 16px; height: 16px; display: block; }
+/* ellipsis gap marker */
+.pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 38px;
+  color: var(--text-tertiary);
+  font-weight: 700;
+}
+
+
+/* ===================================================================
+   3. BREADCRUMB  (navigation) — .breadcrumb
+   Trail of links + chevron separators; muted crumbs step up to a
+   bright current crumb via .breadcrumb__item.is-current.
+   =================================================================== */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-family: var(--font-primary);
+  font-size: 13px;
+}
+.breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: var(--radius-xs);
+  padding: 2px var(--space-2);
+  transition: color var(--duration-standard) var(--easing-standard),
+              background var(--duration-standard) var(--easing-standard);
+}
+.breadcrumb__item:hover,
+.breadcrumb__item.is-hover {
+  color: var(--text-primary);
+  background: var(--surface-white-05);
+}
+/* current page — brightest crumb, non-interactive */
+.breadcrumb__item.is-current {
+  color: var(--text-primary);
+  font-weight: 700;
+  background: transparent;
+  cursor: default;
+  pointer-events: none;
+}
+/* separator — chevron/slash between crumbs */
+.breadcrumb__sep {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-ghost);
+  user-select: none;
+}
+.breadcrumb__sep svg { width: 14px; height: 14px; display: block; }
+
+
+/* ===================================================================
+   4. STEPPER  (navigation) — .stepper
+   Horizontal progress across .step items with connector lines.
+   States: .is-complete (teal check) · .is-active (purple, ringed) ·
+   .is-upcoming (quiet). Marker holds a number or a check svg.
+   =================================================================== */
+.stepper {
+  display: flex;
+  align-items: flex-start;
+  font-family: var(--font-primary);
+  width: 100%;
+}
+.step {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+/* connector — drawn from each step's marker toward the next */
+.step::after {
+  content: "";
+  position: absolute;
+  top: 17px; /* half of 34px marker */
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--surface-white-border-12);
+}
+.step:last-child::after { display: none; }
+/* completed connectors read as teal progress */
+.step.is-complete::after { background: var(--color-teal-primary); }
+.step__marker {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--color-bg-card);
+  border: 2px solid var(--surface-white-border-18);
+  transition: background var(--duration-standard) var(--easing-standard),
+              border-color var(--duration-standard) var(--easing-standard),
+              color var(--duration-standard) var(--easing-standard);
+}
+.step__marker svg { width: 16px; height: 16px; display: block; }
+.step__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  max-width: 12ch;
+}
+/* complete — teal check marker, teal label */
+.step.is-complete .step__marker {
+  background: var(--color-teal-tag-bg);
+  border-color: var(--color-teal-primary);
+  color: var(--color-teal-primary);
+}
+.step.is-complete .step__label { color: var(--text-secondary); }
+/* active — filled purple, soft focus ring, bright label */
+.step.is-active .step__marker {
+  background: var(--color-purple-primary);
+  border-color: var(--color-purple-accent);
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(124,92,252,0.25);
+}
+.step.is-active .step__label { color: var(--text-primary); font-weight: 700; }
+/* upcoming — quiet, default marker (explicit for clarity) */
+.step.is-upcoming .step__marker { color: var(--text-tertiary); }
+.step.is-upcoming .step__label { color: var(--text-faint); }
+
+
+/* ===================================================================
+   5. SLIDER  (forms) — .slider
+   Styled range control: track + fill + thumb. Fill width and thumb
+   position are the only inline paint the snippet carries (data-driven).
+   States: focus (.is-focus ring) · disabled (.is-disabled dim).
+   .slider--native wraps a real <input type=range> with matching skin.
+   =================================================================== */
+.slider {
+  position: relative;
+  width: 100%;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  user-select: none;
+}
+.slider__track {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-white-08);
+}
+.slider__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-progress); /* blue→green track fill */
+}
+.slider__thumb {
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--color-purple-accent);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  transition: box-shadow var(--duration-standard) var(--easing-standard),
+              transform var(--duration-fast) var(--easing-standard);
+}
+.slider:hover .slider__thumb,
+.slider.is-hover .slider__thumb { box-shadow: 0 2px 12px rgba(124,92,252,0.5); }
+/* focus — purple ring on the thumb (real + pinned) */
+.slider:focus-within .slider__thumb,
+.slider.is-focus .slider__thumb {
+  box-shadow: 0 0 0 6px rgba(124,92,252,0.3);
+}
+/* disabled — desaturate + block interaction */
+.slider.is-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.slider.is-disabled .slider__fill { background: var(--surface-white-border-22); }
+.slider.is-disabled .slider__thumb { border-color: var(--text-tertiary); }
+
+/* ----- Native variant: real <input type=range> skinned to match ----- */
+.slider--native {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-white-08);
+  cursor: pointer;
+  outline: none;
+}
+.slider--native::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--color-purple-accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+.slider--native::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--color-purple-accent);
+}
+.slider--native:focus-visible { box-shadow: 0 0 0 4px rgba(124,92,252,0.3); }
+.slider--native:disabled { opacity: 0.4; cursor: not-allowed; }

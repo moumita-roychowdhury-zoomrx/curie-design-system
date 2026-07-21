@@ -2,12 +2,13 @@
   "$schema": "curie-components-manifest/v1",
   "name": "Curie Component Manifest",
   "description": "Machine-readable catalog of Curie UI components. Each entry carries identity (what it is), usage judgment (when to reach for it), anatomy, and a canonical HTML snippet extracted verbatim from the golden pages. Styling lives in components.css / layout.css — snippets carry no inline paint. This file drives the docs site build AND is the primary consumption surface for AI agents/plugins.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "cssDependencies": [
     "tokens.css",
     "components.css",
     "layout.css",
-    "utilities.css"
+    "utilities.css",
+    "responsive.css"
   ],
   "components": [
     {
@@ -1082,6 +1083,980 @@
           "label": "Info (no close)",
           "previewWidth": 520,
           "snippet": "<div class=\"toast toast--info\"><div class=\"toast__disc\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M11 7h2v2h-2V7zm0 4h2v6h-2v-6z\"/></svg></div><div class=\"toast__body\"><div class=\"toast__title\">New daily brief</div><div class=\"toast__msg\">Today's oncology briefing is ready.</div></div></div>"
+        }
+      ]
+    },
+    {
+      "id": "modal",
+      "name": "Modal",
+      "category": "feedback",
+      "status": "stable",
+      "purpose": "A centered dialog card layered over a dimmed overlay to focus the user on a single decision or task.",
+      "whenToUse": "Use to interrupt the flow for a short, self-contained action such as a confirmation, form, or focused message.",
+      "whenNotToUse": "Do not use for non-blocking or transient notices, or for content large enough to warrant its own page.",
+      "anatomy": [
+        "modal__overlay",
+        "modal",
+        "modal__header",
+        "modal__title",
+        "modal__close",
+        "modal__body",
+        "modal__footer"
+      ],
+      "interactions": "The overlay opens with .is-open; the close button lifts and rings on hover and focus, and footer actions dismiss or confirm.",
+      "sourcePage": "components.css",
+      "previewWidth": 520,
+      "previewHeight": 360,
+      "snippet": "<div class=\"modal__overlay is-open\"><div class=\"modal\"><div class=\"modal__header\"><h3 class=\"modal__title\">Archive this brief?</h3><button class=\"modal__close\" aria-label=\"Close\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button></div><div class=\"modal__body\"><p>Archived briefs move to your library and stop appearing in the daily feed. You can restore them at any time.</p></div><div class=\"modal__footer\"><button class=\"btn btn--secondary\">Cancel</button><button class=\"btn btn--primary\">Archive</button></div></div></div>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Close — default",
+          "snippet": "<button class=\"modal__close\" aria-label=\"Close\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button>"
+        },
+        {
+          "name": "hover",
+          "label": "Close — hover",
+          "snippet": "<button class=\"modal__close is-hover\" aria-label=\"Close\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button>"
+        },
+        {
+          "name": "focus",
+          "label": "Close — focus",
+          "snippet": "<button class=\"modal__close is-focus\" aria-label=\"Close\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button>"
+        },
+        {
+          "name": "active",
+          "label": "Close — active",
+          "snippet": "<button class=\"modal__close is-active\" aria-label=\"Close\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button>"
+        }
+      ]
+    },
+    {
+      "id": "accordion",
+      "name": "Accordion",
+      "category": "data-display",
+      "status": "stable",
+      "purpose": "A vertical stack of expandable items that disclose their panel content one section at a time.",
+      "whenToUse": "Use to compress long, scannable content such as FAQs or grouped details into collapsible sections.",
+      "whenNotToUse": "Do not use when all content must be visible at once or when there is only a single short passage.",
+      "anatomy": [
+        "accordion",
+        "accordion__item",
+        "accordion__trigger",
+        "accordion__icon",
+        "accordion__panel"
+      ],
+      "interactions": "Clicking a trigger toggles .is-open on its item, rotating the chevron and revealing the panel; items lift on hover.",
+      "sourcePage": "components.css",
+      "previewWidth": 560,
+      "previewHeight": 300,
+      "snippet": "<div class=\"accordion\"><div class=\"accordion__item is-open\"><button class=\"accordion__trigger\">What is included in a daily brief?<span class=\"accordion__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m6 9 6 6 6-6\"/></svg></span></button><div class=\"accordion__panel\"><p>Each brief distills the most relevant studies, approvals, and commentary for your specialty into a five-minute read.</p></div></div><div class=\"accordion__item\"><button class=\"accordion__trigger\">How often are briefs updated?<span class=\"accordion__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m6 9 6 6 6-6\"/></svg></span></button><div class=\"accordion__panel\"><p>Briefs refresh every morning before 7am in your local time zone.</p></div></div></div>",
+      "states": [
+        {
+          "name": "open",
+          "label": "Item — open",
+          "snippet": "<div class=\"accordion\"><div class=\"accordion__item is-open\"><button class=\"accordion__trigger\">How often are briefs updated?<span class=\"accordion__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m6 9 6 6 6-6\"/></svg></span></button><div class=\"accordion__panel\"><p>Briefs refresh every morning before 7am in your local time zone.</p></div></div></div>"
+        },
+        {
+          "name": "closed",
+          "label": "Item — closed",
+          "snippet": "<div class=\"accordion\"><div class=\"accordion__item\"><button class=\"accordion__trigger\">How often are briefs updated?<span class=\"accordion__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m6 9 6 6 6-6\"/></svg></span></button><div class=\"accordion__panel\"><p>Briefs refresh every morning before 7am in your local time zone.</p></div></div></div>"
+        },
+        {
+          "name": "hover",
+          "label": "Item — hover",
+          "snippet": "<div class=\"accordion\"><div class=\"accordion__item is-hover\"><button class=\"accordion__trigger\">How often are briefs updated?<span class=\"accordion__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m6 9 6 6 6-6\"/></svg></span></button><div class=\"accordion__panel\"><p>Briefs refresh every morning before 7am in your local time zone.</p></div></div></div>"
+        }
+      ]
+    },
+    {
+      "id": "tooltip",
+      "name": "Tooltip",
+      "category": "feedback",
+      "status": "stable",
+      "purpose": "A small floating bubble that reveals a short label or hint for the element it wraps.",
+      "whenToUse": "Use to clarify an icon-only control or add a brief supplemental note on hover or focus.",
+      "whenNotToUse": "Do not use for essential content, long text, or anything that must remain visible or be interacted with.",
+      "anatomy": [
+        "tooltip",
+        "tooltip__bubble"
+      ],
+      "interactions": "The bubble fades and slides in on hover, keyboard focus-within, or a pinned .is-open, and points at the trigger via its arrow.",
+      "sourcePage": "components.css",
+      "previewWidth": 360,
+      "previewHeight": 200,
+      "snippet": "<span class=\"tooltip is-open\"><button class=\"btn btn--round btn--glass\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z\"/></svg></button><span class=\"tooltip__bubble\">Save to library</span></span>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Hidden (rest)",
+          "snippet": "<span class=\"tooltip\"><button class=\"btn btn--round btn--glass\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z\"/></svg></button><span class=\"tooltip__bubble\">Save to library</span></span>"
+        },
+        {
+          "name": "hover",
+          "label": "Shown (open)",
+          "snippet": "<span class=\"tooltip is-open\"><button class=\"btn btn--round btn--glass\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z\"/></svg></button><span class=\"tooltip__bubble\">Save to library</span></span>"
+        }
+      ]
+    },
+    {
+      "id": "dropdown-menu",
+      "name": "Dropdown Menu",
+      "category": "navigation",
+      "status": "stable",
+      "purpose": "A trigger that opens a floating list of actions or selectable options anchored beneath it.",
+      "whenToUse": "Use to group related commands or a filter's choices behind a single compact control.",
+      "whenNotToUse": "Do not use for primary navigation between pages or for a long option set better served by a full page or search.",
+      "anatomy": [
+        "dropdown",
+        "dropdown__trigger",
+        "dropdown__menu",
+        "dropdown__item"
+      ],
+      "interactions": "The trigger flips its chevron and toggles .is-open on the menu; items highlight on hover and mark the current choice with .is-active.",
+      "sourcePage": "components.css",
+      "previewWidth": 380,
+      "previewHeight": 320,
+      "snippet": "<div class=\"dropdown is-open\"><button class=\"dropdown__trigger\">Sort: Newest<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m6 9 6 6 6-6\"/></svg></button><div class=\"dropdown__menu\"><button class=\"dropdown__item is-active\">Newest first</button><button class=\"dropdown__item\">Oldest first</button><button class=\"dropdown__item\">Most read</button><button class=\"dropdown__item is-disabled\" disabled>Recommended</button></div></div>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Item — default",
+          "snippet": "<div class=\"dropdown\"><div class=\"dropdown__menu is-open\" style=\"position:static\"><button class=\"dropdown__item\">Oldest first</button></div></div>"
+        },
+        {
+          "name": "hover",
+          "label": "Item — hover",
+          "snippet": "<div class=\"dropdown\"><div class=\"dropdown__menu is-open\" style=\"position:static\"><button class=\"dropdown__item is-hover\">Oldest first</button></div></div>"
+        },
+        {
+          "name": "active",
+          "label": "Item — selected",
+          "snippet": "<div class=\"dropdown\"><div class=\"dropdown__menu is-open\" style=\"position:static\"><button class=\"dropdown__item is-active\">Newest first</button></div></div>"
+        },
+        {
+          "name": "disabled",
+          "label": "Item — disabled",
+          "snippet": "<div class=\"dropdown\"><div class=\"dropdown__menu is-open\" style=\"position:static\"><button class=\"dropdown__item is-disabled\" disabled>Recommended</button></div></div>"
+        }
+      ]
+    },
+    {
+      "id": "tabs",
+      "name": "Tabs",
+      "category": "navigation",
+      "status": "stable",
+      "purpose": "A horizontal control that switches a single content region between several peer views.",
+      "whenToUse": "Use to divide related content into a few named sections the user toggles between in place.",
+      "whenNotToUse": "Do not use for sequential steps, for a single view, or when the number of sections would overflow the row.",
+      "anatomy": [
+        "tabs",
+        "tabs__list",
+        "tab",
+        "tabs__panel"
+      ],
+      "interactions": "Selecting a tab pins .is-active with a raised pill; inactive tabs brighten on hover and each tab shows a focus ring.",
+      "sourcePage": "components.css",
+      "previewWidth": 480,
+      "previewHeight": 220,
+      "snippet": "<div class=\"tabs\"><div class=\"tabs__list\"><button class=\"tab is-active\">Overview</button><button class=\"tab\">Studies</button><button class=\"tab\">Discussion</button><button class=\"tab is-disabled\" disabled>Archive</button></div><div class=\"tabs__panel\">A high-level summary of the latest findings and why they matter to your practice.</div></div>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Tab — default",
+          "snippet": "<div class=\"tabs__list\"><button class=\"tab\">Studies</button></div>"
+        },
+        {
+          "name": "hover",
+          "label": "Tab — hover",
+          "snippet": "<div class=\"tabs__list\"><button class=\"tab is-hover\">Studies</button></div>"
+        },
+        {
+          "name": "active",
+          "label": "Tab — active",
+          "snippet": "<div class=\"tabs__list\"><button class=\"tab is-active\">Overview</button></div>"
+        },
+        {
+          "name": "focus",
+          "label": "Tab — focus",
+          "snippet": "<div class=\"tabs__list\"><button class=\"tab is-focus\">Studies</button></div>"
+        },
+        {
+          "name": "disabled",
+          "label": "Tab — disabled",
+          "snippet": "<div class=\"tabs__list\"><button class=\"tab is-disabled\" disabled>Archive</button></div>"
+        }
+      ]
+    },
+    {
+      "id": "progress",
+      "name": "Progress",
+      "category": "feedback",
+      "status": "stable",
+      "purpose": "A determinate horizontal bar that shows how far a task or value has advanced toward completion.",
+      "whenToUse": "Use when the completion percentage is known, such as an upload, a reading position, or a multi-step form.",
+      "whenNotToUse": "Do not use for indefinite waits with no measurable progress, or for a single boolean done/not-done state.",
+      "anatomy": [
+        "progress",
+        "progress__label",
+        "progress__track",
+        "progress__fill"
+      ],
+      "interactions": "The fill animates its width from the inline percentage toward the target, carrying the teal-to-blue progress gradient.",
+      "sourcePage": "components.css",
+      "previewWidth": 460,
+      "previewHeight": 200,
+      "snippet": "<div class=\"progress\"><div class=\"progress__label\"><span>Reading progress</span><span>60%</span></div><div class=\"progress__track\"><div class=\"progress__fill\" style=\"width:60%\"></div></div></div>",
+      "states": [
+        {
+          "name": "25",
+          "label": "25%",
+          "snippet": "<div class=\"progress\"><div class=\"progress__track\"><div class=\"progress__fill\" style=\"width:25%\"></div></div></div>"
+        },
+        {
+          "name": "60",
+          "label": "60%",
+          "snippet": "<div class=\"progress\"><div class=\"progress__track\"><div class=\"progress__fill\" style=\"width:60%\"></div></div></div>"
+        },
+        {
+          "name": "100",
+          "label": "100%",
+          "snippet": "<div class=\"progress\"><div class=\"progress__track\"><div class=\"progress__fill\" style=\"width:100%\"></div></div></div>"
+        }
+      ]
+    },
+    {
+      "id": "avatar",
+      "name": "Avatar",
+      "category": "data-display",
+      "status": "stable",
+      "purpose": "A compact circular representation of a person via their photo or initials fallback, alone or stacked in a group.",
+      "whenToUse": "Use to identify an author, member, or participant, and to stack a group to imply a set of collaborators.",
+      "whenNotToUse": "Do not use for non-person entities better shown with an icon, or where a full name label is required for clarity.",
+      "anatomy": [
+        "avatar",
+        "avatar--sm",
+        "avatar--md",
+        "avatar--lg",
+        "avatar__fallback",
+        "avatar-group"
+      ],
+      "interactions": "Avatars lift and glow on hover; grouped avatars overlap and raise the hovered one above its neighbours.",
+      "sourcePage": "components.css",
+      "previewWidth": 420,
+      "previewHeight": 220,
+      "snippet": "<div class=\"avatar-group\"><span class=\"avatar avatar--md\"><img src=\"https://i.pravatar.cc/80?img=12\" alt=\"\"></span><span class=\"avatar avatar--md\"><span class=\"avatar__fallback\">MR</span></span><span class=\"avatar avatar--md\"><img src=\"https://i.pravatar.cc/80?img=32\" alt=\"\"></span><span class=\"avatar avatar--md\"><span class=\"avatar__fallback\">+4</span></span></div>",
+      "variants": [
+        {
+          "name": "sm",
+          "label": "Small",
+          "snippet": "<span class=\"avatar avatar--sm\"><span class=\"avatar__fallback\">MR</span></span>"
+        },
+        {
+          "name": "md",
+          "label": "Medium",
+          "snippet": "<span class=\"avatar avatar--md\"><span class=\"avatar__fallback\">MR</span></span>"
+        },
+        {
+          "name": "lg",
+          "label": "Large",
+          "snippet": "<span class=\"avatar avatar--lg\"><span class=\"avatar__fallback\">MR</span></span>"
+        },
+        {
+          "name": "image",
+          "label": "Photo",
+          "snippet": "<span class=\"avatar avatar--lg\"><img src=\"https://i.pravatar.cc/120?img=12\" alt=\"\"></span>"
+        },
+        {
+          "name": "fallback",
+          "label": "Initials fallback",
+          "snippet": "<span class=\"avatar avatar--lg\"><span class=\"avatar__fallback\">JD</span></span>"
+        },
+        {
+          "name": "group",
+          "label": "Group",
+          "snippet": "<div class=\"avatar-group\"><span class=\"avatar avatar--md\"><img src=\"https://i.pravatar.cc/80?img=12\" alt=\"\"></span><span class=\"avatar avatar--md\"><span class=\"avatar__fallback\">MR</span></span><span class=\"avatar avatar--md\"><span class=\"avatar__fallback\">+4</span></span></div>"
+        }
+      ],
+      "states": [
+        {
+          "name": "default",
+          "label": "Default",
+          "snippet": "<span class=\"avatar avatar--md\"><span class=\"avatar__fallback\">MR</span></span>"
+        },
+        {
+          "name": "hover",
+          "label": "Hover",
+          "snippet": "<span class=\"avatar avatar--md is-hover\"><span class=\"avatar__fallback\">MR</span></span>"
+        }
+      ]
+    },
+    {
+      "id": "badge",
+      "name": "Badge",
+      "category": "data-display",
+      "status": "stable",
+      "purpose": "A small pill that labels or categorizes an item with a tinted status, plus a removable tag variant.",
+      "whenToUse": "Use to tag status, type, or category inline, and use the tag variant for user-removable filters or keywords.",
+      "whenNotToUse": "Do not use for interactive actions best served by a button, or for long phrases that would break the pill shape.",
+      "anatomy": [
+        "badge",
+        "badge--neutral",
+        "badge--purple",
+        "badge--teal",
+        "badge--blue",
+        "badge--pink",
+        "badge--tag",
+        "badge__remove"
+      ],
+      "interactions": "Tint variants are static labels; the tag variant adds a remove button that highlights and scales on hover, focus, and press.",
+      "sourcePage": "components.css",
+      "previewWidth": 460,
+      "previewHeight": 200,
+      "snippet": "<div style=\"display:flex;gap:10px;flex-wrap:wrap;align-items:center\"><span class=\"badge badge--purple\">Oncology</span><span class=\"badge badge--teal\">New</span><span class=\"badge badge--blue\">Phase III</span><span class=\"badge badge--pink\">Featured</span><span class=\"badge badge--neutral\">Draft</span><span class=\"badge badge--purple badge--tag\">Cardiology<button class=\"badge__remove\" aria-label=\"Remove\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button></span></div>",
+      "variants": [
+        {
+          "name": "neutral",
+          "label": "Neutral",
+          "snippet": "<span class=\"badge badge--neutral\">Draft</span>"
+        },
+        {
+          "name": "purple",
+          "label": "Purple",
+          "snippet": "<span class=\"badge badge--purple\">Oncology</span>"
+        },
+        {
+          "name": "teal",
+          "label": "Teal",
+          "snippet": "<span class=\"badge badge--teal\">New</span>"
+        },
+        {
+          "name": "blue",
+          "label": "Blue",
+          "snippet": "<span class=\"badge badge--blue\">Phase III</span>"
+        },
+        {
+          "name": "pink",
+          "label": "Pink",
+          "snippet": "<span class=\"badge badge--pink\">Featured</span>"
+        },
+        {
+          "name": "tag",
+          "label": "Removable tag",
+          "snippet": "<span class=\"badge badge--purple badge--tag\">Cardiology<button class=\"badge__remove\" aria-label=\"Remove\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button></span>"
+        }
+      ],
+      "states": [
+        {
+          "name": "default",
+          "label": "Remove — default",
+          "snippet": "<span class=\"badge badge--purple badge--tag\">Cardiology<button class=\"badge__remove\" aria-label=\"Remove\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button></span>"
+        },
+        {
+          "name": "hover",
+          "label": "Remove — hover",
+          "snippet": "<span class=\"badge badge--purple badge--tag\">Cardiology<button class=\"badge__remove is-hover\" aria-label=\"Remove\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button></span>"
+        }
+      ]
+    },
+    {
+      "id": "icon-button",
+      "name": "Icon Button",
+      "category": "actions",
+      "status": "stable",
+      "purpose": "A circular, icon-only action for compact controls (play/pause, carousel nav, close, more) where a labelled button would be too heavy. It reuses the existing round-button family from the golden set rather than introducing new paint.",
+      "whenToUse": "For a single glyph action in tight space — media transport, card overflow menus, carousel arrows, toolbar controls. Always pair it with an accessible name (aria-label or a visually-hidden btn__sr span).",
+      "whenNotToUse": "When the action needs a text label to be understood, or when it is the page's single loud primary CTA (use the full pill Button instead). Never ship it without an accessible name.",
+      "anatomy": [
+        "btn btn--round (base circle; add btn--primary for solid purple, btn--glass for frosted, btn--sm/btn--lg to resize)",
+        "inline svg glyph (18px default, scales with size)",
+        "btn__sr (optional visually-hidden accessible label)"
+      ],
+      "interactions": "Hover lifts and brightens (scale + surface), focus shows a purple ring, active presses in (scale 0.96), disabled dims to 0.4 and blocks pointer events. Real states use :hover/:focus-visible/:active/:disabled; pinned .is-hover/.is-focus/.is-active/.is-disabled force a state for docs.",
+      "sourcePage": "components.css",
+      "previewWidth": 420,
+      "previewHeight": 200,
+      "snippet": "<div style=\"display:flex;gap:16px;align-items:center\">\n  <button class=\"btn btn--round\" aria-label=\"Previous\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"/></svg></button>\n  <button class=\"btn btn--round btn--primary\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg></button>\n  <button class=\"btn btn--round btn--glass\" aria-label=\"Next\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></button>\n  <button class=\"btn btn--round btn--lg\" aria-label=\"Add\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"19\"/><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/></svg></button>\n</div>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Default",
+          "snippet": "<button class=\"btn btn--round btn--primary\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg></button>"
+        },
+        {
+          "name": "hover",
+          "label": "Hover",
+          "snippet": "<button class=\"btn btn--round btn--primary is-hover\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg></button>"
+        },
+        {
+          "name": "focus",
+          "label": "Focus",
+          "snippet": "<button class=\"btn btn--round btn--primary is-focus\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg></button>"
+        },
+        {
+          "name": "active",
+          "label": "Active",
+          "snippet": "<button class=\"btn btn--round btn--primary is-active\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg></button>"
+        },
+        {
+          "name": "disabled",
+          "label": "Disabled",
+          "snippet": "<button class=\"btn btn--round btn--primary is-disabled\" disabled aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg></button>"
+        }
+      ]
+    },
+    {
+      "id": "checkbox",
+      "name": "Checkbox",
+      "category": "forms",
+      "status": "stable",
+      "purpose": "A single binary or tri-state control for opt-in choices and multi-select lists. It styles a real native checkbox, so keyboard, focus, and assistive-tech behaviour come for free while the box picks up the Curie purple fill.",
+      "whenToUse": "For independent on/off choices, 'select all' rows (indeterminate), and any list where more than one option can be picked. Wrap the input and its text in a single <label class=\"checkbox\"> so the whole row is clickable.",
+      "whenNotToUse": "For mutually exclusive options (use radio) or an immediate settings switch (use toggle). Not for a primary action.",
+      "anatomy": [
+        "checkbox (label wrapper, click target)",
+        "checkbox__control (real input[type=checkbox], appearance:none, purple fill on :checked)",
+        "checkbox__label (text)"
+      ],
+      "interactions": "Hover brightens the border; :checked/.is-checked fills purple with a white check; .is-indeterminate shows a purple dash; :focus-visible/.is-focus shows a purple ring; :disabled/.is-disabled dims the control and mutes the label.",
+      "sourcePage": "components.css",
+      "previewWidth": 380,
+      "previewHeight": 260,
+      "snippet": "<div style=\"display:flex;flex-direction:column;gap:14px\">\n  <label class=\"checkbox\"><input type=\"checkbox\" class=\"checkbox__control\" checked><span class=\"checkbox__label\">Include oncology briefs</span></label>\n  <label class=\"checkbox\"><input type=\"checkbox\" class=\"checkbox__control\"><span class=\"checkbox__label\">Weekly digest email</span></label>\n  <label class=\"checkbox\"><input type=\"checkbox\" class=\"checkbox__control is-indeterminate\"><span class=\"checkbox__label\">All therapeutic areas</span></label>\n  <label class=\"checkbox\"><input type=\"checkbox\" class=\"checkbox__control\" disabled><span class=\"checkbox__label\">Beta features (unavailable)</span></label>\n</div>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Unchecked",
+          "snippet": "<label class=\"checkbox\"><input type=\"checkbox\" class=\"checkbox__control\"><span class=\"checkbox__label\">Weekly digest email</span></label>"
+        },
+        {
+          "name": "checked",
+          "label": "Checked",
+          "snippet": "<label class=\"checkbox\"><input type=\"checkbox\" class=\"checkbox__control\" checked><span class=\"checkbox__label\">Weekly digest email</span></label>"
+        },
+        {
+          "name": "indeterminate",
+          "label": "Indeterminate",
+          "snippet": "<label class=\"checkbox\"><input type=\"checkbox\" class=\"checkbox__control is-indeterminate\"><span class=\"checkbox__label\">All therapeutic areas</span></label>"
+        },
+        {
+          "name": "focus",
+          "label": "Focus",
+          "snippet": "<label class=\"checkbox\"><input type=\"checkbox\" class=\"checkbox__control is-focus\" checked><span class=\"checkbox__label\">Weekly digest email</span></label>"
+        },
+        {
+          "name": "disabled",
+          "label": "Disabled",
+          "snippet": "<label class=\"checkbox is-disabled\"><input type=\"checkbox\" class=\"checkbox__control\" disabled><span class=\"checkbox__label\">Beta features</span></label>"
+        }
+      ]
+    },
+    {
+      "id": "textarea",
+      "name": "Textarea",
+      "category": "forms",
+      "status": "stable",
+      "purpose": "A multiline text input on the Curie form surface for longer free-text — notes, feedback, message bodies. It matches the single-line input surface and radius so forms read as one system.",
+      "whenToUse": "When a response can run to multiple lines or paragraphs. Keep it vertically resizable so users can expand for longer answers.",
+      "whenNotToUse": "For short single-line values (use a text/search input) or fixed-option choices (use select/checkbox/radio).",
+      "anatomy": [
+        "textarea (the multiline control; add is-error for validation failure, disabled to lock)"
+      ],
+      "interactions": "Hover shows a faint border; :focus/.is-focus brightens the surface with a purple border + ring; .is-error paints the error surface and red border (and a red ring on focus); :disabled/.is-disabled dims and stops resizing.",
+      "sourcePage": "components.css",
+      "previewWidth": 460,
+      "previewHeight": 220,
+      "snippet": "<textarea class=\"textarea\" placeholder=\"Share your notes on this brief…\">Curie's summary tracked the KOL sentiment well — worth flagging the dosing caveat in the next digest.</textarea>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Default",
+          "snippet": "<textarea class=\"textarea\" placeholder=\"Share your notes on this brief…\"></textarea>"
+        },
+        {
+          "name": "focus",
+          "label": "Focus",
+          "snippet": "<textarea class=\"textarea is-focus\" placeholder=\"Share your notes on this brief…\">Typing a longer note…</textarea>"
+        },
+        {
+          "name": "error",
+          "label": "Error",
+          "snippet": "<textarea class=\"textarea is-error\" placeholder=\"Share your notes on this brief…\">Too short</textarea>"
+        },
+        {
+          "name": "disabled",
+          "label": "Disabled",
+          "snippet": "<textarea class=\"textarea\" disabled placeholder=\"Notes are locked…\"></textarea>"
+        }
+      ]
+    },
+    {
+      "id": "search-input",
+      "name": "Search Input",
+      "category": "forms",
+      "status": "stable",
+      "purpose": "A pill-shaped search field with a leading magnifier and an optional clear button, for filtering lists of briefs, podcasts, or editorial items.",
+      "whenToUse": "Any time content can be filtered or looked up by keyword. Show the clear button once the field has a value so users can reset in one click.",
+      "whenNotToUse": "For general free-text entry (use a plain input) or multi-line text (use textarea). Not a substitute for structured filters when facets are needed.",
+      "anatomy": [
+        "search (pill wrapper, lights up on focus-within)",
+        "search__icon (leading magnifier svg)",
+        "search__input (the text field)",
+        "search__clear (optional trailing reset button)"
+      ],
+      "interactions": "The whole wrapper brightens with a purple border + ring on focus-within (or pinned .is-focus). The clear button brightens on hover and resets the field. .is-disabled dims the wrapper and blocks input.",
+      "sourcePage": "components.css",
+      "previewWidth": 460,
+      "previewHeight": 180,
+      "snippet": "<div class=\"search\">\n  <svg class=\"search__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg>\n  <input class=\"search__input\" type=\"search\" value=\"oncology\" placeholder=\"Search briefs…\">\n  <button class=\"search__clear\" aria-label=\"Clear search\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button>\n</div>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Default",
+          "snippet": "<div class=\"search\"><svg class=\"search__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg><input class=\"search__input\" type=\"search\" placeholder=\"Search briefs…\"></div>"
+        },
+        {
+          "name": "focus",
+          "label": "Focus",
+          "snippet": "<div class=\"search is-focus\"><svg class=\"search__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg><input class=\"search__input\" type=\"search\" value=\"oncology\" placeholder=\"Search briefs…\"><button class=\"search__clear\" aria-label=\"Clear search\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button></div>"
+        },
+        {
+          "name": "disabled",
+          "label": "Disabled",
+          "snippet": "<div class=\"search is-disabled\"><svg class=\"search__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg><input class=\"search__input\" type=\"search\" disabled placeholder=\"Search unavailable…\"></div>"
+        }
+      ]
+    },
+    {
+      "id": "select",
+      "name": "Select",
+      "category": "forms",
+      "status": "stable",
+      "purpose": "A styled native dropdown for choosing one value (or several with the multi variant) from a known list. It wraps a real <select>, so it keeps native keyboard and mobile picker behaviour under the Curie surface + chevron.",
+      "whenToUse": "For a single choice from a moderate, known set of options (therapeutic area, sort order). Use .select--multi with a native multiple/size select when several values may be chosen.",
+      "whenNotToUse": "For a handful of visible options where radios/toggles read better, for boolean settings, or for very large searchable datasets (use a combobox/typeahead instead).",
+      "anatomy": [
+        "select (styled native <select> with token chevron; add is-error for validation, disabled to lock)",
+        "select--multi (variant: no chevron, scrolling list for <select multiple>)",
+        "option (native options, dark card background)"
+      ],
+      "interactions": "Hover shows a faint border; :focus/.is-focus brightens the surface with a purple border + ring; .is-error paints the error surface + red border; :disabled/.is-disabled dims. In .select--multi a selected option is filled purple.",
+      "sourcePage": "components.css",
+      "previewWidth": 440,
+      "previewHeight": 200,
+      "snippet": "<select class=\"select\">\n  <option>All therapeutic areas</option>\n  <option>Oncology</option>\n  <option>Immunology</option>\n  <option>Cardiology</option>\n</select>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Default",
+          "snippet": "<select class=\"select\"><option>All therapeutic areas</option><option>Oncology</option><option>Immunology</option></select>"
+        },
+        {
+          "name": "focus",
+          "label": "Focus",
+          "snippet": "<select class=\"select is-focus\"><option>Oncology</option><option>Immunology</option></select>"
+        },
+        {
+          "name": "error",
+          "label": "Error",
+          "snippet": "<select class=\"select is-error\"><option>Select a therapeutic area…</option><option>Oncology</option></select>"
+        },
+        {
+          "name": "disabled",
+          "label": "Disabled",
+          "snippet": "<select class=\"select\" disabled><option>Locked selection</option></select>"
+        },
+        {
+          "name": "multi",
+          "label": "Multi",
+          "snippet": "<select class=\"select select--multi\" multiple size=\"4\"><option selected>Oncology</option><option>Immunology</option><option selected>Cardiology</option><option>Neurology</option></select>"
+        }
+      ]
+    },
+    {
+      "id": "link",
+      "name": "Link",
+      "category": "actions",
+      "status": "stable",
+      "purpose": "An inline text link in the brand purple, for navigating within prose or captions. It carries hover, focus, active, and visited states so it never reads as flat static text.",
+      "whenToUse": "For inline navigation inside body copy, footnotes, and captions. Use the .lnk--external variant (trailing arrow) when the destination leaves the app or opens in a new tab.",
+      "whenNotToUse": "For primary or standalone actions (use Button / Icon Button). Avoid stacking many links in one paragraph — restraint keeps the accent meaningful.",
+      "anatomy": [
+        "lnk (inline <a>, purple accent, underlined)",
+        "lnk--external (variant: appends a trailing ↗ glyph)"
+      ],
+      "interactions": "Hover shifts to the brighter accent and solidifies the underline; :active deepens to the primary purple; :visited mutes; :focus-visible/.is-focus shows a purple ring. Real states plus pinned .is-hover/.is-active/.is-focus helpers.",
+      "sourcePage": "components.css",
+      "previewWidth": 480,
+      "previewHeight": 180,
+      "snippet": "<p style=\"color:rgba(255,255,255,0.8);font-family:Manrope,sans-serif;font-size:15px;line-height:1.6;max-width:400px\">Curie summarized the latest <a class=\"lnk\" href=\"#\">oncology briefs</a> this morning. Read the full <a class=\"lnk lnk--external\" href=\"#\">study on PubMed</a> for the underlying data.</p>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Default",
+          "snippet": "<a class=\"lnk\" href=\"#\">oncology briefs</a>"
+        },
+        {
+          "name": "hover",
+          "label": "Hover",
+          "snippet": "<a class=\"lnk is-hover\" href=\"#\">oncology briefs</a>"
+        },
+        {
+          "name": "focus",
+          "label": "Focus",
+          "snippet": "<a class=\"lnk is-focus\" href=\"#\">oncology briefs</a>"
+        },
+        {
+          "name": "active",
+          "label": "Active",
+          "snippet": "<a class=\"lnk is-active\" href=\"#\">oncology briefs</a>"
+        },
+        {
+          "name": "external",
+          "label": "External",
+          "snippet": "<a class=\"lnk lnk--external\" href=\"#\">study on PubMed</a>"
+        }
+      ]
+    },
+    {
+      "id": "spinner",
+      "name": "Spinner",
+      "category": "feedback",
+      "status": "stable",
+      "purpose": "A rotating accent ring that signals an indeterminate wait — content loading, a request in flight, a background action processing.",
+      "whenToUse": "Use for short, indeterminate waits where you cannot show progress, inside buttons, cards, or overlays while data resolves.",
+      "whenNotToUse": "Do not use when you can show real progress (use a progress bar), when the wait exceeds a few seconds for a whole view (use a skeleton), or as a decorative element.",
+      "anatomy": [
+        "spinner",
+        "spinner--sm",
+        "spinner--md",
+        "spinner--lg"
+      ],
+      "interactions": "Non-interactive. Spins continuously via a CSS keyframes rotation at a steady linear cadence until removed from the DOM.",
+      "sourcePage": "components.css",
+      "previewWidth": 360,
+      "previewHeight": 160,
+      "snippet": "<div style=\"display:flex;align-items:center;gap:24px\">\n  <span class=\"spinner spinner--sm\"></span>\n  <span class=\"spinner spinner--md\"></span>\n  <span class=\"spinner spinner--lg\"></span>\n</div>",
+      "variants": [
+        {
+          "label": "Small",
+          "snippet": "<span class=\"spinner spinner--sm\"></span>"
+        },
+        {
+          "label": "Medium",
+          "snippet": "<span class=\"spinner spinner--md\"></span>"
+        },
+        {
+          "label": "Large",
+          "snippet": "<span class=\"spinner spinner--lg\"></span>"
+        }
+      ]
+    },
+    {
+      "id": "skeleton",
+      "name": "Skeleton",
+      "category": "feedback",
+      "status": "stable",
+      "purpose": "A shimmer placeholder that mirrors the shape of content still loading, reducing perceived wait and preventing layout shift.",
+      "whenToUse": "Use while a view or card's content is fetching, laying skeletons in the same footprint the real content will occupy.",
+      "whenNotToUse": "Do not use for very short waits (use a spinner), for a truly empty result (use an empty state), or as a permanent placeholder for missing data.",
+      "anatomy": [
+        "skeleton",
+        "skeleton--text",
+        "skeleton--circle",
+        "skeleton--rect"
+      ],
+      "interactions": "Non-interactive. A highlight band sweeps left-to-right on a looping shimmer keyframes animation until the real content replaces it.",
+      "sourcePage": "components.css",
+      "previewWidth": 420,
+      "previewHeight": 200,
+      "snippet": "<div style=\"display:flex;gap:14px;align-items:flex-start;width:100%\">\n  <span class=\"skeleton skeleton--circle\"></span>\n  <div style=\"flex:1;display:flex;flex-direction:column;gap:10px\">\n    <span class=\"skeleton skeleton--text\"></span>\n    <span class=\"skeleton skeleton--text\"></span>\n    <span class=\"skeleton skeleton--rect\"></span>\n  </div>\n</div>",
+      "variants": [
+        {
+          "label": "Text line",
+          "snippet": "<span class=\"skeleton skeleton--text\"></span>"
+        },
+        {
+          "label": "Circle (avatar)",
+          "snippet": "<span class=\"skeleton skeleton--circle\"></span>"
+        },
+        {
+          "label": "Rect (media)",
+          "snippet": "<span class=\"skeleton skeleton--rect\"></span>"
+        }
+      ]
+    },
+    {
+      "id": "empty-state",
+      "name": "Empty State",
+      "category": "feedback",
+      "status": "stable",
+      "purpose": "A centered block that explains why a region has no content and offers a next action, turning a dead end into a guided moment.",
+      "whenToUse": "Use when a list, search, or collection legitimately has nothing to show — first-run, cleared filters, or zero results — and you can point the user forward.",
+      "whenNotToUse": "Do not use while content is still loading (use a skeleton or spinner) or to communicate an error condition (use an inline alert).",
+      "anatomy": [
+        "empty-state",
+        "empty-state__icon",
+        "empty-state__title",
+        "empty-state__desc",
+        "empty-state__action"
+      ],
+      "interactions": "The optional action is a composed .btn with its own hover/focus/active states; the container itself is static.",
+      "sourcePage": "components.css",
+      "previewWidth": 420,
+      "previewHeight": 320,
+      "snippet": "<div class=\"empty-state\">\n  <span class=\"empty-state__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 7l9-4 9 4-9 4-9-4z\"/><path d=\"M3 7v10l9 4 9-4V7\"/><path d=\"M12 11v10\"/></svg></span>\n  <h3 class=\"empty-state__title\">No studies yet</h3>\n  <p class=\"empty-state__desc\">Saved studies will appear here. Start by adding one from the library.</p>\n  <button class=\"btn btn--primary empty-state__action\">Browse library</button>\n</div>",
+      "variants": [
+        {
+          "label": "With action",
+          "snippet": "<div class=\"empty-state\">\n  <span class=\"empty-state__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 7l9-4 9 4-9 4-9-4z\"/><path d=\"M3 7v10l9 4 9-4V7\"/><path d=\"M12 11v10\"/></svg></span>\n  <h3 class=\"empty-state__title\">No studies yet</h3>\n  <p class=\"empty-state__desc\">Saved studies will appear here. Start by adding one from the library.</p>\n  <button class=\"btn btn--primary empty-state__action\">Browse library</button>\n</div>"
+        },
+        {
+          "label": "No action",
+          "snippet": "<div class=\"empty-state\">\n  <span class=\"empty-state__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M21 21l-4.3-4.3\"/></svg></span>\n  <h3 class=\"empty-state__title\">No results found</h3>\n  <p class=\"empty-state__desc\">Try broadening your filters or clearing the search term.</p>\n</div>"
+        }
+      ]
+    },
+    {
+      "id": "inline-alert",
+      "name": "Inline Alert",
+      "category": "feedback",
+      "status": "stable",
+      "purpose": "An inline banner that surfaces a contextual status message — info, success, warning, or error — anchored next to the content it concerns.",
+      "whenToUse": "Use to give persistent, in-context feedback tied to a section or form, using the semantic variant that matches the message's severity.",
+      "whenNotToUse": "Do not use for transient, dismiss-on-timeout notifications (use a toast) or for empty regions (use an empty state).",
+      "anatomy": [
+        "alert",
+        "alert__icon",
+        "alert__body",
+        "alert__title",
+        "alert__msg",
+        "alert__close"
+      ],
+      "interactions": "Static banner; the optional .alert__close button has a hover state that brightens its color and dismisses the alert on click.",
+      "sourcePage": "components.css",
+      "previewWidth": 520,
+      "previewHeight": 340,
+      "snippet": "<div class=\"alert alert--info\">\n  <span class=\"alert__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 11v5\"/><path d=\"M12 8h.01\"/></svg></span>\n  <div class=\"alert__body\">\n    <div class=\"alert__title\">Heads up</div>\n    <div class=\"alert__msg\">This dataset was last refreshed 6 hours ago.</div>\n  </div>\n  <button class=\"alert__close\" aria-label=\"Dismiss\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button>\n</div>",
+      "variants": [
+        {
+          "label": "Info",
+          "snippet": "<div class=\"alert alert--info\">\n  <span class=\"alert__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 11v5\"/><path d=\"M12 8h.01\"/></svg></span>\n  <div class=\"alert__body\"><div class=\"alert__title\">Heads up</div><div class=\"alert__msg\">This dataset was last refreshed 6 hours ago.</div></div>\n</div>"
+        },
+        {
+          "label": "Success",
+          "snippet": "<div class=\"alert alert--success\">\n  <span class=\"alert__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"m8 12 3 3 5-6\"/></svg></span>\n  <div class=\"alert__body\"><div class=\"alert__title\">Saved</div><div class=\"alert__msg\">Your changes were published successfully.</div></div>\n</div>"
+        },
+        {
+          "label": "Warning",
+          "snippet": "<div class=\"alert alert--warning\">\n  <span class=\"alert__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z\"/><path d=\"M12 9v4\"/><path d=\"M12 17h.01\"/></svg></span>\n  <div class=\"alert__body\"><div class=\"alert__title\">Review needed</div><div class=\"alert__msg\">Two fields fall outside the expected range.</div></div>\n</div>"
+        },
+        {
+          "label": "Error",
+          "snippet": "<div class=\"alert alert--error\">\n  <span class=\"alert__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 8v5\"/><path d=\"M12 16h.01\"/></svg></span>\n  <div class=\"alert__body\"><div class=\"alert__title\">Upload failed</div><div class=\"alert__msg\">The file exceeded the 25 MB limit. Try a smaller file.</div></div>\n</div>"
+        }
+      ],
+      "states": [
+        {
+          "label": "Close hover",
+          "snippet": "<div class=\"alert alert--info\">\n  <span class=\"alert__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 11v5\"/><path d=\"M12 8h.01\"/></svg></span>\n  <div class=\"alert__body\"><div class=\"alert__title\">Heads up</div><div class=\"alert__msg\">This dataset was last refreshed 6 hours ago.</div></div>\n  <button class=\"alert__close is-hover\" aria-label=\"Dismiss\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button>\n</div>"
+        }
+      ]
+    },
+    {
+      "id": "divider",
+      "name": "Divider",
+      "category": "layout",
+      "status": "stable",
+      "purpose": "A hairline separator that groups content — a horizontal rule, a vertical inline rule, or a centered labeled break.",
+      "whenToUse": "Use to separate stacked sections, split inline items (metadata rows, toolbars), or introduce a labeled break such as OR between choices.",
+      "whenNotToUse": "Do not use to box or frame content (use a card), and avoid stacking multiple dividers where whitespace alone would read cleaner.",
+      "anatomy": [
+        "divider",
+        "divider--vertical",
+        "divider--label"
+      ],
+      "interactions": "Non-interactive presentational separator; no states.",
+      "sourcePage": "components.css",
+      "previewWidth": 480,
+      "previewHeight": 220,
+      "snippet": "<div style=\"width:100%\">\n  <hr class=\"divider\">\n  <div class=\"divider divider--label\">or</div>\n  <div style=\"display:flex;align-items:center;height:28px;color:rgba(255,255,255,0.7);font-family:Manrope,sans-serif;font-size:14px\">\n    <span>Draft</span>\n    <span class=\"divider divider--vertical\"></span>\n    <span>Updated 2h ago</span>\n  </div>\n</div>",
+      "variants": [
+        {
+          "label": "Horizontal",
+          "snippet": "<hr class=\"divider\">"
+        },
+        {
+          "label": "Labeled",
+          "snippet": "<div class=\"divider divider--label\">or</div>"
+        },
+        {
+          "label": "Vertical",
+          "snippet": "<div style=\"display:flex;align-items:center;height:28px;color:rgba(255,255,255,0.7);font-family:Manrope,sans-serif;font-size:14px\"><span>Draft</span><span class=\"divider divider--vertical\"></span><span>Updated 2h ago</span></div>"
+        }
+      ]
+    },
+    {
+      "id": "table",
+      "name": "Table",
+      "category": "data-display",
+      "status": "stable",
+      "purpose": "A readable dark data grid for tabular records — a header row of labelled columns over body rows separated by faint divider rules, floating on a card surface with a soft purple edge.",
+      "whenToUse": "When content is genuinely tabular (rows of records sharing the same columns) and needs to be scanned or compared — leaderboards, metric breakdowns, roster or dosage tables. Use the zebra modifier when rows are dense and the eye needs help tracking across.",
+      "whenNotToUse": "For a handful of key/value pairs (use a definition list), for card-like content that reads better as a grid of cards, or on narrow mobile widths where columns cannot breathe.",
+      "anatomy": [
+        "table (the grid; add table--zebra for striped rows)",
+        "table__head (thead) wrapping the header table__row",
+        "table__row (tr; add is-hover to pin the hover tint)",
+        "table__cell (td) — add table__cell--head for header cells, table__cell--right to right-align numerics"
+      ],
+      "interactions": "Body rows highlight on hover via table__row:hover (pinned with is-hover). Header cells are static labels. Alignment helpers do not change behaviour, only text alignment.",
+      "sourcePage": "components.css",
+      "previewWidth": 620,
+      "previewHeight": 300,
+      "snippet": "<table class=\"table table--zebra\">\n  <thead class=\"table__head\">\n    <tr class=\"table__row\">\n      <th class=\"table__cell table__cell--head\">Therapy</th>\n      <th class=\"table__cell table__cell--head\">Phase</th>\n      <th class=\"table__cell table__cell--head table__cell--right\">Readouts</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr class=\"table__row\"><td class=\"table__cell\">Belantamab</td><td class=\"table__cell\">Phase III</td><td class=\"table__cell table__cell--right\">12</td></tr>\n    <tr class=\"table__row is-hover\"><td class=\"table__cell\">Teclistamab</td><td class=\"table__cell\">Phase II</td><td class=\"table__cell table__cell--right\">8</td></tr>\n    <tr class=\"table__row\"><td class=\"table__cell\">Cilta-cel</td><td class=\"table__cell\">Phase III</td><td class=\"table__cell table__cell--right\">5</td></tr>\n  </tbody>\n</table>",
+      "variants": [
+        {
+          "label": "Plain (no zebra)",
+          "snippet": "<table class=\"table\"><thead class=\"table__head\"><tr class=\"table__row\"><th class=\"table__cell table__cell--head\">Metric</th><th class=\"table__cell table__cell--head table__cell--right\">Value</th></tr></thead><tbody><tr class=\"table__row\"><td class=\"table__cell\">Enrolled</td><td class=\"table__cell table__cell--right\">1,204</td></tr><tr class=\"table__row\"><td class=\"table__cell\">Screened</td><td class=\"table__cell table__cell--right\">1,890</td></tr></tbody></table>"
+        },
+        {
+          "label": "Zebra",
+          "snippet": "<table class=\"table table--zebra\"><thead class=\"table__head\"><tr class=\"table__row\"><th class=\"table__cell table__cell--head\">Region</th><th class=\"table__cell table__cell--head table__cell--right\">HCPs</th></tr></thead><tbody><tr class=\"table__row\"><td class=\"table__cell\">North</td><td class=\"table__cell table__cell--right\">312</td></tr><tr class=\"table__row\"><td class=\"table__cell\">South</td><td class=\"table__cell table__cell--right\">287</td></tr><tr class=\"table__row\"><td class=\"table__cell\">West</td><td class=\"table__cell table__cell--right\">341</td></tr></tbody></table>"
+        }
+      ]
+    },
+    {
+      "id": "pagination",
+      "name": "Pagination",
+      "category": "navigation",
+      "status": "stable",
+      "purpose": "A row of pill page controls for stepping through a long, paged list — numbered items flanked by prev/next arrows, with the current page filled in brand purple.",
+      "whenToUse": "Below a paged list or table when the full set is split across pages and the user needs to jump between them. Mark the current page with is-active and dim unavailable arrows with is-disabled.",
+      "whenNotToUse": "For continuously loaded / infinite-scroll feeds, for a small set that fits on one screen, or as a tab/section switcher (use tabs instead).",
+      "anatomy": [
+        "pagination (inline-flex row)",
+        "pagination__item pagination__nav (prev arrow; add is-disabled when at the first page)",
+        "pagination__item (numbered page; add is-active for the current page)",
+        "pagination__ellipsis (static gap marker for skipped ranges)",
+        "pagination__item pagination__nav (next arrow)"
+      ],
+      "interactions": "Page items and arrows lift on hover (is-hover). The current page carries is-active (purple, no hover lift). is-disabled arrows are dimmed and non-interactive.",
+      "sourcePage": "components.css",
+      "previewWidth": 480,
+      "previewHeight": 160,
+      "snippet": "<nav class=\"pagination\">\n  <a class=\"pagination__item pagination__nav is-disabled\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"/></svg></a>\n  <a class=\"pagination__item is-active\" href=\"#\">1</a>\n  <a class=\"pagination__item\" href=\"#\">2</a>\n  <a class=\"pagination__item\" href=\"#\">3</a>\n  <span class=\"pagination__ellipsis\">&hellip;</span>\n  <a class=\"pagination__item\" href=\"#\">12</a>\n  <a class=\"pagination__item pagination__nav\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></a>\n</nav>",
+      "states": [
+        {
+          "label": "Active (current page)",
+          "snippet": "<nav class=\"pagination\"><a class=\"pagination__item is-active\" href=\"#\">4</a></nav>"
+        },
+        {
+          "label": "Default page",
+          "snippet": "<nav class=\"pagination\"><a class=\"pagination__item\" href=\"#\">5</a></nav>"
+        },
+        {
+          "label": "Disabled nav",
+          "snippet": "<nav class=\"pagination\"><a class=\"pagination__item pagination__nav is-disabled\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"/></svg></a></nav>"
+        }
+      ]
+    },
+    {
+      "id": "breadcrumb",
+      "name": "Breadcrumb",
+      "category": "navigation",
+      "status": "stable",
+      "purpose": "A compact trail showing where the current page sits in the app hierarchy — muted ancestor links joined by chevron separators, ending in a bright, non-clickable current crumb.",
+      "whenToUse": "On detail or nested pages that live several levels deep, so the user can see the path and step back up it. Best paired with a page header on Detail-type pages.",
+      "whenNotToUse": "On top-level sections that have no parent, on flat apps with a single navigation depth, or as a substitute for primary navigation.",
+      "anatomy": [
+        "breadcrumb (flex row)",
+        "breadcrumb__item (ancestor link)",
+        "breadcrumb__sep (chevron/slash separator between crumbs)",
+        "breadcrumb__item is-current (the current page — brightest, non-interactive)"
+      ],
+      "interactions": "Ancestor crumbs brighten and pick up a faint surface on hover (is-hover). The is-current crumb is non-interactive. Separators are decorative.",
+      "sourcePage": "components.css",
+      "previewWidth": 520,
+      "previewHeight": 160,
+      "snippet": "<nav class=\"breadcrumb\">\n  <a class=\"breadcrumb__item\" href=\"#\">Home</a>\n  <span class=\"breadcrumb__sep\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span>\n  <a class=\"breadcrumb__item\" href=\"#\">Briefs</a>\n  <span class=\"breadcrumb__sep\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span>\n  <span class=\"breadcrumb__item is-current\">Multiple Myeloma Q3</span>\n</nav>",
+      "states": [
+        {
+          "label": "Ancestor link",
+          "snippet": "<nav class=\"breadcrumb\"><a class=\"breadcrumb__item\" href=\"#\">Briefs</a></nav>"
+        },
+        {
+          "label": "Current crumb",
+          "snippet": "<nav class=\"breadcrumb\"><span class=\"breadcrumb__item is-current\">Multiple Myeloma Q3</span></nav>"
+        }
+      ]
+    },
+    {
+      "id": "stepper",
+      "name": "Stepper",
+      "category": "navigation",
+      "status": "stable",
+      "purpose": "A horizontal progress indicator for a multi-step flow — numbered markers joined by connector lines, showing which steps are done (teal check), which is current (purple ring), and which are still ahead.",
+      "whenToUse": "On wizards, onboarding, or multi-step forms where the user should always see how many steps there are and where they stand. Advance is-active and flip finished steps to is-complete as the user progresses.",
+      "whenNotToUse": "For a single-step form, for free navigation (use tabs), or when steps are so numerous the labels cannot fit — collapse to a simple progress bar instead.",
+      "anatomy": [
+        "stepper (flex row of steps)",
+        "step is-complete — step__marker (check svg) + step__label; its connector reads teal",
+        "step is-active — step__marker (current number, purple ring) + step__label",
+        "step is-upcoming — step__marker (number) + step__label, quiet"
+      ],
+      "interactions": "Static in the reference: markers and connectors reflect flow state via is-complete / is-active / is-upcoming. Completed connectors fill teal; the active marker carries a purple focus ring.",
+      "sourcePage": "components.css",
+      "previewWidth": 560,
+      "previewHeight": 180,
+      "snippet": "<div class=\"stepper\">\n  <div class=\"step is-complete\">\n    <span class=\"step__marker\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></span>\n    <span class=\"step__label\">Account</span>\n  </div>\n  <div class=\"step is-active\">\n    <span class=\"step__marker\">2</span>\n    <span class=\"step__label\">Preferences</span>\n  </div>\n  <div class=\"step is-upcoming\">\n    <span class=\"step__marker\">3</span>\n    <span class=\"step__label\">Review</span>\n  </div>\n</div>",
+      "states": [
+        {
+          "label": "Complete",
+          "snippet": "<div class=\"stepper\"><div class=\"step is-complete\"><span class=\"step__marker\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></span><span class=\"step__label\">Account</span></div></div>"
+        },
+        {
+          "label": "Active",
+          "snippet": "<div class=\"stepper\"><div class=\"step is-active\"><span class=\"step__marker\">2</span><span class=\"step__label\">Preferences</span></div></div>"
+        },
+        {
+          "label": "Upcoming",
+          "snippet": "<div class=\"stepper\"><div class=\"step is-upcoming\"><span class=\"step__marker\">3</span><span class=\"step__label\">Review</span></div></div>"
+        }
+      ]
+    },
+    {
+      "id": "slider",
+      "name": "Slider",
+      "category": "forms",
+      "status": "stable",
+      "purpose": "A range control for picking a value along a continuum — a thin track with a blue-to-green fill up to the current value and a white, purple-ringed thumb the user drags.",
+      "whenToUse": "When a single value is chosen from a bounded continuous range and the exact number matters less than its position — volume, opacity, a price or dosage window, playback scrubbing. Set the fill width and thumb position to the current value.",
+      "whenNotToUse": "For precise numeric entry (use a number input), for choosing among a few discrete options (use radios or a segmented control), or when the range is unbounded.",
+      "anatomy": [
+        "slider (the control; add is-disabled to dim, is-focus to pin the ring)",
+        "slider__track (the rail)",
+        "slider__fill (progress fill — width set inline to the current value)",
+        "slider__thumb (draggable handle — left set inline to the current value)",
+        "slider--native (alternative: a real input[type=range] skinned to match)"
+      ],
+      "interactions": "The thumb glows on hover and shows a purple focus ring on focus-within (pinned with is-focus). is-disabled dims the whole control and blocks interaction. Fill width and thumb left are the only inline values, driven by the current position.",
+      "sourcePage": "components.css",
+      "previewWidth": 460,
+      "previewHeight": 200,
+      "snippet": "<div class=\"slider\">\n  <div class=\"slider__track\">\n    <div class=\"slider__fill\" style=\"width:62%\"></div>\n    <div class=\"slider__thumb\" style=\"left:62%\"></div>\n  </div>\n</div>",
+      "states": [
+        {
+          "label": "Focus",
+          "snippet": "<div class=\"slider is-focus\"><div class=\"slider__track\"><div class=\"slider__fill\" style=\"width:45%\"></div><div class=\"slider__thumb\" style=\"left:45%\"></div></div></div>"
+        },
+        {
+          "label": "Disabled",
+          "snippet": "<div class=\"slider is-disabled\"><div class=\"slider__track\"><div class=\"slider__fill\" style=\"width:30%\"></div><div class=\"slider__thumb\" style=\"left:30%\"></div></div></div>"
+        },
+        {
+          "label": "Native input",
+          "snippet": "<input type=\"range\" class=\"slider--native\" min=\"0\" max=\"100\" value=\"70\">"
         }
       ]
     }

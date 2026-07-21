@@ -1,0 +1,386 @@
+/* ===== CURIE RESPONSIVE =====
+   The ONLY file in the system that contains @media queries.
+
+   Model: each golden page ships its untouched DESKTOP content plus a purpose-built
+   MOBILE view (.m-view) + mobile chrome (.m-appbar/.m-tabbar/.m-drawer/.m-sheet/.m-fab).
+   Everything mobile defaults to display:none (the base guard below), so at desktop
+   width the page renders byte-identically. At <=600px the desktop content is hidden
+   and the mobile view + chrome are shown. Nothing here is scoped globally except the
+   tablet grid relaxation; shell/nav rules are scoped to body[class^="pg-"] so they
+   never leak into the docs chrome or the component preview iframes.
+
+   Breakpoints (mirror of tokens.css --bp-*): mobile 600px, tablet 900px. */
+
+/* ---------- Base guard: mobile layer is invisible until a mobile viewport ---------- */
+.m-view,
+.m-appbar,
+.m-tabbar,
+.m-drawer,
+.m-sheet,
+.m-fab { display: none; }
+
+
+/* ==================================================================
+   TABLET — 900px and below: dense DESKTOP grids relax (601–900px still
+   shows the desktop layout; this keeps 3-up cards from crushing).
+   ================================================================== */
+@media (max-width: 900px) {
+  .grid3,
+  .editorial-grid,
+  .games-grid,
+  .related-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .featured,
+  .profiles-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ==================================================================
+   MOBILE — 600px and below: hide desktop content, show the mobile view.
+   ================================================================== */
+@media (max-width: 600px) {
+
+  /* ----- Hide ALL desktop content: every direct body child that isn't part of
+     the mobile layer. Robust against per-page shell differences and stops any
+     fixed-width desktop element from creating horizontal overflow. ----- */
+  body[class^="pg-"] > *:not(.m-view):not(.m-appbar):not(.m-tabbar):not(.m-drawer):not(.m-sheet):not(.m-fab):not(.m-fab__dial):not(script) {
+    display: none !important;
+  }
+
+  /* ----- Show the mobile content view ----- */
+  body[class^="pg-"] .m-view {
+    display: block;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: calc(56px + 16px) 16px calc(72px + 24px);
+  }
+  .m-newsletter, .m-fcard, .m-section, .m-footer-cta { max-width: 100%; }
+  /* Detail pages have no bottom tab bar → reclaim the bottom padding */
+  body.pg-brief-detail .m-view,
+  body.pg-editorial-detail .m-view { padding-bottom: 28px; }
+
+
+  /* ============================================================
+     MOBILE CONTENT COMPONENTS (used inside .m-view)
+     ============================================================ */
+
+  /* Subscribe / newsletter card (the desktop top bar's mobile counterpart) */
+  .m-newsletter {
+    background: linear-gradient(160deg, rgba(97,83,189,0.28) 0%, rgba(60,55,110,0.22) 100%);
+    border: 1px solid rgba(124,92,252,0.28);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 28px;
+  }
+  .m-newsletter__row { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+  .m-newsletter__icon {
+    width: 54px; height: 54px; flex-shrink: 0;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .m-newsletter__icon svg { width: 26px; height: 26px; color: rgba(255,255,255,0.75); }
+  .m-newsletter__title { font-size: 1.35rem; font-weight: 800; color: #fff; margin-bottom: 6px; line-height: 1.2; }
+  .m-newsletter__sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); line-height: 1.45; }
+  .m-newsletter__btn {
+    width: 100%; justify-content: center;
+    padding: 16px; border-radius: 16px;
+    background: #6153be; color: #fff; border: none;
+    font-family: Manrope, sans-serif; font-size: 1.25rem; font-weight: 700; cursor: pointer;
+  }
+
+  /* Content section (heading + body) */
+  .m-section { margin-bottom: 36px; }
+  .m-section__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+  .m-section__title { display: flex; align-items: center; gap: 12px; font-size: 1.6rem; font-weight: 800; color: #fff; }
+  .m-section__title img, .m-section__title svg { width: 40px; height: 40px; flex-shrink: 0; }
+  .m-section__title--muted { color: rgba(255,255,255,0.82); }
+  .m-section__link { display: flex; align-items: center; gap: 6px; font-size: 1.1rem; font-weight: 800; color: #fff; white-space: nowrap; }
+  .m-section__link svg { width: 22px; height: 22px; }
+
+  /* Horizontal scroll row (Featured Content, Briefs, Games) */
+  .m-hscroll {
+    display: flex; gap: 16px;
+    overflow-x: auto; scrollbar-width: none;
+    margin: 0 -16px; padding: 0 16px 4px;
+    scroll-snap-type: x mandatory;
+  }
+  .m-hscroll::-webkit-scrollbar { display: none; }
+  .m-hscroll > * { scroll-snap-align: start; flex: 0 0 84%; }
+
+  /* Featured card (image + badge + date + title + desc + CTA) */
+  .m-fcard {
+    background: #231f41;
+    border: 1px solid rgba(124,92,252,0.25);
+    border-radius: 22px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .m-fcard__media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+  .m-fcard__media img { width: 100%; height: 100%; object-fit: cover; }
+  .m-fcard__badge {
+    position: absolute; top: 14px; right: 14px;
+    padding: 7px 16px; border-radius: 999px;
+    font-size: 0.95rem; font-weight: 800; letter-spacing: 0.5px; color: #fff;
+  }
+  .m-fcard__badge--game { background: #ec4899; }
+  .m-fcard__badge--news { background: #3b82f6; }
+  .m-fcard__badge--pod  { background: #7C5CFC; }
+  .m-fcard__body { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+  .m-fcard__date { font-size: 1rem; color: rgba(255,255,255,0.55); }
+  .m-fcard__title { font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1.2; }
+  .m-fcard__desc { font-size: 1.1rem; color: rgba(255,255,255,0.65); line-height: 1.45; }
+  .m-fcard__cta {
+    margin-top: 4px; width: 100%; justify-content: center;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px; border-radius: 16px; border: none;
+    font-family: Manrope, sans-serif; font-size: 1.2rem; font-weight: 700; color: #fff; cursor: pointer;
+  }
+  .m-fcard__cta svg { width: 22px; height: 22px; }
+  .m-fcard__cta--game { background: #ec4899; }
+  .m-fcard__cta--news { background: #3b82f6; }
+  .m-fcard__cta--pod  { background: #6153be; }
+
+  /* Circular brief item (Curie Briefs row) */
+  .m-brief { flex: 0 0 78%; display: flex; flex-direction: column; }
+  .m-brief__circle {
+    position: relative; aspect-ratio: 1; border-radius: 50%;
+    border: 3px solid #6153be; overflow: hidden; margin-bottom: 18px;
+  }
+  .m-brief__circle img { width: 100%; height: 100%; object-fit: cover; }
+  .m-brief__play {
+    position: absolute; inset: 0; margin: auto;
+    width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(97,83,189,0.85);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .m-brief__play svg { width: 28px; height: 28px; color: #fff; }
+  .m-brief__date { font-size: 1rem; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+  .m-brief__title { font-size: 1.35rem; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 8px; }
+  .m-brief__source { font-size: 1.05rem; color: rgba(255,255,255,0.5); }
+
+  /* Generic full-width stacked card wrapper for reused components */
+  .m-stack { display: flex; flex-direction: column; gap: 18px; }
+
+  /* Footer CTA / big footer, mobile */
+  .m-footer-cta {
+    margin-top: 8px; text-align: center;
+    background: linear-gradient(160deg, rgba(97,83,189,0.28), rgba(40,48,110,0.2));
+    border: 1px solid rgba(124,92,252,0.25); border-radius: 22px; padding: 32px 22px;
+  }
+  .m-footer-cta__title { font-size: 1.7rem; font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 12px; }
+  .m-footer-cta__title span { color: #a18aff; }
+  .m-footer-cta__sub { font-size: 1.1rem; color: rgba(255,255,255,0.65); line-height: 1.5; margin-bottom: 22px; }
+
+
+  /* ============================================================
+     MOBILE CHROME COMPONENTS (.m-*)
+     ============================================================ */
+
+  /* ----- Top app bar ----- */
+  body[class^="pg-"] .m-appbar {
+    display: flex; align-items: center; gap: 12px;
+    position: fixed; top: 0; left: 0; right: 0; height: 56px;
+    padding: 0 16px; z-index: 120;
+    background: rgba(20, 13, 44, 0.72);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  }
+  .m-appbar__left, .m-appbar__right { display: flex; align-items: center; flex: 0 0 auto; gap: 8px; }
+  .m-appbar__logo { width: 34px; height: 34px; display: block; }
+  .m-appbar__title {
+    flex: 1 1 auto; display: flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: Manrope, sans-serif; font-weight: 800; font-size: 1.5rem; color: #fff;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .m-appbar__emoji { font-size: 1.4rem; line-height: 1; }
+  .m-appbar__btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; border: none; background: transparent;
+    color: #fff; cursor: pointer; border-radius: 12px; -webkit-tap-highlight-color: transparent;
+  }
+  .m-appbar__btn--boxed { background: rgba(255,255,255,0.06); }
+  .m-appbar__btn svg { width: 26px; height: 26px; }
+
+  /* ----- Bottom tab bar ----- */
+  body[class^="pg-"] .m-tabbar {
+    display: flex; position: fixed; bottom: 0; left: 0; right: 0; height: 72px;
+    padding-bottom: env(safe-area-inset-bottom, 0); z-index: 120;
+    background: linear-gradient(180deg, rgba(45,40,80,0.35) 0%, rgba(20,13,44,0.92) 60%);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .m-tab {
+    flex: 1 1 0; display: flex; align-items: center; justify-content: center;
+    background: transparent; border: none; cursor: pointer; padding-top: 4px;
+    color: rgba(255,255,255,0.55); -webkit-tap-highlight-color: transparent;
+  }
+  .m-tab svg { width: 26px; height: 26px; }
+  .m-tab.is-active { color: #fff; }
+
+  /* ----- Hamburger drawer ----- */
+  body[class^="pg-"] .m-drawer {
+    display: block; position: fixed; inset: 0; z-index: 200;
+    visibility: hidden; opacity: 0; transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+  .m-drawer.is-open { visibility: visible; opacity: 1; }
+  .m-drawer__panel {
+    position: absolute; inset: 0;
+    background: rgba(20, 13, 44, 0.55);
+    backdrop-filter: blur(40px) saturate(120%); -webkit-backdrop-filter: blur(40px) saturate(120%);
+    padding: 16px 24px; display: flex; flex-direction: column;
+  }
+  .m-drawer__close {
+    align-self: flex-end; width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    background: transparent; border: none; color: #fff; cursor: pointer;
+  }
+  .m-drawer__close svg { width: 24px; height: 24px; }
+  .m-drawer__section-label {
+    margin-top: 40%; font-size: 1.6rem; color: rgba(255,255,255,0.55);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .m-drawer__section-label::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.2); }
+  .m-drawer__item {
+    display: flex; align-items: center; gap: 16px; padding: 20px 0; margin-top: 8px;
+    color: #fff; font-size: 1.6rem; background: transparent; border: none; cursor: pointer; text-align: left;
+  }
+  .m-drawer__item svg { width: 28px; height: 28px; }
+
+  /* ----- Bottom sheet (Filters) ----- */
+  body[class^="pg-"] .m-sheet {
+    display: block; position: fixed; inset: 0; z-index: 200;
+    visibility: hidden; transition: visibility 0.3s ease;
+  }
+  .m-sheet.is-open { visibility: visible; }
+  .m-sheet__overlay { position: absolute; inset: 0; background: rgba(10, 8, 24, 0.5); opacity: 0; transition: opacity 0.3s ease; }
+  .m-sheet.is-open .m-sheet__overlay { opacity: 1; }
+  .m-sheet__panel {
+    position: absolute; left: 0; right: 0; bottom: 0; max-height: 85vh; overflow-y: auto;
+    background: linear-gradient(180deg, #2b2650 0%, #1a1338 100%);
+    border-radius: 24px 24px 0 0; padding: 20px 20px calc(20px + env(safe-area-inset-bottom, 0));
+    transform: translateY(100%); transition: transform 0.3s ease; box-shadow: 0 -20px 60px rgba(0,0,0,0.5);
+  }
+  .m-sheet.is-open .m-sheet__panel { transform: translateY(0); }
+  .m-sheet__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .m-sheet__title { font-size: 1.6rem; font-weight: 800; color: #fff; }
+  .m-sheet__close { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; border: none; color: #fff; cursor: pointer; }
+  .m-sheet__close svg { width: 24px; height: 24px; }
+  .m-sheet__label { font-size: 1.2rem; color: rgba(255,255,255,0.85); margin: 18px 0 10px; }
+  .m-sheet__footer { display: flex; gap: 12px; margin-top: 24px; }
+  .m-sheet__footer > * { flex: 1; justify-content: center; }
+
+  /* ----- Floating action buttons ----- */
+  body[class^="pg-"] .m-fab {
+    display: flex; align-items: center; justify-content: center;
+    position: fixed; width: 60px; height: 60px; border-radius: 50%;
+    border: none; cursor: pointer; z-index: 130; box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .m-fab svg { width: 26px; height: 26px; }
+  .m-fab--verify { left: 16px; bottom: calc(72px + 16px); background: #1b6fc4; color: #fff; }
+  .m-fab--action { right: 16px; bottom: calc(72px + 16px); color: #fff; }
+  .m-fab--action.m-fab--pulse { background: linear-gradient(135deg, #7C5CFC, #6153be); }
+  .m-fab--action.m-fab--share { background: #159a7a; }
+  body.pg-brief-detail .m-fab, body.pg-editorial-detail .m-fab { bottom: 16px; }
+
+  /* FAB speed-dial (briefs "clicked mode") */
+  .m-fab__dial {
+    position: fixed; right: 16px; display: flex; flex-direction: column; gap: 12px; z-index: 130;
+    opacity: 0; visibility: hidden; transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  }
+  body.pg-briefs .m-fab__dial { bottom: calc(72px + 16px + 60px + 12px); }
+  .m-fab__dial.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
+  .m-fab__dial-btn {
+    width: 56px; height: 56px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(60,55,110,0.7); backdrop-filter: blur(12px);
+    color: #fff; border: 1px solid rgba(255,255,255,0.08); cursor: pointer;
+  }
+  .m-fab__dial-btn svg { width: 24px; height: 24px; }
+
+  /* ============================================================
+     MOBILE LIST / DETAIL / FORM PATTERNS (shared across pages)
+     ============================================================ */
+
+  /* Filter bar (Briefs): "For You v" pill + "Filters" button */
+  .m-filterbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 24px; }
+  .m-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 20px; border-radius: 999px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+    color: #fff; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+  }
+  .m-pill svg { width: 18px; height: 18px; }
+
+  /* Full-width list card (Briefs / Editorial): media on top, body below */
+  .m-lcard {
+    background: linear-gradient(135deg, rgba(44,38,66,0.95) 0%, rgba(35,51,145,0.5) 100%);
+    border: 1px solid rgba(124,92,252,0.22);
+    border-radius: 22px; overflow: hidden; margin-bottom: 22px;
+  }
+  .m-lcard__media { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; }
+  .m-lcard__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .m-lcard__body { padding: 22px; }
+  .m-lcard__title { font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 14px; }
+  .m-lcard__meta { font-size: 1.05rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+  .m-lcard__foot { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
+  .m-lcard__by { font-size: 1.05rem; color: rgba(255,255,255,0.7); }
+  .m-lcard__more { display: inline-flex; align-items: center; gap: 8px; color: #a78bfa; font-weight: 800; font-size: 1.1rem; }
+  .m-lcard__more svg { width: 20px; height: 20px; }
+
+  /* Row of circular icon-buttons (detail actions: verify/bookmark/vote/share) */
+  .m-actions { display: flex; align-items: center; gap: 14px; margin: 20px 0; }
+  .m-actionbtn {
+    width: 48px; height: 48px; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: transparent; border: 1px solid rgba(255,255,255,0.22); color: #fff; cursor: pointer;
+  }
+  .m-actionbtn--wide { width: auto; padding: 0 16px; gap: 10px; }
+  .m-actionbtn svg { width: 22px; height: 22px; }
+
+  /* Detail hero + heading + meta */
+  .m-detail__hero { width: 100%; aspect-ratio: 16 / 10; border-radius: 20px; overflow: hidden; margin-bottom: 22px; }
+  .m-detail__hero img { width: 100%; height: 100%; object-fit: cover; }
+  .m-detail__title { font-size: clamp(1.7rem, 6.5vw, 2.2rem); font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+  .m-detail__meta { display: flex; align-items: center; gap: 12px; font-size: 1.1rem; color: rgba(255,255,255,0.6); }
+  .m-detail__sources { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+  .m-detail__sources svg { width: 16px; height: 16px; }
+  .m-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 22px 0; }
+
+  /* Summary / info card (detail body) */
+  .m-summary {
+    background: linear-gradient(180deg, rgba(55,60,130,0.6), rgba(40,48,110,0.6));
+    border: 1px solid rgba(124,92,252,0.2); border-radius: 20px; padding: 22px; margin-bottom: 20px;
+  }
+  .m-summary__head { display: flex; align-items: center; gap: 12px; font-size: 1.45rem; font-weight: 800; color: #fff; margin-bottom: 14px; }
+  .m-summary__head svg { width: 24px; height: 24px; }
+  .m-summary__body { font-size: 1.15rem; color: rgba(255,255,255,0.82); line-height: 1.6; }
+
+  /* Mobile form (Newsletter) */
+  .m-form {
+    background: linear-gradient(180deg, rgba(55,50,110,0.5), rgba(30,26,60,0.5));
+    border: 1px solid rgba(124,92,252,0.25); border-radius: 24px; padding: 26px 22px;
+  }
+  .m-form__title { font-family: "Playfair Display", serif; font-size: 2rem; font-weight: 800; color: #fff; text-align: center; line-height: 1.2; margin-bottom: 8px; }
+  .m-form__title span { color: #7C5CFC; }
+  .m-form__sub { text-align: center; font-size: 1.15rem; color: rgba(255,255,255,0.6); margin-bottom: 28px; }
+  .m-field { margin-bottom: 20px; }
+  .m-field__label { display: block; font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+  .m-field__label span { color: #f43f5e; }
+  .m-field__input, .m-field__select {
+    width: 100%; padding: 16px; border-radius: 14px;
+    background: rgba(150,159,182,0.12); border: 1px solid rgba(255,255,255,0.12);
+    color: #fff; font-family: Manrope, sans-serif; font-size: 1.1rem; outline: none;
+  }
+  .m-field__input::placeholder { color: rgba(255,255,255,0.4); }
+  .m-form__submit {
+    width: 100%; padding: 17px; border-radius: 16px; border: none;
+    background: #6153be; color: #fff; font-family: Manrope, sans-serif; font-size: 1.25rem; font-weight: 700; cursor: pointer; margin-top: 6px;
+  }
+
+  /* ----- Touch targets (review Part 1) ----- */
+  body[class^="pg-"] .m-tab,
+  body[class^="pg-"] .m-appbar__btn { min-width: 44px; min-height: 44px; }
+}

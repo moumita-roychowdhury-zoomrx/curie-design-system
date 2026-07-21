@@ -9,8 +9,86 @@
   <link rel="stylesheet" href="../layout.css">
   <link rel="stylesheet" href="../components.css">
   <link rel="stylesheet" href="../utilities.css">
+  <link rel="stylesheet" href="../responsive.css">
 </head>
 <body class="pg-newsletter">
+
+  <!-- ========== MOBILE CHROME (mobile viewports only; display:none on desktop) ========== -->
+  <header class="m-appbar">
+    <div class="m-appbar__left">
+      <img class="m-appbar__logo" src="../Assets/curie-logo-white.svg" alt="Curie">
+    </div>
+    <div class="m-appbar__title"><span class="m-appbar__emoji">✉</span>Weekly Dose</div>
+    <div class="m-appbar__right">
+      <button class="m-appbar__btn" type="button" aria-label="Open menu" onclick="document.getElementById('mDrawer').classList.add('is-open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="m-tabbar" aria-label="Primary">
+    <a class="m-tab" href="index.html" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a>
+    <a class="m-tab" href="briefs.html" aria-label="Briefs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg></a>
+    <a class="m-tab" href="games.html" aria-label="Games"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="5"/><line x1="6.5" y1="12" x2="8.5" y2="12"/><line x1="7.5" y1="11" x2="7.5" y2="13"/><circle cx="16" cy="11" r="1"/><circle cx="18" cy="13.5" r="1"/></svg></a>
+    <a class="m-tab" href="editorial.html" aria-label="Editorial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15.5 8.5a4 4 0 0 1 0 7"/></svg></a>
+    <a class="m-tab is-active" href="newsletter.html" aria-label="Newsletter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+  </nav>
+
+  <div class="m-drawer" id="mDrawer">
+    <div class="m-drawer__panel">
+      <button class="m-drawer__close" type="button" aria-label="Close menu" onclick="document.getElementById('mDrawer').classList.remove('is-open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+      <div class="m-drawer__section-label">Profile</div>
+      <button class="m-drawer__item" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+        Sign In
+      </button>
+    </div>
+  </div>
+
+  <button class="m-fab m-fab--verify" type="button" aria-label="Verified by Curie">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 12 2.5 2.5L16 9"/><circle cx="12" cy="12" r="9"/></svg>
+  </button>
+
+  <!-- ========== MOBILE CONTENT VIEW (mobile only) ========== -->
+  <main class="m-view">
+
+    <!-- Signup form card -->
+    <section class="m-form" style="margin-bottom:28px">
+      <h2 class="m-form__title">Get Curie's <span>Weekly Dose</span></h2>
+      <p class="m-form__sub">Free. Weekly. Quick to read.</p>
+      <div class="m-field">
+        <label class="m-field__label">Name <span>*</span></label>
+        <input class="m-field__input" type="text" placeholder="Enter your name">
+      </div>
+      <div class="m-field">
+        <label class="m-field__label">Email <span>*</span></label>
+        <input class="m-field__input" type="email" placeholder="Enter your email">
+      </div>
+      <div class="m-field">
+        <label class="m-field__label">Specialty <span>*</span></label>
+        <select class="m-field__select">
+          <option value="">Select a specialty…</option>
+          <option>Cardiology</option>
+          <option>Oncology</option>
+          <option>Neurology</option>
+          <option>Primary Care</option>
+          <option>Hematology</option>
+          <option>Endocrinology</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <button class="m-form__submit" type="button">Subscribe Free</button>
+    </section>
+
+    <!-- Supporting content -->
+    <section style="margin-bottom:8px">
+      <h2 style="font-family:Manrope,sans-serif;font-size:1.9rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px">Stay current in minutes, every week.</h2>
+      <p style="font-size:1.2rem;color:rgba(255,255,255,0.65);line-height:1.6">Curie's Weekly Dose is a concise weekly newsletter for healthcare professionals&mdash;only the few updates worth your attention, summarized so you can skim fast.</p>
+    </section>
+
+  </main>
 
   <!-- SIDEBAR -->
   <nav class="side-nav">

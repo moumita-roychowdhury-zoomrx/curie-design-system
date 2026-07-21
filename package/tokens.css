@@ -142,4 +142,18 @@
   --sidebar-collapsed: 4rem;
   --sidebar-expanded: 12rem;
   --banner-height: 44px;
+
+  /* Breakpoints */
+  /* @media conditions cannot read var(); these mirror the literal px values
+     repeated in responsive.css queries — same byte-stable pattern as the rest
+     of this file. Only max-width queries are used (each rule activates BELOW a
+     breakpoint), so the desktop cascade at reference width is never entered. */
+  --bp-mobile: 600px;    /* at/below → full mobile shell (app bar + tab bar + FABs) */
+  --bp-tablet: 900px;    /* at/below → 2-column card grids */
+  --bp-desktop: 1200px;  /* desktop reference tier (informational) */
+
+  /* Mobile chrome dimensions (used by responsive.css .m-* components) */
+  --m-appbar-height: 56px;
+  --m-tabbar-height: 72px;
+  --m-touch-min: 44px;
 }

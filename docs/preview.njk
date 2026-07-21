@@ -47,7 +47,18 @@ permalink: "/previews/{{ c.id }}/index.html"
     </figure>
   {% endfor %}
   </div>
-{% else %}
+{% endif %}
+{% if c.states %}
+  <div class="preview-variants preview-states">
+  {% for s in c.states %}
+    <figure class="preview-variant" style="width:{{ s.previewWidth or c.previewWidth }}px;">
+      <div class="preview-stage">{{ s.snippet | safe }}</div>
+      <figcaption>{{ s.label }}{% if s.note %} · {{ s.note }}{% endif %}</figcaption>
+    </figure>
+  {% endfor %}
+  </div>
+{% endif %}
+{% if not c.variants and not c.states %}
   <div class="preview-stage">
   {{ c.snippet | safe }}
   </div>

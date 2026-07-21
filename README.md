@@ -6,15 +6,16 @@ The single source of truth for Curie's visual language — ZoomRx's dark-themed 
 
 ```
 package/                      ← THE SOURCE OF TRUTH (consumers read only this)
-├── tokens.css                ← canonical token values
+├── tokens.css                ← canonical token values (incl. breakpoint tokens)
 ├── tokens.json               ← generated from tokens.css (npm run tokens)
 ├── components.css            ← all component styling
+├── responsive.css            ← the ONLY @media file: mobile chrome + per-page mobile views
 ├── layout.css  utilities.css
 ├── components-manifest.json  ← machine-readable component catalog (drives docs + AI plugins)
 ├── assets-catalog.json       ← machine-readable icon/illustration catalog
 ├── brand-principles.md
 ├── assets/                   ← logos, icons, illustrations
-└── examples/                 ← the 8 canonical golden pages (reference, not templates)
+└── examples/                 ← the 8 canonical golden pages (7 responsive; reference, not templates)
 
 docs/                         ← Eleventy templates that READ package/ and generate the site
 ├── _data/                    ← loads package/*.json into the templates
@@ -52,7 +53,8 @@ npm run tokens     # regenerates package/tokens.json from tokens.css only
 ## Editing workflow
 
 - **Change a token** → edit `package/tokens.css` → `npm run build` (runs `tokens` first). Never edit `package/tokens.json` by hand — it's generated.
-- **Add / edit a component** → edit `package/components.css`, then add or update its entry in `package/components-manifest.json` (copy an existing entry for the schema; the `snippet` markup should come verbatim from a golden page in `package/examples/`, never invented). Optional `variants[]` render multiple labeled specimens on the component page. The docs page, nav link, and live preview are generated automatically.
+- **Add / edit a component** → edit `package/components.css`, then add or update its entry in `package/components-manifest.json` (copy an existing entry for the schema; the `snippet` markup should come verbatim from a golden page in `package/examples/`, never invented). Optional `variants[]` render multiple labeled specimens on the component page; optional `states[]` render a state matrix (default / hover / focus / active / disabled / loading — pin them with the `.is-hover` / `.is-focus` / `.is-active` / `.is-disabled` helpers). The docs page, nav link, and live preview are generated automatically.
+- **Responsive / mobile** → all responsive behavior lives in `package/responsive.css` (the only file with `@media`). Each golden page ships its desktop content plus a `.m-view` mobile view; desktop stays byte-identical. See the **Responsive layouts** docs page.
 - **Add an icon / illustration** → drop the file in `package/assets/…` and add an entry to `package/assets-catalog.json` (`source: "file"` with a `path`, or `source: "inline"` with an `svg` string). It appears in the Assets gallery automatically.
 - Bump `version` in `package.json` on releases and tag (`git tag v0.2.0`); the site header shows the version it was built from.
 
@@ -89,4 +91,4 @@ A project Pages site serves under `/curie-design-system/`, so the workflow build
 
 ## Status
 
-v0.2.0 — design tokens across 16 groups, **35 documented components** (with variants for side-nav states, page-header sections, editorial-header back-nav, form-field states, the standalone error input field, brief-card widths, almanac tiers, the AI-tool / game-mode / game-tile sets, toggle states, and toast variants), an asset library of **62 icons + 10 illustrations**, and 8 golden reference pages.
+v0.3.0 — now **responsive**. Design tokens across 18 groups (including breakpoint tokens), **60 documented components** — the original 36 plus a full primitive/pattern/standard library added per the developer review (Button, Icon Button, Checkbox, Textarea, Search input, Select, Link, Modal, Accordion, Tooltip, Dropdown menu, Tabs, Progress, Avatar, Badge, Spinner, Skeleton, Empty state, Inline alert, Divider, Table, Pagination, Breadcrumb, Stepper, Slider), each documented with a `states[]` matrix (default / hover / focus / active / disabled / loading). An asset library of **62 icons + 10 illustrations**, and 8 golden reference pages — **7 of which (all except Podcasts) are now responsive**: at ≤600px each swaps its desktop chrome for a purpose-built mobile view (top app bar, bottom tab bar, drawer, bottom-sheet, FABs) that exactly replicates the mobile designs, while every desktop render stays byte-for-byte identical. See the new **Responsive layouts** docs page.

@@ -9,7 +9,7 @@ const OUT = "_site";
 // source to two targets makes the second silently override the first — which used to
 // drop /css and /assets entirely. So the primary location goes through passthrough
 // (kept for fast --serve rebuilds) and the /examples mirror is written in an after hook.
-const CSS_FILES = ["tokens.css", "components.css", "layout.css", "utilities.css"];
+const CSS_FILES = ["tokens.css", "components.css", "layout.css", "utilities.css", "responsive.css"];
 
 export default function (eleventyConfig) {
   // Rewrites root-absolute URLs in generated HTML to respect --pathprefix, so the

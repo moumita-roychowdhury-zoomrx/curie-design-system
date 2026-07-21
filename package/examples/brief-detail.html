@@ -9,8 +9,93 @@
   <link rel="stylesheet" href="../layout.css">
   <link rel="stylesheet" href="../components.css">
   <link rel="stylesheet" href="../utilities.css">
+  <link rel="stylesheet" href="../responsive.css">
 </head>
 <body class="pg-brief-detail bg-briefs">
+
+  <!-- ========== MOBILE CHROME (mobile viewports only; display:none on desktop) ========== -->
+  <header class="m-appbar">
+    <div class="m-appbar__left">
+      <button class="m-appbar__btn m-appbar__btn--boxed" type="button" aria-label="Go back" onclick="history.back()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></svg>
+      </button>
+    </div>
+    <div class="m-appbar__title"><span class="m-appbar__emoji">⚡</span>Curie Brief</div>
+    <div class="m-appbar__right"></div>
+  </header>
+
+  <button class="m-fab m-fab--verify" type="button" aria-label="Verified by Curie">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 12 2.5 2.5L16 9"/><circle cx="12" cy="12" r="9"/></svg>
+  </button>
+  <button class="m-fab m-fab--action m-fab--share" type="button" aria-label="Share">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+  </button>
+
+  <!-- ========== MOBILE CONTENT VIEW (mobile only) ========== -->
+  <main class="m-view">
+
+    <!-- Hero -->
+    <div class="m-detail__hero" style="background:#f5c518">
+      <img src="../Assets/illustration/pinpoint.png" alt="" style="object-fit:contain;padding:8px">
+    </div>
+
+    <!-- Title -->
+    <h1 class="m-detail__title">FDA expands Keytruda + Padcev approval to all muscle-invasive bladder cancer patients</h1>
+
+    <!-- Meta -->
+    <div class="m-detail__meta">
+      11 days ago
+      <span class="sep">&middot;</span>
+      <span class="m-detail__sources">5 Sources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span>
+    </div>
+
+    <!-- Actions -->
+    <div class="m-actions">
+      <button class="m-actionbtn" type="button" aria-label="Mark read"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 12 2.5 2.5L16 9"/><circle cx="12" cy="12" r="9"/></svg></button>
+      <button class="m-actionbtn" type="button" aria-label="Bookmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+      <button class="m-actionbtn" type="button" aria-label="Upvote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+      <button class="m-actionbtn" type="button" aria-label="Downvote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m5 12 7 7 7-7"/></svg></button>
+    </div>
+
+    <div class="m-divider"></div>
+
+    <!-- Summary -->
+    <section class="m-summary">
+      <div class="m-summary__head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>
+        Summary
+      </div>
+      <p class="m-summary__body">The FDA has broadened approval of the pembrolizumab (Keytruda) plus enfortumab vedotin (Padcev) combo for muscle-invasive bladder cancer (MIBC) to cover all cystectomy-eligible patients, regardless of prior therapy. The expansion is based on trial data showing improved event-free survival and gives clinicians a new option earlier in the treatment pathway.</p>
+    </section>
+
+    <!-- Related Stories -->
+    <section class="m-section">
+      <div class="m-section__head"><div class="m-section__title">Related Stories</div></div>
+      <a class="m-lcard" href="#" style="display:block">
+        <div class="m-lcard__media"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=70" alt=""></div>
+        <div class="m-lcard__body">
+          <div class="m-lcard__title">JAK inhibitors carry a meaningfully higher cancer risk than TNF inhibitors across…</div>
+          <div class="m-lcard__foot"><span class="m-lcard__by">Medscape</span><span class="m-lcard__by">about 10 hours ago</span></div>
+        </div>
+      </a>
+      <a class="m-lcard" href="#" style="display:block">
+        <div class="m-lcard__media"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=70" alt=""></div>
+        <div class="m-lcard__body">
+          <div class="m-lcard__title">Adrenal surgery shows heart benefits for mild cortisol excess patients</div>
+          <div class="m-lcard__foot"><span class="m-lcard__by">Medscape</span><span class="m-lcard__by">about 17 hours ago</span></div>
+        </div>
+      </a>
+      <a class="m-lcard" href="#" style="display:block">
+        <div class="m-lcard__media"><img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&q=70" alt=""></div>
+        <div class="m-lcard__body">
+          <div class="m-lcard__title">New anti-inflammatory drug shows promise for heart disease prevention</div>
+          <div class="m-lcard__foot"><span class="m-lcard__by">Reuters</span><span class="m-lcard__by">5 days ago</span></div>
+        </div>
+      </a>
+    </section>
+
+  </main>
+
 
   <!-- STICKY HEADER WITH PROGRESS BAR -->
   <div class="brief-detail-header" id="detailHeader">
