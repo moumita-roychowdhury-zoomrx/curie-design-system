@@ -569,47 +569,50 @@
       "bodyClass": "pg-newsletter",
       "previewWidth": 460,
       "previewHeight": 560,
-      "snippet": "<div class=\"signup-card\">\n  <h3 class=\"signup-card__heading\">Get Curie's <em>Weekly Dose</em></h3>\n  <p class=\"signup-card__sub\">Free. Weekly. Quick to read.</p>\n  <div class=\"form-group\">\n    <label class=\"form-label\">Name <span class=\"req\">*</span></label>\n    <input class=\"form-input\" type=\"text\" placeholder=\"Enter your name\">\n  </div>\n  <div class=\"form-group\">\n    <label class=\"form-label\">Email <span class=\"req\">*</span></label>\n    <input class=\"form-input\" type=\"email\" placeholder=\"Enter your email\">\n  </div>\n  <div class=\"form-group\">\n    <label class=\"form-label\">Specialty <span class=\"req\">*</span></label>\n    <select class=\"form-select\">\n      <option value=\"\">Select a specialty...</option>\n      <option>Cardiology</option>\n      <option>Oncology</option>\n      <option>Neurology</option>\n      <option>Primary Care</option>\n      <option>Hematology</option>\n      <option>Endocrinology</option>\n      <option>Other</option>\n    </select>\n  </div>\n  <button class=\"btn-subscribe\">Subscribe Free</button>\n</div>"
+      "snippet": "<div class=\"signup-card\">\n  <h3 class=\"signup-card__heading\">Get Curie's <em>Weekly Dose</em></h3>\n  <p class=\"signup-card__sub\">Free. Weekly. Quick to read.</p>\n  <div class=\"form-group\">\n    <label class=\"form-label\">Name <span class=\"req\">*</span></label>\n    <input class=\"form-input\" type=\"text\" placeholder=\"Enter your name\">\n  </div>\n  <div class=\"form-group\">\n    <label class=\"form-label\">Email <span class=\"req\">*</span></label>\n    <input class=\"form-input\" type=\"email\" placeholder=\"Enter your email\">\n  </div>\n  <div class=\"form-group\">\n    <label class=\"form-label\">Specialty <span class=\"req\">*</span></label>\n    <select class=\"form-select\">\n      <option value=\"\">Select a specialty...</option>\n      <option>Cardiology</option>\n      <option>Oncology</option>\n      <option>Neurology</option>\n      <option>Primary Care</option>\n      <option>Hematology</option>\n      <option>Endocrinology</option>\n      <option>Other</option>\n    </select>\n  </div>\n  <button class=\"btn btn--primary btn-subscribe\">Subscribe Free</button>\n</div>"
     },
     {
       "id": "btn-subscribe",
       "name": "Subscribe Button",
       "category": "actions",
       "status": "stable",
-      "purpose": "The loud primary action of a capture flow.",
+      "purpose": "The loud primary action of a capture flow — a full-width Button (btn btn--primary) sized for a form surface.",
       "whenToUse": "One per view, as the single accent gesture of a form surface (restraint rule).",
       "whenNotToUse": "Secondary or repeated actions — never more than one loud action per view.",
       "anatomy": [
-        "btn-subscribe"
+        "btn btn--primary (systematic Button base + primary type — see the Button component)",
+        "btn-subscribe (thin modifier: full width, 48px height, form-radius)"
       ],
-      "interactions": "Hover shifts to --color-purple-hover with standard duration.",
+      "interactions": "Inherits the Button primary states (hover → --color-purple-hover with lift, active press-scale, focus ring, disabled). The btn-subscribe modifier only adjusts sizing.",
       "sourcePage": "newsletter.html",
       "bodyClass": "pg-newsletter",
       "previewHeight": 160,
       "previewWidth": 360,
-      "snippet": "<button class=\"btn-subscribe\">Subscribe Free</button>"
+      "snippet": "<button class=\"btn btn--primary btn-subscribe\">Subscribe Free</button>"
     },
     {
       "id": "button",
       "name": "Button",
       "category": "actions",
       "status": "stable",
-      "purpose": "The systematic action control in four emphasis levels — primary, secondary, border, and text — each with a full set of interaction states.",
-      "whenToUse": "Any triggered action. Pick the type by emphasis: one primary as the loud gesture of a view, secondary for its neutral peer, border for a lower-emphasis alternative, text for the quietest inline action (cancel, skip, learn more).",
+      "purpose": "The systematic action control, grounded in the golden set. Pill-shaped label buttons in four emphasis levels (primary, secondary, border, text) plus a round icon-button family in three skins (ghost, solid, glass) and three sizes — every type with a full set of interaction states.",
+      "whenToUse": "Any triggered action. For a labelled action pick the type by emphasis: one primary as the loud gesture of a view, secondary for its neutral peer, border for a lower-emphasis alternative, text for the quietest inline action. For an icon-only action (play, next, bookmark, more) use btn--round: solid (btn--primary) for the main play/pause gesture, glass for media/carousel nav over imagery, ghost for meta actions on a card.",
       "whenNotToUse": "Navigation between pages (use links / nav) or one-off product-specific CTAs that already have a dedicated component (btn-subscribe, home-footer__button, see-more-button).",
       "anatomy": [
-        "btn (base: sizing, type, radius, focus ring, transitions)",
-        "btn--primary | btn--secondary | btn--border | btn--text (emphasis type — exactly one)",
-        "optional leading/trailing <svg> (auto-sized to 18px)",
+        "btn (base: pill sizing, type, focus ring, transitions — matches the golden hero/top-banner pill)",
+        "btn--primary | btn--secondary | btn--border | btn--text (label emphasis type — exactly one)",
+        "btn--round (circular icon button) + skin: default = ghost, btn--primary = solid purple, btn--glass = frosted",
+        "btn--sm | btn--lg (round sizes: 36 / 40 / 48px)",
+        "optional leading/trailing <svg> (auto-sized: 18px label, 15/18/20px round by size)",
         "disabled attribute for the disabled state",
         "is-hover | is-focus | is-active | is-disabled (helpers that pin a visual state for specimens or JS-driven controls)"
       ],
-      "interactions": "Real states are driven by :hover (lift + brighter fill), :focus-visible (purple focus ring), :active (darken + press-scale), and :disabled (40% opacity, no pointer events). The matching is-* classes force the same visuals when a state must be shown statically or set from script.",
+      "interactions": "Label buttons: :hover (lift + brighter fill), :focus-visible (purple focus ring), :active (darken + press-scale), :disabled (40% opacity, no pointer events). Round buttons scale on :hover (1.08, glass 1.1) and press in on :active, sharing the same focus ring and disabled behaviour. The matching is-* classes force each visual state for specimens or from script.",
       "sourcePage": "newsletter.html",
       "bodyClass": "pg-newsletter",
-      "previewHeight": 640,
+      "previewHeight": 960,
       "previewWidth": 640,
-      "snippet": "<button class=\"btn btn--primary\">Primary</button>\n<button class=\"btn btn--secondary\">Secondary</button>\n<button class=\"btn btn--border\">Border</button>\n<button class=\"btn btn--text\">Text</button>",
+      "snippet": "<button class=\"btn btn--primary\">Primary</button>\n<button class=\"btn btn--secondary\">Secondary</button>\n<button class=\"btn btn--border\">Border</button>\n<button class=\"btn btn--text\">Text</button>\n\n<button class=\"btn btn--round btn--primary\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M8 5v14l11-7z\"/></svg></button>\n<button class=\"btn btn--round\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/></svg></button>\n<button class=\"btn btn--round btn--glass\" aria-label=\"Next\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9,6 15,12 9,18\"/></svg></button>",
       "variants": [
         {
           "label": "Primary — states",
@@ -630,6 +633,16 @@
           "label": "Text — states",
           "previewWidth": 640,
           "snippet": "<div style=\"display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text\">Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Default</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text is-hover\">Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Hover</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text is-focus\">Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Focus</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text is-active\">Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Active</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text\" disabled>Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Disabled</span></div></div>"
+        },
+        {
+          "label": "Round icon — skins & sizes",
+          "previewWidth": 640,
+          "snippet": "<div style=\"display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--round\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/></svg></button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Ghost</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--round btn--primary\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M8 5v14l11-7z\"/></svg></button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Solid</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--round btn--glass\" aria-label=\"Next\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9,6 15,12 9,18\"/></svg></button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Glass</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--round btn--primary btn--sm\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M8 5v14l11-7z\"/></svg></button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Small · 36</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--round btn--primary btn--lg\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M8 5v14l11-7z\"/></svg></button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Large · 48</span></div></div>"
+        },
+        {
+          "label": "Round icon — states (solid)",
+          "previewWidth": 640,
+          "snippet": "<div style=\"display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--round btn--primary\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M8 5v14l11-7z\"/></svg></button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Default</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--round btn--primary is-hover\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M8 5v14l11-7z\"/></svg></button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Hover</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--round btn--primary is-focus\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M8 5v14l11-7z\"/></svg></button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Focus</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--round btn--primary is-active\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M8 5v14l11-7z\"/></svg></button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Active</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--round btn--primary\" aria-label=\"Play\" disabled><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M8 5v14l11-7z\"/></svg></button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Disabled</span></div></div>"
         }
       ]
     },

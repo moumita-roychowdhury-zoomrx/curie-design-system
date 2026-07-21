@@ -2000,21 +2000,7 @@ body.pg-editorial-detail .user-name { color: rgba(255,255,255,0.85); font-size: 
 
 .form-select option { background: #1a1535; color: #fff; }
 
-.btn-subscribe { width: 100%; height: 48px;
-      background: #6153be;
-      color: #fff;
-      font-family: inherit;
-      font-size: 16px;
-      font-weight: 700;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      margin-top: 6px;
-      transition: background .2s, transform .1s; }
-
-.btn-subscribe:hover { background: #7c6bd1; transform: translateY(-1px); }
-
-.btn-subscribe:active { transform: scale(0.98); }
+/* .btn-subscribe migrated onto the .btn base — see "Legacy CTAs" block at EOF */
 
 
 /* ----- FAQ Section ----- */
@@ -2143,23 +2129,7 @@ body.pg-editorial-detail .user-name { color: rgba(255,255,255,0.85); font-size: 
       font-weight: 400;
       line-height: 1.5; }
 
-.home-footer__button { color: #fff;
-      cursor: pointer;
-      background: #6153bd;
-      border: none;
-      border-radius: 40px;
-      margin-top: 0;
-      margin-bottom: 0;
-      padding: 14px 32px;
-      font-family: inherit;
-      font-size: 1.15rem;
-      font-weight: 700;
-      transition: background 0.2s, transform 0.1s;
-      display: inline-block;
-      box-shadow: 0 4px 24px rgba(75,63,167,0.15); }
-
-.home-footer__button:hover { background: linear-gradient(90deg, #6a5be2 0%, #8e7be6 100%);
-      transform: translateY(-2px) scale(1.03); }
+/* .home-footer__button migrated onto the .btn base — see "Legacy CTAs" block at EOF */
 
 .home-footer__image-wrapper { flex: 1;
       display: flex;
@@ -2209,64 +2179,11 @@ body.pg-editorial-detail .user-name { color: rgba(255,255,255,0.85); font-size: 
 /* ----- View More ----- */
 .view-more { text-align: center; margin: 36px 0; }
 
-.view-more-btn { background: linear-gradient(90deg, #4f46e5, #06b6d4);
-      color: #fff;
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 14px 28px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-
-.view-more-btn:hover { background: linear-gradient(90deg, #4338ca, #0891b2);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.45); }
-
-.view-more-btn:active { transform: translateY(-1px); }
-
-.view-more-btn svg { width: 16px; height: 16px; }
+/* .view-more-btn migrated onto the .btn base — see "Legacy CTAs" block at EOF */
 
 .view-more-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 14px; }
 
-.see-more-button { color: #6153bd;
-      cursor: pointer;
-      backdrop-filter: blur(8px);
-      background: linear-gradient(135deg, rgba(97,83,189,0.1), rgba(97,83,189,0.05));
-      border: 2px solid #6153bd;
-      border-radius: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin: 40px auto 0;
-      padding: 14px 28px;
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: all 0.3s; }
-
-.see-more-button:hover { background: linear-gradient(135deg, rgba(97,83,189,0.2), rgba(97,83,189,0.1));
-      border-color: rgba(97,83,189,0.8);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(97,83,189,0.3); }
-
-.see-more-icon { background: rgba(97,83,189,0.15);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 20px;
-      height: 20px;
-      padding: 2px;
-      transition: transform 0.3s; }
-
-.see-more-icon svg { width: 12px; height: 12px; }
+/* .see-more-button migrated onto the .btn base — see "Legacy CTAs" block at EOF */
 
 
 /* ==========================================================
@@ -2880,7 +2797,7 @@ body.pg-home .user-avatar { background: #4b3fa7; }
   font-family: var(--font-primary); font-size: 15px; font-weight: 700; line-height: 1;
   color: var(--text-primary);
   background: transparent;
-  border: 1.5px solid transparent; border-radius: var(--radius-btn);
+  border: 1px solid transparent; border-radius: 999px; /* pill — the Curie golden norm (hero/top-banner/game buttons) */
   cursor: pointer; text-decoration: none; white-space: nowrap; user-select: none;
   transition: background var(--duration-standard) var(--easing-standard),
               border-color var(--duration-standard) var(--easing-standard),
@@ -2906,12 +2823,12 @@ body.pg-home .user-avatar { background: #4b3fa7; }
 .btn--primary:focus-visible,
 .btn--primary.is-focus { box-shadow: 0 4px 24px rgba(75,63,167,0.15), 0 0 0 3px rgba(124,92,252,0.5); }
 
-/* ----- Secondary: quiet neutral surface, paired with a primary ----- */
-.btn--secondary { background: var(--surface-white-08); color: var(--text-primary);
-  border-color: var(--surface-white-border-12); }
+/* ----- Secondary: quiet white-alpha surface (golden: hero__btn--secondary) ----- */
+.btn--secondary { background: rgba(255,255,255,0.07); color: var(--text-body);
+  border-color: rgba(255,255,255,0.15); }
 .btn--secondary:hover,
-.btn--secondary.is-hover { background: rgba(255,255,255,0.14);
-  border-color: var(--surface-white-border-22); transform: translateY(var(--btn-lift)); }
+.btn--secondary.is-hover { background: rgba(255,255,255,0.12); color: var(--text-primary);
+  border-color: var(--surface-white-border-18); transform: translateY(var(--btn-lift)); }
 .btn--secondary:active,
 .btn--secondary.is-active { background: var(--surface-white-06); transform: scale(0.98); }
 
@@ -2937,3 +2854,85 @@ body.pg-home .user-avatar { background: #4b3fa7; }
 .btn.is-disabled { opacity: 0.4; cursor: not-allowed;
   transform: none !important; box-shadow: none !important; }
 .btn:disabled { pointer-events: none; }
+
+/* -------------------------------------------------------------------
+   Round icon buttons — the circular family from the golden set
+   (nav-arrow · pause-play__button · pod-card__play · ma-btn · nav-button).
+   Icon-only, square aspect. Compose .btn.btn--round with a skin:
+     · default        → ghost circle   (ma-btn / nav-button)
+     · + .btn--primary → solid purple  (pause-play__button / play overlays)
+     · + .btn--glass   → frosted glass  (nav-arrow)
+   Sizes: .btn--sm 36 · default 40 · .btn--lg 48 (all from golden values).
+   ------------------------------------------------------------------- */
+.btn--round { width: 40px; height: 40px; padding: 0; gap: 0; border-radius: 50%;
+  flex-shrink: 0; color: var(--text-bright);
+  background: transparent; border: 1px solid var(--surface-white-border-18); }
+.btn--round svg { width: 18px; height: 18px; }
+.btn--round:hover,
+.btn--round.is-hover { background: var(--surface-white-08);
+  border-color: var(--surface-white-border-22); transform: scale(1.08); }
+.btn--round:active,
+.btn--round.is-active { transform: scale(0.96); }
+
+/* Solid purple round (play / pause) */
+.btn--round.btn--primary { background: var(--color-purple-primary); border-color: transparent; color: #fff; }
+.btn--round.btn--primary:hover,
+.btn--round.btn--primary.is-hover { background: var(--color-purple-hover); transform: scale(1.08); }
+
+/* Frosted glass round (carousel nav) */
+.btn--glass { background: var(--surface-white-08); color: var(--text-primary);
+  border: 1px solid var(--surface-white-border-22);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.btn--glass:hover,
+.btn--glass.is-hover { background: rgba(255,255,255,0.2); transform: scale(1.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+/* Round sizes */
+.btn--round.btn--sm { width: 36px; height: 36px; }
+.btn--round.btn--sm svg { width: 15px; height: 15px; }
+.btn--round.btn--lg { width: 48px; height: 48px; }
+.btn--round.btn--lg svg { width: 20px; height: 20px; }
+
+/* ===================================================================
+   Legacy CTA buttons — migrated onto the .btn base
+   Each keeps its signature look via a thin modifier layered on .btn
+   (and, where the type fits, .btn--primary). Declared AFTER the base
+   so these context deltas win the cascade. Prefer .btn + a type for
+   new work; these remain for the golden pages that already ship them.
+   Markup: add "btn [btn--primary]" alongside the legacy class.
+   =================================================================== */
+
+/* Newsletter submit — primary, full-width form button */
+.btn-subscribe { width: 100%; height: 48px; margin-top: var(--space-1);
+  border-radius: var(--radius-md); font-size: 16px; }
+
+/* Home footer CTA — primary, pill, larger, with gradient hover */
+.home-footer__button { padding: var(--space-5) var(--space-10);
+  border-radius: 40px; font-size: 1.15rem; }
+.home-footer__button:hover { background: linear-gradient(90deg, #6a5be2 0%, #8e7be6 100%);
+  transform: translateY(-2px) scale(1.03); }
+
+/* View-more feed CTA — indigo→cyan gradient skin on the base */
+.view-more-btn { padding: var(--space-5) 28px; border-radius: var(--radius-md);
+  background: linear-gradient(90deg, #4f46e5, #06b6d4);
+  box-shadow: 0 6px 20px rgba(79,70,229,0.3);
+  transition: all var(--duration-smooth) cubic-bezier(0.4,0,0.2,1); }
+.view-more-btn:hover { background: linear-gradient(90deg, #4338ca, #0891b2);
+  transform: translateY(-2px); box-shadow: 0 10px 30px rgba(79,70,229,0.45); }
+.view-more-btn:active { transform: translateY(-1px); }
+.view-more-btn svg { width: 16px; height: 16px; }
+
+/* See-more FAQ CTA — full-width outlined pill on the base */
+.see-more-button { display: flex; gap: var(--space-3);
+  margin: var(--space-11) auto 0; padding: var(--space-5) 28px;
+  color: var(--color-purple-primary); font-size: 1rem; font-weight: 600;
+  background: linear-gradient(135deg, rgba(97,83,189,0.1), rgba(97,83,189,0.05));
+  border: 2px solid var(--color-purple-primary); border-radius: 50px;
+  backdrop-filter: blur(8px); transition: all var(--duration-smooth); }
+.see-more-button:hover { background: linear-gradient(135deg, rgba(97,83,189,0.2), rgba(97,83,189,0.1));
+  border-color: rgba(97,83,189,0.8); transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(97,83,189,0.3); }
+.see-more-icon { display: flex; justify-content: center; align-items: center;
+  width: 20px; height: 20px; padding: 2px; background: rgba(97,83,189,0.15);
+  border-radius: 50%; transition: transform var(--duration-smooth); }
+.see-more-icon svg { width: 12px; height: 12px; }
