@@ -2863,3 +2863,77 @@ body.pg-home .user-avatar { background: #4b3fa7; }
 .toast--warning .toast__msg { font-size: 16px; color: var(--text-bright); }
 .toast__close { flex-shrink: 0; display: inline-flex; align-items: center; cursor: pointer; color: var(--text-tertiary); background: none; border: none; padding: 0; }
 .toast__close svg { width: 22px; height: 22px; }
+
+/* ===================================================================
+   Buttons — the systematic action component
+   Four types (primary · secondary · border · text) × five states
+   (default/enabled · hover · focus · active/pressed · disabled).
+   Real states use :hover / :focus-visible / :active / :disabled.
+   Matching .is-hover / .is-focus / .is-active / .is-disabled helper
+   classes pin a state for docs specimens or JS-driven controls.
+   =================================================================== */
+.btn {
+  --btn-lift: -1px;
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  box-sizing: border-box;
+  padding: var(--space-4) var(--space-9);
+  font-family: var(--font-primary); font-size: 15px; font-weight: 700; line-height: 1;
+  color: var(--text-primary);
+  background: transparent;
+  border: 1.5px solid transparent; border-radius: var(--radius-btn);
+  cursor: pointer; text-decoration: none; white-space: nowrap; user-select: none;
+  transition: background var(--duration-standard) var(--easing-standard),
+              border-color var(--duration-standard) var(--easing-standard),
+              color var(--duration-standard) var(--easing-standard),
+              box-shadow var(--duration-standard) var(--easing-standard),
+              transform var(--duration-fast) var(--easing-standard);
+}
+.btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+/* Shared focus ring (keyboard focus + pinned demo) */
+.btn:focus-visible,
+.btn.is-focus { outline: none; box-shadow: 0 0 0 3px rgba(124,92,252,0.45); }
+
+/* ----- Primary: the single loud accent action ----- */
+.btn--primary { background: var(--color-purple-primary); color: #fff; border-color: transparent;
+  box-shadow: 0 4px 24px rgba(75,63,167,0.15); }
+.btn--primary:hover,
+.btn--primary.is-hover { background: var(--color-purple-hover);
+  box-shadow: 0 6px 28px rgba(75,63,167,0.28); transform: translateY(var(--btn-lift)); }
+.btn--primary:active,
+.btn--primary.is-active { background: var(--color-purple-dark);
+  box-shadow: none; transform: scale(0.98); }
+.btn--primary:focus-visible,
+.btn--primary.is-focus { box-shadow: 0 4px 24px rgba(75,63,167,0.15), 0 0 0 3px rgba(124,92,252,0.5); }
+
+/* ----- Secondary: quiet neutral surface, paired with a primary ----- */
+.btn--secondary { background: var(--surface-white-08); color: var(--text-primary);
+  border-color: var(--surface-white-border-12); }
+.btn--secondary:hover,
+.btn--secondary.is-hover { background: rgba(255,255,255,0.14);
+  border-color: var(--surface-white-border-22); transform: translateY(var(--btn-lift)); }
+.btn--secondary:active,
+.btn--secondary.is-active { background: var(--surface-white-06); transform: scale(0.98); }
+
+/* ----- Border: outlined, purple-tinted; lower-emphasis peer action ----- */
+.btn--border { background: transparent; color: var(--color-purple-light);
+  border-color: var(--color-purple-primary); }
+.btn--border:hover,
+.btn--border.is-hover { background: rgba(97,83,190,0.12); border-color: var(--color-purple-hover);
+  color: #fff; transform: translateY(var(--btn-lift)); }
+.btn--border:active,
+.btn--border.is-active { background: rgba(97,83,190,0.20); transform: scale(0.98); }
+
+/* ----- Text: minimal, inline; the lowest-emphasis action ----- */
+.btn--text { background: transparent; color: var(--color-purple-light);
+  border-color: transparent; padding: var(--space-3) var(--space-4); }
+.btn--text:hover,
+.btn--text.is-hover { background: rgba(97,83,190,0.12); color: #fff; }
+.btn--text:active,
+.btn--text.is-active { background: rgba(97,83,190,0.18); transform: scale(0.98); }
+
+/* ----- Disabled: applies to every type; wins over hover/active ----- */
+.btn:disabled,
+.btn.is-disabled { opacity: 0.4; cursor: not-allowed;
+  transform: none !important; box-shadow: none !important; }
+.btn:disabled { pointer-events: none; }

@@ -590,6 +590,50 @@
       "snippet": "<button class=\"btn-subscribe\">Subscribe Free</button>"
     },
     {
+      "id": "button",
+      "name": "Button",
+      "category": "actions",
+      "status": "stable",
+      "purpose": "The systematic action control in four emphasis levels — primary, secondary, border, and text — each with a full set of interaction states.",
+      "whenToUse": "Any triggered action. Pick the type by emphasis: one primary as the loud gesture of a view, secondary for its neutral peer, border for a lower-emphasis alternative, text for the quietest inline action (cancel, skip, learn more).",
+      "whenNotToUse": "Navigation between pages (use links / nav) or one-off product-specific CTAs that already have a dedicated component (btn-subscribe, home-footer__button, see-more-button).",
+      "anatomy": [
+        "btn (base: sizing, type, radius, focus ring, transitions)",
+        "btn--primary | btn--secondary | btn--border | btn--text (emphasis type — exactly one)",
+        "optional leading/trailing <svg> (auto-sized to 18px)",
+        "disabled attribute for the disabled state",
+        "is-hover | is-focus | is-active | is-disabled (helpers that pin a visual state for specimens or JS-driven controls)"
+      ],
+      "interactions": "Real states are driven by :hover (lift + brighter fill), :focus-visible (purple focus ring), :active (darken + press-scale), and :disabled (40% opacity, no pointer events). The matching is-* classes force the same visuals when a state must be shown statically or set from script.",
+      "sourcePage": "newsletter.html",
+      "bodyClass": "pg-newsletter",
+      "previewHeight": 640,
+      "previewWidth": 640,
+      "snippet": "<button class=\"btn btn--primary\">Primary</button>\n<button class=\"btn btn--secondary\">Secondary</button>\n<button class=\"btn btn--border\">Border</button>\n<button class=\"btn btn--text\">Text</button>",
+      "variants": [
+        {
+          "label": "Primary — states",
+          "previewWidth": 640,
+          "snippet": "<div style=\"display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--primary\">Read Brief</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Default</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--primary is-hover\">Read Brief</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Hover</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--primary is-focus\">Read Brief</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Focus</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--primary is-active\">Read Brief</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Active</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--primary\" disabled>Read Brief</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Disabled</span></div></div>"
+        },
+        {
+          "label": "Secondary — states",
+          "previewWidth": 640,
+          "snippet": "<div style=\"display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--secondary\">Save Draft</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Default</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--secondary is-hover\">Save Draft</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Hover</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--secondary is-focus\">Save Draft</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Focus</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--secondary is-active\">Save Draft</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Active</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--secondary\" disabled>Save Draft</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Disabled</span></div></div>"
+        },
+        {
+          "label": "Border — states",
+          "previewWidth": 640,
+          "snippet": "<div style=\"display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--border\">Share</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Default</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--border is-hover\">Share</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Hover</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--border is-focus\">Share</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Focus</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--border is-active\">Share</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Active</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--border\" disabled>Share</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Disabled</span></div></div>"
+        },
+        {
+          "label": "Text — states",
+          "previewWidth": 640,
+          "snippet": "<div style=\"display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text\">Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Default</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text is-hover\">Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Hover</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text is-focus\">Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Focus</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text is-active\">Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Active</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text\" disabled>Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Disabled</span></div></div>"
+        }
+      ]
+    },
+    {
       "id": "content-badge",
       "name": "Content Badge",
       "category": "indicators",
