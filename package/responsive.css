@@ -47,12 +47,13 @@
     display: none !important;
   }
 
-  /* ----- Show the mobile content view ----- */
+  /* ----- Show the mobile content view (centered column, generous side padding) ----- */
   body[class^="pg-"] .m-view {
     display: block;
-    max-width: 100%;
+    max-width: 460px;
+    margin-inline: auto;
     overflow-x: hidden;
-    padding: calc(56px + 16px) 16px calc(72px + 24px);
+    padding: calc(56px + 18px) 22px calc(72px + 24px);
   }
   .m-newsletter, .m-fcard, .m-section, .m-footer-cta { max-width: 100%; }
   /* Detail pages have no bottom tab bar → reclaim the bottom padding */
@@ -81,8 +82,8 @@
     display: flex; align-items: center; justify-content: center;
   }
   .m-newsletter__icon svg { width: 26px; height: 26px; color: rgba(255,255,255,0.75); }
-  .m-newsletter__title { font-size: 1.35rem; font-weight: 800; color: #fff; margin-bottom: 6px; line-height: 1.2; }
-  .m-newsletter__sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); line-height: 1.45; }
+  .m-newsletter__title { font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: 6px; line-height: 1.2; }
+  .m-newsletter__sub { font-size: 0.98rem; color: rgba(255,255,255,0.7); line-height: 1.45; }
   .m-newsletter__btn {
     width: 100%; justify-content: center;
     padding: 16px; border-radius: 16px;
@@ -93,7 +94,7 @@
   /* Content section (heading + body) */
   .m-section { margin-bottom: 36px; }
   .m-section__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
-  .m-section__title { display: flex; align-items: center; gap: 12px; font-size: 1.6rem; font-weight: 800; color: #fff; }
+  .m-section__title { display: flex; align-items: center; gap: 12px; font-size: 1.4rem; font-weight: 800; color: #fff; }
   .m-section__title img, .m-section__title svg { width: 40px; height: 40px; flex-shrink: 0; }
   .m-section__title--muted { color: rgba(255,255,255,0.82); }
   .m-section__link { display: flex; align-items: center; gap: 6px; font-size: 1.1rem; font-weight: 800; color: #fff; white-space: nowrap; }
@@ -129,8 +130,8 @@
   .m-fcard__badge--pod  { background: #7C5CFC; }
   .m-fcard__body { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
   .m-fcard__date { font-size: 1rem; color: rgba(255,255,255,0.55); }
-  .m-fcard__title { font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1.2; }
-  .m-fcard__desc { font-size: 1.1rem; color: rgba(255,255,255,0.65); line-height: 1.45; }
+  .m-fcard__title { font-size: 1.3rem; font-weight: 800; color: #fff; line-height: 1.2; }
+  .m-fcard__desc { font-size: 1.0rem; color: rgba(255,255,255,0.65); line-height: 1.45; }
   .m-fcard__cta {
     margin-top: 4px; width: 100%; justify-content: center;
     display: inline-flex; align-items: center; gap: 10px;
@@ -157,7 +158,7 @@
   }
   .m-brief__play svg { width: 28px; height: 28px; color: #fff; }
   .m-brief__date { font-size: 1rem; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
-  .m-brief__title { font-size: 1.35rem; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 8px; }
+  .m-brief__title { font-size: 1.2rem; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 8px; }
   .m-brief__source { font-size: 1.05rem; color: rgba(255,255,255,0.5); }
 
   /* Generic full-width stacked card wrapper for reused components */
@@ -169,7 +170,7 @@
     background: linear-gradient(160deg, rgba(97,83,189,0.28), rgba(40,48,110,0.2));
     border: 1px solid rgba(124,92,252,0.25); border-radius: 22px; padding: 32px 22px;
   }
-  .m-footer-cta__title { font-size: 1.7rem; font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 12px; }
+  .m-footer-cta__title { font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 12px; }
   .m-footer-cta__title span { color: #a18aff; }
   .m-footer-cta__sub { font-size: 1.1rem; color: rgba(255,255,255,0.65); line-height: 1.5; margin-bottom: 22px; }
 
@@ -190,10 +191,12 @@
   .m-appbar__logo { width: 34px; height: 34px; display: block; }
   .m-appbar__title {
     flex: 1 1 auto; display: flex; align-items: center; justify-content: center; gap: 8px;
-    font-family: Manrope, sans-serif; font-weight: 800; font-size: 1.5rem; color: #fff;
+    font-family: Manrope, sans-serif; font-weight: 800; font-size: 1.35rem; color: #fff;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   .m-appbar__emoji { font-size: 1.4rem; line-height: 1; }
+  /* Page-heading icon: a real design-system asset (curie brief icon, media, games illustration, …) */
+  .m-appbar__icon { width: 26px; height: 26px; object-fit: contain; flex-shrink: 0; display: block; }
   .m-appbar__btn {
     display: flex; align-items: center; justify-content: center;
     width: 44px; height: 44px; border: none; background: transparent;
@@ -210,13 +213,16 @@
     backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
     border-top: 1px solid rgba(255,255,255,0.06);
   }
+  /* Bottom-tab icons are the real design-system nav assets (home / brief / game /
+     editorial megaphone / newsletter). They're white; active vs inactive is opacity. */
   .m-tab {
     flex: 1 1 0; display: flex; align-items: center; justify-content: center;
     background: transparent; border: none; cursor: pointer; padding-top: 4px;
-    color: rgba(255,255,255,0.55); -webkit-tap-highlight-color: transparent;
+    color: #fff; opacity: 0.5; -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.15s ease;
   }
-  .m-tab svg { width: 26px; height: 26px; }
-  .m-tab.is-active { color: #fff; }
+  .m-tab svg, .m-tab img { width: 23px; height: 23px; }
+  .m-tab.is-active { opacity: 1; }
 
   /* ----- Hamburger drawer ----- */
   body[class^="pg-"] .m-drawer {
@@ -323,7 +329,7 @@
   .m-lcard__media { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; }
   .m-lcard__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .m-lcard__body { padding: 22px; }
-  .m-lcard__title { font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 14px; }
+  .m-lcard__title { font-size: 1.3rem; font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 14px; }
   .m-lcard__meta { font-size: 1.05rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
   .m-lcard__foot { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
   .m-lcard__by { font-size: 1.05rem; color: rgba(255,255,255,0.7); }
@@ -343,7 +349,7 @@
   /* Detail hero + heading + meta */
   .m-detail__hero { width: 100%; aspect-ratio: 16 / 10; border-radius: 20px; overflow: hidden; margin-bottom: 22px; }
   .m-detail__hero img { width: 100%; height: 100%; object-fit: cover; }
-  .m-detail__title { font-size: clamp(1.7rem, 6.5vw, 2.2rem); font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+  .m-detail__title { font-size: clamp(1.5rem, 6vw, 2rem); font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 16px; }
   .m-detail__meta { display: flex; align-items: center; gap: 12px; font-size: 1.1rem; color: rgba(255,255,255,0.6); }
   .m-detail__sources { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
   .m-detail__sources svg { width: 16px; height: 16px; }
@@ -354,16 +360,16 @@
     background: linear-gradient(180deg, rgba(55,60,130,0.6), rgba(40,48,110,0.6));
     border: 1px solid rgba(124,92,252,0.2); border-radius: 20px; padding: 22px; margin-bottom: 20px;
   }
-  .m-summary__head { display: flex; align-items: center; gap: 12px; font-size: 1.45rem; font-weight: 800; color: #fff; margin-bottom: 14px; }
+  .m-summary__head { display: flex; align-items: center; gap: 12px; font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 14px; }
   .m-summary__head svg { width: 24px; height: 24px; }
-  .m-summary__body { font-size: 1.15rem; color: rgba(255,255,255,0.82); line-height: 1.6; }
+  .m-summary__body { font-size: 1.05rem; color: rgba(255,255,255,0.82); line-height: 1.6; }
 
   /* Mobile form (Newsletter) */
   .m-form {
     background: linear-gradient(180deg, rgba(55,50,110,0.5), rgba(30,26,60,0.5));
     border: 1px solid rgba(124,92,252,0.25); border-radius: 24px; padding: 26px 22px;
   }
-  .m-form__title { font-family: "Playfair Display", serif; font-size: 2rem; font-weight: 800; color: #fff; text-align: center; line-height: 1.2; margin-bottom: 8px; }
+  .m-form__title { font-family: "Playfair Display", serif; font-size: 1.8rem; font-weight: 800; color: #fff; text-align: center; line-height: 1.2; margin-bottom: 8px; }
   .m-form__title span { color: #7C5CFC; }
   .m-form__sub { text-align: center; font-size: 1.15rem; color: rgba(255,255,255,0.6); margin-bottom: 28px; }
   .m-field { margin-bottom: 20px; }
