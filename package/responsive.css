@@ -104,7 +104,7 @@
   .m-hscroll {
     display: flex; gap: 16px;
     overflow-x: auto; scrollbar-width: none;
-    margin: 0 -16px; padding: 0 16px 4px;
+    margin: 0 -22px; padding: 0 22px 4px;
     scroll-snap-type: x mandatory;
   }
   .m-hscroll::-webkit-scrollbar { display: none; }
@@ -183,7 +183,7 @@
   body[class^="pg-"] .m-appbar {
     display: flex; align-items: center; gap: 12px;
     position: fixed; top: 0; left: 0; right: 0; height: 56px;
-    padding: 0 16px; z-index: 120;
+    padding: 0 22px; z-index: 120;
     background: rgba(20, 13, 44, 0.72);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   }
