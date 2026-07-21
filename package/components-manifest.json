@@ -595,7 +595,7 @@
       "name": "Button",
       "category": "actions",
       "status": "stable",
-      "purpose": "The systematic action control, grounded in the golden set. Pill-shaped label buttons in four emphasis levels (primary, secondary, border, text) plus a round icon-button family in three skins (ghost, solid, glass) and three sizes — every type with a full set of interaction states.",
+      "purpose": "The systematic action control, grounded in the golden set. Pill-shaped label buttons in four emphasis levels — primary (the solid purple button), secondary, border, text — plus a full-width primary preset (Subscribe) and a round icon-button family in three skins (ghost, solid, glass) and three sizes. Every type carries a full set of interaction states.",
       "whenToUse": "Any triggered action. For a labelled action pick the type by emphasis: one primary as the loud gesture of a view, secondary for its neutral peer, border for a lower-emphasis alternative, text for the quietest inline action. For an icon-only action (play, next, bookmark, more) use btn--round: solid (btn--primary) for the main play/pause gesture, glass for media/carousel nav over imagery, ghost for meta actions on a card.",
       "whenNotToUse": "Navigation between pages (use links / nav) or one-off product-specific CTAs that already have a dedicated component (btn-subscribe, home-footer__button, see-more-button).",
       "anatomy": [
@@ -604,15 +604,16 @@
         "btn--round (circular icon button) + skin: default = ghost, btn--primary = solid purple, btn--glass = frosted",
         "btn--sm | btn--lg (round sizes: 36 / 40 / 48px)",
         "optional leading/trailing <svg> (auto-sized: 18px label, 15/18/20px round by size)",
+        "btn-subscribe (full-width primary preset for form submits — btn btn--primary btn-subscribe)",
         "disabled attribute for the disabled state",
         "is-hover | is-focus | is-active | is-disabled (helpers that pin a visual state for specimens or JS-driven controls)"
       ],
       "interactions": "Label buttons: :hover (lift + brighter fill), :focus-visible (purple focus ring), :active (darken + press-scale), :disabled (40% opacity, no pointer events). Round buttons scale on :hover (1.08, glass 1.1) and press in on :active, sharing the same focus ring and disabled behaviour. The matching is-* classes force each visual state for specimens or from script.",
       "sourcePage": "newsletter.html",
       "bodyClass": "pg-newsletter",
-      "previewHeight": 960,
+      "previewHeight": 1140,
       "previewWidth": 640,
-      "snippet": "<button class=\"btn btn--primary\">Primary</button>\n<button class=\"btn btn--secondary\">Secondary</button>\n<button class=\"btn btn--border\">Border</button>\n<button class=\"btn btn--text\">Text</button>\n\n<button class=\"btn btn--round btn--primary\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M8 5v14l11-7z\"/></svg></button>\n<button class=\"btn btn--round\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/></svg></button>\n<button class=\"btn btn--round btn--glass\" aria-label=\"Next\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9,6 15,12 9,18\"/></svg></button>",
+      "snippet": "<button class=\"btn btn--primary\">Primary</button>\n<button class=\"btn btn--secondary\">Secondary</button>\n<button class=\"btn btn--border\">Border</button>\n<button class=\"btn btn--text\">Text</button>\n\n<!-- Full-width primary preset, e.g. a form submit -->\n<button class=\"btn btn--primary btn-subscribe\">Subscribe Free</button>\n\n<button class=\"btn btn--round btn--primary\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M8 5v14l11-7z\"/></svg></button>\n<button class=\"btn btn--round\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/></svg></button>\n<button class=\"btn btn--round btn--glass\" aria-label=\"Next\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9,6 15,12 9,18\"/></svg></button>",
       "variants": [
         {
           "label": "Primary — states",
@@ -633,6 +634,11 @@
           "label": "Text — states",
           "previewWidth": 640,
           "snippet": "<div style=\"display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text\">Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Default</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text is-hover\">Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Hover</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text is-focus\">Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Focus</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text is-active\">Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Active</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;\"><button class=\"btn btn--text\" disabled>Skip</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Disabled</span></div></div>"
+        },
+        {
+          "label": "Subscribe — full-width primary",
+          "previewWidth": 340,
+          "snippet": "<div style=\"display:flex;flex-direction:column;gap:18px;width:300px;\"><div style=\"display:flex;flex-direction:column;gap:8px;\"><button class=\"btn btn--primary btn-subscribe\">Subscribe Free</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Default</span></div><div style=\"display:flex;flex-direction:column;gap:8px;\"><button class=\"btn btn--primary btn-subscribe is-hover\">Subscribe Free</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Hover</span></div><div style=\"display:flex;flex-direction:column;gap:8px;\"><button class=\"btn btn--primary btn-subscribe\" disabled>Subscribe Free</button><span style=\"font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);\">Disabled</span></div></div>"
         },
         {
           "label": "Round icon — skins & sizes",
