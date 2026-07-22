@@ -620,25 +620,6 @@
       "snippet": "<div class=\"signup-card\">\n  <h3 class=\"signup-card__heading\">Get Curie's <em>Weekly Dose</em></h3>\n  <p class=\"signup-card__sub\">Free. Weekly. Quick to read.</p>\n  <div class=\"form-group\">\n    <label class=\"form-label\">Name <span class=\"req\">*</span></label>\n    <input class=\"form-input\" type=\"text\" placeholder=\"Enter your name\">\n  </div>\n  <div class=\"form-group\">\n    <label class=\"form-label\">Email <span class=\"req\">*</span></label>\n    <input class=\"form-input\" type=\"email\" placeholder=\"Enter your email\">\n  </div>\n  <div class=\"form-group\">\n    <label class=\"form-label\">Specialty <span class=\"req\">*</span></label>\n    <select class=\"form-select\">\n      <option value=\"\">Select a specialty...</option>\n      <option>Cardiology</option>\n      <option>Oncology</option>\n      <option>Neurology</option>\n      <option>Primary Care</option>\n      <option>Hematology</option>\n      <option>Endocrinology</option>\n      <option>Other</option>\n    </select>\n  </div>\n  <button class=\"btn btn--primary btn-subscribe\">Subscribe Free</button>\n</div>"
     },
     {
-      "id": "btn-subscribe",
-      "name": "Subscribe Button",
-      "category": "actions",
-      "status": "stable",
-      "purpose": "The loud primary action of a capture flow — a full-width Button (btn btn--primary) sized for a form surface.",
-      "whenToUse": "One per view, as the single accent gesture of a form surface (restraint rule).",
-      "whenNotToUse": "Secondary or repeated actions — never more than one loud action per view.",
-      "anatomy": [
-        "btn btn--primary (systematic Button base + primary type — see the Button component)",
-        "btn-subscribe (thin modifier: full width, 48px height, form-radius)"
-      ],
-      "interactions": "Inherits the Button primary states (hover → --color-purple-hover with lift, active press-scale, focus ring, disabled). The btn-subscribe modifier only adjusts sizing.",
-      "sourcePage": "newsletter.html",
-      "bodyClass": "pg-newsletter",
-      "previewHeight": 160,
-      "previewWidth": 360,
-      "snippet": "<button class=\"btn btn--primary btn-subscribe\">Subscribe Free</button>"
-    },
-    {
       "id": "button",
       "name": "Button",
       "category": "actions",
