@@ -2864,6 +2864,7 @@ body.pg-home .user-avatar { background: #4b3fa7; }
    base: .btn.btn--gradient. Default is the indigo→cyan feed CTA; --accent is the
    Curie purple→teal; theme skins match the home-banner action buttons. ----- */
 .btn--gradient { background: linear-gradient(90deg, #4f46e5, #06b6d4); color: #fff; border-color: transparent;
+  border-radius: var(--radius-md); /* matches the golden .view-more-btn (rounded rect, not a pill) */
   box-shadow: 0 6px 20px rgba(79,70,229,0.3); }
 .btn--gradient:hover,
 .btn--gradient.is-hover { background: linear-gradient(90deg, #4338ca, #0891b2);
