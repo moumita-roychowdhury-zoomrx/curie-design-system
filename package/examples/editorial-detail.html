@@ -90,18 +90,17 @@
 
       .ed-foot { text-align: center; font-size: 1.02rem; color: var(--text-faint); margin-top: var(--space-10); }
 
-      /* Specialty select — move the dropdown chevron to the left corner (hide the
-         native right-hand arrow and add a custom left chevron). */
+      /* Specialty select — dropdown chevron on the right (hide the native arrow,
+         add a custom right chevron + a little breathing space on the right). */
       .m-select { position: relative; }
       .m-select .m-field__select {
         -webkit-appearance: none; -moz-appearance: none; appearance: none;
-        padding-left: var(--space-11);   /* clear the left chevron */
+        padding-right: var(--space-10);   /* clear the right chevron + right-edge space */
       }
       .m-select__chev {
-        position: absolute; left: var(--space-4); top: 50%; transform: translateY(-50%);
+        position: absolute; right: var(--space-4); top: 50%; transform: translateY(-50%);
         width: 20px; height: 20px; color: var(--text-muted); pointer-events: none;
       }
-      .m-select .m-field__select { padding-left: var(--space-10); }
     }
   </style>
 </head>
