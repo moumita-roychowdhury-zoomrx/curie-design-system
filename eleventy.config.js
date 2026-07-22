@@ -18,6 +18,11 @@ export default function (eleventyConfig) {
   // passthrough-copied and already use relative URLs, so they're unaffected.
   eleventyConfig.addPlugin(HtmlBasePlugin);
 
+  // The docs read package/ (tokens.json, components-manifest.json, CSS) via _data
+  // files that Eleventy can't infer as dependencies, so watch package/ explicitly —
+  // otherwise `--serve` won't rebuild when the design system source changes.
+  eleventyConfig.addWatchTarget("package/");
+
   // The design-system CSS, served at /css/ for docs + previews
   for (const f of CSS_FILES) {
     eleventyConfig.addPassthroughCopy({ [`package/${f}`]: `css/${f}` });

@@ -30,7 +30,7 @@
       "sourcePage": "index.html",
       "bodyClass": "pg-home",
       "previewWidth": 640,
-      "previewHeight": 500,
+      "previewHeight": 570,
       "snippet": "<nav class=\"side-nav\">\n  <div class=\"side-nav__logo\"><img src=\"/assets/curie-logo-white.svg\" alt=\"Curie\" style=\"width:28px;height:28px\"><span class=\"side-nav__logo-label\">Curie</span></div>\n  <ul class=\"side-nav__list\">\n    <li><a class=\"side-nav__link active\" href=\"#\"><svg viewBox=\"0 0 34 34\" fill=\"white\" style=\"width:22px;height:22px\"><path d=\"M15.1719 4.34247C16.2384 3.54282 17.705 3.54274 18.7715 4.34247L28.0859 11.3288C28.8412 11.8953 29.286 12.7841 29.2861 13.7282V27.6999C29.2861 29.3567 27.9429 30.6997 26.2861 30.6999H23.2148C21.558 30.6999 20.2148 29.3567 20.2148 27.6999V21.8005C20.2148 21.2483 19.7669 20.8007 19.2148 20.8005H14.7285C14.1763 20.8006 13.7285 21.2482 13.7285 21.8005V27.6999C13.7285 29.3567 12.3854 30.6999 10.7285 30.6999H7.65723C6.00037 30.6999 4.65723 29.3567 4.65723 27.6999V13.7282C4.65735 12.7841 5.10211 11.8953 5.85742 11.3288L15.1719 4.34247Z\"/></svg><span class=\"side-nav__label\">Home</span></a></li>\n    <li><a class=\"side-nav__link\" href=\"briefs.html\"><img src=\"/assets/icons/brief.svg\" alt=\"Briefs\" style=\"width:22px;height:22px\"><span class=\"side-nav__label\">Briefs</span></a></li>\n    <li><a class=\"side-nav__link\" href=\"podcasts.html\"><img src=\"/assets/icons/podcast.svg\" alt=\"Podcasts\" style=\"width:22px;height:22px\"><span class=\"side-nav__label\">Podcasts</span></a></li>\n    <li><a class=\"side-nav__link\" href=\"editorial.html\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"width:22px;height:22px\"><path d=\"M18 3v18l-7-4H5a2 2 0 01-2-2V9a2 2 0 012-2h6l7-4z\"/><line x1=\"21\" y1=\"9\" x2=\"21\" y2=\"15\"/><path d=\"M9 17v4\"/></svg><span class=\"side-nav__label\">Editorial</span></a></li>\n    <li><a class=\"side-nav__link\" href=\"games.html\"><img src=\"/assets/icons/game.svg\" alt=\"Games\" style=\"width:22px;height:22px\"><span class=\"side-nav__label\">Games</span></a></li>\n    <li><a class=\"side-nav__link\" href=\"newsletter.html\"><img src=\"/assets/icons/newesletter.svg\" alt=\"Newsletter\" style=\"width:22px;height:22px\"><span class=\"side-nav__label\">Newsletter</span></a></li>\n  </ul>\n  <div class=\"side-nav__bottom\"></div>\n</nav>",
       "variants": [
         {
@@ -103,7 +103,7 @@
       "sourcePage": "briefs.html",
       "bodyClass": "",
       "previewWidth": 860,
-      "previewHeight": 560,
+      "previewHeight": 630,
       "snippet": "<div class=\"page-header\">\n  <div class=\"page-header__left\"><img src=\"/assets/icons/curie brief icon.svg\" alt=\"\"><h1 class=\"page-header__title\">Curie Briefs</h1></div>\n  <div class=\"page-header__right\"><div class=\"user-avatar\">mr</div><span class=\"user-name\">moumitra roychowdhury</span></div>\n</div>",
       "variants": [
         {
@@ -140,7 +140,7 @@
       "sourcePage": "editorial.html",
       "bodyClass": "pg-editorial",
       "previewWidth": 900,
-      "previewHeight": 190,
+      "previewHeight": 500,
       "snippet": "<div class=\"editorial-header\">\n  <div class=\"editorial-header__left\">\n    <img class=\"editorial-header__icon\" src=\"/assets/icons/media.svg\" alt=\"\">\n    <h1 class=\"editorial-header__title\">Curie Editorial</h1>\n  </div>\n  <div class=\"editorial-header__right\">\n    <div class=\"user-avatar\">mr</div>\n    <span class=\"user-name\">moumitra roychowdhury</span>\n  </div>\n</div>",
       "variants": [
         {
@@ -218,7 +218,7 @@
       ],
       "interactions": "Hover raises surface to --color-bg-card-hover (from components.css).",
       "sourcePage": "index.html",
-      "previewHeight": 320,
+      "previewHeight": 410,
       "previewWidth": 320,
       "snippet": "<div class=\"brief-item\">\n  <div class=\"brief-item-icon-wrapper\">\n    <img class=\"brief-item-icon\" src=\"https://images.unsplash.com/photo-1559757175-5700dde675bc?w=400&q=70\" alt=\"\">\n    <div class=\"brief-item-overlay-icon\"><img src=\"/assets/icons/brief.svg\" alt=\"\"></div>\n  </div>\n  <div class=\"brief-item-info\">\n    <div class=\"brief-item-date\">Apr 15, 2026</div>\n    <div class=\"brief-item-title\">Two surgical approaches for bone...</div>\n    <div class=\"brief-item-source\">Ortiz.inc</div>\n  </div>\n</div>"
     },
@@ -238,7 +238,7 @@
       ],
       "interactions": "Card opens the audio player; play glyph overlays the thumbnail.",
       "sourcePage": "podcasts.html",
-      "previewHeight": 340,
+      "previewHeight": 410,
       "previewWidth": 300,
       "snippet": "<div class=\"pod-card\">\n  <div class=\"pod-card__thumb\">\n    <img src=\"https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=70\" alt=\"\">\n    <div class=\"pod-card__play\"><svg viewBox=\"0 0 24 24\" fill=\"white\"><polygon points=\"9,6 18,12 9,18\"/></svg></div>\n  </div>\n  <div class=\"pod-card__date\">Jan 13, 2026</div>\n  <div class=\"pod-card__title\">What Tennis Teaches Doctors About Medicine</div>\n</div>"
     },
@@ -287,7 +287,7 @@
       "sourcePage": "editorial-detail.html",
       "bodyClass": "pg-editorial-detail",
       "previewWidth": 420,
-      "previewHeight": 280,
+      "previewHeight": 310,
       "snippet": "<div class=\"profile-card\">\n  <div class=\"profile-card__header\">\n    <div class=\"profile-card__info\">\n      <div class=\"profile-card__avatar\"><img src=\"https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&q=80\" alt=\"\"></div>\n      <div>\n        <div class=\"profile-card__name\">Marla Lipsyc-Sharf</div>\n        <div class=\"profile-card__institution\">UCLA Health</div>\n      </div>\n    </div>\n    <div class=\"profile-card__social\">\n      <a class=\"profile-card__social-link\" href=\"#\" title=\"X\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z\"/></svg></a>\n    </div>\n  </div>\n  <div class=\"profile-card__tags\"><span class=\"profile-card__tag\">Breast Oncology</span></div>\n  <p class=\"profile-card__bio\">One of the few voices actively focused on breast cancer in young women — her research on fertility, treatment timing, pregnancy after diagnosis, and circulating tumor DNA monitoring is filling a long-neglected gap in the field.</p>\n</div>"
     },
     {
@@ -309,7 +309,7 @@
       "sourcePage": "brief-detail.html",
       "bodyClass": "pg-brief-detail bg-briefs",
       "previewWidth": 300,
-      "previewHeight": 300,
+      "previewHeight": 350,
       "snippet": "<a class=\"related-story-card\" href=\"#\">\n  <img class=\"related-story-image\" src=\"https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=70\" alt=\"\">\n  <div class=\"related-story-body\">\n    <h4 class=\"related-story-title\">Many heart disease patients have blood pressure below...</h4>\n    <div class=\"related-story-meta\"><span>Medscape</span><span>about 17 hours ago</span></div>\n  </div>\n</a>"
     },
     {
@@ -335,7 +335,7 @@
       "sourcePage": "briefs.html",
       "bodyClass": "pg-briefs bg-briefs",
       "previewWidth": 640,
-      "previewHeight": 360,
+      "previewHeight": 520,
       "snippet": "<div class=\"latest-card\" onclick=\"window.location='brief-detail.html'\">\n  <div class=\"latest-card__top\">\n    <div class=\"latest-card__content\">\n      <h2 class=\"latest-card__title\">Remote heart monitoring device slashes hospital readmissions by 69%</h2>\n      <div class=\"latest-card__meta\">\n        <span class=\"latest-card__date\">about 17 hours ago</span>\n        <span class=\"latest-card__sep\">&middot;</span>\n        <span class=\"latest-card__source\">Medscape</span>\n      </div>\n      <p class=\"latest-card__desc\">A wireless heart device that monitors pressure in the lungs' blood vessels is proving to be a game-changer for heart failure patients. The CardioMEMS system helped slash hospital readmissions by 69% in a major study of 304 patients across Europe and Australia. The implantable sensor lets doctors adjust medications remotely based on daily pressure readings, keeping patients out of the hospital while improving their quality of life.</p>\n      <a class=\"latest-card__dive\" href=\"#\">Dive in <span class=\"arrow\">&rarr;</span></a>\n    </div>\n    <img class=\"latest-card__thumb\" src=\"https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=70\" alt=\"\">\n  </div>\n  <div class=\"actions\">\n    <div class=\"act read\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"20,6 9,17 4,12\"/></svg></div>\n    <div class=\"act bmark\"><img src=\"/assets/icons/BookMark.svg\" alt=\"Bookmark\" style=\"width:20px;height:20px;\"></div>\n    <div class=\"votes\"><button class=\"vbtn up\"><img src=\"/assets/icons/up arrow.svg\" alt=\"Like\" style=\"width:15px;height:15px;\"></button><button class=\"vbtn dn\"><img src=\"/assets/icons/down arrow.svg\" alt=\"Dislike\" style=\"width:15px;height:15px;\"></button></div>\n    <div class=\"act share\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"/><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"/></svg></div>\n  </div>\n</div>"
     },
     {
@@ -359,7 +359,7 @@
       "sourcePage": "briefs.html",
       "bodyClass": "pg-briefs bg-briefs",
       "previewWidth": 660,
-      "previewHeight": 440,
+      "previewHeight": 1420,
       "snippet": "<div class=\"card feat-main\" onclick=\"window.location='brief-detail.html'\">\n  <img class=\"card-img\" src=\"https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=70\" alt=\"\">\n  <div class=\"body\">\n    <h2 class=\"title\">Lower cholesterol targets cut heart events by one-third in landmark study</h2>\n    <div class=\"meta\"><span class=\"date\">about 17 hours ago</span><span class=\"src\">8 Sources</span></div>\n    <p class=\"desc\">Targeting LDL cholesterol below 55 mg/dL instead of 70 mg/dL reduced major cardiovascular events by 33% in patients with heart disease, according to the Ez-PAVE trial. The South Korean study of over 3,000 patients used mostly statins and ezetimibe to achieve these aggressive targets.</p>\n    <div class=\"actions\">\n      <div class=\"act read\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"20,6 9,17 4,12\"/></svg></div>\n      <div class=\"act bmark\"><img src=\"/assets/icons/BookMark.svg\" alt=\"Bookmark\" style=\"width:20px;height:20px;\"></div>\n      <div class=\"votes\"><button class=\"vbtn up\"><img src=\"/assets/icons/up arrow.svg\" alt=\"Like\" style=\"width:15px;height:15px;\"></button><button class=\"vbtn dn\"><img src=\"/assets/icons/down arrow.svg\" alt=\"Dislike\" style=\"width:15px;height:15px;\"></button></div>\n      <div class=\"act share\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"/><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"/></svg></div>\n    </div>\n  </div>\n</div>",
       "variants": [
         {
@@ -400,7 +400,7 @@
       "sourcePage": "brief-detail.html",
       "bodyClass": "pg-brief-detail bg-briefs",
       "previewWidth": 700,
-      "previewHeight": 400,
+      "previewHeight": 430,
       "snippet": "<div class=\"brief-detail-image\">\n  <img src=\"https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1000&q=80\" alt=\"\">\n</div>"
     },
     {
@@ -422,7 +422,7 @@
       "interactions": "filter-btn toggles filter-menu; .active marks the current selection. Menu open state is class-driven.",
       "sourcePage": "briefs.html",
       "bodyClass": "pg-briefs bg-briefs",
-      "previewHeight": 300,
+      "previewHeight": 460,
       "previewWidth": 420,
       "snippet": "<div class=\"filter-wrap\">\n  <div class=\"filter-btn\">\n    <span class=\"lbl\">Specialty:</span><span class=\"val\">Cardiology</span>\n    <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"6,9 12,15 18,9\"/></svg>\n  </div>\n  <div class=\"filter-menu open\" style=\"position:static; margin-top:12px;\">\n    <button class=\"filter-menu__item\">All</button>\n    <button class=\"filter-menu__item active\">Cardiology</button>\n    <button class=\"filter-menu__item\">Primary Care</button>\n    <button class=\"filter-menu__item\">Neurology</button>\n  </div>\n</div>",
       "previewNote": "Menu forced visible for documentation; in product it opens on trigger click.",
@@ -457,7 +457,7 @@
       "sourcePage": "briefs.html",
       "bodyClass": "pg-briefs bg-briefs",
       "previewWidth": 360,
-      "previewHeight": 170,
+      "previewHeight": 290,
       "snippet": "<div class=\"seg-toggle\" id=\"segToggle\">\n  <div class=\"seg-toggle__slider\"></div>\n  <button class=\"seg-toggle__btn active\" onclick=\"switchTab(this, 0)\">For You</button>\n  <button class=\"seg-toggle__btn\" onclick=\"switchTab(this, 1)\">Latest</button>\n</div>",
       "states": [
         {
@@ -494,7 +494,7 @@
       "interactions": "Focus ring from components.css. Add .is-error to the input/select for the error state (rose fill + border) and pair it with a form-error row. A form-input-wrap with a form-input__icon adds a leading icon (input gets form-input--icon to reserve space); form-help shows supporting text below the field.",
       "sourcePage": "newsletter.html",
       "bodyClass": "pg-newsletter",
-      "previewHeight": 200,
+      "previewHeight": 1180,
       "previewWidth": 420,
       "snippet": "<div class=\"form-group\">\n  <label class=\"form-label\">Name <span class=\"req\">*</span></label>\n  <input class=\"form-input\" type=\"text\" placeholder=\"Enter your name\">\n</div>",
       "variants": [
@@ -554,7 +554,7 @@
       "interactions": "Add .is-error to the form-input or form-select to switch it to the rose error surface (--color-error-surface) with a --color-error border, then render a form-error row directly beneath. Remove .is-error and the form-error row once the field becomes valid. Same building blocks as the form-field Error variant, documented here as a standalone state.",
       "sourcePage": "newsletter.html",
       "bodyClass": "pg-newsletter",
-      "previewHeight": 320,
+      "previewHeight": 420,
       "previewWidth": 420,
       "snippet": "<div class=\"form-group\">\n  <label class=\"form-label\">NPI number <span class=\"req\">*</span></label>\n  <input class=\"form-input is-error\" type=\"text\" value=\"12345\">\n  <div class=\"form-error\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z\"/></svg>Enter a valid 10-digit NPI number</div>\n</div>",
       "variants": [
@@ -591,7 +591,7 @@
       "sourcePage": "briefs.html",
       "bodyClass": "pg-briefs bg-briefs",
       "previewWidth": 900,
-      "previewHeight": 200,
+      "previewHeight": 250,
       "snippet": "<div class=\"nl-bar\">\n  <div class=\"nl-bar__left\">\n    <div class=\"nl-bar__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"><path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"/><polyline points=\"22,6 12,13 2,6\"/></svg></div>\n    <div class=\"nl-bar__text\">\n      <div class=\"nl-bar__title\">Prefer the summary version?</div>\n      <div class=\"nl-bar__sub\">Stay updated in minutes with Curie's Weekly Dose.</div>\n    </div>\n  </div>\n  <button class=\"nl-bar__btn\">Subscribe free</button>\n</div>"
     },
     {
@@ -662,7 +662,7 @@
       "interactions": "Label buttons: :hover (lift + brighter fill), :focus-visible (purple focus ring), :active (darken + press-scale), :disabled (40% opacity, no pointer events). Round buttons scale on :hover (1.08, glass 1.1) and press in on :active, sharing the same focus ring and disabled behaviour. The matching is-* classes force each visual state for specimens or from script.",
       "sourcePage": "newsletter.html",
       "bodyClass": "pg-newsletter",
-      "previewHeight": 1140,
+      "previewHeight": 2300,
       "previewWidth": 640,
       "snippet": "<button class=\"btn btn--primary\">Primary</button>\n<button class=\"btn btn--secondary\">Secondary</button>\n<button class=\"btn btn--border\">Border</button>\n<button class=\"btn btn--text\">Text</button>\n\n<!-- Full-width primary preset, e.g. a form submit -->\n<button class=\"btn btn--primary btn-subscribe\">Subscribe Free</button>\n\n<button class=\"btn btn--round btn--primary\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M8 5v14l11-7z\"/></svg></button>\n<button class=\"btn btn--round\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/></svg></button>\n<button class=\"btn btn--round btn--glass\" aria-label=\"Next\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9,6 15,12 9,18\"/></svg></button>",
       "variants": [
@@ -793,7 +793,7 @@
       "sourcePage": "editorial-detail.html",
       "bodyClass": "pg-editorial-detail",
       "previewWidth": 1000,
-      "previewHeight": 480,
+      "previewHeight": 540,
       "snippet": "<div class=\"hero\">\n  <div class=\"hero__bg\"></div>\n  <div class=\"hero__overlay\"></div>\n  <div class=\"hero__content\">\n    <div class=\"hero__tags\">\n      <span class=\"hero__tag\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\" style=\"width:12px;height:12px;vertical-align:-1px;margin-right:4px\"><path d=\"M18 3v18l-7-4H5a2 2 0 01-2-2V9a2 2 0 012-2h6l7-4z\"/><line x1=\"21\" y1=\"9\" x2=\"21\" y2=\"15\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg>Curie Editorial</span>\n      <span class=\"hero__date\">March 2026</span>\n    </div>\n    <h1 class=\"hero__title\">Rising Voices in<span class=\"hero__title-accent\">Oncology</span></h1>\n    <p class=\"hero__subtitle\">A curated look at the oncologists shaping the next era of cancer care — through research, advocacy, and digital influence.</p>\n    <div class=\"hero__actions\">\n      <button class=\"hero__btn hero__btn--primary\">\n        <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/></svg>\n        Subscribe to Curie\n      </button>\n      <button class=\"hero__btn hero__btn--secondary\">\n        <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"/><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"/></svg>\n        Share This List\n      </button>\n    </div>\n    <div class=\"hero__meta\">\n      <div class=\"hero__meta-item\">\n        <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>\n        5 min read\n      </div>\n      <div class=\"hero__meta-item\">\n        <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M23 21v-2a4 4 0 00-3-3.87\"/><path d=\"M16 3.13a4 4 0 010 7.75\"/></svg>\n        10 Voices Featured\n      </div>\n    </div>\n  </div>\n</div>"
     },
     {
@@ -862,7 +862,7 @@
       "sourcePage": "index.html",
       "bodyClass": "pg-home",
       "previewWidth": 1080,
-      "previewHeight": 320,
+      "previewHeight": 1080,
       "snippet": "<div class=\"almanac-card\">\n  <div class=\"almanac-card__date\"><div class=\"almanac-card__date-month\">SEP</div><div class=\"almanac-card__date-day\">12</div><div class=\"almanac-card__date-range\">–16</div></div>\n  <div class=\"almanac-card__content\">\n    <div class=\"almanac-card__badges\"><span class=\"almanac-card__tier almanac-card__tier--must\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/></svg>MUST-TRACK</span><span class=\"almanac-card__domain\">Translational neurology</span></div>\n    <h3 class=\"almanac-card__title\">ANA 2026 · American Neurological Association Annual Meeting</h3>\n    <div class=\"almanac-card__meta\"><span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"/><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"/><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"/></svg>Sep 12–16, 2026</span><span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/></svg>Baltimore, MD</span></div>\n    <div class=\"almanac-card__take\"><div class=\"almanac-card__take-header\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M7.17 6A5.17 5.17 0 002 11.17V18h6.83v-6.83H5.5A3.67 3.67 0 019.17 7.5V6H7.17zm10 0A5.17 5.17 0 0012 11.17V18h6.83v-6.83H15.5a3.67 3.67 0 013.67-3.67V6h-2z\"/></svg><span class=\"almanac-card__take-label\">EDITOR'S TAKE</span></div><p class=\"almanac-card__take-body\">The one neurology meeting where practice-changing trials actually debut — clear your calendar for the late-breakers.</p></div>\n    <div class=\"almanac-card__actions\"><button class=\"almanac-card__track\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/><line x1=\"12\" y1=\"7\" x2=\"12\" y2=\"13\"/><line x1=\"9\" y1=\"10\" x2=\"15\" y2=\"10\"/></svg>Track</button><a class=\"almanac-card__details\" href=\"#\">View details<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></a></div>\n  </div>\n</div>",
       "variants": [
         {
@@ -903,7 +903,7 @@
       "sourcePage": "index.html",
       "bodyClass": "pg-home",
       "previewWidth": 380,
-      "previewHeight": 380,
+      "previewHeight": 1280,
       "snippet": "<div class=\"ai-tool-card\">\n  <div class=\"ai-tool-card__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z\"/><polyline points=\"14,2 14,8 20,8\"/><line x1=\"8\" y1=\"13\" x2=\"16\" y2=\"13\"/><line x1=\"8\" y1=\"17\" x2=\"14\" y2=\"17\"/></svg></div>\n  <h3 class=\"ai-tool-card__title\">Patient Handout Generator</h3>\n  <p class=\"ai-tool-card__desc\">Generate a patient-ready handout for any regimen in seconds — written in plain language and sourced from approved labeling.</p>\n  <div class=\"ai-tool-card__tags\"><span class=\"ai-tool-card__tag\">Regimen-specific</span><span class=\"ai-tool-card__tag\">FDA-sourced</span><span class=\"ai-tool-card__tag\">For oncologists</span></div>\n  <div class=\"ai-tool-card__meta\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>&lt;60 seconds · Built from FDA-approved labeling</div>\n  <button class=\"ai-tool-card__btn\">Generate Handout<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></button>\n</div>",
       "variants": [
         {
@@ -946,7 +946,7 @@
       "sourcePage": "games.html",
       "bodyClass": "pg-games",
       "previewWidth": 360,
-      "previewHeight": 470,
+      "previewHeight": 1560,
       "snippet": "<div class=\"game-mode-card\">\n  <span class=\"game-mode-card__badge game-mode-card__badge--matching\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1\"/><path d=\"M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1\"/></svg>MATCHING</span>\n  <h3 class=\"game-mode-card__title\">Primary Care Match the Pairs</h3>\n  <p class=\"game-mode-card__desc\">Match each clinical sign to the condition it most points to, against the clock.</p>\n  <div class=\"game-mode-card__bottom\">\n    <div class=\"game-mode-card__progress-row\"><span class=\"lbl\">Progress</span><span class=\"val\">0/8 sets</span></div>\n    <div class=\"game-mode-card__progress-track\"><div class=\"game-mode-card__progress-fill\" style=\"width:0%\"></div></div>\n    <div class=\"game-mode-card__stats\"><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>5 min</span><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 10L12 5 2 10l10 5 10-5z\"/><path d=\"M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5\"/></svg>20 LP</span><span class=\"game-mode-card__stat\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5A2.5 2.5 0 016.5 17H20\"/><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z\"/></svg>0.25 Cr</span></div>\n    <button class=\"game-mode-card__play\"><span class=\"game-mode-card__play-label\"><svg class=\"play-circle\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"10,8 16,12 10,16\"/></svg>Play Now</span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></button>\n  </div>\n</div>",
       "variants": [
         {
@@ -984,7 +984,7 @@
       "sourcePage": "games.html",
       "bodyClass": "pg-games",
       "previewWidth": 280,
-      "previewHeight": 280,
+      "previewHeight": 1000,
       "snippet": "<div class=\"game-tile\"><div class=\"game-tile__title\">Curie Connections</div><div class=\"game-tile__icon\"><img src=\"/assets/illustration/connections.svg\" alt=\"Connections\"></div><button class=\"game-tile__play\">Play</button></div>",
       "variants": [
         {
@@ -1021,7 +1021,7 @@
       "sourcePage": "games.html",
       "bodyClass": "pg-games",
       "previewWidth": 900,
-      "previewHeight": 120,
+      "previewHeight": 160,
       "snippet": "<div class=\"coming-soon-note\">\n  <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>\n  More games coming soon — check back for new challenges!\n</div>"
     },
     {
@@ -1062,7 +1062,7 @@
       "sourcePage": "newsletter.html",
       "bodyClass": "pg-newsletter",
       "previewWidth": 360,
-      "previewHeight": 200,
+      "previewHeight": 340,
       "snippet": "<div class=\"toggle-row\"><button class=\"toggle is-on\" type=\"button\"><span class=\"toggle__knob\"></span></button><span class=\"toggle__label\">Daily briefing notifications</span></div>",
       "variants": [
         {
@@ -1100,7 +1100,7 @@
       "sourcePage": "newsletter.html",
       "bodyClass": "pg-newsletter",
       "previewWidth": 360,
-      "previewHeight": 220,
+      "previewHeight": 280,
       "snippet": "<div class=\"radio-group\">\n  <label class=\"radio is-selected\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Daily</span><span class=\"radio__desc\">Every weekday morning</span></span></label>\n  <label class=\"radio\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Weekly</span></span></label>\n  <label class=\"radio\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Never</span></span></label>\n</div>",
       "states": [
         {
@@ -1153,7 +1153,7 @@
       "sourcePage": "newsletter.html",
       "bodyClass": "pg-newsletter",
       "previewWidth": 520,
-      "previewHeight": 140,
+      "previewHeight": 670,
       "snippet": "<div class=\"toast toast--success\"><div class=\"toast__disc\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20,6 9,17 4,12\"/></svg></div><div class=\"toast__body\"><div class=\"toast__title\">Subscribed</div><div class=\"toast__msg\">Check your inbox to confirm.</div></div><button class=\"toast__close\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button></div>",
       "variants": [
         {
@@ -1198,7 +1198,7 @@
       "interactions": "The overlay opens with .is-open; the close button lifts and rings on hover and focus, and footer actions dismiss or confirm.",
       "sourcePage": "components.css",
       "previewWidth": 520,
-      "previewHeight": 360,
+      "previewHeight": 440,
       "snippet": "<div class=\"modal__overlay is-open\"><div class=\"modal\"><div class=\"modal__header\"><h3 class=\"modal__title\">Archive this brief?</h3><button class=\"modal__close\" aria-label=\"Close\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button></div><div class=\"modal__body\"><p>Archived briefs move to your library and stop appearing in the daily feed. You can restore them at any time.</p></div><div class=\"modal__footer\"><button class=\"btn btn--secondary\">Cancel</button><button class=\"btn btn--primary\">Archive</button></div></div></div>",
       "states": [
         {
@@ -1241,7 +1241,7 @@
       "interactions": "Clicking a trigger toggles .is-open on its item, rotating the chevron and revealing the panel; items lift on hover.",
       "sourcePage": "components.css",
       "previewWidth": 560,
-      "previewHeight": 300,
+      "previewHeight": 510,
       "snippet": "<div class=\"accordion\"><div class=\"accordion__item is-open\"><button class=\"accordion__trigger\">What is included in a daily brief?<span class=\"accordion__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m6 9 6 6 6-6\"/></svg></span></button><div class=\"accordion__panel\"><p>Each brief distills the most relevant studies, approvals, and commentary for your specialty into a five-minute read.</p></div></div><div class=\"accordion__item\"><button class=\"accordion__trigger\">How often are briefs updated?<span class=\"accordion__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m6 9 6 6 6-6\"/></svg></span></button><div class=\"accordion__panel\"><p>Briefs refresh every morning before 7am in your local time zone.</p></div></div></div>",
       "states": [
         {
@@ -1276,7 +1276,7 @@
       "interactions": "The bubble fades and slides in on hover, keyboard focus-within, or a pinned .is-open, and points at the trigger via its arrow.",
       "sourcePage": "components.css",
       "previewWidth": 360,
-      "previewHeight": 200,
+      "previewHeight": 270,
       "snippet": "<span class=\"tooltip is-open\"><button class=\"btn btn--round btn--glass\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z\"/></svg></button><span class=\"tooltip__bubble\">Save to library</span></span>",
       "states": [
         {
@@ -1308,7 +1308,7 @@
       "interactions": "The trigger flips its chevron and toggles .is-open on the menu; items highlight on hover and mark the current choice with .is-active.",
       "sourcePage": "components.css",
       "previewWidth": 380,
-      "previewHeight": 320,
+      "previewHeight": 530,
       "snippet": "<div class=\"dropdown is-open\"><button class=\"dropdown__trigger\">Sort: Newest<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m6 9 6 6 6-6\"/></svg></button><div class=\"dropdown__menu\"><button class=\"dropdown__item is-active\">Newest first</button><button class=\"dropdown__item\">Oldest first</button><button class=\"dropdown__item\">Most read</button><button class=\"dropdown__item is-disabled\" disabled>Recommended</button></div></div>",
       "states": [
         {
@@ -1350,7 +1350,7 @@
       "interactions": "Selecting a tab pins .is-active with a raised pill; inactive tabs brighten on hover and each tab shows a focus ring.",
       "sourcePage": "components.css",
       "previewWidth": 480,
-      "previewHeight": 220,
+      "previewHeight": 610,
       "snippet": "<div class=\"tabs\"><div class=\"tabs__list\"><button class=\"tab is-active\">Overview</button><button class=\"tab\">Studies</button><button class=\"tab\">Discussion</button><button class=\"tab is-disabled\" disabled>Archive</button></div><div class=\"tabs__panel\">A high-level summary of the latest findings and why they matter to your practice.</div></div>",
       "states": [
         {
@@ -1397,7 +1397,7 @@
       "interactions": "The fill animates its width from the inline percentage toward the target, carrying the teal-to-blue progress gradient.",
       "sourcePage": "components.css",
       "previewWidth": 460,
-      "previewHeight": 200,
+      "previewHeight": 270,
       "snippet": "<div class=\"progress\"><div class=\"progress__label\"><span>Reading progress</span><span>60%</span></div><div class=\"progress__track\"><div class=\"progress__fill\" style=\"width:60%\"></div></div></div>",
       "states": [
         {
@@ -1436,7 +1436,7 @@
       "interactions": "Avatars lift and glow on hover; grouped avatars overlap and raise the hovered one above its neighbours.",
       "sourcePage": "components.css",
       "previewWidth": 420,
-      "previewHeight": 220,
+      "previewHeight": 910,
       "snippet": "<div class=\"avatar-group\"><span class=\"avatar avatar--md\"><img src=\"https://i.pravatar.cc/80?img=12\" alt=\"\"></span><span class=\"avatar avatar--md\"><span class=\"avatar__fallback\">MR</span></span><span class=\"avatar avatar--md\"><img src=\"https://i.pravatar.cc/80?img=32\" alt=\"\"></span><span class=\"avatar avatar--md\"><span class=\"avatar__fallback\">+4</span></span></div>",
       "variants": [
         {
@@ -1504,7 +1504,7 @@
       "interactions": "Tint variants are static labels; the tag variant adds a remove button that highlights and scales on hover, focus, and press.",
       "sourcePage": "components.css",
       "previewWidth": 460,
-      "previewHeight": 200,
+      "previewHeight": 800,
       "snippet": "<div style=\"display:flex;gap:10px;flex-wrap:wrap;align-items:center\"><span class=\"badge badge--purple\">Oncology</span><span class=\"badge badge--teal\">New</span><span class=\"badge badge--blue\">Phase III</span><span class=\"badge badge--pink\">Featured</span><span class=\"badge badge--neutral\">Draft</span><span class=\"badge badge--purple badge--tag\">Cardiology<button class=\"badge__remove\" aria-label=\"Remove\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button></span></div>",
       "variants": [
         {
@@ -1567,7 +1567,7 @@
       "interactions": "Hover lifts and brightens (scale + surface), focus shows a purple ring, active presses in (scale 0.96), disabled dims to 0.4 and blocks pointer events. Real states use :hover/:focus-visible/:active/:disabled; pinned .is-hover/.is-focus/.is-active/.is-disabled force a state for docs.",
       "sourcePage": "components.css",
       "previewWidth": 420,
-      "previewHeight": 200,
+      "previewHeight": 570,
       "snippet": "<div style=\"display:flex;gap:16px;align-items:center\">\n  <button class=\"btn btn--round\" aria-label=\"Previous\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"/></svg></button>\n  <button class=\"btn btn--round btn--primary\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg></button>\n  <button class=\"btn btn--round btn--glass\" aria-label=\"Next\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></button>\n  <button class=\"btn btn--round btn--lg\" aria-label=\"Add\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"19\"/><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/></svg></button>\n</div>",
       "states": [
         {
@@ -1613,7 +1613,7 @@
       "interactions": "Hover brightens the border; :checked/.is-checked fills purple with a white check; .is-indeterminate shows a purple dash; :focus-visible/.is-focus shows a purple ring; :disabled/.is-disabled dims the control and mutes the label.",
       "sourcePage": "components.css",
       "previewWidth": 380,
-      "previewHeight": 260,
+      "previewHeight": 500,
       "snippet": "<div style=\"display:flex;flex-direction:column;gap:14px\">\n  <label class=\"checkbox\"><input type=\"checkbox\" class=\"checkbox__control\" checked><span class=\"checkbox__label\">Include oncology briefs</span></label>\n  <label class=\"checkbox\"><input type=\"checkbox\" class=\"checkbox__control\"><span class=\"checkbox__label\">Weekly digest email</span></label>\n  <label class=\"checkbox\"><input type=\"checkbox\" class=\"checkbox__control is-indeterminate\"><span class=\"checkbox__label\">All therapeutic areas</span></label>\n  <label class=\"checkbox\"><input type=\"checkbox\" class=\"checkbox__control\" disabled><span class=\"checkbox__label\">Beta features (unavailable)</span></label>\n</div>",
       "states": [
         {
@@ -1657,7 +1657,7 @@
       "interactions": "Hover shows a faint border; :focus/.is-focus brightens the surface with a purple border + ring; .is-error paints the error surface and red border (and a red ring on focus); :disabled/.is-disabled dims and stops resizing.",
       "sourcePage": "components.css",
       "previewWidth": 460,
-      "previewHeight": 220,
+      "previewHeight": 730,
       "snippet": "<textarea class=\"textarea\" placeholder=\"Share your notes on this brief…\">Curie's summary tracked the KOL sentiment well — worth flagging the dosing caveat in the next digest.</textarea>",
       "states": [
         {
@@ -1699,7 +1699,7 @@
       "interactions": "The whole wrapper brightens with a purple border + ring on focus-within (or pinned .is-focus). The clear button brightens on hover and resets the field. .is-disabled dims the wrapper and blocks input.",
       "sourcePage": "components.css",
       "previewWidth": 460,
-      "previewHeight": 180,
+      "previewHeight": 390,
       "snippet": "<div class=\"search\">\n  <svg class=\"search__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg>\n  <input class=\"search__input\" type=\"search\" value=\"oncology\" placeholder=\"Search briefs…\">\n  <button class=\"search__clear\" aria-label=\"Clear search\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button>\n</div>",
       "states": [
         {
@@ -1735,7 +1735,7 @@
       "interactions": "Hover shows a faint border; :focus/.is-focus brightens the surface with a purple border + ring; .is-error paints the error surface + red border; :disabled/.is-disabled dims. In .select--multi a selected option is filled purple.",
       "sourcePage": "components.css",
       "previewWidth": 440,
-      "previewHeight": 200,
+      "previewHeight": 710,
       "snippet": "<select class=\"select\">\n  <option>All therapeutic areas</option>\n  <option>Oncology</option>\n  <option>Immunology</option>\n  <option>Cardiology</option>\n</select>",
       "states": [
         {
@@ -1780,7 +1780,7 @@
       "interactions": "Hover shifts to the brighter accent and solidifies the underline; :active deepens to the primary purple; :visited mutes; :focus-visible/.is-focus shows a purple ring. Real states plus pinned .is-hover/.is-active/.is-focus helpers.",
       "sourcePage": "components.css",
       "previewWidth": 480,
-      "previewHeight": 180,
+      "previewHeight": 490,
       "snippet": "<p style=\"color:rgba(255,255,255,0.8);font-family:Manrope,sans-serif;font-size:15px;line-height:1.6;max-width:400px\">Curie summarized the latest <a class=\"lnk\" href=\"#\">oncology briefs</a> this morning. Read the full <a class=\"lnk lnk--external\" href=\"#\">study on PubMed</a> for the underlying data.</p>",
       "states": [
         {
@@ -1827,7 +1827,7 @@
       "interactions": "Non-interactive. Spins continuously via a CSS keyframes rotation at a steady linear cadence until removed from the DOM.",
       "sourcePage": "components.css",
       "previewWidth": 360,
-      "previewHeight": 160,
+      "previewHeight": 360,
       "snippet": "<div style=\"display:flex;align-items:center;gap:24px\">\n  <span class=\"spinner spinner--sm\"></span>\n  <span class=\"spinner spinner--md\"></span>\n  <span class=\"spinner spinner--lg\"></span>\n</div>",
       "variants": [
         {
@@ -1861,7 +1861,7 @@
       "interactions": "Non-interactive. A highlight band sweeps left-to-right on a looping shimmer keyframes animation until the real content replaces it.",
       "sourcePage": "components.css",
       "previewWidth": 420,
-      "previewHeight": 200,
+      "previewHeight": 430,
       "snippet": "<div style=\"display:flex;gap:14px;align-items:flex-start;width:100%\">\n  <span class=\"skeleton skeleton--circle\"></span>\n  <div style=\"flex:1;display:flex;flex-direction:column;gap:10px\">\n    <span class=\"skeleton skeleton--text\"></span>\n    <span class=\"skeleton skeleton--text\"></span>\n    <span class=\"skeleton skeleton--rect\"></span>\n  </div>\n</div>",
       "variants": [
         {
@@ -1896,7 +1896,7 @@
       "interactions": "The optional action is a composed .btn with its own hover/focus/active states; the container itself is static.",
       "sourcePage": "components.css",
       "previewWidth": 420,
-      "previewHeight": 320,
+      "previewHeight": 730,
       "snippet": "<div class=\"empty-state\">\n  <span class=\"empty-state__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 7l9-4 9 4-9 4-9-4z\"/><path d=\"M3 7v10l9 4 9-4V7\"/><path d=\"M12 11v10\"/></svg></span>\n  <h3 class=\"empty-state__title\">No studies yet</h3>\n  <p class=\"empty-state__desc\">Saved studies will appear here. Start by adding one from the library.</p>\n  <button class=\"btn btn--primary empty-state__action\">Browse library</button>\n</div>",
       "variants": [
         {
@@ -1928,7 +1928,7 @@
       "interactions": "Static banner; the optional .alert__close button has a hover state that brightens its color and dismisses the alert on click.",
       "sourcePage": "components.css",
       "previewWidth": 520,
-      "previewHeight": 340,
+      "previewHeight": 740,
       "snippet": "<div class=\"alert alert--info\">\n  <span class=\"alert__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 11v5\"/><path d=\"M12 8h.01\"/></svg></span>\n  <div class=\"alert__body\">\n    <div class=\"alert__title\">Heads up</div>\n    <div class=\"alert__msg\">This dataset was last refreshed 6 hours ago.</div>\n  </div>\n  <button class=\"alert__close\" aria-label=\"Dismiss\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button>\n</div>",
       "variants": [
         {
@@ -1971,7 +1971,7 @@
       "interactions": "Non-interactive presentational separator; no states.",
       "sourcePage": "components.css",
       "previewWidth": 480,
-      "previewHeight": 220,
+      "previewHeight": 360,
       "snippet": "<div style=\"width:100%\">\n  <hr class=\"divider\">\n  <div class=\"divider divider--label\">or</div>\n  <div style=\"display:flex;align-items:center;height:28px;color:rgba(255,255,255,0.7);font-family:Manrope,sans-serif;font-size:14px\">\n    <span>Draft</span>\n    <span class=\"divider divider--vertical\"></span>\n    <span>Updated 2h ago</span>\n  </div>\n</div>",
       "variants": [
         {
@@ -2005,7 +2005,7 @@
       "interactions": "Body rows highlight on hover via table__row:hover (pinned with is-hover). Header cells are static labels. Alignment helpers do not change behaviour, only text alignment.",
       "sourcePage": "components.css",
       "previewWidth": 620,
-      "previewHeight": 300,
+      "previewHeight": 510,
       "snippet": "<table class=\"table table--zebra\">\n  <thead class=\"table__head\">\n    <tr class=\"table__row\">\n      <th class=\"table__cell table__cell--head\">Therapy</th>\n      <th class=\"table__cell table__cell--head\">Phase</th>\n      <th class=\"table__cell table__cell--head table__cell--right\">Readouts</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr class=\"table__row\"><td class=\"table__cell\">Belantamab</td><td class=\"table__cell\">Phase III</td><td class=\"table__cell table__cell--right\">12</td></tr>\n    <tr class=\"table__row is-hover\"><td class=\"table__cell\">Teclistamab</td><td class=\"table__cell\">Phase II</td><td class=\"table__cell table__cell--right\">8</td></tr>\n    <tr class=\"table__row\"><td class=\"table__cell\">Cilta-cel</td><td class=\"table__cell\">Phase III</td><td class=\"table__cell table__cell--right\">5</td></tr>\n  </tbody>\n</table>",
       "variants": [
         {
@@ -2036,7 +2036,7 @@
       "interactions": "Page items and arrows lift on hover (is-hover). The current page carries is-active (purple, no hover lift). is-disabled arrows are dimmed and non-interactive.",
       "sourcePage": "components.css",
       "previewWidth": 480,
-      "previewHeight": 160,
+      "previewHeight": 360,
       "snippet": "<nav class=\"pagination\">\n  <a class=\"pagination__item pagination__nav is-disabled\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"/></svg></a>\n  <a class=\"pagination__item is-active\" href=\"#\">1</a>\n  <a class=\"pagination__item\" href=\"#\">2</a>\n  <a class=\"pagination__item\" href=\"#\">3</a>\n  <span class=\"pagination__ellipsis\">&hellip;</span>\n  <a class=\"pagination__item\" href=\"#\">12</a>\n  <a class=\"pagination__item pagination__nav\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></a>\n</nav>",
       "states": [
         {
@@ -2070,7 +2070,7 @@
       "interactions": "Ancestor crumbs brighten and pick up a faint surface on hover (is-hover). The is-current crumb is non-interactive. Separators are decorative.",
       "sourcePage": "components.css",
       "previewWidth": 520,
-      "previewHeight": 160,
+      "previewHeight": 240,
       "snippet": "<nav class=\"breadcrumb\">\n  <a class=\"breadcrumb__item\" href=\"#\">Home</a>\n  <span class=\"breadcrumb__sep\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span>\n  <a class=\"breadcrumb__item\" href=\"#\">Briefs</a>\n  <span class=\"breadcrumb__sep\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span>\n  <span class=\"breadcrumb__item is-current\">Multiple Myeloma Q3</span>\n</nav>",
       "states": [
         {
@@ -2100,7 +2100,7 @@
       "interactions": "Static in the reference: markers and connectors reflect flow state via is-complete / is-active / is-upcoming. Completed connectors fill teal; the active marker carries a purple focus ring.",
       "sourcePage": "components.css",
       "previewWidth": 560,
-      "previewHeight": 180,
+      "previewHeight": 440,
       "snippet": "<div class=\"stepper\">\n  <div class=\"step is-complete\">\n    <span class=\"step__marker\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></span>\n    <span class=\"step__label\">Account</span>\n  </div>\n  <div class=\"step is-active\">\n    <span class=\"step__marker\">2</span>\n    <span class=\"step__label\">Preferences</span>\n  </div>\n  <div class=\"step is-upcoming\">\n    <span class=\"step__marker\">3</span>\n    <span class=\"step__label\">Review</span>\n  </div>\n</div>",
       "states": [
         {
@@ -2135,7 +2135,7 @@
       "interactions": "The thumb glows on hover and shows a purple focus ring on focus-within (pinned with is-focus). is-disabled dims the whole control and blocks interaction. Fill width and thumb left are the only inline values, driven by the current position.",
       "sourcePage": "components.css",
       "previewWidth": 460,
-      "previewHeight": 200,
+      "previewHeight": 340,
       "snippet": "<div class=\"slider\">\n  <div class=\"slider__track\">\n    <div class=\"slider__fill\" style=\"width:62%\"></div>\n    <div class=\"slider__thumb\" style=\"left:62%\"></div>\n  </div>\n</div>",
       "states": [
         {
