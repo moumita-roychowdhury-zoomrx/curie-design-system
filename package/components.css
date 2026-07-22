@@ -1229,6 +1229,9 @@ body.pg-editorial-detail .user-name { color: rgba(255,255,255,0.85); font-size: 
 
 /* Inline-svg sizing for vote arrows (golden pages use <img>; docs specimens use <svg>) */
 .vbtn svg, .ma-vbtn svg { width: 15px; height: 15px; }
+/* .vbtn keeps currentColor so the up/down sentiment hover tints it; .ma-vbtn has no
+   color of its own, so give its arrows the same light stroke as .ma-btn svg. */
+.ma-vbtn svg { stroke: #D8DCFF; }
 
 
 /* ----- Audio Player Bar ----- */
