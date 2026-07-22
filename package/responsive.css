@@ -60,17 +60,6 @@
   body.pg-brief-detail .m-view,
   body.pg-editorial-detail .m-view { padding-bottom: 28px; }
 
-  /* The mobile view is touch-first and designed edge-symmetric at 22px. Hide the
-     root vertical scrollbar so a classic, space-reserving OS scrollbar (Windows, or
-     macOS "Show scroll bars: Always") — and the scrollbar inside the docs phone
-     previews — can't consume ~15px on the right and make the equal side padding read
-     as left-shifted. Scrolling still works (overlay). Scoped to the golden pages so
-     the docs chrome keeps its normal scrollbar. */
-  html:has(> body[class^="pg-"]) { scrollbar-width: none; -ms-overflow-style: none; }
-  html:has(> body[class^="pg-"])::-webkit-scrollbar { width: 0; height: 0; }
-  body[class^="pg-"] { scrollbar-width: none; -ms-overflow-style: none; }
-  body[class^="pg-"]::-webkit-scrollbar { width: 0; height: 0; }
-
 
   /* ============================================================
      MOBILE CONTENT COMPONENTS (used inside .m-view)
