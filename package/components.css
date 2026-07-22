@@ -1221,9 +1221,14 @@ body.pg-editorial-detail .user-name { color: rgba(255,255,255,0.85); font-size: 
 
 .vbtn:hover { background: rgba(255,255,255,0.1); }
 
-.vbtn.up:hover { color: #22c55e; background: rgba(34,197,94,0.15); }
+.vbtn.up:hover,
+.vbtn.up.is-hover { color: #22c55e; background: rgba(34,197,94,0.15); }
 
-.vbtn.dn:hover { color: #ef4444; background: rgba(239,68,68,0.15); }
+.vbtn.dn:hover,
+.vbtn.dn.is-hover { color: #ef4444; background: rgba(239,68,68,0.15); }
+
+/* Inline-svg sizing for vote arrows (golden pages use <img>; docs specimens use <svg>) */
+.vbtn svg, .ma-vbtn svg { width: 15px; height: 15px; }
 
 
 /* ----- Audio Player Bar ----- */
