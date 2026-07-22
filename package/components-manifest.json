@@ -425,7 +425,20 @@
       "previewHeight": 300,
       "previewWidth": 420,
       "snippet": "<div class=\"filter-wrap\">\n  <div class=\"filter-btn\">\n    <span class=\"lbl\">Specialty:</span><span class=\"val\">Cardiology</span>\n    <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"6,9 12,15 18,9\"/></svg>\n  </div>\n  <div class=\"filter-menu open\" style=\"position:static; margin-top:12px;\">\n    <button class=\"filter-menu__item\">All</button>\n    <button class=\"filter-menu__item active\">Cardiology</button>\n    <button class=\"filter-menu__item\">Primary Care</button>\n    <button class=\"filter-menu__item\">Neurology</button>\n  </div>\n</div>",
-      "previewNote": "Menu forced visible for documentation; in product it opens on trigger click."
+      "previewNote": "Menu forced visible for documentation; in product it opens on trigger click.",
+      "states": [
+        {
+          "name": "closed",
+          "label": "Closed",
+          "snippet": "<div class=\"filter-wrap\" style=\"position:relative;width:220px\"><div class=\"filter-btn\"><span class=\"lbl\">Specialty:</span><span class=\"val\">Cardiology</span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"6,9 12,15 18,9\"/></svg></div></div>"
+        },
+        {
+          "name": "open",
+          "label": "Open",
+          "previewWidth": 260,
+          "snippet": "<div class=\"filter-wrap\" style=\"position:relative;width:220px;min-height:230px\"><div class=\"filter-btn open\"><span class=\"lbl\">Specialty:</span><span class=\"val\">Cardiology</span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"6,9 12,15 18,9\"/></svg></div><div class=\"filter-menu open\"><button class=\"filter-menu__item\">All</button><button class=\"filter-menu__item active\">Cardiology</button><button class=\"filter-menu__item\">Neurology</button><button class=\"filter-menu__item\">Primary Care</button></div></div>"
+        }
+      ]
     },
     {
       "id": "seg-toggle",
@@ -445,7 +458,19 @@
       "bodyClass": "pg-briefs bg-briefs",
       "previewWidth": 360,
       "previewHeight": 170,
-      "snippet": "<div class=\"seg-toggle\" id=\"segToggle\">\n  <div class=\"seg-toggle__slider\"></div>\n  <button class=\"seg-toggle__btn active\" onclick=\"switchTab(this, 0)\">For You</button>\n  <button class=\"seg-toggle__btn\" onclick=\"switchTab(this, 1)\">Latest</button>\n</div>"
+      "snippet": "<div class=\"seg-toggle\" id=\"segToggle\">\n  <div class=\"seg-toggle__slider\"></div>\n  <button class=\"seg-toggle__btn active\" onclick=\"switchTab(this, 0)\">For You</button>\n  <button class=\"seg-toggle__btn\" onclick=\"switchTab(this, 1)\">Latest</button>\n</div>",
+      "states": [
+        {
+          "name": "first",
+          "label": "First active",
+          "snippet": "<div class=\"seg-toggle\" style=\"width:220px\"><div class=\"seg-toggle__slider\"></div><button class=\"seg-toggle__btn active\">For You</button><button class=\"seg-toggle__btn\">Latest</button></div>"
+        },
+        {
+          "name": "second",
+          "label": "Second active",
+          "snippet": "<div class=\"seg-toggle latest-active\" style=\"width:220px\"><div class=\"seg-toggle__slider\"></div><button class=\"seg-toggle__btn\">For You</button><button class=\"seg-toggle__btn active\">Latest</button></div>"
+        }
+      ]
     },
     {
       "id": "form-field",
@@ -487,6 +512,28 @@
           "label": "Error",
           "previewWidth": 420,
           "snippet": "<div class=\"form-group\">\n  <label class=\"form-label\">NPI number</label>\n  <input class=\"form-input is-error\" type=\"text\" value=\"12345\">\n  <div class=\"form-error\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z\"/></svg>Enter a valid 10-digit NPI number</div>\n</div>"
+        }
+      ],
+      "states": [
+        {
+          "name": "default",
+          "label": "Default",
+          "snippet": "<div class=\"form-group\" style=\"width:260px\"><label class=\"form-label\">Name</label><input class=\"form-input\" type=\"text\" placeholder=\"Enter your name\"></div>"
+        },
+        {
+          "name": "focus",
+          "label": "Focus",
+          "snippet": "<div class=\"form-group\" style=\"width:260px\"><label class=\"form-label\">Name</label><input class=\"form-input is-focus\" type=\"text\" value=\"Jane Doe\"></div>"
+        },
+        {
+          "name": "error",
+          "label": "Error",
+          "snippet": "<div class=\"form-group\" style=\"width:260px\"><label class=\"form-label\">Name</label><input class=\"form-input is-error\" type=\"text\" value=\"j@\"><div class=\"form-error\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"12\"/><line x1=\"12\" y1=\"16\" x2=\"12.01\" y2=\"16\"/></svg>Enter a valid name</div></div>"
+        },
+        {
+          "name": "disabled",
+          "label": "Disabled",
+          "snippet": "<div class=\"form-group\" style=\"width:260px\"><label class=\"form-label\">Name</label><input class=\"form-input\" type=\"text\" value=\"Locked\" disabled></div>"
         }
       ]
     },
@@ -1054,7 +1101,19 @@
       "bodyClass": "pg-newsletter",
       "previewWidth": 360,
       "previewHeight": 220,
-      "snippet": "<div class=\"radio-group\">\n  <label class=\"radio is-selected\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Daily</span><span class=\"radio__desc\">Every weekday morning</span></span></label>\n  <label class=\"radio\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Weekly</span></span></label>\n  <label class=\"radio\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Never</span></span></label>\n</div>"
+      "snippet": "<div class=\"radio-group\">\n  <label class=\"radio is-selected\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Daily</span><span class=\"radio__desc\">Every weekday morning</span></span></label>\n  <label class=\"radio\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Weekly</span></span></label>\n  <label class=\"radio\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Never</span></span></label>\n</div>",
+      "states": [
+        {
+          "name": "selected",
+          "label": "Selected",
+          "snippet": "<label class=\"radio is-selected\" style=\"width:240px\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Daily</span><span class=\"radio__desc\">Every weekday morning</span></span></label>"
+        },
+        {
+          "name": "unselected",
+          "label": "Unselected",
+          "snippet": "<label class=\"radio\" style=\"width:240px\"><span class=\"radio__control\"></span><span class=\"radio__text\"><span class=\"radio__title\">Weekly</span><span class=\"radio__desc\">Every Monday</span></span></label>"
+        }
+      ]
     },
     {
       "id": "form-error",
