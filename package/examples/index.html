@@ -47,12 +47,13 @@
          a design-system change request in BUILD-NOTES.md. */
       body.pg-home .m-drawer.is-open { visibility: visible; opacity: 1; }
 
-      /* Left-padding consistency: the DS .m-hscroll bleeds symmetrically (margin/padding
-         -22/+22), but scroll-snap-align:start scrolls past the left padding, leaving the
-         first card flush at the screen edge while every heading sits at the page padding.
-         Drop the left bleed so the first card aligns with the headings; keep the right
-         bleed so the next card still peeks to the screen edge. */
-      .m-hscroll { margin-left: 0; padding-left: 0; }
+      /* Equal side padding: the DS .m-hscroll bleeds to both screen edges (margin 0 -22 /
+         padding 0 22), but scroll-snap-align:start leaves the first card flush at the left
+         edge while every heading sits at the 22px page padding. Remove the bleed on BOTH
+         sides so the rail matches the page's equal 22px left/right padding — the first card
+         aligns with the headings and the rail ends 22px from the right edge (the next card
+         still peeks within that boundary). */
+      .m-hscroll { margin: 0; padding: 0 0 4px; }
 
       /* Curie Briefs: the reference shows two ~200px circular items per view; the DS
          .m-brief is 78% (one per view, sized for the old 360px column). Narrow it. */
