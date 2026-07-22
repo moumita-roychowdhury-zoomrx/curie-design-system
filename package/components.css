@@ -2849,6 +2849,39 @@ body.pg-home .user-avatar { background: #4b3fa7; }
 .btn--text:active,
 .btn--text.is-active { background: rgba(97,83,190,0.18); transform: scale(0.98); }
 
+/* ----- Gradient: high-emphasis CTA skins (the feed / apply / banner buttons
+   from the golden pages — view-more-btn, primary-action-btn). Compose on the
+   base: .btn.btn--gradient. Default is the indigo→cyan feed CTA; --accent is the
+   Curie purple→teal; theme skins match the home-banner action buttons. ----- */
+.btn--gradient { background: linear-gradient(90deg, #4f46e5, #06b6d4); color: #fff; border-color: transparent;
+  box-shadow: 0 6px 20px rgba(79,70,229,0.3); }
+.btn--gradient:hover,
+.btn--gradient.is-hover { background: linear-gradient(90deg, #4338ca, #0891b2);
+  box-shadow: 0 10px 30px rgba(79,70,229,0.45); transform: translateY(var(--btn-lift)); }
+.btn--gradient:active,
+.btn--gradient.is-active { transform: scale(0.98); box-shadow: none; }
+.btn--gradient:focus-visible,
+.btn--gradient.is-focus { box-shadow: 0 6px 20px rgba(79,70,229,0.3), 0 0 0 3px rgba(124,92,252,0.5); }
+
+/* Curie accent gradient (purple→teal) — used by mobile "View More" / filter Apply */
+.btn--gradient-accent { background: linear-gradient(135deg, #7C5CFC, #00D4AA); color: #fff; border-color: transparent;
+  box-shadow: 0 6px 20px rgba(124,92,252,0.28); }
+.btn--gradient-accent:hover,
+.btn--gradient-accent.is-hover { filter: brightness(1.08);
+  box-shadow: 0 10px 30px rgba(124,92,252,0.42); transform: translateY(var(--btn-lift)); }
+.btn--gradient-accent:active,
+.btn--gradient-accent.is-active { transform: scale(0.98); box-shadow: none; filter: none; }
+.btn--gradient-accent:focus-visible,
+.btn--gradient-accent.is-focus { box-shadow: 0 6px 20px rgba(124,92,252,0.28), 0 0 0 3px rgba(124,92,252,0.5); }
+
+/* Theme gradients — the three home-banner primary-action-btn skins */
+.btn--gradient-brief { background: linear-gradient(135deg, #3b82f6, #60a5fa); color: #fff; border-color: transparent; }
+.btn--gradient-pod   { background: linear-gradient(135deg, #7c3aed, #a855f7); color: #fff; border-color: transparent; }
+.btn--gradient-game  { background: linear-gradient(135deg, #ec4899, #f472b6); color: #fff; border-color: transparent; }
+.btn--gradient-brief:hover, .btn--gradient-brief.is-hover,
+.btn--gradient-pod:hover, .btn--gradient-pod.is-hover,
+.btn--gradient-game:hover, .btn--gradient-game.is-hover { filter: brightness(1.08); transform: translateY(var(--btn-lift)); }
+
 /* ----- Disabled: applies to every type; wins over hover/active ----- */
 .btn:disabled,
 .btn.is-disabled { opacity: 0.4; cursor: not-allowed;
