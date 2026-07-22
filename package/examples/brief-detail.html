@@ -3,70 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curie Brief | Lower cholesterol targets cut heart events</title>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../tokens.css">
+  <title>Curie | Brief — Clover Health data breach</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../tokens.css">
   <link rel="stylesheet" href="../layout.css">
   <link rel="stylesheet" href="../components.css">
   <link rel="stylesheet" href="../utilities.css">
   <link rel="stylesheet" href="../responsive.css">
-</head>
-<body class="pg-brief-detail bg-briefs">
 
-  <!-- ========== MOBILE CHROME (mobile viewports only; display:none on desktop) ========== -->
+  <!-- Same shared conventions as home.html / briefs.html. Layout/state only, token values. -->
+  <style>
+    @media (max-width: 600px) {
+      html, body { overflow-x: hidden; max-width: 100%; }
+
+      /* Full-width column, matching the other pages (removes the DS 460px cap). */
+      body.pg-brief-detail .m-view { max-width: none; }
+
+      /* The DS .m-detail__title is clamp(1.5rem, 6vw, 2rem) — the 6vw balloons to ~30px at
+         full width. Pin it to a fixed size in line with the other pages' heading scale. */
+      .m-detail__title { font-size: 1.5rem; }
+
+      /* Reading-progress bar, pinned to the bottom edge of the app bar. Nested inside
+         .m-appbar so the mobile base-guard doesn't hide it. Uses the DS gradient token. */
+      .m-appbar .m-progress {
+        position: absolute; top: 100%; left: 0; height: 3px; width: 0%;
+        background: var(--gradient-progress);
+        transition: width 0.1s linear;
+      }
+
+      /* Sources dropdown (opened from "· N Sources ⌄"). No exact DS component — token-only. */
+      .m-detail__sources { position: relative; }
+      .m-sources__menu {
+        position: absolute; top: calc(100% + var(--space-3)); left: 0; z-index: 60;
+        min-width: 190px;
+        background: var(--color-purple-primary);
+        border: 1px solid var(--color-purple-hover);
+        border-radius: var(--radius-lg);
+        padding: var(--space-4) var(--space-5);
+        box-shadow: var(--shadow-dropdown);
+        display: none;
+      }
+      .m-sources__menu.is-open { display: block; }
+      .m-sources__item {
+        display: block; padding: var(--space-1) 0;
+        color: var(--text-bright); text-decoration: underline;
+        font-size: 1.1rem; font-weight: 600;
+      }
+
+      /* Summary card lightbulb — token colour instead of the golden's raw hex. */
+      .m-summary__head svg { color: var(--color-teal-secondary); }
+
+      /* The DS .m-summary is a strong blue-purple gradient; the reference is a subtle dark
+         card (barely lighter than the canvas). Re-skin to a quiet token surface. */
+      .m-summary {
+        background: var(--surface-white-05);
+        border: 1px solid var(--surface-white-border-12);
+      }
+
+      /* App bar: title sits next to the back button; the back button gets a stroke. */
+      .m-appbar__title { justify-content: flex-start; }
+      .m-appbar__btn--boxed { border: 1px solid var(--surface-white-border-18); }
+
+      /* Detail FABs: rounded squares with a stroke; colours matched to the screenshot
+         (each brand colour mixed 50/50 with the canvas for the muted look). */
+      body.pg-brief-detail .m-fab {
+        border-radius: var(--radius-2xl);
+        border: 1px solid var(--surface-white-border-18);
+      }
+      body.pg-brief-detail .m-fab--totop {
+        right: 16px; bottom: calc(16px + 60px + 12px);
+        color: var(--text-primary);
+        background: color-mix(in srgb, var(--color-blue) 50%, var(--color-bg-primary));
+      }
+      body.pg-brief-detail .m-fab--share {
+        background: color-mix(in srgb, var(--color-green) 50%, var(--color-bg-primary));
+      }
+
+      /* Related stories wrapped in one block (subtle dark, same as Summary) with nested cards. */
+      .m-related-block {
+        background: var(--surface-white-05);
+        border: 1px solid var(--surface-white-border-12);
+        border-radius: var(--radius-2xl);
+        padding: var(--space-8);
+        margin-bottom: var(--space-8);
+      }
+      .m-related-block__sub { margin: -4px 0 var(--space-7); font-size: 1.1rem; color: var(--text-muted); line-height: 1.5; }
+      .m-related-block .m-lcard {
+        background: transparent;
+        border: 1px solid var(--surface-white-border-12);
+      }
+      .m-related-block .m-lcard:last-child { margin-bottom: 0; }
+    }
+  </style>
+</head>
+<body class="pg-brief-detail">
+
+  <!-- ==================== MOBILE CHROME ==================== -->
+
+  <!-- App bar: back button + "Curie Brief" title (no hamburger on the detail page) -->
   <header class="m-appbar">
     <div class="m-appbar__left">
-      <button class="m-appbar__btn m-appbar__btn--boxed" type="button" aria-label="Go back" onclick="history.back()">
+      <button class="m-appbar__btn m-appbar__btn--boxed" type="button" aria-label="Back to Briefs" onclick="window.location.href='briefs.html'">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></svg>
       </button>
     </div>
     <div class="m-appbar__title"><img class="m-appbar__icon" src="../Assets/icons/curie brief icon.svg" alt="">Curie Brief</div>
     <div class="m-appbar__right"></div>
+    <div class="m-progress" id="mProgress"></div>
   </header>
+
+  <!-- Back-to-top + Share FABs (bottom-right). The blue verify FAB is omitted, per the other pages. -->
+  <button class="m-fab m-fab--totop" id="mToTop" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+  </button>
   <button class="m-fab m-fab--action m-fab--share" type="button" aria-label="Share">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
   </button>
 
-  <!-- ========== MOBILE CONTENT VIEW (mobile only) ========== -->
+  <!-- ==================== MOBILE CONTENT VIEW ==================== -->
   <main class="m-view">
 
     <!-- Hero -->
     <div class="m-detail__hero">
-      <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1000&q=80" alt="" style="object-fit:cover">
+      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1000&q=80" alt="" style="object-fit:cover">
     </div>
 
     <!-- Title -->
-    <h1 class="m-detail__title">FDA expands Keytruda + Padcev approval to all muscle-invasive bladder cancer patients</h1>
+    <h1 class="m-detail__title">Clover Health discloses data breach after social engineering attack on employee accounts</h1>
 
-    <!-- Meta -->
+    <!-- Meta + sources dropdown -->
     <div class="m-detail__meta">
-      11 days ago
+      about 16 hours ago
       <span class="sep">&middot;</span>
-      <span class="m-detail__sources">5 Sources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span>
+      <span class="m-detail__sources" id="sourcesBtn" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">1 Source
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg>
+        <span class="m-sources__menu" id="sourcesMenu" role="menu">
+          <a class="m-sources__item" href="#" role="menuitem">Fierce Healthcare</a>
+        </span>
+      </span>
     </div>
 
     <!-- Actions -->
     <div class="m-actions">
-      <button class="m-actionbtn" type="button" aria-label="Mark read"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 12 2.5 2.5L16 9"/><circle cx="12" cy="12" r="9"/></svg></button>
-      <button class="m-actionbtn" type="button" aria-label="Bookmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
-      <button class="m-actionbtn" type="button" aria-label="Upvote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
-      <button class="m-actionbtn" type="button" aria-label="Downvote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m5 12 7 7 7-7"/></svg></button>
+      <button class="m-actionbtn" type="button" aria-label="Mark read"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></button>
+      <button class="m-actionbtn" type="button" aria-label="Bookmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/><line x1="9" y1="8" x2="15" y2="8"/></svg></button>
+      <button class="m-actionbtn m-actionbtn--wide" type="button" aria-label="Vote">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18v-6H5l7-7 7 7h-4v6z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6v6H5l7 7 7-7h-4V6z"/></svg>
+      </button>
     </div>
 
     <div class="m-divider"></div>
 
-    <!-- Summary -->
+    <!-- Summary (placeholder — paraphrased from the headline; swap in the real brief text) -->
     <section class="m-summary">
       <div class="m-summary__head">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>
         Summary
       </div>
-      <p class="m-summary__body">The FDA has broadened approval of the pembrolizumab (Keytruda) plus enfortumab vedotin (Padcev) combo for muscle-invasive bladder cancer (MIBC) to cover all cystectomy-eligible patients, regardless of prior therapy. The expansion is based on trial data showing improved event-free survival and gives clinicians a new option earlier in the treatment pathway.</p>
+      <p class="m-summary__body">Clover Health has disclosed a data breach that stemmed from a social engineering attack targeting employee accounts. The insurer says unauthorized access was gained through the compromised accounts. Coverage of the disclosure was reported by Fierce Healthcare — see the source for full details.</p>
     </section>
 
-    <!-- Related Stories -->
-    <section class="m-section">
-      <div class="m-section__head"><div class="m-section__title">Related Stories</div></div>
+    <!-- Full brief (same style as Summary; placeholder text pending the real brief content) -->
+    <section class="m-summary">
+      <div class="m-summary__head">
+        Full Brief
+      </div>
+      <p class="m-summary__body">This brief covers Clover Health's disclosure of a data breach that followed a social engineering attack on employee accounts. Social engineering attacks typically trick staff into handing over credentials or approving access, which can then be used to reach internal systems and data. The full brief — the scope of the breach, the data involved, and Clover Health's response — will appear here once the complete Curie brief content is added.</p>
+    </section>
+
+    <!-- Related Stories (single block containing the nested cards) -->
+    <section class="m-related-block">
+      <div class="m-section__head"><div class="m-section__title">Related stories</div></div>
+      <p class="m-related-block__sub">Recommended reads based on this brief</p>
+
       <a class="m-lcard" href="#" style="display:block">
         <div class="m-lcard__media"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=70" alt=""></div>
         <div class="m-lcard__body">
@@ -74,6 +188,7 @@
           <div class="m-lcard__foot"><span class="m-lcard__by">Medscape</span><span class="m-lcard__by">about 10 hours ago</span></div>
         </div>
       </a>
+
       <a class="m-lcard" href="#" style="display:block">
         <div class="m-lcard__media"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=70" alt=""></div>
         <div class="m-lcard__body">
@@ -81,6 +196,7 @@
           <div class="m-lcard__foot"><span class="m-lcard__by">Medscape</span><span class="m-lcard__by">about 17 hours ago</span></div>
         </div>
       </a>
+
       <a class="m-lcard" href="#" style="display:block">
         <div class="m-lcard__media"><img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&q=70" alt=""></div>
         <div class="m-lcard__body">
@@ -91,8 +207,6 @@
     </section>
 
   </main>
-
-
   <!-- STICKY HEADER WITH PROGRESS BAR -->
   <div class="brief-detail-header" id="detailHeader">
     <div class="header-left">
@@ -242,6 +356,33 @@
         btn.classList.remove('visible');
       }
     });
+  </script>
+  <!-- ==================== INTERACTIONS ==================== -->
+  <script>
+    (function () {
+      // Reading-progress bar
+      var bar = document.getElementById('mProgress');
+      function onScroll(){
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + '%';
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      onScroll();
+
+      // Back to top
+      document.getElementById('mToTop').addEventListener('click', function(){
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Sources dropdown
+      var sBtn = document.getElementById('sourcesBtn'), sMenu = document.getElementById('sourcesMenu');
+      function toggleSources(){ var open = sMenu.classList.toggle('is-open'); sBtn.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+      sBtn.addEventListener('click', function(e){ if(e.target.closest('.m-sources__item')) return; e.stopPropagation(); toggleSources(); });
+      sBtn.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggleSources(); } });
+      document.addEventListener('click', function(e){ if(!sBtn.contains(e.target)){ sMenu.classList.remove('is-open'); sBtn.setAttribute('aria-expanded','false'); } });
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ sMenu.classList.remove('is-open'); sBtn.setAttribute('aria-expanded','false'); } });
+    })();
   </script>
 
 </body>

@@ -4,56 +4,189 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Curie | Medical Podcasts, News & Games for Healthcare Professionals</title>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../tokens.css">
+
+  <!-- Brand fonts (same source the golden pages use). Manrope = --font-primary. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Curie Design System — linked, never copied. -->
+  <link rel="stylesheet" href="../tokens.css">
   <link rel="stylesheet" href="../layout.css">
   <link rel="stylesheet" href="../components.css">
   <link rel="stylesheet" href="../utilities.css">
   <link rel="stylesheet" href="../responsive.css">
+
+  <!--
+    PROPOSED COMPONENT: .m-footer (mobile page footer).
+    Screenshots Home §06–§07 show a footer illustration + copyright + Privacy/Terms
+    + social links that the golden .m-view omits and responsive.css hides on mobile.
+    This is the ONLY hand-written CSS in the file. It is layout-only and every value
+    is a var(--…) token — no raw hex / rgb / px paint. Documented in BUILD-NOTES.md as
+    a design-system change request so the same footer can ship across all mobile pages.
+  -->
+  <style>
+    @media (max-width: 600px) {
+      /* Guarantee no page-level horizontal scrollbar: the horizontal rails scroll
+         internally (scrollbars hidden); nothing else may push the page sideways. */
+      html, body { overflow-x: hidden; max-width: 100%; }
+
+      /* The reference fills the full viewport width (only ~22px page padding); the DS
+         caps .m-view at 460px, which narrows everything and forces extra wrapping.
+         Remove the cap so the column matches the design at ~500px. */
+      body.pg-home .m-view { max-width: none; }
+
+      /* Bottom tab-bar icons a little larger than the DS default (23px). */
+      .m-tab svg, .m-tab img { width: 27px; height: 27px; }
+      .m-tab[aria-label="Games"] img, .m-tab[aria-label="Games"] svg { width: 32px; height: 32px; }  /* games glyph reads smaller — bump it */
+
+      /* DS BUG FIX (state only, no paint): in responsive.css the base selector
+         `body[class^="pg-"] .m-drawer` (specificity 0,2,1) out-specifies
+         `.m-drawer.is-open` (0,2,0), so the drawer never becomes visible when
+         opened. Restore the intended open state at matching specificity. Filed as
+         a design-system change request in BUILD-NOTES.md. */
+      body.pg-home .m-drawer.is-open { visibility: visible; opacity: 1; }
+
+      /* Left-padding consistency: the DS .m-hscroll bleeds symmetrically (margin/padding
+         -22/+22), but scroll-snap-align:start scrolls past the left padding, leaving the
+         first card flush at the screen edge while every heading sits at the page padding.
+         Drop the left bleed so the first card aligns with the headings; keep the right
+         bleed so the next card still peeks to the screen edge. */
+      .m-hscroll { margin-left: 0; padding-left: 0; }
+
+      /* Curie Briefs: the reference shows two ~200px circular items per view; the DS
+         .m-brief is 78% (one per view, sized for the old 360px column). Narrow it. */
+      .m-hscroll .m-brief { flex: 0 0 44%; }
+
+      /* Subscribe card — the reference shows a clearly saturated purple gradient; the DS
+         .m-newsletter stops are near-equal low alpha and read as flat. Strengthen it,
+         derived entirely from the --color-purple-primary token. */
+      .m-newsletter {
+        background: linear-gradient(160deg,
+          color-mix(in srgb, var(--color-purple-primary) 52%, transparent) 0%,
+          color-mix(in srgb, var(--color-purple-primary) 26%, transparent) 100%);
+      }
+
+      .m-footer { margin-top: var(--space-10); }
+      .m-footer__illustration {
+        display: block;
+        width: 70%;
+        max-width: 260px;
+        height: auto;
+        margin: 0 auto var(--space-9);
+      }
+      .m-footer .layout-footer {
+        background: transparent;
+        border: none;
+        padding: 0;
+        width: 100%;              /* reset the desktop full-bleed calc() width … */
+        margin: 0;                /* … and its -2rem left bleed, so it aligns with the page padding */
+        box-sizing: border-box;
+      }
+      .m-footer .layout-footer__main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-9);
+        border-top: 1px solid var(--color-divider);
+        padding-top: var(--space-10);
+        text-align: center;
+      }
+      .m-footer .layout-footer__main > span {
+        color: var(--text-tertiary);
+        font-size: 1.1rem;
+      }
+      .m-footer .layout-footer__links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-9);
+        order: 2;
+      }
+      .m-footer .layout-footer__link {
+        color: var(--text-muted);
+        font-size: 1.15rem;
+        text-decoration: none;
+      }
+      .m-footer .layout-footer__social {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-9);          /* 24px — matches the reference spacing */
+        order: 3;
+      }
+      .m-footer .layout-footer__social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--m-touch-min);    /* keep a 44px tap target … */
+        height: var(--m-touch-min);
+        color: var(--text-primary);
+      }
+      .m-footer .layout-footer__social-link svg { width: 22px; height: 22px; }  /* …with a 22px glyph, matching the reference */
+
+      /* §06 Footer CTA — the reference shows the headline on the plain canvas
+         (NO gradient panel, NO border), a larger headline, and a full-width
+         button. Override the DS .m-footer-cta panel styling to match.
+         Layout/typography only; documented as a DS change request. */
+      .m-footer-cta {
+        background: none;
+        border: none;
+        border-radius: 0;
+        padding: var(--space-10) 0 var(--space-9);
+      }
+      .m-footer-cta__title { font-size: 1.9rem; margin-bottom: var(--space-6); }
+      .m-footer-cta .btn--primary { width: 100%; }
+    }
+  </style>
 </head>
 <body class="pg-home">
 
-  <!-- ========== MOBILE CHROME (mobile viewports only; display:none on desktop) ========== -->
+  <!-- ==================== MOBILE CHROME (reusable verbatim across all mobile pages) ==================== -->
+
+  <!-- Top app bar (sticky) -->
   <header class="m-appbar">
     <div class="m-appbar__left">
       <img class="m-appbar__logo" src="../Assets/curie-logo-white.svg" alt="Curie">
     </div>
     <div class="m-appbar__title"></div>
     <div class="m-appbar__right">
-      <button class="m-appbar__btn" type="button" aria-label="Open menu" onclick="document.getElementById('mDrawer').classList.add('is-open')">
+      <button class="m-appbar__btn" id="mMenuBtn" type="button" aria-label="Open menu" aria-controls="mDrawer" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
       </button>
     </div>
   </header>
 
+  <!-- Bottom tab bar (sticky) -->
   <nav class="m-tabbar" aria-label="Primary">
-    <a class="m-tab is-active" href="index.html" aria-label="Home"><img src="../Assets/icons/home.svg" alt=""></a>
+    <a class="m-tab is-active" href="home.html" aria-label="Home" aria-current="page"><svg viewBox="0 0 34 34" fill="currentColor"><path d="M15.1719 4.34247C16.2384 3.54282 17.705 3.54274 18.7715 4.34247L28.0859 11.3288C28.8412 11.8953 29.286 12.7841 29.2861 13.7282V27.6999C29.2861 29.3567 27.9429 30.6997 26.2861 30.6999H23.2148C21.558 30.6999 20.2148 29.3567 20.2148 27.6999V21.8005C20.2148 21.2483 19.7669 20.8007 19.2148 20.8005H14.7285C14.1763 20.8006 13.7285 21.2482 13.7285 21.8005V27.6999C13.7285 29.3567 12.3854 30.6999 10.7285 30.6999H7.65723C6.00037 30.6999 4.65723 29.3567 4.65723 27.6999V13.7282C4.65735 12.7841 5.10211 11.8953 5.85742 11.3288L15.1719 4.34247Z"/></svg></a>
     <a class="m-tab" href="briefs.html" aria-label="Briefs"><img src="../Assets/icons/brief.svg" alt=""></a>
     <a class="m-tab" href="games.html" aria-label="Games"><img src="../Assets/icons/game.svg" alt=""></a>
     <a class="m-tab" href="editorial.html" aria-label="Editorial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3v18l-7-4H5a2 2 0 01-2-2V9a2 2 0 012-2h6l7-4z"/><line x1="21" y1="9" x2="21" y2="15"/><path d="M9 17v4"/></svg></a>
     <a class="m-tab" href="newsletter.html" aria-label="Newsletter"><img src="../Assets/icons/newesletter.svg" alt=""></a>
   </nav>
 
-  <div class="m-drawer" id="mDrawer">
+  <!-- Hamburger drawer (full-screen overlay) -->
+  <div class="m-drawer" id="mDrawer" role="dialog" aria-modal="true" aria-label="Menu">
     <div class="m-drawer__panel">
-      <button class="m-drawer__close" type="button" aria-label="Close menu" onclick="document.getElementById('mDrawer').classList.remove('is-open')">
+      <button class="m-drawer__close" id="mDrawerClose" type="button" aria-label="Close menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
       </button>
       <div class="m-drawer__section-label">Profile</div>
       <button class="m-drawer__item" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6.5 8-6.5s8 2.5 8 6.5"/></svg>
-        Sign In
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="8" r="2.4" fill="currentColor"/><circle cx="15" cy="16" r="2.4" fill="currentColor"/></svg>
+        Preferences
+      </button>
+      <button class="m-drawer__item" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 20H6a2 2 0 01-2-2V6a2 2 0 012-2h8"/><path d="M12 12h9M18 8l4 4-4 4"/></svg>
+        Logout
       </button>
     </div>
   </div>
-  <button class="m-fab m-fab--action m-fab--pulse" type="button" aria-label="Live pulse">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg>
-  </button>
 
-  <!-- ========== MOBILE CONTENT VIEW (mobile only) ========== -->
+  <!-- ==================== MOBILE CONTENT VIEW ==================== -->
   <main class="m-view">
 
-    <!-- Subscribe card -->
+    <!-- §01 — Subscribe card -->
     <section class="m-newsletter">
       <div class="m-newsletter__row">
         <div class="m-newsletter__icon">
@@ -67,130 +200,168 @@
       <button class="m-newsletter__btn" type="button">Subscribe free</button>
     </section>
 
-    <!-- Featured Content -->
+    <!-- §02 — Featured Content (horizontal snap rail) -->
     <section class="m-section">
       <div class="m-section__head"><div class="m-section__title">Featured Content</div></div>
       <div class="m-hscroll">
+
         <article class="m-fcard">
-          <div class="m-fcard__media" style="background:#231f41">
-            <img src="../Assets/illustration/connections.svg" alt="">
+          <div class="m-fcard__media" style="background:var(--color-bg-card)">
+            <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=500&q=70" alt="">
+            <span class="m-fcard__badge m-fcard__badge--news">BRIEF</span>
+          </div>
+          <div class="m-fcard__body">
+            <span class="m-fcard__date">Jul 22, 2026</span>
+            <h3 class="m-fcard__title">ARPA-H funds $25.8M gene-editing platform t…</h3>
+            <p class="m-fcard__desc">Massachusetts General Hospital lands a major federal grant to figh…</p>
+            <button class="m-fcard__cta m-fcard__cta--news" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="14" y2="8"/><line x1="4" y1="12" x2="14" y2="12"/><line x1="4" y1="16" x2="10" y2="16"/></svg>
+              Read Now
+            </button>
+          </div>
+        </article>
+
+        <article class="m-fcard">
+          <div class="m-fcard__media" style="background:var(--color-bg-card)">
+            <img src="../Assets/illustration/connections.svg" alt="Curie Connections">
             <span class="m-fcard__badge m-fcard__badge--game">GAME</span>
           </div>
           <div class="m-fcard__body">
-            <span class="m-fcard__date">Jul 21, 2026</span>
-            <h3 class="m-fcard__title">Daily Connections Puzzle</h3>
-            <p class="m-fcard__desc">Exercise your brain with this addictive word association game.</p>
+            <span class="m-fcard__date">Jul 22, 2026</span>
+            <h3 class="m-fcard__title">Daily Connections</h3>
+            <p class="m-fcard__desc">Exercise your brain with this addictive word association…</p>
             <button class="m-fcard__cta m-fcard__cta--game" type="button">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="5"/><line x1="6.5" y1="12" x2="8.5" y2="12"/><line x1="7.5" y1="11" x2="7.5" y2="13"/><circle cx="16" cy="11" r="1"/><circle cx="18" cy="13.5" r="1"/></svg>
+              <img src="../Assets/icons/game.svg" alt="" style="width:24px;height:24px">
               Play Now
             </button>
           </div>
         </article>
-        <article class="m-fcard">
-          <div class="m-fcard__media" style="background:#0aa">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=70" alt="">
-            <span class="m-fcard__badge m-fcard__badge--news">NEWS</span>
-          </div>
-          <div class="m-fcard__body">
-            <span class="m-fcard__date">Jul 21, 2026</span>
-            <h3 class="m-fcard__title">Does timing of JAK inhibitors matter?</h3>
-            <p class="m-fcard__desc">JAK inhibitors carry a meaningfully higher risk when...</p>
-            <button class="m-fcard__cta m-fcard__cta--news" type="button">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-              Read
-            </button>
-          </div>
-        </article>
+
       </div>
     </section>
 
-    <!-- Curie Briefs -->
+    <!-- §03 — Curie Briefs (horizontal snap rail of circular items) -->
     <section class="m-section">
       <div class="m-section__head">
         <div class="m-section__title"><img src="../Assets/icons/curie brief icon.svg" alt="">Curie Briefs</div>
         <a class="m-section__link" href="briefs.html">View All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,6 15,12 9,18"/></svg></a>
       </div>
       <div class="m-hscroll">
+
         <div class="m-brief">
           <div class="m-brief__circle">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=70" alt="">
-            <span class="m-brief__play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg></span>
+            <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=500&q=70" alt="">
+            <span class="m-brief__play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></span>
           </div>
-          <span class="m-brief__date">Jul 21, 2026</span>
-          <h3 class="m-brief__title">JAK inhibitors carry a meaningfully higher…</h3>
-          <span class="m-brief__source">Medscape</span>
+          <span class="m-brief__date">Jul 22, 2026</span>
+          <h3 class="m-brief__title">ARPA-H funds $25.8M gene-editing platfor…</h3>
+          <span class="m-brief__source">news-medical.net</span>
         </div>
+
         <div class="m-brief">
           <div class="m-brief__circle">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=70" alt="">
-            <span class="m-brief__play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg></span>
+            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&q=70" alt="">
+            <span class="m-brief__play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></span>
           </div>
-          <span class="m-brief__date">Jul 21, 2026</span>
-          <h3 class="m-brief__title">Does timing of the inhibitor around…</h3>
-          <span class="m-brief__source">Medscape</span>
+          <span class="m-brief__date">Jul 22, 2026</span>
+          <h3 class="m-brief__title">UVA lands $1.1M NIH grant to unlock the…</h3>
+          <span class="m-brief__source">news-medical.net</span>
         </div>
+
       </div>
     </section>
 
-    <!-- Curie Games -->
+    <!-- §04 — Curie Games (horizontal snap rail of .game-card, verbatim golden component) -->
     <section class="m-section">
       <div class="m-section__head"><div class="m-section__title"><img src="../Assets/icons/games illustration.svg" alt="">Curie Games</div></div>
-      <div class="m-hscroll">
-        <article class="m-fcard">
-          <div class="m-fcard__media" style="background:#1a1f4a"><img src="../Assets/illustration/connections.svg" alt=""></div>
-          <div class="m-fcard__body">
-            <h3 class="m-fcard__title">Curie Connections</h3>
-            <p class="m-fcard__desc">Find the hidden connections among this mix of medical terms.</p>
-            <button class="m-fcard__cta m-fcard__cta--pod" type="button">Play</button>
-          </div>
-        </article>
-        <article class="m-fcard">
-          <div class="m-fcard__media" style="background:#1a1f4a"><img src="../Assets/illustration/pinpoint.png" alt=""></div>
-          <div class="m-fcard__body">
-            <h3 class="m-fcard__title">Curie Pinpoint</h3>
-            <p class="m-fcard__desc">Guess the medical term from five escalating clues.</p>
-            <button class="m-fcard__cta m-fcard__cta--pod" type="button">Play</button>
-          </div>
-        </article>
+      <div class="games-scroll">
+
+        <div class="game-card">
+          <div class="game-card__title">Curie Connections</div>
+          <div class="game-card__icon"><img src="../Assets/illustration/connections.svg" alt="Connections"></div>
+          <button class="game-card__play-button" type="button">Play</button>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card__title">Curie Pinpoint</div>
+          <div class="game-card__icon"><img src="../Assets/illustration/pinpoint.png" alt="Pinpoint"></div>
+          <button class="game-card__play-button" type="button">Play</button>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card__title">Curie Strands</div>
+          <div class="game-card__icon"><img src="../Assets/illustration/curie strands.svg" alt="Strands"></div>
+          <button class="game-card__play-button" type="button">Play</button>
+        </div>
+
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="m-section faq-section" style="margin-bottom:36px">
+    <!-- §05 — FAQ -->
+    <section class="m-section faq-section" style="margin-bottom:var(--space-10)">
       <div class="m-section__head"><div class="m-section__title m-section__title--muted">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7" stroke-linecap="round"/><circle cx="12" cy="16.5" r="0.6" fill="#a78bfa"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color:var(--color-purple-light)"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7" stroke-linecap="round"/><circle cx="12" cy="16.5" r="0.6" fill="currentColor"/></svg>
         Frequently Asked Questions
       </div></div>
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-question"><span>What is Curie and who is it for?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span></button>
+          <button class="faq-question" type="button" aria-expanded="false"><span>What is Curie and who is it for?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span></button>
           <div class="faq-answer"><p>Curie is a medical news and education platform designed for healthcare professionals.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question"><span>How do I sign up for Curie?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span></button>
+          <button class="faq-question" type="button" aria-expanded="false"><span>How do I sign up for Curie?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span></button>
           <div class="faq-answer"><p>Download the app or subscribe with the newsletter form at the top of this page.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question"><span>What are Curie Briefs?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span></button>
+          <button class="faq-question" type="button" aria-expanded="false"><span>What are Curie Briefs?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span></button>
           <div class="faq-answer"><p>Concise, AI-curated summaries of the latest medical news and research.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question"><span>Can I customize the topics I see in my Curie Briefs?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span></button>
+          <button class="faq-question" type="button" aria-expanded="false"><span>Can I customize the topics I see in my Curie Briefs?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></span></button>
           <div class="faq-answer"><p>Yes — select your specialty and areas of interest to tailor your feed.</p></div>
         </div>
       </div>
-      <div style="text-align:center;margin-top:24px"><button class="btn btn--border" type="button">See More FAQs ⌄</button></div>
+      <div style="text-align:center;margin-top:var(--space-9)">
+        <button class="btn btn--border" type="button">
+          See More FAQs
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;vertical-align:middle;margin-left:6px"><polyline points="6,9 12,15 18,9"/></svg>
+        </button>
+      </div>
     </section>
 
-    <!-- Footer CTA -->
+    <!-- §06 — Footer CTA -->
     <section class="m-footer-cta">
-      <h2 class="m-footer-cta__title">Stay ahead with <span>clinical confidence.</span></h2>
-      <p class="m-footer-cta__sub">Join thousands of clinicians who rely on Curie's quick news, podcasts, and games to stay ahead.</p>
+      <h2 class="m-footer-cta__title">Turn spare minutes into <span>clinical confidence.</span></h2>
+      <p class="m-footer-cta__sub">Join thousands of clinicians who rely on Curie's quick news and games to stay ahead in their field.</p>
       <button class="btn btn--primary" type="button">Download Now</button>
     </section>
 
-  </main>
+    <!-- §07 — Footer illustration + page footer (proposed .m-footer; reuses .layout-footer markup) -->
+    <section class="m-footer">
+      <img class="m-footer__illustration" src="../Assets/illustration/home footer illustration.svg" alt="">
+      <footer class="layout-footer">
+        <div class="layout-footer__main">
+          <span>All rights reserved ZoomRx - 2024</span>
+          <div class="layout-footer__links">
+            <a class="layout-footer__link" href="#">Privacy Policy</a>
+            <a class="layout-footer__link" href="#">Terms &amp; Conditions</a>
+          </div>
+          <div class="layout-footer__social">
+            <a class="layout-footer__social-link" href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM9.2 17.2H6.8V9.8h2.4v7.4zM8 8.8a1.4 1.4 0 110-2.8 1.4 1.4 0 010 2.8zm9.2 8.4h-2.4v-3.6c0-.86-.016-1.96-1.2-1.96-1.2 0-1.38.936-1.38 1.9v3.66H9.8V9.8h2.3v1.01h.032c.32-.608 1.1-1.25 2.268-1.25 2.424 0 2.872 1.596 2.872 3.67v3.97z"/></svg>
+            </a>
+            <a class="layout-footer__social-link" href="#" aria-label="X">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a class="layout-footer__social-link" href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </section>
 
+  </main>
   <!-- ========== NEWSLETTER TOP BAR ========== -->
   <div class="newsletter-banner">
     <div class="newsletter-banner__inner">
@@ -843,6 +1014,65 @@
         dropdown.classList.remove('open');
       }
     });
+  </script>
+  <!-- ==================== INTERACTIONS (vanilla JS) ==================== -->
+  <script>
+    (function () {
+      var drawer   = document.getElementById('mDrawer');
+      var openBtn  = document.getElementById('mMenuBtn');
+      var closeBtn = document.getElementById('mDrawerClose');
+      var lastFocus = null;
+
+      function focusables() {
+        return drawer.querySelectorAll('button, a[href], input, [tabindex]:not([tabindex="-1"])');
+      }
+
+      function openDrawer() {
+        lastFocus = document.activeElement;
+        drawer.classList.add('is-open');
+        openBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';        // lock background scroll
+        var f = focusables();
+        if (f.length) f[0].focus();
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove('is-open');
+        openBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        if (lastFocus) lastFocus.focus();               // return focus to trigger
+      }
+
+      openBtn.addEventListener('click', openDrawer);
+      closeBtn.addEventListener('click', closeDrawer);
+
+      // Close on backdrop tap (click on the panel background, not its children buttons)
+      drawer.addEventListener('click', function (e) {
+        if (e.target === drawer || e.target.classList.contains('m-drawer__panel')) closeDrawer();
+      });
+
+      // Escape to close + focus trap while open
+      document.addEventListener('keydown', function (e) {
+        if (!drawer.classList.contains('is-open')) return;
+        if (e.key === 'Escape') { closeDrawer(); return; }
+        if (e.key === 'Tab') {
+          var f = focusables();
+          if (!f.length) return;
+          var first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+
+      // FAQ accordion — toggle .open on the item, keep aria-expanded on the button.
+      document.querySelectorAll('.faq-item .faq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var item = btn.closest('.faq-item');
+          var open = item.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      });
+    })();
   </script>
 
 </body>

@@ -3,57 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curie Editorial | Expert Medical Perspectives</title>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../tokens.css">
+  <title>Curie | Editorial</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../tokens.css">
   <link rel="stylesheet" href="../layout.css">
   <link rel="stylesheet" href="../components.css">
   <link rel="stylesheet" href="../utilities.css">
   <link rel="stylesheet" href="../responsive.css">
+
+  <!-- Same shared conventions as the other pages. Layout/typography only, token values. -->
+  <style>
+    @media (max-width: 600px) {
+      html, body { overflow-x: hidden; max-width: 100%; }
+
+      /* Full-width column, matching the other pages (removes the DS 460px cap). */
+      body.pg-editorial .m-view { max-width: none; }
+
+      /* DS specificity bug fix (state only): restore the drawer open state. */
+      body.pg-editorial .m-drawer.is-open { visibility: visible; opacity: 1; }
+
+      /* Bottom tab-bar icons a little larger than the DS default (23px). */
+      .m-tab svg, .m-tab img { width: 27px; height: 27px; }
+      .m-tab[aria-label="Games"] img, .m-tab[aria-label="Games"] svg { width: 32px; height: 32px; }  /* games glyph reads smaller — bump it */
+
+      /* Subscribe card — same saturated gradient as the other pages, from the purple token. */
+      .m-newsletter {
+        background: linear-gradient(160deg,
+          color-mix(in srgb, var(--color-purple-primary) 52%, transparent) 0%,
+          color-mix(in srgb, var(--color-purple-primary) 26%, transparent) 100%);
+      }
+
+      /* Editorial cards link to the detail page (whole card is a link). */
+      .m-stack .m-lcard { cursor: pointer; text-decoration: none; display: block; }
+    }
+  </style>
 </head>
 <body class="pg-editorial">
 
-  <!-- ========== MOBILE CHROME (mobile viewports only; display:none on desktop) ========== -->
+  <!-- ==================== MOBILE CHROME ==================== -->
+
+  <!-- Top app bar — Editorial title (colourful megaphone) in the centre -->
   <header class="m-appbar">
     <div class="m-appbar__left">
       <img class="m-appbar__logo" src="../Assets/curie-logo-white.svg" alt="Curie">
     </div>
     <div class="m-appbar__title"><img class="m-appbar__icon" src="../Assets/icons/media.svg" alt="">Editorial</div>
     <div class="m-appbar__right">
-      <button class="m-appbar__btn" type="button" aria-label="Open menu" onclick="document.getElementById('mDrawer').classList.add('is-open')">
+      <button class="m-appbar__btn" id="mMenuBtn" type="button" aria-label="Open menu" aria-controls="mDrawer" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
       </button>
     </div>
   </header>
 
+  <!-- Bottom tab bar — Editorial active (filled megaphone) -->
   <nav class="m-tabbar" aria-label="Primary">
-    <a class="m-tab" href="index.html" aria-label="Home"><img src="../Assets/icons/home.svg" alt=""></a>
+    <a class="m-tab" href="home.html" aria-label="Home"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.17 4.34C16.24 3.54 17.7 3.54 18.77 4.34L28.09 11.33C28.84 11.9 29.29 12.78 29.29 13.73V27.7C29.29 29.36 27.94 30.7 26.29 30.7H23.21C21.56 30.7 20.21 29.36 20.21 27.7V21.8C20.21 21.25 19.77 20.8 19.21 20.8H14.73C14.18 20.8 13.73 21.25 13.73 21.8V27.7C13.73 29.36 12.39 30.7 10.73 30.7H7.66C6 30.7 4.66 29.36 4.66 27.7V13.73C4.66 12.78 5.1 11.9 5.86 11.33L15.17 4.34Z"/></svg></a>
     <a class="m-tab" href="briefs.html" aria-label="Briefs"><img src="../Assets/icons/brief.svg" alt=""></a>
     <a class="m-tab" href="games.html" aria-label="Games"><img src="../Assets/icons/game.svg" alt=""></a>
-    <a class="m-tab is-active" href="editorial.html" aria-label="Editorial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3v18l-7-4H5a2 2 0 01-2-2V9a2 2 0 012-2h6l7-4z"/><line x1="21" y1="9" x2="21" y2="15"/><path d="M9 17v4"/></svg></a>
+    <a class="m-tab is-active" href="editorial.html" aria-label="Editorial" aria-current="page"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 3v18l-7-4H5a2 2 0 01-2-2V9a2 2 0 012-2h6l7-4z"/><line x1="21" y1="9" x2="21" y2="15" stroke="currentColor" stroke-width="1.5"/></svg></a>
     <a class="m-tab" href="newsletter.html" aria-label="Newsletter"><img src="../Assets/icons/newesletter.svg" alt=""></a>
   </nav>
 
-  <div class="m-drawer" id="mDrawer">
+  <!-- Hamburger drawer (same as the other pages: Profile → Preferences + Logout) -->
+  <div class="m-drawer" id="mDrawer" role="dialog" aria-modal="true" aria-label="Menu">
     <div class="m-drawer__panel">
-      <button class="m-drawer__close" type="button" aria-label="Close menu" onclick="document.getElementById('mDrawer').classList.remove('is-open')">
+      <button class="m-drawer__close" id="mDrawerClose" type="button" aria-label="Close menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
       </button>
       <div class="m-drawer__section-label">Profile</div>
       <button class="m-drawer__item" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6.5 8-6.5s8 2.5 8 6.5"/></svg>
-        Sign In
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="8" r="2.4" fill="currentColor"/><circle cx="15" cy="16" r="2.4" fill="currentColor"/></svg>
+        Preferences
+      </button>
+      <button class="m-drawer__item" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 20H6a2 2 0 01-2-2V6a2 2 0 012-2h8"/><path d="M12 12h9M18 8l4 4-4 4"/></svg>
+        Logout
       </button>
     </div>
   </div>
-  <button class="m-fab m-fab--action m-fab--share" type="button" aria-label="Share">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
-  </button>
 
-  <!-- ========== MOBILE CONTENT VIEW (mobile only) ========== -->
+  <!-- ==================== MOBILE CONTENT VIEW ==================== -->
   <main class="m-view">
 
-    <!-- Newsletter subscribe card -->
+    <!-- Subscribe card -->
     <section class="m-newsletter">
       <div class="m-newsletter__row">
         <div class="m-newsletter__icon">
@@ -67,11 +103,11 @@
       <button class="m-newsletter__btn" type="button">Subscribe free</button>
     </section>
 
-    <!-- Editorial cards -->
+    <!-- Editorial cards (full-width, stacked; each is a link to the detail page) -->
     <div class="m-stack">
 
       <a class="m-lcard" href="editorial-detail.html">
-        <div class="m-lcard__media"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&q=70" alt=""></div>
+        <div class="m-lcard__media"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=70" alt=""></div>
         <div class="m-lcard__body">
           <h2 class="m-lcard__title">Rising Voices in Oncology</h2>
           <p class="m-lcard__meta">A curated look at the oncologists shaping the next era of cancer care — through…</p>
@@ -82,8 +118,8 @@
         </div>
       </a>
 
-      <a class="m-lcard" href="#">
-        <div class="m-lcard__media"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=70" alt=""></div>
+      <a class="m-lcard" href="editorial-detail.html">
+        <div class="m-lcard__media"><img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=70" alt=""></div>
         <div class="m-lcard__body">
           <h2 class="m-lcard__title">The Fellowship That Stopped Teaching Oncologists to Memorize</h2>
           <p class="m-lcard__meta">With the FDA approving more than 60 oncology drugs in 2024, fellowship programs built for a slower era are rethinking…</p>
@@ -94,8 +130,8 @@
         </div>
       </a>
 
-      <a class="m-lcard" href="#">
-        <div class="m-lcard__media"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&q=70" alt=""></div>
+      <a class="m-lcard" href="editorial-detail.html">
+        <div class="m-lcard__media"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=70" alt=""></div>
         <div class="m-lcard__body">
           <h2 class="m-lcard__title">The Backbone of American Cancer Care is Breaking</h2>
           <p class="m-lcard__meta">Most cancer patients start treatment in a community clinic, not an academic tower. That quiet backbone is under strain…</p>
@@ -109,7 +145,6 @@
     </div>
 
   </main>
-
   <!-- TOP BANNER -->
   <div class="top-banner">
     <div class="top-banner__inner">
@@ -226,6 +261,28 @@
       </div>
     </footer>
   </div>
+  <!-- ==================== INTERACTIONS ==================== -->
+  <script>
+    (function () {
+      var drawer = document.getElementById('mDrawer'),
+          openBtn = document.getElementById('mMenuBtn'),
+          closeBtn = document.getElementById('mDrawerClose'),
+          lastFocus = null;
+      function focusables(){ return drawer.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])'); }
+      function openDrawer(){ lastFocus = document.activeElement; drawer.classList.add('is-open'); openBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; var f=focusables(); if(f.length) f[0].focus(); }
+      function closeDrawer(){ drawer.classList.remove('is-open'); openBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; if(lastFocus) lastFocus.focus(); }
+      openBtn.addEventListener('click', openDrawer);
+      closeBtn.addEventListener('click', closeDrawer);
+      drawer.addEventListener('click', function(e){ if(e.target===drawer || e.target.classList.contains('m-drawer__panel')) closeDrawer(); });
+      document.addEventListener('keydown', function(e){
+        if(!drawer.classList.contains('is-open')) return;
+        if(e.key==='Escape') return closeDrawer();
+        if(e.key==='Tab'){ var f=focusables(); if(!f.length) return; var first=f[0], last=f[f.length-1];
+          if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+          else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); } }
+      });
+    })();
+  </script>
 
 </body>
 </html>

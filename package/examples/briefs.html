@@ -3,54 +3,146 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curie Briefs | Medical News for Healthcare Professionals</title>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../tokens.css">
+  <title>Curie | Briefs</title>
+
+  <!-- Brand fonts (same as the home page). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Curie Design System — linked, never copied. -->
+  <link rel="stylesheet" href="../tokens.css">
   <link rel="stylesheet" href="../layout.css">
   <link rel="stylesheet" href="../components.css">
   <link rel="stylesheet" href="../utilities.css">
   <link rel="stylesheet" href="../responsive.css">
-</head>
-<body class="pg-briefs bg-briefs">
 
-  <!-- ========== MOBILE CHROME (mobile viewports only; display:none on desktop) ========== -->
+  <!-- Same shared conventions as home.html (documented in BUILD-NOTES). Layout/state only,
+       every value a var(--…) token. -->
+  <style>
+    @media (max-width: 600px) {
+      /* No page-level horizontal scrollbar; rails/sheets scroll internally. */
+      html, body { overflow-x: hidden; max-width: 100%; }
+
+      /* Full-width column, matching the home page (removes the DS 460px cap). */
+      body.pg-briefs .m-view { max-width: none; }
+
+      /* Bottom tab-bar icons a little larger than the DS default (23px). */
+      .m-tab svg, .m-tab img { width: 27px; height: 27px; }
+      .m-tab[aria-label="Games"] img, .m-tab[aria-label="Games"] svg { width: 32px; height: 32px; }  /* games glyph reads smaller — bump it */
+
+      /* Specialty select — left-aligned custom chevron (consistent across all specialty selects). */
+      .m-select { position: relative; }
+      .m-select .m-field__select {
+        -webkit-appearance: none; -moz-appearance: none; appearance: none;
+        padding-left: var(--space-10);
+      }
+      .m-select__chev {
+        position: absolute; left: var(--space-4); top: 50%; transform: translateY(-50%);
+        width: 20px; height: 20px; color: var(--text-muted); pointer-events: none;
+      }
+
+      /* Brief cards link to the detail page (title is the accessible link; the whole
+         card is clickable except the action buttons). */
+      .m-lcard[data-href] { cursor: pointer; }
+      .m-lcard__title a { color: inherit; text-decoration: none; }
+
+      /* DS specificity bug fix (state only): the body-scoped base selectors out-rank the
+         `.is-open` overrides, so the drawer / bottom-sheet never become visible. Restore them. */
+      body.pg-briefs .m-drawer.is-open { visibility: visible; opacity: 1; }
+      body.pg-briefs .m-sheet.is-open  { visibility: visible; }
+
+      /* Subscribe card — same saturated gradient as the home page, from the purple token. */
+      .m-newsletter {
+        background: linear-gradient(160deg,
+          color-mix(in srgb, var(--color-purple-primary) 52%, transparent) 0%,
+          color-mix(in srgb, var(--color-purple-primary) 26%, transparent) 100%);
+      }
+
+      /* "For You" dropdown (opened from the filter-bar pill). No exact DS component exists;
+         built from tokens only — proposed as a small menu component (see BUILD-NOTES). */
+      .m-foryou { position: relative; }
+      .m-foryou__menu {
+        position: absolute; top: calc(100% + var(--space-2)); left: 0; z-index: 60;
+        min-width: 170px;
+        background: var(--color-bg-card);
+        border: 1px solid var(--surface-white-border-12);
+        border-radius: var(--radius-2xl);
+        padding: var(--space-2);
+        box-shadow: var(--shadow-dropdown);
+        display: none;
+      }
+      .m-foryou__menu.is-open { display: block; }
+      .m-foryou__item {
+        display: block; width: 100%; text-align: left;
+        padding: var(--space-4) var(--space-5);
+        border-radius: var(--radius-md);
+        background: transparent; border: none; cursor: pointer;
+        color: var(--text-body); font-family: var(--font-primary); font-size: 1.1rem; font-weight: 700;
+      }
+      .m-foryou__item.is-active { background: var(--color-purple-primary); color: var(--text-primary); }
+
+      /* "View More Briefs" — the reference is a periwinkle→lavender→pink gradient; the DS
+         .btn--gradient default is indigo→cyan. Re-skin it from purple/pink tokens. */
+      .m-view .btn--gradient {
+        background: linear-gradient(120deg,
+          var(--color-purple-accent) 0%, var(--color-purple-light) 55%, var(--color-pink-light) 100%);
+        border-radius: var(--radius-xl);
+        padding: var(--space-7);
+        font-size: 1.3rem;
+        font-weight: 800;
+      }
+    }
+  </style>
+</head>
+<body class="pg-briefs">
+
+  <!-- ==================== MOBILE CHROME (identical markup/classes to home.html) ==================== -->
+
+  <!-- Top app bar (sticky) — Briefs title in the centre -->
   <header class="m-appbar">
     <div class="m-appbar__left">
       <img class="m-appbar__logo" src="../Assets/curie-logo-white.svg" alt="Curie">
     </div>
     <div class="m-appbar__title"><img class="m-appbar__icon" src="../Assets/icons/curie brief icon.svg" alt="">Briefs</div>
     <div class="m-appbar__right">
-      <button class="m-appbar__btn" type="button" aria-label="Open menu" onclick="document.getElementById('mDrawer').classList.add('is-open')">
+      <button class="m-appbar__btn" id="mMenuBtn" type="button" aria-label="Open menu" aria-controls="mDrawer" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
       </button>
     </div>
   </header>
 
+  <!-- Bottom tab bar — Briefs active -->
   <nav class="m-tabbar" aria-label="Primary">
-    <a class="m-tab" href="index.html" aria-label="Home"><img src="../Assets/icons/home.svg" alt=""></a>
-    <a class="m-tab is-active" href="briefs.html" aria-label="Briefs"><img src="../Assets/icons/brief.svg" alt=""></a>
+    <a class="m-tab" href="home.html" aria-label="Home"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.17 4.34C16.24 3.54 17.7 3.54 18.77 4.34L28.09 11.33C28.84 11.9 29.29 12.78 29.29 13.73V27.7C29.29 29.36 27.94 30.7 26.29 30.7H23.21C21.56 30.7 20.21 29.36 20.21 27.7V21.8C20.21 21.25 19.77 20.8 19.21 20.8H14.73C14.18 20.8 13.73 21.25 13.73 21.8V27.7C13.73 29.36 12.39 30.7 10.73 30.7H7.66C6 30.7 4.66 29.36 4.66 27.7V13.73C4.66 12.78 5.1 11.9 5.86 11.33L15.17 4.34Z"/></svg></a>
+    <a class="m-tab is-active" href="briefs.html" aria-label="Briefs" aria-current="page"><svg viewBox="0 0 34 34" fill="currentColor" fill-rule="evenodd"><path d="M7.08301 4.75H26.917C28.1989 4.75018 29.2498 5.80108 29.25 7.08301V26.917C29.2498 28.1989 28.1989 29.2498 26.917 29.25H7.08301C5.80108 29.2498 4.75018 28.1989 4.75 26.917V7.08301C4.75018 5.80107 5.80107 4.75018 7.08301 4.75ZM19.8334 24.0833H9.91675V21.25H19.8334V24.0833ZM24.0834 18.4167H9.91675V15.5834H24.0834V18.4167ZM24.0834 12.75H9.91675V9.91669H24.0834V12.75Z"/></svg></a>
     <a class="m-tab" href="games.html" aria-label="Games"><img src="../Assets/icons/game.svg" alt=""></a>
     <a class="m-tab" href="editorial.html" aria-label="Editorial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3v18l-7-4H5a2 2 0 01-2-2V9a2 2 0 012-2h6l7-4z"/><line x1="21" y1="9" x2="21" y2="15"/><path d="M9 17v4"/></svg></a>
     <a class="m-tab" href="newsletter.html" aria-label="Newsletter"><img src="../Assets/icons/newesletter.svg" alt=""></a>
   </nav>
 
-  <div class="m-drawer" id="mDrawer">
+  <!-- Hamburger drawer (same as home: Profile → Preferences + Logout) -->
+  <div class="m-drawer" id="mDrawer" role="dialog" aria-modal="true" aria-label="Menu">
     <div class="m-drawer__panel">
-      <button class="m-drawer__close" type="button" aria-label="Close menu" onclick="document.getElementById('mDrawer').classList.remove('is-open')">
+      <button class="m-drawer__close" id="mDrawerClose" type="button" aria-label="Close menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
       </button>
       <div class="m-drawer__section-label">Profile</div>
       <button class="m-drawer__item" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6.5 8-6.5s8 2.5 8 6.5"/></svg>
-        Sign In
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="8" r="2.4" fill="currentColor"/><circle cx="15" cy="16" r="2.4" fill="currentColor"/></svg>
+        Preferences
+      </button>
+      <button class="m-drawer__item" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 20H6a2 2 0 01-2-2V6a2 2 0 012-2h8"/><path d="M12 12h9M18 8l4 4-4 4"/></svg>
+        Logout
       </button>
     </div>
   </div>
-  <button class="m-fab m-fab--action m-fab--pulse" type="button" aria-label="Live pulse" onclick="document.getElementById('mFabDial').classList.toggle('is-open')">
+
+  <!-- Live-pulse FAB + speed-dial (briefs feature; the blue verify FAB is omitted to match home) -->
+  <button class="m-fab m-fab--action m-fab--pulse" id="mFabBtn" type="button" aria-label="Live pulse" aria-expanded="false" aria-controls="mFabDial">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg>
   </button>
-
-  <!-- FAB speed-dial (bookmark + history) -->
   <div class="m-fab__dial" id="mFabDial">
     <button class="m-fab__dial-btn" type="button" aria-label="Saved">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
@@ -62,40 +154,50 @@
 
   <!-- Filters bottom sheet -->
   <div class="m-sheet" id="mFilterSheet">
-    <div class="m-sheet__overlay" onclick="document.getElementById('mFilterSheet').classList.remove('is-open')"></div>
-    <div class="m-sheet__panel">
+    <div class="m-sheet__overlay" id="mSheetOverlay"></div>
+    <div class="m-sheet__panel" role="dialog" aria-modal="true" aria-label="Filters">
       <div class="m-sheet__header">
         <div class="m-sheet__title">Filters</div>
-        <button class="m-sheet__close" type="button" aria-label="Close filters" onclick="document.getElementById('mFilterSheet').classList.remove('is-open')">
+        <button class="m-sheet__close" id="mSheetClose" type="button" aria-label="Close filters">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
         </button>
       </div>
       <div class="m-sheet__label">Specialty</div>
-      <select class="m-field__select">
-        <option>All</option>
-        <option>Primary Care</option>
-        <option>Cardiology</option>
-        <option>Hematology/Oncology</option>
-        <option>Neurology</option>
-        <option>Emergency Medicine</option>
-      </select>
+      <div class="m-select">
+        <select class="m-field__select" aria-label="Specialty">
+          <option value="" disabled selected>Select Specialty</option>
+          <option>All</option>
+          <option>Primary Care</option>
+          <option>Cardiology</option>
+          <option>Hematology/Oncology</option>
+          <option>Neurology</option>
+          <option>Emergency Medicine</option>
+        </select>
+        <svg class="m-select__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg>
+      </div>
       <div class="m-sheet__footer">
-        <button class="btn btn--border" type="button" onclick="document.getElementById('mFilterSheet').classList.remove('is-open')">Clear All</button>
-        <button class="btn btn--primary" type="button" onclick="document.getElementById('mFilterSheet').classList.remove('is-open')">Apply</button>
+        <button class="btn btn--border" id="mSheetClear" type="button">Clear All</button>
+        <button class="btn btn--primary" id="mSheetApply" type="button">Apply</button>
       </div>
     </div>
   </div>
 
-  <!-- ========== MOBILE CONTENT VIEW (mobile only) ========== -->
+  <!-- ==================== MOBILE CONTENT VIEW ==================== -->
   <main class="m-view">
 
     <!-- Filter bar -->
     <div class="m-filterbar">
-      <button class="m-pill" type="button">For You
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg>
-      </button>
-      <button class="m-pill" type="button" onclick="document.getElementById('mFilterSheet').classList.add('is-open')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="8" r="2.2" fill="#140d2c"/><circle cx="15" cy="16" r="2.2" fill="#140d2c"/></svg>
+      <div class="m-foryou">
+        <button class="m-pill" id="forYouBtn" type="button" aria-haspopup="true" aria-expanded="false">For You
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg>
+        </button>
+        <div class="m-foryou__menu" id="forYouMenu" role="menu">
+          <button class="m-foryou__item is-active" type="button" role="menuitem">For You</button>
+          <button class="m-foryou__item" type="button" role="menuitem">Latest</button>
+        </div>
+      </div>
+      <button class="m-pill" id="filtersBtn" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="8" r="2.2" fill="currentColor"/><circle cx="15" cy="16" r="2.2" fill="currentColor"/></svg>
         Filters
       </button>
     </div>
@@ -114,54 +216,55 @@
       <button class="m-newsletter__btn" type="button">Subscribe free</button>
     </section>
 
-    <!-- Brief cards -->
+    <!-- Brief list cards -->
     <div class="m-stack">
-      <article class="m-lcard">
-        <div class="m-lcard__media" style="background:#0b1a2e"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500&q=70" alt=""></div>
+
+      <article class="m-lcard" data-href="briefs-detail.html">
+        <div class="m-lcard__media" style="background:var(--color-bg-primary)"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500&q=70" alt=""></div>
         <div class="m-lcard__body">
-          <h3 class="m-lcard__title">Clover Health discloses data breach after social engineering attack on employee accounts</h3>
+          <h3 class="m-lcard__title"><a href="briefs-detail.html">Clover Health discloses data breach after social engineering attack on employee accounts</a></h3>
           <div class="m-lcard__meta">about 16 hours ago<br>Fierce Healthcare</div>
           <div class="m-actions">
-            <button class="m-actionbtn" type="button" aria-label="Mark read"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></button>
-            <button class="m-actionbtn" type="button" aria-label="Bookmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+            <button class="m-actionbtn" type="button" aria-label="Mark read"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></button>
+            <button class="m-actionbtn" type="button" aria-label="Bookmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/><line x1="9" y1="8" x2="15" y2="8"/></svg></button>
             <button class="m-actionbtn m-actionbtn--wide" type="button" aria-label="Vote">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="6,11 12,5 18,11"/></svg>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="6,13 12,19 18,13"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18v-6H5l7-7 7 7h-4v6z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6v6H5l7 7 7-7h-4V6z"/></svg>
             </button>
             <button class="m-actionbtn" type="button" aria-label="Share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
           </div>
         </div>
       </article>
 
-      <article class="m-lcard">
-        <div class="m-lcard__media" style="background:#e6b800"><img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500&q=70" alt=""></div>
+      <article class="m-lcard" data-href="briefs-detail.html">
+        <div class="m-lcard__media" style="background:var(--color-bg-card)"><img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500&q=70" alt=""></div>
         <div class="m-lcard__body">
-          <h3 class="m-lcard__title">FDA expands Keytruda + Padcev approval to all muscle-invasive bladder cancer patients</h3>
+          <h3 class="m-lcard__title"><a href="briefs-detail.html">FDA expands Keytruda + Padcev approval to all muscle-invasive bladder cancer patients</a></h3>
           <div class="m-lcard__meta">11 days ago<br>5 Sources</div>
           <div class="m-actions">
-            <button class="m-actionbtn" type="button" aria-label="Mark read"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></button>
-            <button class="m-actionbtn" type="button" aria-label="Bookmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+            <button class="m-actionbtn" type="button" aria-label="Mark read"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></button>
+            <button class="m-actionbtn" type="button" aria-label="Bookmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/><line x1="9" y1="8" x2="15" y2="8"/></svg></button>
             <button class="m-actionbtn m-actionbtn--wide" type="button" aria-label="Vote">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="6,11 12,5 18,11"/></svg>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="6,13 12,19 18,13"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18v-6H5l7-7 7 7h-4v6z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6v6H5l7 7 7-7h-4V6z"/></svg>
             </button>
             <button class="m-actionbtn" type="button" aria-label="Share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
           </div>
         </div>
       </article>
+
     </div>
 
     <!-- View More -->
-    <div style="text-align:center; margin-top:14px;">
-      <button type="button" style="width:70%; padding:17px; border-radius:16px; border:none; display:inline-flex; align-items:center; justify-content:center; gap:14px; background:linear-gradient(120deg,#6d7cf0 0%,#9a7be0 55%,#c58fd6 100%); color:#fff; font-family:Manrope,sans-serif; font-size:1.3rem; font-weight:800; cursor:pointer; box-shadow:0 10px 30px rgba(124,92,252,0.45);">
+    <div style="text-align:center; margin-top:var(--space-5);">
+      <button class="btn btn--gradient" type="button" style="width:70%; gap:var(--space-5);">
         View More Briefs
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
       </button>
-      <p style="margin-top:16px; font-size:1.1rem; color:rgba(255,255,255,0.45); line-height:1.5;">Explore all the latest healthcare news and insights</p>
+      <p style="margin-top:var(--space-6); font-size:1.1rem; color:var(--text-dim); line-height:1.5;">Explore all the latest healthcare news and insights</p>
     </div>
 
   </main>
-
   <!-- TOP BANNER -->
   <div class="top-banner">
     <div class="top-banner__inner">
@@ -661,5 +764,72 @@
       }
     }
   </script>
+  <!-- ==================== INTERACTIONS ==================== -->
+  <script>
+    (function () {
+      // ---------- Hamburger drawer (identical to home.html) ----------
+      var drawer = document.getElementById('mDrawer'),
+          openBtn = document.getElementById('mMenuBtn'),
+          closeBtn = document.getElementById('mDrawerClose'),
+          lastFocus = null;
+      function focusables(el){ return el.querySelectorAll('button, a[href], input, select, [tabindex]:not([tabindex="-1"])'); }
+      function openDrawer(){ lastFocus = document.activeElement; drawer.classList.add('is-open'); openBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; var f=focusables(drawer); if(f.length) f[0].focus(); }
+      function closeDrawer(){ drawer.classList.remove('is-open'); openBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; if(lastFocus) lastFocus.focus(); }
+      openBtn.addEventListener('click', openDrawer);
+      closeBtn.addEventListener('click', closeDrawer);
+      drawer.addEventListener('click', function(e){ if(e.target===drawer || e.target.classList.contains('m-drawer__panel')) closeDrawer(); });
+
+      // ---------- Filters bottom sheet ----------
+      var sheet = document.getElementById('mFilterSheet');
+      function openSheet(){ sheet.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeSheet(){ sheet.classList.remove('is-open'); document.body.style.overflow=''; }
+      document.getElementById('filtersBtn').addEventListener('click', openSheet);
+      document.getElementById('mSheetOverlay').addEventListener('click', closeSheet);
+      document.getElementById('mSheetClose').addEventListener('click', closeSheet);
+      document.getElementById('mSheetApply').addEventListener('click', closeSheet);
+      document.getElementById('mSheetClear').addEventListener('click', function(){ sheet.querySelector('select').selectedIndex = 0; });
+
+      // ---------- "For You" dropdown ----------
+      var fyBtn = document.getElementById('forYouBtn'), fyMenu = document.getElementById('forYouMenu');
+      function closeFy(){ fyMenu.classList.remove('is-open'); fyBtn.setAttribute('aria-expanded','false'); }
+      fyBtn.addEventListener('click', function(e){ e.stopPropagation(); var open = fyMenu.classList.toggle('is-open'); fyBtn.setAttribute('aria-expanded', open?'true':'false'); });
+      fyMenu.querySelectorAll('.m-foryou__item').forEach(function(it){ it.addEventListener('click', function(){
+        fyMenu.querySelectorAll('.m-foryou__item').forEach(function(x){ x.classList.remove('is-active'); });
+        it.classList.add('is-active');
+        fyBtn.childNodes[0].nodeValue = it.textContent + ' ';
+        closeFy();
+      }); });
+      document.addEventListener('click', function(e){ if(!fyBtn.contains(e.target) && !fyMenu.contains(e.target)) closeFy(); });
+
+      // ---------- Live-pulse FAB speed-dial ----------
+      var fabBtn = document.getElementById('mFabBtn'), fabDial = document.getElementById('mFabDial');
+      fabBtn.addEventListener('click', function(){ var open = fabDial.classList.toggle('is-open'); fabBtn.setAttribute('aria-expanded', open?'true':'false'); });
+
+      // ---------- Brief cards → detail page (ignore clicks on action buttons / links) ----------
+      document.querySelectorAll('.m-lcard[data-href]').forEach(function(card){
+        card.addEventListener('click', function(e){
+          if (e.target.closest('.m-actionbtn') || e.target.closest('a')) return;
+          window.location.href = card.getAttribute('data-href');
+        });
+      });
+
+      // ---------- Global keyboard: Escape closes whatever is open; focus trap in drawer ----------
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape'){
+          if(drawer.classList.contains('is-open')) return closeDrawer();
+          if(sheet.classList.contains('is-open')) return closeSheet();
+          if(fabDial.classList.contains('is-open')){ fabDial.classList.remove('is-open'); fabBtn.setAttribute('aria-expanded','false'); return; }
+          if(fyMenu.classList.contains('is-open')) return closeFy();
+        }
+        if(e.key === 'Tab' && drawer.classList.contains('is-open')){
+          var f = focusables(drawer); if(!f.length) return;
+          var first=f[0], last=f[f.length-1];
+          if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+          else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>
