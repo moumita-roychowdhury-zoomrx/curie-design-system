@@ -2,7 +2,7 @@
   "$schema": "curie-components-mobile-manifest/v1",
   "name": "Curie Mobile Component Manifest",
   "description": "Machine-readable catalog of the mobile counterpart of every Curie desktop component. One entry per desktop component (ids match components-manifest.json). Styling lives in responsive.css (the .m-* system, active <=600px); snippets are rendered inside a 390px phone frame with a pg- body class. Fields mirror the desktop manifest plus: chrome (render outside .m-view), mobileTreatment, desktopEquivalent.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "cssDependencies": [
     "tokens.css",
     "components.css",
@@ -667,6 +667,38 @@
       "snippet": "<section class=\"m-summary\">\n  <div class=\"m-summary__head\">\n    <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"/><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"/><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"/></svg>\n    ESC Congress 2026\n  </div>\n  <div style=\"display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px\">\n    <span class=\"badge badge--purple\">Must-track</span>\n    <span class=\"badge badge--neutral\">Cardiology</span>\n  </div>\n  <p class=\"m-summary__body\"><strong>Editor's take:</strong> The field-defining late-breakers land here — expect practice-changing read-outs across heart failure and lipid-lowering therapy. Aug 29 – Sep 1 · Amsterdam, NL.</p>\n  <div class=\"actions\" style=\"margin-top:18px\">\n    <button class=\"btn btn--primary\" type=\"button\">Track</button>\n    <button class=\"btn btn--secondary\" type=\"button\">View details</button>\n  </div>\n</section>"
     },
     {
+      "id": "conferences-to-track-card",
+      "name": "Conferences to Track Card",
+      "category": "cards",
+      "status": "stable",
+      "desktopEquivalent": "almanac-card",
+      "mobileTreatment": "Reuses the desktop .almanac-card, full-width on the mobile canvas",
+      "chrome": false,
+      "purpose": "The mobile card for the home page's \"Conferences to track\" (Almanac) section: a full-width row that triages a medical meeting for HCPs — a compact date block, a must-track tier badge + specialty domain, the meeting name, date/location meta, an editor's take, and Track / View details actions.",
+      "whenToUse": "In the mobile \"Conferences to track\" list to help an HCP decide which meetings are worth their calendar. Lead with the tier badge and the editor's take — that's the triage value.",
+      "whenNotToUse": "For a tool (use the Curie Tools Card) or a news/editorial item (use a card). Not for a generic event with no editorial judgment attached.",
+      "anatomy": [
+        "almanac-card",
+        "almanac-card__date",
+        "almanac-card__date-month",
+        "almanac-card__date-day",
+        "almanac-card__content",
+        "almanac-card__badges",
+        "almanac-card__tier",
+        "almanac-card__domain",
+        "almanac-card__title",
+        "almanac-card__meta",
+        "almanac-card__take",
+        "almanac-card__actions",
+        "almanac-card__track",
+        "almanac-card__details"
+      ],
+      "interactions": "Track toggles a follow on the meeting; View details opens the agenda. No hover dependency — both actions are tap targets on mobile.",
+      "sourcePage": "index.html",
+      "previewHeight": 560,
+      "snippet": "<div class=\"almanac-card\">\n          <div class=\"almanac-card__date\">\n            <div class=\"almanac-card__date-month\">SEP</div>\n            <div class=\"almanac-card__date-day\">12</div>\n            <div class=\"almanac-card__date-range\">–16</div>\n          </div>\n          <div class=\"almanac-card__content\">\n            <div class=\"almanac-card__badges\">\n              <span class=\"almanac-card__tier almanac-card__tier--must\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/></svg>MUST-TRACK</span>\n              <span class=\"almanac-card__domain\">Translational neurology</span>\n            </div>\n            <h3 class=\"almanac-card__title\">ANA 2026 · American Neurological Association Annual Meeting</h3>\n            <div class=\"almanac-card__meta\">\n              <span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"/><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"/><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"/></svg>Sep 12–16, 2026</span>\n              <span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/></svg>Baltimore, MD</span>\n            </div>\n            <div class=\"almanac-card__take\">\n              <div class=\"almanac-card__take-header\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M7.17 6A5.17 5.17 0 002 11.17V18h6.83v-6.83H5.5A3.67 3.67 0 019.17 7.5V6H7.17zm10 0A5.17 5.17 0 0012 11.17V18h6.83v-6.83H15.5a3.67 3.67 0 013.67-3.67V6h-2z\"/></svg><span class=\"almanac-card__take-label\">EDITOR'S TAKE</span></div>\n              <p class=\"almanac-card__take-body\">The one neurology meeting where practice-changing trials actually debut — clear your calendar for the late-breakers.</p>\n            </div>\n            <div class=\"almanac-card__actions\">\n              <button class=\"almanac-card__track\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z\"/><line x1=\"12\" y1=\"7\" x2=\"12\" y2=\"13\"/><line x1=\"9\" y1=\"10\" x2=\"15\" y2=\"10\"/></svg>Track</button>\n              <a class=\"almanac-card__details\" href=\"#\">View details<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></a>\n            </div>\n          </div>\n        </div>"
+    },
+    {
       "id": "ai-tool-card",
       "name": "AI Tool Card",
       "category": "cards",
@@ -692,6 +724,32 @@
       "sourcePage": "responsive.css",
       "previewHeight": 420,
       "snippet": "<div class=\"m-fcard\">\n  <div class=\"m-fcard__body\">\n    <div class=\"m-fcard__title\">Patient Handout Generator</div>\n    <div class=\"m-fcard__desc\">Turn any Curie brief into a plain-language, patient-ready handout in seconds — checked against the source before you print.</div>\n    <div style=\"display:flex;gap:8px;flex-wrap:wrap\">\n      <span class=\"badge badge--purple\">Handouts</span>\n      <span class=\"badge badge--teal\">Source-cited</span>\n    </div>\n    <button class=\"m-fcard__cta m-fcard__cta--pod\" type=\"button\">\n      <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 3l14 9-14 9V3z\"/></svg>\n      Launch tool\n    </button>\n  </div>\n</div>"
+    },
+    {
+      "id": "curie-tools-card",
+      "name": "Curie Tools Card",
+      "category": "cards",
+      "status": "stable",
+      "desktopEquivalent": "ai-tool-card",
+      "mobileTreatment": "Reuses the desktop .ai-tool-card, full-width and single-column on the mobile canvas",
+      "chrome": false,
+      "purpose": "The mobile launcher tile for a Curie AI clinical tool (Patient Handout Generator, Prior Authorization, PeerRx Drug Lookup). On the home page's \"Curie Tools\" section the desktop 3-up .ai-tools-grid collapses to a single full-width column, and each .ai-tool-card renders as a tall stacked tile: icon, title, description, capability tags, a timing/source meta line, and a full-width launch button.",
+      "whenToUse": "In the mobile \"Curie Tools\" rail to surface an AI utility the HCP can launch. Keep the tags to the two or three that matter and the meta line to the speed/source promise.",
+      "whenNotToUse": "For editorial or news content (use a card), or for a conference (use the Conferences to Track Card). Not a plain button — it carries the tool's identity and trust signals.",
+      "anatomy": [
+        "ai-tool-card",
+        "ai-tool-card__icon",
+        "ai-tool-card__title",
+        "ai-tool-card__desc",
+        "ai-tool-card__tags",
+        "ai-tool-card__tag",
+        "ai-tool-card__meta",
+        "ai-tool-card__btn"
+      ],
+      "interactions": "The whole card lifts on hover on desktop; on touch the launch button is the tap target. The button spans the card width for an easy thumb target.",
+      "sourcePage": "index.html",
+      "previewHeight": 460,
+      "snippet": "<div class=\"ai-tool-card\">\n          <div class=\"ai-tool-card__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z\"/><polyline points=\"14,2 14,8 20,8\"/><line x1=\"8\" y1=\"13\" x2=\"16\" y2=\"13\"/><line x1=\"8\" y1=\"17\" x2=\"14\" y2=\"17\"/></svg></div>\n          <h3 class=\"ai-tool-card__title\">Patient Handout Generator</h3>\n          <p class=\"ai-tool-card__desc\">Generate a patient-ready handout for any regimen in seconds — written in plain language and sourced from approved labeling.</p>\n          <div class=\"ai-tool-card__tags\"><span class=\"ai-tool-card__tag\">Regimen-specific</span><span class=\"ai-tool-card__tag\">FDA-sourced</span><span class=\"ai-tool-card__tag\">For oncologists</span></div>\n          <div class=\"ai-tool-card__meta\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12,6 12,12 16,14\"/></svg>&lt;60 seconds · Built from FDA-approved labeling</div>\n          <button class=\"ai-tool-card__btn\">Generate Handout<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12,5 19,12 12,19\"/></svg></button>\n        </div>"
     },
     {
       "id": "game-mode-card",
