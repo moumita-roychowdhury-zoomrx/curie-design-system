@@ -4,9 +4,9 @@ title: Desktop layouts
 nav: examples
 permalink: /examples/
 ---
-<div class="ds-eyebrow">Reference</div>
-<h1 class="ds-title">Canonical pages</h1>
-<p class="ds-lede">The golden Curie pages, served byte-identical from the package. These are proof of the system applied well — reference material, not templates to replicate.</p>
+<div class="ds-eyebrow">Reusable page templates</div>
+<h1 class="ds-title">Desktop layouts</h1>
+<p class="ds-lede">These eight golden pages <strong>are</strong> the design system's reusable page templates — the place to start a new page. Each is a complete, on-brand layout served byte-identical from the package, and every one ships a matching mobile layout from the same file (see <a href="/responsive/">Responsive layouts</a>). To build a page: pick the archetype closest to what you need, copy its file from <code>package/examples/</code>, keep the chrome, and swap in your content.</p>
 <div class="ds-example-grid">
 {% set pages = [
   {file: "index.html", name: "Home", desc: "Landing hub — hero banner plus featured sections."},
@@ -20,9 +20,14 @@ permalink: /examples/
 ] %}
 {% for p in pages %}
   <a class="ds-component-card" href="/examples/pages/{{ p.file }}" target="_blank" rel="noopener">
-    <span class="cat">golden page</span>
+    <span class="cat">template</span>
     <h3>{{ p.name }}</h3>
     <p>{{ p.desc }}</p>
+    <p class="ds-example-src">copy <code>package/examples/{{ p.file }}</code></p>
   </a>
 {% endfor %}
 </div>
+<style>
+  .ds-example-src { margin-top: 10px; font-size: 12px; color: var(--text-muted, #b3a6c8); }
+  .ds-example-src code { font-size: 11.5px; }
+</style>

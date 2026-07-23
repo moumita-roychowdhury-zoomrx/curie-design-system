@@ -15,7 +15,7 @@ package/                      ← THE SOURCE OF TRUTH (consumers read only this)
 ├── assets-catalog.json       ← machine-readable icon/illustration catalog
 ├── brand-principles.md
 ├── assets/                   ← logos, icons, illustrations
-└── examples/                 ← the 8 canonical golden pages (7 responsive; reference, not templates)
+└── examples/                 ← the 8 golden pages — the reusable page templates (7 also ship a responsive layout)
 
 docs/                         ← Eleventy templates that READ package/ and generate the site
 ├── _data/                    ← loads package/*.json into the templates
@@ -86,7 +86,7 @@ A project Pages site serves under `/curie-design-system/`, so the workflow build
 
 ## Consumers
 
-- **People** — the hosted docs site (foundations, components with live previews + variants, the Icons & Illustrations gallery, and the golden page examples).
+- **People** — the hosted docs site (foundations, components with live previews + variants, the Icons & Illustrations gallery, and the golden pages — the reusable page templates, shown as Desktop layouts + Responsive layouts).
 - **AI agents / Claude plugins** — consume `package/` directly via git (pin a tag), or fetch `/api/tokens.json`, `/api/components-manifest.json`, and `/api/assets-catalog.json` from the site. Plugins should carry no copies of tokens, component markup, or assets.
 
 ## Status

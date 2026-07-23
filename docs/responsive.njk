@@ -4,9 +4,9 @@ title: Responsive layouts
 nav: responsive
 permalink: /responsive/
 ---
-<div class="ds-eyebrow">foundations · responsive</div>
+<div class="ds-eyebrow">Reusable page templates · responsive</div>
 <h1 class="ds-title">Responsive layouts</h1>
-<p class="ds-lede">Curie is a dark, desktop-first product. Responsiveness is delivered by a single stylesheet — <code>responsive.css</code> — that is the only file in the system containing <code>@media</code> queries. Below the mobile breakpoint each golden page swaps its desktop chrome for a purpose-built mobile view; at desktop width nothing here applies, so the desktop render is byte-for-byte unchanged.</p>
+<p class="ds-lede">This is the responsive half of the reusable page templates: every golden page on <a href="/examples/">Desktop layouts</a> already ships its mobile layout from the same single file — copy one page and you get both breakpoints for free. Responsiveness is delivered by a single stylesheet — <code>responsive.css</code> — the only file in the system containing <code>@media</code> queries. Below the mobile breakpoint each page swaps its desktop chrome for a purpose-built mobile view; at desktop width nothing here applies, so the desktop render is byte-for-byte unchanged.</p>
 
 <h2 class="ds-section">Breakpoint tokens</h2>
 <p class="ds-meta-line">Declared in <code>tokens.css</code>. Media-query conditions can't read <code>var()</code>, so these mirror the literal px values repeated in <code>responsive.css</code> — the same byte-stable pattern the rest of the system uses. Only <code>max-width</code> queries are used, so every rule activates <em>below</em> a breakpoint.</p>
@@ -41,7 +41,7 @@ permalink: /responsive/
 <p class="ds-meta-line">The five card grids step down by tier — <code>repeat(3,1fr)</code> desktop → 2-up at <code>≤900px</code> → single column at <code>≤600px</code> — expressed as mobile-only overrides so desktop track computation is untouched.</p>
 
 <h2 class="ds-section">Live mobile previews</h2>
-<p class="ds-meta-line">Each golden page rendered at a 390px viewport. These are the same files as the desktop <a href="/examples/">page examples</a> — one file, two layouts.</p>
+<p class="ds-meta-line">Each page rendered at a 390px viewport. These are the same reusable page templates as <a href="/examples/">Desktop layouts</a> — one file, two layouts.</p>
 <div class="ds-phone-row">
   {% set phones = [
     {file: "index.html", name: "Home"},
