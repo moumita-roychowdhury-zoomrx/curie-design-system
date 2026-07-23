@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" fill="none">
+  <defs><linearGradient id="mpn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFC"/><stop offset="1" stop-color="#00D4AA"/></linearGradient></defs>
+  <ellipse cx="120" cy="154" rx="70" ry="10" fill="#7C5CFC" opacity="0.12"/>
+  <line x1="120" y1="90" x2="66" y2="52" stroke="#7C5CFC" stroke-width="2.5" opacity="0.4" stroke-linecap="round"/>
+  <line x1="120" y1="90" x2="180" y2="58" stroke="#7C5CFC" stroke-width="2.5" opacity="0.4" stroke-linecap="round"/>
+  <line x1="120" y1="90" x2="58" y2="120" stroke="#7C5CFC" stroke-width="2.5" opacity="0.4" stroke-linecap="round"/>
+  <line x1="120" y1="90" x2="176" y2="124" stroke="#7C5CFC" stroke-width="2.5" opacity="0.4" stroke-linecap="round"/>
+  <circle cx="66" cy="52" r="11" stroke="#a18aff" stroke-width="2.5"/>
+  <circle cx="180" cy="58" r="11" stroke="#a18aff" stroke-width="2.5"/>
+  <circle cx="58" cy="120" r="11" stroke="#a18aff" stroke-width="2.5"/>
+  <circle cx="176" cy="124" r="11" stroke="#a18aff" stroke-width="2.5"/>
+  <circle cx="120" cy="90" r="18" fill="url(#mpn)" opacity="0.18"/>
+  <circle cx="120" cy="90" r="18" stroke="url(#mpn)" stroke-width="3"/>
+  <circle cx="120" cy="90" r="6" fill="#00D4AA"/>
+  <circle cx="200" cy="40" r="4" fill="#00D4AA" opacity="0.8"/>
+</svg>

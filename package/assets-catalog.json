@@ -1989,6 +1989,209 @@
       ],
       "context": "Post-submit confirmations, completed flows, subscribe success.",
       "usedIn": []
+    },
+    {
+      "id": "illust-onboarding-specialties",
+      "name": "Onboarding Specialties",
+      "category": "onboarding",
+      "type": "illustration",
+      "source": "file",
+      "path": "Assets/illustration/onboarding-specialties.svg",
+      "dimensions": {
+        "width": 240,
+        "height": 180
+      },
+      "description": "Cluster of rounded specialty tags with one gradient-highlighted pill, for choosing therapeutic areas.",
+      "tags": [
+        "onboarding",
+        "specialties",
+        "tags",
+        "select",
+        "therapeutic-areas"
+      ],
+      "context": "First-run step where the HCP picks the specialties that shape their feed.",
+      "usedIn": []
+    },
+    {
+      "id": "illust-onboarding-notifications",
+      "name": "Onboarding Notifications",
+      "category": "onboarding",
+      "type": "illustration",
+      "source": "file",
+      "path": "Assets/illustration/onboarding-notifications.svg",
+      "dimensions": {
+        "width": 240,
+        "height": 180
+      },
+      "description": "Gradient bell with concentric signal rings and a badge dot, for enabling alerts.",
+      "tags": [
+        "onboarding",
+        "notifications",
+        "alerts",
+        "bell",
+        "permissions"
+      ],
+      "context": "Onboarding step prompting the user to turn on notifications and alerts.",
+      "usedIn": []
+    },
+    {
+      "id": "illust-onboarding-verify",
+      "name": "Onboarding Verify",
+      "category": "onboarding",
+      "type": "illustration",
+      "source": "file",
+      "path": "Assets/illustration/onboarding-verify.svg",
+      "dimensions": {
+        "width": 240,
+        "height": 180
+      },
+      "description": "Gradient shield with a check inside, for verifying HCP credentials such as NPI.",
+      "tags": [
+        "onboarding",
+        "verify",
+        "credentials",
+        "npi",
+        "shield",
+        "trust"
+      ],
+      "context": "Credential-verification step confirming the HCP's identity or NPI.",
+      "usedIn": []
+    },
+    {
+      "id": "illust-onboarding-personalize",
+      "name": "Onboarding Personalize",
+      "category": "onboarding",
+      "type": "illustration",
+      "source": "file",
+      "path": "Assets/illustration/onboarding-personalize.svg",
+      "dimensions": {
+        "width": 240,
+        "height": 180
+      },
+      "description": "Three horizontal slider tracks with gradient knobs, for tuning your feed preferences.",
+      "tags": [
+        "onboarding",
+        "personalize",
+        "sliders",
+        "preferences",
+        "settings",
+        "feed"
+      ],
+      "context": "Personalization step where the HCP tunes feed weightings and preferences.",
+      "usedIn": []
+    },
+    {
+      "id": "illust-marketing-newsletter",
+      "name": "Marketing Newsletter",
+      "category": "marketing",
+      "type": "illustration",
+      "source": "file",
+      "path": "Assets/illustration/marketing-newsletter.svg",
+      "dimensions": {
+        "width": 240,
+        "height": 180
+      },
+      "description": "Envelope with a gradient sheet lifting out and a spark, for the Weekly Dose newsletter.",
+      "tags": [
+        "marketing",
+        "newsletter",
+        "email",
+        "subscribe",
+        "weekly-dose"
+      ],
+      "context": "Newsletter promo and email-subscription callouts such as the Weekly Dose.",
+      "usedIn": []
+    },
+    {
+      "id": "illust-marketing-peer-network",
+      "name": "Marketing Peer Network",
+      "category": "marketing",
+      "type": "illustration",
+      "source": "file",
+      "path": "Assets/illustration/marketing-peer-network.svg",
+      "dimensions": {
+        "width": 240,
+        "height": 180
+      },
+      "description": "Small node graph with a gradient hub node connected to peer nodes, for the HCP community.",
+      "tags": [
+        "marketing",
+        "community",
+        "network",
+        "peers",
+        "nodes",
+        "connections"
+      ],
+      "context": "HCP community and peer-network promotion across marketing surfaces.",
+      "usedIn": []
+    },
+    {
+      "id": "illust-marketing-insights",
+      "name": "Marketing Insights",
+      "category": "marketing",
+      "type": "illustration",
+      "source": "file",
+      "path": "Assets/illustration/marketing-insights.svg",
+      "dimensions": {
+        "width": 240,
+        "height": 180
+      },
+      "description": "Rising mini bar chart with a gradient trend line and end dot on a soft axis, for trends and analytics.",
+      "tags": [
+        "marketing",
+        "insights",
+        "analytics",
+        "trends",
+        "chart",
+        "data"
+      ],
+      "context": "Trends, analytics, and insights promotion in marketing sections.",
+      "usedIn": []
+    },
+    {
+      "id": "illust-marketing-time-saved",
+      "name": "Marketing Time Saved",
+      "category": "marketing",
+      "type": "illustration",
+      "source": "file",
+      "path": "Assets/illustration/marketing-time-saved.svg",
+      "dimensions": {
+        "width": 240,
+        "height": 180
+      },
+      "description": "Clock face with a gradient arc sweep and speed ticks, for staying current in minutes.",
+      "tags": [
+        "marketing",
+        "time-saved",
+        "clock",
+        "efficiency",
+        "speed",
+        "minutes"
+      ],
+      "context": "Value-prop messaging about saving time and staying current quickly.",
+      "usedIn": []
+    },
+    {
+      "id": "illust-marketing-podcast",
+      "name": "Marketing Podcast",
+      "category": "marketing",
+      "type": "illustration",
+      "source": "file",
+      "path": "Assets/illustration/marketing-podcast.svg",
+      "dimensions": {
+        "width": 240,
+        "height": 180
+      },
+      "description": "Gradient audio waveform bars inside a soft rounded frame, for listening to podcasts.",
+      "tags": [
+        "marketing",
+        "podcast",
+        "audio",
+        "waveform",
+        "listen"
+      ],
+      "context": "Podcast and audio-content promotion across marketing surfaces.",
+      "usedIn": []
     }
   ]
 }
