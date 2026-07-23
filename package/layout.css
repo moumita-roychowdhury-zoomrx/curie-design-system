@@ -17,6 +17,9 @@ body { background: #140d2c; }
 body.pg-editorial-detail { scroll-behavior: smooth; }
 body.pg-newsletter { min-height: 100vh; }
 body.bg-briefs { background: linear-gradient(180deg, #233391 0%, #0a0f2b 100%); background-attachment: fixed; }
+/* Briefs + Brief-detail desktop pages use the dedicated briefs-page gradient (not the
+   flat base). Mobile is reset back to the flat canvas in responsive.css. */
+body.pg-briefs, body.pg-brief-detail { background: var(--gradient-briefs-page); background-attachment: fixed; }
 
 a { color: inherit; text-decoration: none; }
 

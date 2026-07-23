@@ -47,6 +47,10 @@
     display: none !important;
   }
 
+  /* The briefs-page gradient is a desktop-only treatment; the mobile view keeps the
+     flat canvas, so reset the body background these two pages set on desktop. */
+  body.pg-briefs, body.pg-brief-detail { background: var(--color-bg-primary); background-attachment: initial; }
+
   /* ----- Show the mobile content view (centered column, generous side padding) ----- */
   body[class^="pg-"] .m-view {
     display: block;
