@@ -4985,3 +4985,11 @@ body.pg-home .user-avatar { background: #4b3fa7; }
 .chart-radial__seg--mobile { stroke: var(--chart-2); }
 .chart-radial__num { fill: var(--text-primary); font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
 .chart-radial__label { fill: var(--text-muted); font-size: 13px; }
+
+/* Radial progress-with-text — single value on a 250° track, brand accent + big number */
+.chart-radial-text { --chart-2: var(--color-teal-primary); }
+.chart-radial-text__svg { display: block; margin: 0 auto; width: 220px; height: auto; max-width: 100%; }
+.chart-radial-text__track { fill: none; stroke: var(--surface-white-08, rgba(255,255,255,0.08)); stroke-width: 14; stroke-linecap: round; }
+.chart-radial-text__value { fill: none; stroke: var(--chart-2); stroke-width: 14; stroke-linecap: round; }
+.chart-radial-text__num { fill: var(--text-primary); font-size: 40px; font-weight: 800; letter-spacing: -0.02em; }
+.chart-radial-text__label { fill: var(--text-muted); font-size: 13px; }

@@ -110,6 +110,30 @@
       "snippet": "<div class=\"chart-card chart-card--center chart-radial\"><div class=\"chart-card__header\"><h3 class=\"chart-card__title\">Radial Chart — Stacked</h3><p class=\"chart-card__desc\">Briefs read · last 6 months</p></div><svg class=\"chart-radial__svg\" viewBox=\"0 0 200 150\" role=\"img\" aria-label=\"Semicircle stacked gauge — 1,830 briefs read, desktop 1,260 and mobile 570\"><path class=\"chart-radial__track\" d=\"M 16.00 125.00 A 84 84 0 0 1 184.00 125.00\"/><path class=\"chart-radial__seg chart-radial__seg--mobile\" d=\"M 16.00 125.00 A 84 84 0 0 1 51.90 56.14\"/><path class=\"chart-radial__seg chart-radial__seg--desktop\" d=\"M 54.33 54.50 A 84 84 0 0 1 184.00 125.00\"/><text text-anchor=\"middle\"><tspan class=\"chart-radial__num\" x=\"100\" y=\"102\">1,830</tspan><tspan class=\"chart-radial__label\" x=\"100\" y=\"122\">Briefs read</tspan></text></svg><div class=\"chart-legend\"><span class=\"chart-legend__item\"><span class=\"chart-legend__swatch chart-legend__swatch--desktop\"></span>Desktop</span><span class=\"chart-legend__item\"><span class=\"chart-legend__swatch chart-legend__swatch--mobile\"></span>Mobile</span></div><div class=\"chart-card__footer\"><div class=\"chart-card__trend\">Trending up by 5.2% this month <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"3 17 9 11 13 15 21 7\"/><polyline points=\"15 7 21 7 21 13\"/></svg></div><div class=\"chart-card__note\">Briefs read across desktop and mobile</div></div></div>"
     },
     {
+      "id": "radial-chart-text",
+      "name": "Radial Progress (Text)",
+      "category": "data-viz",
+      "status": "stable",
+      "purpose": "A single-metric radial gauge: one value on a 250° track (gap at the bottom) with the figure called out big in the center. Rebuilt on-brand from the shadcn/recharts “radial with text” pattern as pure inline SVG, framed for Curie as a weekly reading-goal completion.",
+      "whenToUse": "For one headline number or completion percentage that deserves a compact, glanceable gauge (a goal, a score, a streak). Pair the ring with the value in the hole.",
+      "whenNotToUse": "For multiple parts (use the stacked radial or donut) or for comparisons/trends (use bar/line). Don't overload the center with more than a number + a short label.",
+      "anatomy": [
+        "chart-card",
+        "chart-card--center",
+        "chart-radial-text",
+        "chart-radial-text__svg",
+        "chart-radial-text__track",
+        "chart-radial-text__value",
+        "chart-radial-text__num",
+        "chart-radial-text__label"
+      ],
+      "interactions": "Static presentation specimen — in-app the arc is data-bound (e.g. Recharts). The value arc uses the brand accent (teal, --chart-2) over a faint full-track; rounded ends, 250° sweep, big number in Manrope in the hole.",
+      "sourcePage": "components.css",
+      "previewWidth": 420,
+      "previewHeight": 420,
+      "snippet": "<div class=\"chart-card chart-card--center chart-radial-text\"><div class=\"chart-card__header\"><h3 class=\"chart-card__title\">Radial Chart — Text</h3><p class=\"chart-card__desc\">Weekly reading goal · this week</p></div><svg class=\"chart-radial-text__svg\" viewBox=\"0 0 200 165\" role=\"img\" aria-label=\"Radial progress — 82% of the weekly reading goal\"><path class=\"chart-radial-text__track\" d=\"M 32.01 147.61 A 83 83 0 1 1 167.99 147.61\"/><path class=\"chart-radial-text__value\" d=\"M 32.01 147.61 A 83 83 0 1 1 181.74 85.59\"/><text text-anchor=\"middle\"><tspan class=\"chart-radial-text__num\" x=\"100\" y=\"96\">82%</tspan><tspan class=\"chart-radial-text__label\" x=\"100\" y=\"118\">Weekly goal</tspan></text></svg><div class=\"chart-card__footer\"><div class=\"chart-card__trend\">Trending up by 5.2% this month <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"3 17 9 11 13 15 21 7\"/><polyline points=\"15 7 21 7 21 13\"/></svg></div><div class=\"chart-card__note\">Ahead of last week’s pace</div></div></div>"
+    },
+    {
       "id": "line-chart",
       "name": "Line Chart",
       "category": "data-viz",
