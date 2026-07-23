@@ -1,89 +1,38 @@
 {
-  "version": "1.0",
+  "version": "2.0",
+  "note": "Reusable page templates ARE the golden page layouts — each ships a proven desktop layout and its responsive (mobile) counterpart from a single file (styling via responsive.css). Copy the referenced golden file and swap the content; the chrome and breakpoints come for free.",
   "templates": [
     {
-      "id": "app-shell",
-      "name": "App-Shell Dashboard",
-      "file": "app-shell.html",
-      "purpose": "The \"wire the chrome once\" starter: a sidebar + top-bar + content frame a consuming project can copy to stand up any authenticated dashboard. Composes the golden side-nav, an app bar with brand/title/action icon-buttons, a stat row, and a card grid.",
-      "uses": [
-        "app-shell",
-        "app-shell__sidebar",
-        "app-shell__header",
-        "app-shell__main",
-        "side-nav",
-        "appbar",
-        "appbar__brand",
-        "appbar__title",
-        "appbar__actions",
-        "container",
-        "stack",
-        "grid",
-        "grid--4",
-        "grid--auto",
-        "card",
-        "badge",
-        "ai-tool-card",
-        "user-avatar",
-        "page-header__title",
-        "page-subtitle",
-        "section-title"
-      ]
+      "id": "home-page",
+      "name": "Home / Landing",
+      "archetype": "Home",
+      "file": "index.html",
+      "purpose": "The landing hub: full app chrome (desktop side-nav + top banner, mobile app-bar + tab-bar) wrapping a hero, featured rails, and section grids. The richest chrome-plus-content composition.",
+      "reuse": "Copy package/examples/index.html, keep the chrome, swap the hero + rail content."
     },
     {
-      "id": "reading-layout",
-      "name": "Brief / Editorial Reading Layout",
-      "file": "reading-layout.html",
-      "purpose": "A single-article reading scaffold: fixed brief-detail header with a back button over a narrow reading column with title, meta, the read/bookmark/vote/share actions bar, body sections, and a related-stories grid.",
-      "uses": [
-        "brief-detail-header",
-        "back-btn",
-        "header-title",
-        "container--narrow",
-        "brief-detail-image",
-        "brief-detail-title",
-        "brief-detail-meta",
-        "sources-trigger",
-        "actions",
-        "act",
-        "votes",
-        "vbtn",
-        "brief-detail-summary-box",
-        "markdown-content",
-        "why-it-matters",
-        "related-section",
-        "related-grid",
-        "related-story-card"
-      ]
+      "id": "list-page",
+      "name": "List / Feed",
+      "archetype": "List",
+      "file": "briefs.html",
+      "purpose": "The standard content-listing page and the most reusable shape: the full chrome around a filterable card grid (desktop) that collapses to a stacked feed with a bottom tab bar and filter sheet (mobile).",
+      "reuse": "Copy package/examples/briefs.html and replace the card grid with your own list items."
     },
     {
-      "id": "play-learn",
-      "name": "Play & Learn Module",
-      "file": "play-learn.html",
-      "purpose": "A gamified learning-module page: app-shell chrome with the games-active side-nav and app bar, a hero intro band, a grid of daily game-card tiles plus game-mode-card tiles, and a weekly progress/streak block built from the golden progress bits.",
-      "uses": [
-        "app-shell",
-        "side-nav",
-        "appbar",
-        "container",
-        "stack",
-        "grid",
-        "grid--3",
-        "grid--auto",
-        "hero",
-        "hero__title",
-        "hero__title-accent",
-        "hero__btn",
-        "game-card",
-        "game-card__play",
-        "game-mode-card",
-        "game-mode-card__badge",
-        "game-mode-card__progress-track",
-        "game-mode-card__progress-fill",
-        "game-mode-card__stats",
-        "card",
-        "section-title"
-      ]
+      "id": "detail-page",
+      "name": "Detail / Reading",
+      "archetype": "Detail",
+      "file": "brief-detail.html",
+      "purpose": "A single-record reading page: sticky header with a back button over a centered reading column (hero, meta + action bar, body sections, related items). Mobile swaps to the app-bar + full-bleed reading view.",
+      "reuse": "Copy package/examples/brief-detail.html and swap the article body + related items."
+    },
+    {
+      "id": "form-page",
+      "name": "Form",
+      "archetype": "Form",
+      "file": "newsletter.html",
+      "purpose": "A form-centric page: intro copy beside a signup/settings form using the full form-field system (inputs, select, radios, toggles). Split layout on desktop, single-column form on mobile.",
+      "reuse": "Copy package/examples/newsletter.html and swap the form fields for your own."
     }
   ]
 }
