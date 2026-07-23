@@ -4960,7 +4960,7 @@ body.pg-home .user-avatar { background: #4b3fa7; }
 .chart-card--center { text-align: center; }
 .chart-card--center .chart-card__header { margin-bottom: var(--space-6); }
 .chart-card--center .chart-card__footer { align-items: center; }
-.chart-donut__svg { display: block; margin: 0 auto; width: 220px; height: 220px; max-width: 100%; }
+.chart-donut__svg { display: block; margin: 0 auto; width: 220px; height: auto; max-width: 100%; }
 .chart-donut__seg { fill: none; stroke-width: 30; }
 .chart-donut__seg--1 { stroke: var(--chart-1); }
 .chart-donut__seg--2 { stroke: var(--chart-2); }
@@ -4993,3 +4993,21 @@ body.pg-home .user-avatar { background: #4b3fa7; }
 .chart-radial-text__value { fill: none; stroke: var(--chart-2); stroke-width: 14; stroke-linecap: round; }
 .chart-radial-text__num { fill: var(--text-primary); font-size: 40px; font-weight: 800; letter-spacing: -0.02em; }
 .chart-radial-text__label { fill: var(--text-muted); font-size: 13px; }
+
+/* Charts — small-screen (mobile) responsiveness. The SVG charts already scale via
+   viewBox + max-width:100%; here we tighten padding and the div-based charts so a
+   chart reads well in a narrow column / on a phone. Fires on the actual viewport
+   width (e.g. a chart placed in an .m-view, or the preview at a phone width). */
+@media (max-width: 520px) {
+  .chart-card { padding: var(--space-6); }
+  .chart-card__header { margin-bottom: var(--space-6); }
+  .chart-card__footer { margin-top: var(--space-6); }
+  .bar-stack { height: 180px; gap: var(--space-3); }
+  .bar-stack__labels { gap: var(--space-3); }
+  .bar-stack__labels span { font-size: 0.72rem; }
+  .bar-chart { height: 170px; padding-left: var(--space-4); padding-right: var(--space-4); }
+  .chart-legend { gap: var(--space-4) var(--space-5); flex-wrap: wrap; }
+  .chart-donut__svg { width: 190px; }
+  .chart-radial__svg { width: 210px; }
+  .chart-radial-text__svg { width: 190px; }
+}
