@@ -15,6 +15,8 @@ eleventyComputed:
 <p class="ds-lede">{{ c.purpose }}</p>
 
 <iframe class="ds-preview-frame" src="/chart-previews/{{ c.id }}/" height="{{ c.previewHeight }}" title="{{ c.name }} preview" loading="lazy"></iframe>
+{% if c.variants %}<div class="ds-meta-line">Variants: {% for v in c.variants %}<code>{{ v.label }}</code>{% if not loop.last %} · {% endif %}{% endfor %}</div>{% endif %}
+{% if c.states %}<div class="ds-meta-line">States: {% for s in c.states %}<code>{{ s.label }}</code>{% if not loop.last %} · {% endif %}{% endfor %}</div>{% endif %}
 <div class="ds-meta-line">Source of truth: <code>{{ c.sourcePage }}</code> · styling in <code>components.css</code></div>
 
 <div class="ds-usage-grid">
