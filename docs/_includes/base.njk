@@ -18,25 +18,42 @@
     <nav class="ds-nav">
       <a href="/" class="{{ 'active' if nav == 'home' }}">Overview</a>
       <a href="/foundations/" class="{{ 'active' if nav == 'foundations' }}">Foundations</a>
+      <a href="/examples/" class="{{ 'active' if nav == 'examples' }}">Desktop layouts</a>
       <a href="/responsive/" class="{{ 'active' if nav == 'responsive' }}">Responsive layouts</a>
-      <div class="ds-nav-group">
-        <a href="/components/" class="{{ 'active' if nav == 'components' and not componentId }}">Components</a>
-        {% for c in manifest.components %}
-        <a class="ds-nav-sub {{ 'active' if componentId == c.id }}" href="/components/{{ c.id }}/">{{ c.name }}</a>
-        {% endfor %}
+
+      <div class="ds-nav-group ds-nav-collapsible{{ '' if (nav == 'components' or componentId) else ' is-collapsed' }}" data-navkey="desktop-components">
+        <div class="ds-nav-grouphead">
+          <a href="/components/" class="{{ 'active' if nav == 'components' and not componentId }}">Desktop components</a>
+          <button class="ds-nav-toggle" type="button" aria-label="Toggle Desktop components" aria-expanded="{{ 'true' if (nav == 'components' or componentId) else 'false' }}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="ds-nav-sublist">
+          {% for c in manifest.components %}
+          <a class="ds-nav-sub {{ 'active' if componentId == c.id }}" href="/components/{{ c.id }}/">{{ c.name }}</a>
+          {% endfor %}
+        </div>
       </div>
-      <div class="ds-nav-group">
-        <a href="/mobile/" class="{{ 'active' if nav == 'mobile' and not mobileComponentId }}">Mobile components</a>
-        {% for c in mobileManifest.components %}
-        <a class="ds-nav-sub {{ 'active' if mobileComponentId == c.id }}" href="/mobile/{{ c.id }}/">{{ c.name }}</a>
-        {% endfor %}
+
+      <div class="ds-nav-group ds-nav-collapsible{{ '' if (nav == 'mobile' or mobileComponentId) else ' is-collapsed' }}" data-navkey="mobile-components">
+        <div class="ds-nav-grouphead">
+          <a href="/mobile/" class="{{ 'active' if nav == 'mobile' and not mobileComponentId }}">Mobile components</a>
+          <button class="ds-nav-toggle" type="button" aria-label="Toggle Mobile components" aria-expanded="{{ 'true' if (nav == 'mobile' or mobileComponentId) else 'false' }}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="ds-nav-sublist">
+          {% for c in mobileManifest.components %}
+          <a class="ds-nav-sub {{ 'active' if mobileComponentId == c.id }}" href="/mobile/{{ c.id }}/">{{ c.name }}</a>
+          {% endfor %}
+        </div>
       </div>
+
       <div class="ds-nav-group">
         <a href="/assets-library/" class="{{ 'active' if nav == 'assets' }}">Assets</a>
         <a class="ds-nav-sub" href="/assets-library/#icons">Icons</a>
         <a class="ds-nav-sub" href="/assets-library/#illustrations">Illustrations</a>
       </div>
-      <a href="/examples/" class="{{ 'active' if nav == 'examples' }}">Page examples</a>
       <a href="/api/tokens.json" class="ds-nav-sub">tokens.json ↗</a>
       <a href="/api/components-manifest.json" class="ds-nav-sub">manifest.json ↗</a>
     </nav>
@@ -46,6 +63,34 @@
     {{ content | safe }}
   </main>
   <script>
+    // Collapsible nav groups (Desktop / Mobile components). The arrow toggles the
+    // sub-list; the group containing the current page is always shown; other groups
+    // remember your last toggle across navigations via sessionStorage.
+    (function () {
+      var groups = document.querySelectorAll('.ds-nav-collapsible');
+      groups.forEach(function (g) {
+        var key = 'dsNav:' + g.getAttribute('data-navkey');
+        var btn = g.querySelector('.ds-nav-toggle');
+        var hasActive = !!g.querySelector('a.active');
+        if (hasActive) {
+          g.classList.remove('is-collapsed');
+        } else {
+          var saved = sessionStorage.getItem(key);
+          if (saved === 'open') g.classList.remove('is-collapsed');
+          else if (saved === 'closed') g.classList.add('is-collapsed');
+        }
+        if (btn) {
+          btn.setAttribute('aria-expanded', String(!g.classList.contains('is-collapsed')));
+          btn.addEventListener('click', function (e) {
+            e.preventDefault(); e.stopPropagation();
+            var collapsed = g.classList.toggle('is-collapsed');
+            btn.setAttribute('aria-expanded', String(!collapsed));
+            sessionStorage.setItem(key, collapsed ? 'closed' : 'open');
+          });
+        }
+      });
+    })();
+
     // Keep the sidebar's own scroll position across page navigations, so clicking
     // a nav item doesn't reset the (long) list back to the top.
     (function () {
