@@ -35,6 +35,14 @@ export default function (eleventyConfig) {
   // reference ../tokens.css and ../Assets/… (i.e. /examples/…).
   eleventyConfig.addPassthroughCopy({ "package/examples": "examples/pages" });
 
+  // Starter templates (page scaffolds). Same convention as the golden pages —
+  // they live at /templates/pages/ and reference ../tokens.css and ../Assets/….
+  eleventyConfig.addPassthroughCopy({ "package/templates": "templates/pages" });
+
+  // Self-hosted (vendored) fonts stylesheet, served at /fonts.css. The woff2
+  // binaries ride along under /assets/fonts/ via the package/assets passthrough.
+  eleventyConfig.addPassthroughCopy({ "package/fonts.css": "fonts.css" });
+
   // Docs' own stylesheet
   eleventyConfig.addPassthroughCopy({ "docs/docs-theme.css": "docs-theme.css" });
 
@@ -50,12 +58,14 @@ export default function (eleventyConfig) {
   // Mirror the CSS + assets into /examples/ (same source as /css + /assets, which
   // passthrough copy cannot duplicate). Runs after every build, including --serve.
   eleventyConfig.on("eleventy.after", () => {
-    const examplesDir = path.join(OUT, "examples");
-    fs.mkdirSync(examplesDir, { recursive: true });
-    for (const f of CSS_FILES) {
-      fs.copyFileSync(`package/${f}`, path.join(examplesDir, f));
+    for (const dir of ["examples", "templates"]) {
+      const target = path.join(OUT, dir);
+      fs.mkdirSync(target, { recursive: true });
+      for (const f of CSS_FILES) {
+        fs.copyFileSync(`package/${f}`, path.join(target, f));
+      }
+      fs.cpSync("package/assets", path.join(target, "Assets"), { recursive: true });
     }
-    fs.cpSync("package/assets", path.join(examplesDir, "Assets"), { recursive: true });
   });
 
   return {

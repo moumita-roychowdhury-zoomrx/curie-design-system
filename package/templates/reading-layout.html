@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curie | Reading Layout — Starter Template</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../layout.css">
+  <link rel="stylesheet" href="../components.css">
+  <link rel="stylesheet" href="../utilities.css">
+
+  <!--
+    NEW LAYOUT PRIMITIVES (.container / .stack / .grid) ship in layout.css via a
+    parallel task. Inlined here so the starter renders complete today — delete this
+    block once they land in layout.css. Layout-only; every value is a token.
+  -->
+  <style>
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 var(--space-9); }
+    .container--narrow { max-width: 720px; }
+    .container--wide { max-width: 1320px; }
+
+    .stack { display: flex; flex-direction: column; gap: var(--space-6); }
+    .stack--sm { gap: var(--space-3); }
+    .stack--md { gap: var(--space-6); }
+    .stack--lg { gap: var(--space-10); }
+
+    .grid { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
+    .grid--2 { grid-template-columns: repeat(2, 1fr); }
+    .grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .grid--4 { grid-template-columns: repeat(4, 1fr); }
+    .grid--auto { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+    @media (max-width: 900px) { .grid--3, .grid--4 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .grid--2, .grid--3, .grid--4, .grid--auto { grid-template-columns: 1fr; } }
+
+    /* The fixed .brief-detail-header is 100%-wide and top:0; the reading column
+       clears it with top padding (mirrors the golden .brief-detail-content). */
+    .reading-column { padding-top: 6rem; padding-bottom: 5rem; }
+  </style>
+</head>
+<body class="pg-reading-layout">
+
+  <!-- TOP HEADER — the golden .brief-detail-header (fixed bar + back button), copied verbatim -->
+  <div class="brief-detail-header">
+    <div class="header-left">
+      <a class="back-btn" href="app-shell.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg>
+      </a>
+      <img class="header-icon" src="../Assets/icons/curie brief icon.svg" alt="">
+      <span class="header-title">Curie Brief</span>
+    </div>
+  </div>
+
+  <!-- READING COLUMN — .container--narrow -->
+  <div class="container container--narrow reading-column">
+
+    <!-- Hero -->
+    <div class="brief-detail-image">
+      <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1000&q=80" alt="">
+    </div>
+
+    <!-- Title -->
+    <div class="brief-detail-title">
+      <h2>Lower cholesterol targets cut heart events by one-third in landmark study</h2>
+    </div>
+
+    <!-- Meta + actions bar (read / bookmark / vote / share) -->
+    <div class="brief-detail-meta">
+      <div class="meta-info">
+        <span>about 17 hours ago</span>
+        <span class="sep">&middot;</span>
+        <span class="sources-trigger">
+          9 Sources
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg>
+          <div class="sources-dropdown">
+            <a href="#">Medscape</a>
+            <a href="#">Professional Heart Daily</a>
+            <a href="#">Healio</a>
+            <a href="#">TCTMD</a>
+            <a href="#">ScienceDaily</a>
+          </div>
+        </span>
+      </div>
+      <div class="actions">
+        <div class="act read"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div>
+        <div class="act bmark"><img src="../Assets/icons/BookMark.svg" alt="Bookmark" style="width:20px;height:20px;"></div>
+        <div class="votes"><button class="vbtn up"><img src="../Assets/icons/up arrow.svg" alt="Like" style="width:15px;height:15px;"></button><button class="vbtn dn"><img src="../Assets/icons/down arrow.svg" alt="Dislike" style="width:15px;height:15px;"></button></div>
+        <div class="act share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="brief-detail-summary-box">
+      <div class="summary-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18h6"/>
+          <path d="M10 22h4"/>
+          <path d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 01-1 1h-6a1 1 0 01-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z"/>
+        </svg>
+        <h3>Summary</h3>
+      </div>
+      <p class="summary-text">Targeting LDL cholesterol below 55 mg/dL instead of 70 mg/dL reduced major cardiovascular events by 33% in patients with heart disease, according to the Ez-PAVE trial. The South Korean study of over 3,000 patients used mostly statins and ezetimibe to achieve these aggressive targets.</p>
+    </div>
+
+    <!-- Body sections -->
+    <div class="markdown-content">
+      <p>A groundbreaking study from South Korea is providing fresh evidence that when it comes to cholesterol, lower really is better. The Ez-PAVE trial found that targeting LDL cholesterol below 55 mg/dL instead of the conventional 70 mg/dL reduced major cardiovascular events by 33% in patients with existing heart disease.</p>
+
+      <p>The three-year study followed over 3,000 patients with atherosclerotic cardiovascular disease, achieving median LDL levels of 56 mg/dL in the intensive group versus 66 mg/dL in the conventional group. Importantly, these aggressive targets were reached primarily using statins and ezetimibe&mdash;not expensive PCSK9 inhibitors&mdash;making the approach more accessible and cost-effective.</p>
+
+      <h3>Key Takeaways:</h3>
+      <ul>
+        <li>33% reduction in composite endpoint of CV death, heart attack, stroke, revascularization, or unstable angina hospitalization</li>
+        <li>59% of intensive-target patients still failed to reach their goal despite treatment</li>
+        <li>Study used mostly traditional lipid-lowering therapies rather than newer, costlier options</li>
+        <li>Results align with recently updated American dyslipidemia guidelines promoting earlier, more intensive treatment</li>
+      </ul>
+    </div>
+
+    <!-- Why it matters -->
+    <div class="why-it-matters">
+      <h3>Why it matters:</h3>
+      <p>This trial provides the randomized evidence that clinicians needed to confidently pursue more aggressive LDL targets. By demonstrating that substantial cardiovascular benefits can be achieved using widely available medications, the findings could reshape how doctors approach cholesterol management in heart disease patients worldwide.</p>
+    </div>
+
+    <!-- Related stories grid -->
+    <div class="related-section">
+      <h3>Related stories</h3>
+      <p class="sub">Recommended reads based on this brief</p>
+      <div class="related-grid">
+        <a class="related-story-card" href="#">
+          <img class="related-story-image" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=70" alt="">
+          <div class="related-story-body">
+            <h4 class="related-story-title">Many heart disease patients have blood pressure below target</h4>
+            <div class="related-story-meta"><span>Medscape</span><span>about 17 hours ago</span></div>
+          </div>
+        </a>
+        <a class="related-story-card" href="#">
+          <img class="related-story-image" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&q=70" alt="">
+          <div class="related-story-body">
+            <h4 class="related-story-title">Adrenal surgery shows heart benefits for mild cortisol excess patients</h4>
+            <div class="related-story-meta"><span>Medscape</span><span>about 17 hours ago</span></div>
+          </div>
+        </a>
+        <a class="related-story-card" href="#">
+          <img class="related-story-image" src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&q=70" alt="">
+          <div class="related-story-body">
+            <h4 class="related-story-title">New anti-inflammatory drug shows promise for heart disease prevention</h4>
+            <div class="related-story-meta"><span>Reuters</span><span>5 days ago</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

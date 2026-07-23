@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-07-20",
+  "lastUpdated": "2026-07-23",
   "assets": [
     {
       "id": "logo-curie-white",
@@ -1558,6 +1558,437 @@
       "usedIn": "newsletter.html",
       "context": "Info toast disc icon",
       "svg": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M11 7h2v2h-2V7zm0 4h2v6h-2v-6z\"/></svg>"
+    },
+    {
+      "id": "icon-ui-edit",
+      "name": "Edit Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/edit.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Pencil overlapping a document corner, line style — indicates editing or modifying content",
+      "tags": [
+        "ui",
+        "edit",
+        "pencil",
+        "modify",
+        "write",
+        "action"
+      ],
+      "context": "Use on edit buttons, inline row actions, and editable field affordances",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-trash",
+      "name": "Trash Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/trash.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Waste bin with lid and two vertical strokes, line style — indicates delete or remove",
+      "tags": [
+        "ui",
+        "trash",
+        "delete",
+        "remove",
+        "bin",
+        "action"
+      ],
+      "context": "Use for destructive delete actions on list rows, cards, and detail toolbars",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-download",
+      "name": "Download Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/download.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Downward arrow into a tray, line style — indicates saving or exporting a file",
+      "tags": [
+        "ui",
+        "download",
+        "export",
+        "save",
+        "arrow",
+        "action"
+      ],
+      "context": "Use on download or export buttons for reports, PDFs, and attachments",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-upload",
+      "name": "Upload Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/upload.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Upward arrow out of a tray, line style — indicates importing or uploading a file",
+      "tags": [
+        "ui",
+        "upload",
+        "import",
+        "attach",
+        "arrow",
+        "action"
+      ],
+      "context": "Use on upload controls, file drop zones, and attachment pickers",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-filter",
+      "name": "Filter Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/filter.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Funnel shape, line style — indicates filtering or narrowing a result set",
+      "tags": [
+        "ui",
+        "filter",
+        "funnel",
+        "refine",
+        "sort",
+        "action"
+      ],
+      "context": "Use on filter toggles and toolbar controls above lists and tables",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-calendar",
+      "name": "Calendar Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/calendar.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Calendar grid with two top binding rings, line style — indicates dates or scheduling",
+      "tags": [
+        "ui",
+        "calendar",
+        "date",
+        "schedule",
+        "event",
+        "picker"
+      ],
+      "context": "Use on date pickers, event fields, and published-date metadata",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-clock",
+      "name": "Clock Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/clock.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Circular clock face with hour and minute hands, line style — indicates time or duration",
+      "tags": [
+        "ui",
+        "clock",
+        "time",
+        "duration",
+        "recent",
+        "schedule"
+      ],
+      "context": "Use for timestamps, read-time labels, and duration indicators",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-bell",
+      "name": "Bell Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/bell.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Notification bell with clapper, line style — indicates alerts or notifications",
+      "tags": [
+        "ui",
+        "bell",
+        "notification",
+        "alert",
+        "reminder",
+        "action"
+      ],
+      "context": "Use for notification centers and alert subscription toggles in chrome",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-more-vertical",
+      "name": "More (Kebab) Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/more-vertical.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Three vertically stacked dots, line style — indicates an overflow or more-actions menu",
+      "tags": [
+        "ui",
+        "more",
+        "kebab",
+        "overflow",
+        "menu",
+        "actions"
+      ],
+      "context": "Use as the overflow menu trigger on cards, list rows, and toolbars",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-external-link",
+      "name": "External Link Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/external-link.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Box with an arrow pointing out to the upper right, line style — indicates a link opening externally",
+      "tags": [
+        "ui",
+        "external",
+        "link",
+        "open",
+        "new-tab",
+        "outbound"
+      ],
+      "context": "Use next to links that open a new tab or an external destination",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-copy",
+      "name": "Copy Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/copy.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Two overlapping rectangles, line style — indicates copy or duplicate to clipboard",
+      "tags": [
+        "ui",
+        "copy",
+        "duplicate",
+        "clipboard",
+        "clone",
+        "action"
+      ],
+      "context": "Use on copy-to-clipboard buttons and duplicate actions",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-info",
+      "name": "Info Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/info.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Circle enclosing a lowercase i, line style — indicates informational help or context",
+      "tags": [
+        "ui",
+        "info",
+        "information",
+        "help",
+        "tooltip",
+        "hint"
+      ],
+      "context": "Use for info tooltips, help affordances, and inline notices",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-lock",
+      "name": "Lock Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/lock.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Closed padlock with shackle, line style — indicates secured, private, or restricted content",
+      "tags": [
+        "ui",
+        "lock",
+        "secure",
+        "private",
+        "restricted",
+        "gated"
+      ],
+      "context": "Use on gated content, secure fields, and permission-restricted actions",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-mail",
+      "name": "Mail Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/mail.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Envelope with folded flap, line style — indicates email or messaging",
+      "tags": [
+        "ui",
+        "mail",
+        "email",
+        "envelope",
+        "message",
+        "contact"
+      ],
+      "context": "Use for email fields, contact links, and newsletter sign-up controls",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-settings",
+      "name": "Settings (Gear) Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/settings.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Cog gear with a central circle, line style — indicates settings or configuration",
+      "tags": [
+        "ui",
+        "settings",
+        "gear",
+        "cog",
+        "preferences",
+        "config"
+      ],
+      "context": "Use for settings entry points and preference panels in chrome",
+      "usedIn": []
+    },
+    {
+      "id": "icon-ui-search",
+      "name": "Search Icon",
+      "category": "ui",
+      "type": "icon",
+      "source": "file",
+      "path": "Assets/icons/ui/search.svg",
+      "dimensions": {
+        "width": 24,
+        "height": 24
+      },
+      "description": "Magnifying glass, line style — indicates search or find",
+      "tags": [
+        "ui",
+        "search",
+        "find",
+        "magnifier",
+        "lookup",
+        "query"
+      ],
+      "context": "Use inside search inputs and as the search trigger in navigation chrome",
+      "usedIn": []
+    },
+    {
+      "id": "illust-empty-state",
+      "name": "Empty State",
+      "category": "empty-state",
+      "type": "illustration",
+      "source": "file",
+      "path": "Assets/illustration/empty-state.svg",
+      "dimensions": {
+        "width": 240,
+        "height": 180
+      },
+      "description": "Abstract search-over-card mark for no-results / empty-list states.",
+      "tags": [
+        "empty",
+        "no-results",
+        "search",
+        "placeholder"
+      ],
+      "context": "Pair with the empty-state component when a list or search returns nothing.",
+      "usedIn": []
+    },
+    {
+      "id": "illust-onboarding",
+      "name": "Onboarding",
+      "category": "onboarding",
+      "type": "illustration",
+      "source": "file",
+      "path": "Assets/illustration/onboarding.svg",
+      "dimensions": {
+        "width": 240,
+        "height": 180
+      },
+      "description": "Concentric-orbit welcome mark with the Curie spark, for first-run / onboarding.",
+      "tags": [
+        "onboarding",
+        "welcome",
+        "first-run",
+        "intro"
+      ],
+      "context": "Welcome screens, feature intros, empty dashboards before first activity.",
+      "usedIn": []
+    },
+    {
+      "id": "illust-success",
+      "name": "Success",
+      "category": "feedback",
+      "type": "illustration",
+      "source": "file",
+      "path": "Assets/illustration/success.svg",
+      "dimensions": {
+        "width": 240,
+        "height": 180
+      },
+      "description": "Gradient check-in-circle with confetti dots for completion / confirmation states.",
+      "tags": [
+        "success",
+        "done",
+        "confirmation",
+        "complete"
+      ],
+      "context": "Post-submit confirmations, completed flows, subscribe success.",
+      "usedIn": []
     }
   ]
 }

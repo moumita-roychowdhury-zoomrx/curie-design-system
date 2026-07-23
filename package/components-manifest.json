@@ -2,7 +2,7 @@
   "$schema": "curie-components-manifest/v1",
   "name": "Curie Component Manifest",
   "description": "Machine-readable catalog of Curie UI components. Each entry carries identity (what it is), usage judgment (when to reach for it), anatomy, and a canonical HTML snippet extracted verbatim from the golden pages. Styling lives in components.css / layout.css — snippets carry no inline paint. This file drives the docs site build AND is the primary consumption surface for AI agents/plugins.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "cssDependencies": [
     "tokens.css",
     "components.css",
@@ -2134,6 +2134,440 @@
           "snippet": "<input type=\"range\" class=\"slider--native\" min=\"0\" max=\"100\" value=\"70\">"
         }
       ]
+    },
+    {
+      "id": "container",
+      "name": "Container",
+      "category": "layout",
+      "status": "stable",
+      "purpose": "A centered, max-width wrapper that constrains content to a comfortable measure and applies consistent horizontal page padding via space tokens.",
+      "whenToUse": "Wrap the main content column of any page or section so it stays centered and readable at large viewport widths. Use --narrow for long-form reading (articles, briefs body) and --wide for dense dashboard/grid layouts.",
+      "whenNotToUse": "For full-bleed hero/banner backgrounds that must reach the viewport edges, or as an internal spacing/stacking device (use stack or grid instead).",
+      "anatomy": [
+        "container (centered max-width wrapper, ~1140px)",
+        "container--narrow (~720px reading measure)",
+        "container--wide (~1320px dense layouts)"
+      ],
+      "interactions": "None — a static structural wrapper with no interactive state.",
+      "sourcePage": "components.css",
+      "previewWidth": 900,
+      "previewHeight": 320,
+      "snippet": "<div class=\"container container--narrow\">\n  <div class=\"stack stack--sm\">\n    <h1 style=\"font-size:1.6rem;font-weight:700\">Reducing readmissions in heart failure</h1>\n    <p style=\"color:rgba(255,255,255,0.7)\">A centered container keeps clinical long-form content at a comfortable reading measure and applies consistent left/right page padding, regardless of how wide the viewport gets.</p>\n    <p style=\"color:rgba(255,255,255,0.7)\">Swap the modifier to widen or narrow the measure without touching the surrounding page chrome.</p>\n  </div>\n</div>",
+      "variants": [
+        {
+          "label": "Default (~1140px)",
+          "previewWidth": 900,
+          "snippet": "<div class=\"container\"><div class=\"card\"><div class=\"stack stack--sm\" style=\"padding:18px\"><h2 style=\"font-size:1.2rem;font-weight:700\">Default container</h2><p style=\"color:rgba(255,255,255,0.7)\">Max-width ~1140px, centered, with token-based horizontal padding — the standard content column for most Curie pages.</p></div></div></div>"
+        },
+        {
+          "label": "Narrow (~720px)",
+          "previewWidth": 900,
+          "snippet": "<div class=\"container container--narrow\"><div class=\"card\"><div class=\"stack stack--sm\" style=\"padding:18px\"><h2 style=\"font-size:1.2rem;font-weight:700\">Narrow container</h2><p style=\"color:rgba(255,255,255,0.7)\">A tighter ~720px measure tuned for long-form editorial and brief reading, keeping line length legible.</p></div></div></div>"
+        },
+        {
+          "label": "Wide (~1320px)",
+          "previewWidth": 900,
+          "snippet": "<div class=\"container container--wide\"><div class=\"card\"><div class=\"stack stack--sm\" style=\"padding:18px\"><h2 style=\"font-size:1.2rem;font-weight:700\">Wide container</h2><p style=\"color:rgba(255,255,255,0.7)\">A roomier ~1320px measure for dense dashboard and multi-column grid layouts that need more horizontal space.</p></div></div></div>"
+        }
+      ]
+    },
+    {
+      "id": "stack",
+      "name": "Stack",
+      "category": "layout",
+      "status": "stable",
+      "purpose": "A vertical layout primitive that arranges its children in a column with a single, consistent gap chosen from the spacing scale — the systematic way to space stacked elements.",
+      "whenToUse": "Anywhere you need uniform vertical rhythm between sibling elements (form fields, card lists, heading + body groups). Pick the gap step with --sm / --md / --lg.",
+      "whenNotToUse": "For multi-column arrangements (use grid) or for one-off single-child spacing (use a margin utility).",
+      "anatomy": [
+        "stack (vertical flex column, default md gap)",
+        "stack--sm (tight 8px gap)",
+        "stack--md (16px gap)",
+        "stack--lg (32px gap)"
+      ],
+      "interactions": "None — a static structural primitive with no interactive state.",
+      "sourcePage": "components.css",
+      "previewWidth": 480,
+      "previewHeight": 360,
+      "snippet": "<div class=\"stack stack--md\">\n  <div class=\"card\"><div style=\"padding:14px 16px\">First clinical brief</div></div>\n  <div class=\"card\"><div style=\"padding:14px 16px\">Second clinical brief</div></div>\n  <div class=\"card\"><div style=\"padding:14px 16px\">Third clinical brief</div></div>\n</div>",
+      "variants": [
+        {
+          "label": "Small gap",
+          "previewWidth": 480,
+          "snippet": "<div class=\"stack stack--sm\"><div class=\"card\"><div style=\"padding:12px 16px\">Tight row one</div></div><div class=\"card\"><div style=\"padding:12px 16px\">Tight row two</div></div><div class=\"card\"><div style=\"padding:12px 16px\">Tight row three</div></div></div>"
+        },
+        {
+          "label": "Medium gap",
+          "previewWidth": 480,
+          "snippet": "<div class=\"stack stack--md\"><div class=\"card\"><div style=\"padding:12px 16px\">Row one</div></div><div class=\"card\"><div style=\"padding:12px 16px\">Row two</div></div><div class=\"card\"><div style=\"padding:12px 16px\">Row three</div></div></div>"
+        },
+        {
+          "label": "Large gap",
+          "previewWidth": 480,
+          "snippet": "<div class=\"stack stack--lg\"><div class=\"card\"><div style=\"padding:12px 16px\">Section one</div></div><div class=\"card\"><div style=\"padding:12px 16px\">Section two</div></div></div>"
+        }
+      ]
+    },
+    {
+      "id": "grid",
+      "name": "Grid",
+      "category": "layout",
+      "status": "stable",
+      "purpose": "A CSS-grid layout primitive with token-based gaps. Fixed-column modifiers (--2/--3/--4) for deliberate compositions and --auto for content-driven responsive packing; all variants collapse gracefully at the tablet and mobile breakpoints.",
+      "whenToUse": "For multi-column arrangements of peer items — card decks, tile galleries, related-story grids. Use a fixed modifier when the column count is intentional, or --auto to let cards flow and wrap by available width.",
+      "whenNotToUse": "For single-column vertical rhythm (use stack) or for the whole-page frame (use app-shell).",
+      "anatomy": [
+        "grid (CSS grid, token gap, single column base)",
+        "grid--2 / grid--3 / grid--4 (fixed equal columns)",
+        "grid--auto (auto-fit minmax, responsive packing)"
+      ],
+      "interactions": "None on the container itself; collapses to 2 columns at/below 900px and 1 column at/below 600px. Children carry their own hover/interaction states.",
+      "sourcePage": "components.css",
+      "previewWidth": 820,
+      "previewHeight": 260,
+      "snippet": "<div class=\"grid grid--3\">\n  <div class=\"card\"><div style=\"padding:16px\">Cardiology</div></div>\n  <div class=\"card\"><div style=\"padding:16px\">Oncology</div></div>\n  <div class=\"card\"><div style=\"padding:16px\">Neurology</div></div>\n</div>",
+      "variants": [
+        {
+          "label": "Two columns",
+          "previewWidth": 820,
+          "snippet": "<div class=\"grid grid--2\"><div class=\"card\"><div style=\"padding:16px\">Latest briefs</div></div><div class=\"card\"><div style=\"padding:16px\">Trending podcasts</div></div></div>"
+        },
+        {
+          "label": "Three columns",
+          "previewWidth": 820,
+          "snippet": "<div class=\"grid grid--3\"><div class=\"card\"><div style=\"padding:16px\">Cardiology</div></div><div class=\"card\"><div style=\"padding:16px\">Oncology</div></div><div class=\"card\"><div style=\"padding:16px\">Neurology</div></div></div>"
+        },
+        {
+          "label": "Four columns",
+          "previewWidth": 820,
+          "snippet": "<div class=\"grid grid--4\"><div class=\"card\"><div style=\"padding:14px\">Briefs</div></div><div class=\"card\"><div style=\"padding:14px\">Podcasts</div></div><div class=\"card\"><div style=\"padding:14px\">Editorial</div></div><div class=\"card\"><div style=\"padding:14px\">Games</div></div></div>"
+        },
+        {
+          "label": "Auto-fit (responsive)",
+          "previewWidth": 820,
+          "snippet": "<div class=\"grid grid--auto\"><div class=\"card\"><div style=\"padding:16px\">Auto tile</div></div><div class=\"card\"><div style=\"padding:16px\">Auto tile</div></div><div class=\"card\"><div style=\"padding:16px\">Auto tile</div></div><div class=\"card\"><div style=\"padding:16px\">Auto tile</div></div></div>"
+        }
+      ]
+    },
+    {
+      "id": "app-shell",
+      "name": "App Shell",
+      "category": "chrome",
+      "status": "stable",
+      "purpose": "The CSS-grid frame for a full Curie app page: a fixed-width left sidebar spanning full height, a header bar across the top, and an independently scrollable main content region. Composes with the appbar in its header slot and echoes the frosted-glass sidebar of the golden side-nav.",
+      "whenToUse": "As the outermost structural wrapper of a full application page that needs persistent left navigation and a top header with a scrollable body.",
+      "whenNotToUse": "On standalone/embedded views with no app chrome, or for in-page multi-column content (use grid).",
+      "anatomy": [
+        "app-shell (grid frame: sidebar column + header/main rows)",
+        "app-shell__sidebar (full-height frosted-glass left rail)",
+        "app-shell__brand (logo + wordmark)",
+        "app-shell__nav (list of app-shell__nav-item links; .active marks current)",
+        "app-shell__header (top header slot, typically holds an appbar)",
+        "app-shell__main (scrollable content region)"
+      ],
+      "interactions": "app-shell__nav-item links carry hover/focus-visible/active states (with matching .is-hover / .is-focus / .is-active pins); the sidebar and main scroll independently. The header slot's contents (e.g. appbar) own their own interactions.",
+      "sourcePage": "components.css",
+      "previewWidth": 720,
+      "previewHeight": 560,
+      "snippet": "<div class=\"app-shell\">\n  <aside class=\"app-shell__sidebar\">\n    <div class=\"app-shell__brand\"><img src=\"/assets/curie-logo-white.svg\" alt=\"\">Curie</div>\n    <nav class=\"app-shell__nav\">\n      <a class=\"app-shell__nav-item active\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z\"/></svg>Home</a>\n      <a class=\"app-shell__nav-item\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"4\" y=\"3\" width=\"16\" height=\"18\" rx=\"2\"/><line x1=\"8\" y1=\"8\" x2=\"16\" y2=\"8\"/><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"/><line x1=\"8\" y1=\"16\" x2=\"13\" y2=\"16\"/></svg>Briefs</a>\n      <a class=\"app-shell__nav-item\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"9\" y=\"3\" width=\"6\" height=\"11\" rx=\"3\"/><path d=\"M5 11a7 7 0 0 0 14 0\"/><line x1=\"12\" y1=\"18\" x2=\"12\" y2=\"21\"/></svg>Podcasts</a>\n      <a class=\"app-shell__nav-item\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M18 3v18l-7-4H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h6l7-4z\"/></svg>Editorial</a>\n    </nav>\n  </aside>\n  <div class=\"app-shell__header\">\n    <header class=\"appbar\">\n      <div class=\"appbar__brand\"><img src=\"/assets/icons/curie brief icon.svg\" alt=\"\">Curie Briefs</div>\n      <div class=\"appbar__actions\">\n        <button class=\"appbar__action\" aria-label=\"Search\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg></button>\n        <button class=\"appbar__action appbar__action--avatar\" aria-label=\"Account\">mr</button>\n      </div>\n    </header>\n  </div>\n  <main class=\"app-shell__main\">\n    <div class=\"stack stack--md\">\n      <h1 style=\"font-size:1.5rem;font-weight:700\">Latest clinical briefs</h1>\n      <div class=\"grid grid--2\">\n        <div class=\"card\"><div style=\"padding:16px\"><div style=\"font-size:12px;color:rgba(255,255,255,0.5)\">Apr 15, 2026</div><div style=\"font-weight:700;margin-top:4px\">Two surgical approaches for bone metastases</div></div></div>\n        <div class=\"card\"><div style=\"padding:16px\"><div style=\"font-size:12px;color:rgba(255,255,255,0.5)\">Apr 12, 2026</div><div style=\"font-weight:700;margin-top:4px\">SGLT2 inhibitors in heart failure with preserved EF</div></div></div>\n      </div>\n    </div>\n  </main>\n</div>"
+    },
+    {
+      "id": "appbar",
+      "name": "App Bar",
+      "category": "chrome",
+      "status": "stable",
+      "purpose": "The desktop top header bar: a translucent, blurred surface consistent with the sidebar and dropdowns, holding a brand cluster at the start, an optional page title, and a right-aligned group of ghost round action buttons.",
+      "whenToUse": "As the top header of a full app page — typically dropped into the app-shell header slot — to carry branding, page context, and quick actions (search, notifications, account).",
+      "whenNotToUse": "For full-width marketing/subscription prompts (use top-banner) or for in-content section titles (use page-header).",
+      "anatomy": [
+        "appbar (translucent blurred header bar)",
+        "appbar__brand (logo + wordmark)",
+        "appbar__title (optional page/context label)",
+        "appbar__actions (right-aligned action group)",
+        "appbar__action (ghost round icon button; --avatar for the user chip)"
+      ],
+      "interactions": "Each appbar__action is a round icon button with real :hover / :focus-visible / :active states plus matching .is-hover / .is-focus / .is-active pins for docs specimens. The --avatar variant recolors to the purple account chip.",
+      "sourcePage": "components.css",
+      "previewWidth": 700,
+      "previewHeight": 200,
+      "snippet": "<header class=\"appbar\">\n  <div class=\"appbar__brand\"><img src=\"/assets/curie-logo-white.svg\" alt=\"\">Curie</div>\n  <span class=\"appbar__title\">Briefs</span>\n  <div class=\"appbar__actions\">\n    <button class=\"appbar__action\" aria-label=\"Search\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg></button>\n    <button class=\"appbar__action\" aria-label=\"Notifications\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9\"/><path d=\"M13.73 21a2 2 0 0 1-3.46 0\"/></svg></button>\n    <button class=\"appbar__action appbar__action--avatar\" aria-label=\"Account\">mr</button>\n  </div>\n</header>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Default",
+          "previewWidth": 700,
+          "snippet": "<header class=\"appbar\"><div class=\"appbar__brand\"><img src=\"/assets/curie-logo-white.svg\" alt=\"\">Curie</div><span class=\"appbar__title\">Briefs</span><div class=\"appbar__actions\"><button class=\"appbar__action\" aria-label=\"Search\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg></button><button class=\"appbar__action appbar__action--avatar\" aria-label=\"Account\">mr</button></div></header>"
+        },
+        {
+          "name": "action-hover",
+          "label": "Action hover",
+          "previewWidth": 700,
+          "snippet": "<header class=\"appbar\"><div class=\"appbar__brand\"><img src=\"/assets/curie-logo-white.svg\" alt=\"\">Curie</div><span class=\"appbar__title\">Briefs</span><div class=\"appbar__actions\"><button class=\"appbar__action is-hover\" aria-label=\"Search\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg></button><button class=\"appbar__action appbar__action--avatar\" aria-label=\"Account\">mr</button></div></header>"
+        },
+        {
+          "name": "action-focus",
+          "label": "Action focus",
+          "previewWidth": 700,
+          "snippet": "<header class=\"appbar\"><div class=\"appbar__brand\"><img src=\"/assets/curie-logo-white.svg\" alt=\"\">Curie</div><span class=\"appbar__title\">Briefs</span><div class=\"appbar__actions\"><button class=\"appbar__action is-focus\" aria-label=\"Search\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg></button><button class=\"appbar__action appbar__action--avatar\" aria-label=\"Account\">mr</button></div></header>"
+        }
+      ]
+    },
+    {
+      "id": "popover",
+      "name": "Popover",
+      "category": "navigation",
+      "status": "stable",
+      "purpose": "A small floating panel anchored to a trigger that surfaces contextual detail, a definition, or a couple of quick actions without leaving the page.",
+      "whenToUse": "Use to explain an unfamiliar term, preview extra context on demand, or offer one or two follow-up actions tied to a specific control.",
+      "whenNotToUse": "Do not use for a plain text hint (use a tooltip), for a list of selectable options (use a dropdown menu), or for a blocking decision (use a modal).",
+      "anatomy": [
+        "popover",
+        "popover__trigger",
+        "popover__panel",
+        "popover__arrow",
+        "popover__title",
+        "popover__body",
+        "popover__actions"
+      ],
+      "interactions": "The trigger toggles .is-open on the popover (or .is-open on the panel), fading the panel in below the anchor with a caret pointing back at it. Actions inside carry the standard .btn hover/active/focus states.",
+      "sourcePage": "components.css",
+      "previewWidth": 380,
+      "previewHeight": 320,
+      "snippet": "<div class=\"popover is-open\"><button class=\"popover__trigger\">What is ORR?<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 16v-4\"/><path d=\"M12 8h.01\"/></svg></button><div class=\"popover__panel\" role=\"dialog\" aria-label=\"Objective response rate\"><span class=\"popover__arrow\"></span><h4 class=\"popover__title\">Objective response rate</h4><p class=\"popover__body\">The proportion of patients whose tumour shrinks by a predefined amount, combining complete and partial responses per RECIST criteria.</p><div class=\"popover__actions\"><button class=\"btn btn--text\">Dismiss</button><button class=\"btn btn--primary\">Read the brief</button></div></div></div>",
+      "states": [
+        {
+          "name": "closed",
+          "label": "Closed",
+          "snippet": "<div class=\"popover\"><button class=\"popover__trigger\">What is ORR?<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 16v-4\"/><path d=\"M12 8h.01\"/></svg></button></div>"
+        },
+        {
+          "name": "open",
+          "label": "Open",
+          "snippet": "<div class=\"popover is-open\"><button class=\"popover__trigger\">What is ORR?<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 16v-4\"/><path d=\"M12 8h.01\"/></svg></button><div class=\"popover__panel\"><span class=\"popover__arrow\"></span><h4 class=\"popover__title\">Objective response rate</h4><p class=\"popover__body\">The proportion of patients whose tumour shrinks by a predefined amount per RECIST criteria.</p></div></div>"
+        }
+      ]
+    },
+    {
+      "id": "combobox",
+      "name": "Combobox",
+      "category": "navigation",
+      "status": "stable",
+      "purpose": "An autocomplete text input that filters a list of options as the user types and lets them pick one from a floating results menu.",
+      "whenToUse": "Use to pick one value from a large or searchable set — a therapeutic area, indication, or drug — where typing to narrow the list beats scrolling a plain select.",
+      "whenNotToUse": "Do not use for a short, fixed option set (use a select or radios) or when several values must be chosen at once (use a tag input or multiselect).",
+      "anatomy": [
+        "combobox",
+        "combobox__input",
+        "combobox__caret",
+        "combobox__menu",
+        "combobox__option (add is-active for the highlighted match)",
+        "combobox__empty (shown when no option matches)"
+      ],
+      "interactions": "Typing toggles .is-open on the combobox to reveal the filtered menu; the caret flips. Options highlight on hover and the keyboard-focused match pins .is-active; the input brightens with a purple ring on focus.",
+      "sourcePage": "components.css",
+      "previewWidth": 420,
+      "previewHeight": 360,
+      "snippet": "<div class=\"combobox is-open\"><input class=\"combobox__input\" type=\"text\" role=\"combobox\" aria-expanded=\"true\" aria-controls=\"cbx-menu\" value=\"onc\" placeholder=\"Search therapeutic area…\"><svg class=\"combobox__caret\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6,9 12,15 18,9\"/></svg><div class=\"combobox__menu\" id=\"cbx-menu\" role=\"listbox\"><button class=\"combobox__option is-active\" role=\"option\" aria-selected=\"true\">Oncology</button><button class=\"combobox__option\" role=\"option\">Onco-Hematology</button><button class=\"combobox__option\" role=\"option\">Immuno-Oncology</button><button class=\"combobox__option\" role=\"option\">Radiation Oncology</button></div></div>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Option — default",
+          "snippet": "<div class=\"combobox\"><div class=\"combobox__menu is-open\" style=\"position:static\"><button class=\"combobox__option\">Onco-Hematology</button></div></div>"
+        },
+        {
+          "name": "hover",
+          "label": "Option — hover",
+          "snippet": "<div class=\"combobox\"><div class=\"combobox__menu is-open\" style=\"position:static\"><button class=\"combobox__option is-hover\">Onco-Hematology</button></div></div>"
+        },
+        {
+          "name": "active",
+          "label": "Option — highlighted",
+          "snippet": "<div class=\"combobox\"><div class=\"combobox__menu is-open\" style=\"position:static\"><button class=\"combobox__option is-active\">Oncology</button></div></div>"
+        },
+        {
+          "name": "empty",
+          "label": "No matches",
+          "snippet": "<div class=\"combobox\"><div class=\"combobox__menu is-open\" style=\"position:static\"><div class=\"combobox__empty\">No specialties match “xyz”</div></div></div>"
+        }
+      ],
+      "variants": [
+        {
+          "label": "Open",
+          "previewWidth": 420,
+          "snippet": "<div class=\"combobox is-open\"><input class=\"combobox__input\" type=\"text\" role=\"combobox\" aria-expanded=\"true\" aria-controls=\"cbx-menu\" value=\"onc\" placeholder=\"Search therapeutic area…\"><svg class=\"combobox__caret\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6,9 12,15 18,9\"/></svg><div class=\"combobox__menu\" id=\"cbx-menu\" role=\"listbox\"><button class=\"combobox__option is-active\" role=\"option\" aria-selected=\"true\">Oncology</button><button class=\"combobox__option\" role=\"option\">Onco-Hematology</button><button class=\"combobox__option\" role=\"option\">Immuno-Oncology</button><button class=\"combobox__option\" role=\"option\">Radiation Oncology</button></div></div>"
+        }
+      ]
+    },
+    {
+      "id": "date-picker",
+      "name": "Date Picker",
+      "category": "forms",
+      "status": "stable",
+      "purpose": "A text input paired with a calendar popover for choosing a single date from a month grid.",
+      "whenToUse": "Use when a form needs an exact calendar date — a publication cutoff, an event date, a filter boundary — and month context helps the user pick.",
+      "whenNotToUse": "Do not use for coarse relative ranges better served by preset chips, or for a month/year only value where a pair of selects is simpler.",
+      "anatomy": [
+        "date-picker",
+        "date-picker__input",
+        "date-picker__icon",
+        "date-picker__calendar",
+        "date-picker__head",
+        "date-picker__nav",
+        "date-picker__grid",
+        "date-picker__day (add is-today, is-selected, or is-muted for adjacent-month days)"
+      ],
+      "interactions": "The input toggles .is-open on the picker to drop the calendar. Month nav buttons page the grid; days brighten on hover, the chosen day pins .is-selected (purple fill) and today carries a teal .is-today ring. Adjacent-month days show muted with .is-muted.",
+      "sourcePage": "components.css",
+      "previewWidth": 380,
+      "previewHeight": 470,
+      "snippet": "<div class=\"date-picker is-open\"><input class=\"date-picker__input\" type=\"text\" value=\"Jul 17, 2026\" placeholder=\"Select a date\" aria-label=\"Date\"><svg class=\"date-picker__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"/><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"/><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"/></svg><div class=\"date-picker__calendar\" role=\"dialog\" aria-label=\"Choose date\"><div class=\"date-picker__head\"><button class=\"date-picker__nav\" aria-label=\"Previous month\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15,18 9,12 15,6\"/></svg></button><span class=\"date-picker__month\">July 2026</span><button class=\"date-picker__nav\" aria-label=\"Next month\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9,18 15,12 9,6\"/></svg></button></div><div class=\"date-picker__grid\"><span class=\"date-picker__dow\">S</span><span class=\"date-picker__dow\">M</span><span class=\"date-picker__dow\">T</span><span class=\"date-picker__dow\">W</span><span class=\"date-picker__dow\">T</span><span class=\"date-picker__dow\">F</span><span class=\"date-picker__dow\">S</span><button class=\"date-picker__day is-muted\">28</button><button class=\"date-picker__day is-muted\">29</button><button class=\"date-picker__day is-muted\">30</button><button class=\"date-picker__day\">1</button><button class=\"date-picker__day\">2</button><button class=\"date-picker__day\">3</button><button class=\"date-picker__day\">4</button><button class=\"date-picker__day\">5</button><button class=\"date-picker__day\">6</button><button class=\"date-picker__day\">7</button><button class=\"date-picker__day\">8</button><button class=\"date-picker__day\">9</button><button class=\"date-picker__day\">10</button><button class=\"date-picker__day\">11</button><button class=\"date-picker__day\">12</button><button class=\"date-picker__day\">13</button><button class=\"date-picker__day\">14</button><button class=\"date-picker__day\">15</button><button class=\"date-picker__day\">16</button><button class=\"date-picker__day is-selected\" aria-selected=\"true\">17</button><button class=\"date-picker__day\">18</button><button class=\"date-picker__day\">19</button><button class=\"date-picker__day\">20</button><button class=\"date-picker__day\">21</button><button class=\"date-picker__day\">22</button><button class=\"date-picker__day is-today\">23</button><button class=\"date-picker__day\">24</button><button class=\"date-picker__day\">25</button><button class=\"date-picker__day\">26</button><button class=\"date-picker__day\">27</button><button class=\"date-picker__day\">28</button><button class=\"date-picker__day\">29</button><button class=\"date-picker__day\">30</button><button class=\"date-picker__day\">31</button><button class=\"date-picker__day is-muted\">1</button></div></div></div>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Day — default",
+          "snippet": "<div class=\"date-picker\"><div class=\"date-picker__grid\" style=\"display:inline-grid;grid-template-columns:repeat(4,34px)\"><button class=\"date-picker__day\">15</button></div></div>"
+        },
+        {
+          "name": "today",
+          "label": "Day — today",
+          "snippet": "<div class=\"date-picker\"><div class=\"date-picker__grid\" style=\"display:inline-grid;grid-template-columns:repeat(4,34px)\"><button class=\"date-picker__day is-today\">23</button></div></div>"
+        },
+        {
+          "name": "selected",
+          "label": "Day — selected",
+          "snippet": "<div class=\"date-picker\"><div class=\"date-picker__grid\" style=\"display:inline-grid;grid-template-columns:repeat(4,34px)\"><button class=\"date-picker__day is-selected\">17</button></div></div>"
+        },
+        {
+          "name": "muted",
+          "label": "Day — adjacent month",
+          "snippet": "<div class=\"date-picker\"><div class=\"date-picker__grid\" style=\"display:inline-grid;grid-template-columns:repeat(4,34px)\"><button class=\"date-picker__day is-muted\">30</button></div></div>"
+        }
+      ],
+      "variants": [
+        {
+          "label": "Open",
+          "previewWidth": 320,
+          "snippet": "<div class=\"date-picker is-open\"><input class=\"date-picker__input\" type=\"text\" value=\"Jul 17, 2026\" placeholder=\"Select a date\" aria-label=\"Date\"><svg class=\"date-picker__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"/><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"/><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"/></svg><div class=\"date-picker__calendar\" role=\"dialog\" aria-label=\"Choose date\"><div class=\"date-picker__head\"><button class=\"date-picker__nav\" aria-label=\"Previous month\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15,18 9,12 15,6\"/></svg></button><span class=\"date-picker__month\">July 2026</span><button class=\"date-picker__nav\" aria-label=\"Next month\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9,18 15,12 9,6\"/></svg></button></div><div class=\"date-picker__grid\"><span class=\"date-picker__dow\">S</span><span class=\"date-picker__dow\">M</span><span class=\"date-picker__dow\">T</span><span class=\"date-picker__dow\">W</span><span class=\"date-picker__dow\">T</span><span class=\"date-picker__dow\">F</span><span class=\"date-picker__dow\">S</span><button class=\"date-picker__day is-muted\">28</button><button class=\"date-picker__day is-muted\">29</button><button class=\"date-picker__day is-muted\">30</button><button class=\"date-picker__day\">1</button><button class=\"date-picker__day\">2</button><button class=\"date-picker__day\">3</button><button class=\"date-picker__day\">4</button><button class=\"date-picker__day\">5</button><button class=\"date-picker__day\">6</button><button class=\"date-picker__day\">7</button><button class=\"date-picker__day\">8</button><button class=\"date-picker__day\">9</button><button class=\"date-picker__day\">10</button><button class=\"date-picker__day\">11</button><button class=\"date-picker__day\">12</button><button class=\"date-picker__day\">13</button><button class=\"date-picker__day\">14</button><button class=\"date-picker__day\">15</button><button class=\"date-picker__day\">16</button><button class=\"date-picker__day is-selected\" aria-selected=\"true\">17</button><button class=\"date-picker__day\">18</button><button class=\"date-picker__day\">19</button><button class=\"date-picker__day\">20</button><button class=\"date-picker__day\">21</button><button class=\"date-picker__day\">22</button><button class=\"date-picker__day is-today\">23</button><button class=\"date-picker__day\">24</button><button class=\"date-picker__day\">25</button><button class=\"date-picker__day\">26</button><button class=\"date-picker__day\">27</button><button class=\"date-picker__day\">28</button><button class=\"date-picker__day\">29</button><button class=\"date-picker__day\">30</button><button class=\"date-picker__day\">31</button><button class=\"date-picker__day is-muted\">1</button></div></div></div>"
+        }
+      ]
+    },
+    {
+      "id": "tag-input",
+      "name": "Tag Input",
+      "category": "forms",
+      "status": "stable",
+      "purpose": "A multi-value text field where each entered value becomes a removable chip inside the field, followed by a free-text input for adding more.",
+      "whenToUse": "Use to collect a small, open-ended set of labels the user types and confirms — therapeutic areas of interest, keywords, or filter terms.",
+      "whenNotToUse": "Do not use when values must come from a fixed list (use a multiselect or combobox) or when only one value is allowed (use a plain input).",
+      "anatomy": [
+        "tag-input (chip field, lights up on focus-within)",
+        "tag-input__tag (an entered value chip)",
+        "tag-input__remove (per-chip dismiss button)",
+        "tag-input__field (trailing free-text input)"
+      ],
+      "interactions": "The whole field brightens with a purple ring on focus-within (or pinned .is-focus). Typing a value and confirming appends a .tag-input__tag chip; its remove button brightens on hover and drops the chip. .is-disabled dims the field and blocks input.",
+      "sourcePage": "components.css",
+      "previewWidth": 460,
+      "previewHeight": 320,
+      "snippet": "<div class=\"tag-input\"><span class=\"tag-input__tag\">Oncology<button class=\"tag-input__remove\" aria-label=\"Remove Oncology\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button></span><span class=\"tag-input__tag\">Cardiology<button class=\"tag-input__remove\" aria-label=\"Remove Cardiology\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button></span><span class=\"tag-input__tag\">Immunology<button class=\"tag-input__remove\" aria-label=\"Remove Immunology\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button></span><input class=\"tag-input__field\" type=\"text\" placeholder=\"Add a therapeutic area…\"></div>",
+      "states": [
+        {
+          "name": "default",
+          "label": "Default",
+          "snippet": "<div class=\"tag-input\"><span class=\"tag-input__tag\">Oncology<button class=\"tag-input__remove\" aria-label=\"Remove Oncology\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button></span><input class=\"tag-input__field\" type=\"text\" placeholder=\"Add a therapeutic area…\"></div>"
+        },
+        {
+          "name": "focus",
+          "label": "Focus",
+          "snippet": "<div class=\"tag-input is-focus\"><span class=\"tag-input__tag\">Oncology<button class=\"tag-input__remove\" aria-label=\"Remove Oncology\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button></span><input class=\"tag-input__field\" type=\"text\" placeholder=\"Add a therapeutic area…\"></div>"
+        },
+        {
+          "name": "disabled",
+          "label": "Disabled",
+          "snippet": "<div class=\"tag-input is-disabled\"><span class=\"tag-input__tag\">Oncology<button class=\"tag-input__remove\" aria-label=\"Remove Oncology\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button></span><input class=\"tag-input__field\" type=\"text\" disabled placeholder=\"Locked\"></div>"
+        }
+      ]
+    },
+    {
+      "id": "sparkline",
+      "name": "Sparkline",
+      "category": "data-display",
+      "status": "stable",
+      "purpose": "A tiny inline trend line (inline SVG) that shows the shape of a short series at a glance, sized to sit beside a headline stat. The .stat-spark row pairs a big number, a delta, and the sparkline in one card.",
+      "whenToUse": "Use to add momentum context to a single metric — a KPI tile, a stat card, or inline beside a value in a table. Use .sparkline--up / .sparkline--down to tint the trend positive or negative.",
+      "whenNotToUse": "Do not use when exact values matter (use a bar-chart or line-chart with axes), for more than one series, or as a standalone chart — it has no axes or labels by design.",
+      "anatomy": [
+        "stat-spark (row: figure + sparkline)",
+        "stat-spark__figure",
+        "stat-spark__label",
+        "stat-spark__value",
+        "stat-spark__delta (stat-spark__delta--up / --down)",
+        "sparkline (sparkline--up / --down)",
+        "sparkline__area (translucent fill under the line)",
+        "sparkline__line (the trend polyline)",
+        "sparkline__dot (end-of-series marker)"
+      ],
+      "interactions": "Static presentation specimen — the 12-point series is illustrative and would be bound to live data in-app. No hover or JS; the tone modifier (--up / --down) is the only variant.",
+      "sourcePage": "components.css",
+      "previewWidth": 480,
+      "previewHeight": 240,
+      "snippet": "<div class=\"stat-spark\"><div class=\"stat-spark__figure\"><span class=\"stat-spark__label\">Weekly brief engagement</span><span class=\"stat-spark__value\">1,284</span><span class=\"stat-spark__delta stat-spark__delta--up\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><path d=\"M12 19V5M5 12l7-7 7 7\"/></svg>18% vs. last week</span></div><span class=\"sparkline sparkline--up\"><svg width=\"120\" height=\"32\" viewBox=\"0 0 120 32\" role=\"img\" aria-label=\"12-week engagement trend, rising\"><polygon class=\"sparkline__area\" points=\"3,28 13.4,23.6 23.7,25.8 34.1,19.3 44.5,21.5 54.8,17.1 65.2,19.3 75.5,12.7 85.9,14.9 96.3,10.5 106.6,8.4 117,4 117,32 3,32\"/><polyline class=\"sparkline__line\" points=\"3,28 13.4,23.6 23.7,25.8 34.1,19.3 44.5,21.5 54.8,17.1 65.2,19.3 75.5,12.7 85.9,14.9 96.3,10.5 106.6,8.4 117,4\"/><circle class=\"sparkline__dot\" cx=\"117\" cy=\"4\" r=\"2.5\"/></svg></span></div>",
+      "variants": [
+        {
+          "name": "up",
+          "label": "Rising (teal)",
+          "snippet": "<span class=\"sparkline sparkline--up\"><svg width=\"120\" height=\"32\" viewBox=\"0 0 120 32\" role=\"img\" aria-label=\"Engagement trend, rising\"><polygon class=\"sparkline__area\" points=\"3,28 13.4,23.6 23.7,25.8 34.1,19.3 44.5,21.5 54.8,17.1 65.2,19.3 75.5,12.7 85.9,14.9 96.3,10.5 106.6,8.4 117,4 117,32 3,32\"/><polyline class=\"sparkline__line\" points=\"3,28 13.4,23.6 23.7,25.8 34.1,19.3 44.5,21.5 54.8,17.1 65.2,19.3 75.5,12.7 85.9,14.9 96.3,10.5 106.6,8.4 117,4\"/><circle class=\"sparkline__dot\" cx=\"117\" cy=\"4\" r=\"2.5\"/></svg></span>"
+        },
+        {
+          "name": "down",
+          "label": "Falling (red)",
+          "snippet": "<span class=\"sparkline sparkline--down\"><svg width=\"120\" height=\"32\" viewBox=\"0 0 120 32\" role=\"img\" aria-label=\"Engagement trend, falling\"><polygon class=\"sparkline__area\" points=\"3,6 13.4,9 23.7,8 34.1,13 44.5,12 54.8,16 65.2,15 75.5,19 85.9,18 96.3,22 106.6,24 117,28 117,32 3,32\"/><polyline class=\"sparkline__line\" points=\"3,6 13.4,9 23.7,8 34.1,13 44.5,12 54.8,16 65.2,15 75.5,19 85.9,18 96.3,22 106.6,24 117,28\"/><circle class=\"sparkline__dot\" cx=\"117\" cy=\"28\" r=\"2.5\"/></svg></span>"
+        }
+      ]
+    },
+    {
+      "id": "bar-chart",
+      "name": "Bar Chart",
+      "category": "data-display",
+      "status": "stable",
+      "purpose": "A small vertical bar chart built from divs (per-bar height set inline as a %) with a baseline axis, value labels above each bar, and a category label below. Magnitude is encoded in one hue; a single column can be emphasized with the active modifier.",
+      "whenToUse": "Use to compare a magnitude across a handful of named categories — briefs read per day, submissions per therapeutic area. Use bar-chart__bar--active to call out the peak or selected column.",
+      "whenNotToUse": "Do not use for change-over-time you want read as a continuous trend (use line-chart), for a single value (use stat-spark), or for more than ~8 categories where labels crowd.",
+      "anatomy": [
+        "bar-chart (flex row, baseline-aligned)",
+        "bar-chart__track (per-column full-height cell with the axis line)",
+        "bar-chart__bar (the column; height % inline, bar-chart__bar--active to emphasize)",
+        "bar-chart__value (numeric label above the bar)",
+        "bar-chart__label (category label under the axis)"
+      ],
+      "interactions": "Static presentation specimen — values shown are illustrative and would be bound in-app. Bars brighten on :hover (pin with .is-hover for docs); no JS.",
+      "sourcePage": "components.css",
+      "previewWidth": 480,
+      "previewHeight": 300,
+      "snippet": "<div class=\"bar-chart\" role=\"img\" aria-label=\"Briefs read per day this week: Mon 8, Tue 12, Wed 10, Thu 15, Fri 9, Sat 14\"><div class=\"bar-chart__track\"><span class=\"bar-chart__value\">8</span><div class=\"bar-chart__bar\" style=\"height:50%\"></div><span class=\"bar-chart__label\">Mon</span></div><div class=\"bar-chart__track\"><span class=\"bar-chart__value\">12</span><div class=\"bar-chart__bar\" style=\"height:75%\"></div><span class=\"bar-chart__label\">Tue</span></div><div class=\"bar-chart__track\"><span class=\"bar-chart__value\">10</span><div class=\"bar-chart__bar\" style=\"height:62%\"></div><span class=\"bar-chart__label\">Wed</span></div><div class=\"bar-chart__track\"><span class=\"bar-chart__value\">15</span><div class=\"bar-chart__bar bar-chart__bar--active\" style=\"height:94%\"></div><span class=\"bar-chart__label\">Thu</span></div><div class=\"bar-chart__track\"><span class=\"bar-chart__value\">9</span><div class=\"bar-chart__bar\" style=\"height:56%\"></div><span class=\"bar-chart__label\">Fri</span></div><div class=\"bar-chart__track\"><span class=\"bar-chart__value\">14</span><div class=\"bar-chart__bar\" style=\"height:88%\"></div><span class=\"bar-chart__label\">Sat</span></div></div>"
+    },
+    {
+      "id": "line-chart",
+      "name": "Line Chart",
+      "category": "data-display",
+      "status": "stable",
+      "purpose": "A small multi-series (2) line chart as inline SVG with recessive gridlines, muted axis labels, thin 2px strokes, end markers, and a dot legend. Series colors follow the entity (blue / green), never rank, so identity is never carried by position alone.",
+      "whenToUse": "Use to show two related metrics changing over time — briefs read vs. summaries saved by month. Keep to two series; the legend names each so color is never the only cue.",
+      "whenNotToUse": "Do not use for a single metric where a stat-spark suffices, for comparing unrelated measures on different scales (never a dual y-axis — use two charts), or for more than a few series where lines tangle.",
+      "anatomy": [
+        "line-chart (card wrapping the SVG + legend)",
+        "line-chart__grid (recessive horizontal gridlines)",
+        "line-chart__axis (baseline + y-axis)",
+        "line-chart__tick (axis value / month labels)",
+        "line-chart__series (line-chart__series--a / --b)",
+        "line-chart__point (line-chart__point--a / --b end markers)",
+        "line-chart__legend / line-chart__legend-item / line-chart__legend-dot"
+      ],
+      "interactions": "Static presentation specimen — the monthly series are illustrative and would be bound in-app. No hover or JS; the legend + two token hues keep both series identifiable.",
+      "sourcePage": "components.css",
+      "previewWidth": 480,
+      "previewHeight": 300,
+      "snippet": "<div class=\"line-chart\"><svg viewBox=\"0 0 320 170\" role=\"img\" aria-label=\"Monthly briefs read and summaries saved, January to June\"><line class=\"line-chart__grid\" x1=\"32\" y1=\"12\" x2=\"308\" y2=\"12\"/><line class=\"line-chart__grid\" x1=\"32\" y1=\"44\" x2=\"308\" y2=\"44\"/><line class=\"line-chart__grid\" x1=\"32\" y1=\"76\" x2=\"308\" y2=\"76\"/><line class=\"line-chart__grid\" x1=\"32\" y1=\"108\" x2=\"308\" y2=\"108\"/><line class=\"line-chart__axis\" x1=\"32\" y1=\"12\" x2=\"32\" y2=\"140\"/><line class=\"line-chart__axis\" x1=\"32\" y1=\"140\" x2=\"308\" y2=\"140\"/><text class=\"line-chart__tick\" x=\"26\" y=\"143\" text-anchor=\"end\">0</text><text class=\"line-chart__tick\" x=\"26\" y=\"111\" text-anchor=\"end\">20</text><text class=\"line-chart__tick\" x=\"26\" y=\"79\" text-anchor=\"end\">40</text><text class=\"line-chart__tick\" x=\"26\" y=\"47\" text-anchor=\"end\">60</text><text class=\"line-chart__tick\" x=\"26\" y=\"15\" text-anchor=\"end\">80</text><text class=\"line-chart__tick\" x=\"32\" y=\"155\" text-anchor=\"middle\">Jan</text><text class=\"line-chart__tick\" x=\"87.2\" y=\"155\" text-anchor=\"middle\">Feb</text><text class=\"line-chart__tick\" x=\"142.4\" y=\"155\" text-anchor=\"middle\">Mar</text><text class=\"line-chart__tick\" x=\"197.6\" y=\"155\" text-anchor=\"middle\">Apr</text><text class=\"line-chart__tick\" x=\"252.8\" y=\"155\" text-anchor=\"middle\">May</text><text class=\"line-chart__tick\" x=\"308\" y=\"155\" text-anchor=\"middle\">Jun</text><polyline class=\"line-chart__series line-chart__series--a\" points=\"32,88.8 87.2,68 142.4,76 197.6,47.2 252.8,40.8 308,28\"/><polyline class=\"line-chart__series line-chart__series--b\" points=\"32,120.8 87.2,111.2 142.4,116 197.6,101.6 252.8,92 308,85.6\"/><circle class=\"line-chart__point line-chart__point--a\" cx=\"32\" cy=\"88.8\" r=\"3.5\"/><circle class=\"line-chart__point line-chart__point--a\" cx=\"87.2\" cy=\"68\" r=\"3.5\"/><circle class=\"line-chart__point line-chart__point--a\" cx=\"142.4\" cy=\"76\" r=\"3.5\"/><circle class=\"line-chart__point line-chart__point--a\" cx=\"197.6\" cy=\"47.2\" r=\"3.5\"/><circle class=\"line-chart__point line-chart__point--a\" cx=\"252.8\" cy=\"40.8\" r=\"3.5\"/><circle class=\"line-chart__point line-chart__point--a\" cx=\"308\" cy=\"28\" r=\"3.5\"/><circle class=\"line-chart__point line-chart__point--b\" cx=\"32\" cy=\"120.8\" r=\"3.5\"/><circle class=\"line-chart__point line-chart__point--b\" cx=\"87.2\" cy=\"111.2\" r=\"3.5\"/><circle class=\"line-chart__point line-chart__point--b\" cx=\"142.4\" cy=\"116\" r=\"3.5\"/><circle class=\"line-chart__point line-chart__point--b\" cx=\"197.6\" cy=\"101.6\" r=\"3.5\"/><circle class=\"line-chart__point line-chart__point--b\" cx=\"252.8\" cy=\"92\" r=\"3.5\"/><circle class=\"line-chart__point line-chart__point--b\" cx=\"308\" cy=\"85.6\" r=\"3.5\"/></svg><div class=\"line-chart__legend\"><span class=\"line-chart__legend-item\"><span class=\"line-chart__legend-dot line-chart__legend-dot--a\"></span>Briefs read</span><span class=\"line-chart__legend-item\"><span class=\"line-chart__legend-dot line-chart__legend-dot--b\"></span>Summaries saved</span></div></div>"
     }
   ]
 }
