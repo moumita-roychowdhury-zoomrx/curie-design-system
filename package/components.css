@@ -4953,3 +4953,25 @@ body.pg-home .user-avatar { background: #4b3fa7; }
 .chart-legend__swatch { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
 .chart-legend__swatch--desktop { background: var(--chart-1); }
 .chart-legend__swatch--mobile { background: var(--chart-2); }
+
+/* Donut / pie chart (5-way categorical, brand palette, center total) */
+.chart-donut { --chart-1: var(--color-purple-primary); --chart-2: var(--color-teal-primary);
+  --chart-3: var(--color-blue); --chart-4: var(--color-purple-light); --chart-5: var(--color-cyan); }
+.chart-card--center { text-align: center; }
+.chart-card--center .chart-card__header { margin-bottom: var(--space-6); }
+.chart-card--center .chart-card__footer { align-items: center; }
+.chart-donut__svg { display: block; margin: 0 auto; width: 220px; height: 220px; max-width: 100%; }
+.chart-donut__seg { fill: none; stroke-width: 30; }
+.chart-donut__seg--1 { stroke: var(--chart-1); }
+.chart-donut__seg--2 { stroke: var(--chart-2); }
+.chart-donut__seg--3 { stroke: var(--chart-3); }
+.chart-donut__seg--4 { stroke: var(--chart-4); }
+.chart-donut__seg--5 { stroke: var(--chart-5); }
+.chart-donut__num { fill: var(--text-primary); font-size: 32px; font-weight: 800; letter-spacing: -0.02em; }
+.chart-donut__label { fill: var(--text-muted); font-size: 13px; }
+.chart-legend--donut { flex-wrap: wrap; gap: var(--space-4) var(--space-6); margin-top: var(--space-7); }
+.chart-legend__swatch--c1 { background: var(--chart-1); }
+.chart-legend__swatch--c2 { background: var(--chart-2); }
+.chart-legend__swatch--c3 { background: var(--chart-3); }
+.chart-legend__swatch--c4 { background: var(--chart-4); }
+.chart-legend__swatch--c5 { background: var(--chart-5); }
