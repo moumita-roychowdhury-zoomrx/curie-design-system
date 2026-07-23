@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: Mobile components
+nav: mobile
+permalink: /mobile/
+---
+<div class="ds-eyebrow">Component library · mobile</div>
+<h1 class="ds-title">Mobile components</h1>
+<p class="ds-lede">The mobile counterpart of every desktop component. Below the 600px breakpoint each golden page swaps its desktop chrome for a purpose-built mobile layer (the <code>.m-*</code> system in <code>responsive.css</code>); these specimens render that layer inside a 390px phone frame. One entry per desktop component, so the two catalogs line up one-to-one.</p>
+<div class="ds-example-grid">
+{% for c in mobileManifest.components %}
+  <a class="ds-component-card" href="/mobile/{{ c.id }}/">
+    <span class="cat">{{ c.category }}</span>
+    <h3>{{ c.name }}</h3>
+    <p>{{ c.purpose }}</p>
+  </a>
+{% endfor %}
+</div>

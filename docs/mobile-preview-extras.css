@@ -1,0 +1,106 @@
+/* Mobile preview extras — real page-local mobile CSS extracted from the golden
+   pages so isolated specimens render faithfully in the phone-frame harness.
+   These selectors are defined inline (page-scoped) in the example pages, not in
+   the shared stylesheets. Do not edit by hand; regenerate from the pages. */
+
+/* ---- from editorial-detail.html ---- */
+/* ---- Editorial feature hero ---- */
+      .ed-hero { position: relative; overflow: hidden; border-radius: var(--radius-3xl); margin-bottom: var(--space-10); padding: var(--space-9); }
+.ed-hero__bg { position: absolute; inset: 0; background: url("https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=900&q=80") center/cover no-repeat; }
+.ed-hero__overlay { position: absolute; inset: 0; background: linear-gradient(165deg,
+        color-mix(in srgb, var(--color-bg-primary) 72%, transparent) 0%,
+        color-mix(in srgb, var(--color-bg-primary) 88%, transparent) 55%,
+        color-mix(in srgb, var(--color-bg-primary) 96%, transparent) 100%); }
+.ed-hero__inner { position: relative; z-index: 2; }
+.ed-hero__eyebrow { display: flex; align-items: center; gap: var(--space-5); margin-bottom: var(--space-9); }
+.ed-hero .m-detail__title { font-size: 2rem; margin-bottom: var(--space-6); }
+.ed-hero__accent { display: block; font-family: var(--font-accent); font-style: italic; font-weight: 700; font-size: 2.7rem;
+        background: linear-gradient(120deg, var(--color-cyan), var(--color-purple-accent));
+        -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-bottom: 4px; }
+.ed-hero__desc { font-size: 1.25rem; color: var(--text-muted); line-height: 1.6; margin-bottom: var(--space-9); }
+.ed-hero__meta { display: flex; align-items: center; gap: var(--space-9); margin-top: var(--space-9); }
+.ed-hero__meta span { display: inline-flex; align-items: center; gap: var(--space-2); font-size: 1.1rem; color: var(--text-secondary); }
+.ed-hero__meta svg { width: 20px; height: 20px; }
+.ed-pill { display: inline-flex; align-items: center; gap: var(--space-2); white-space: nowrap; flex-shrink: 0;
+        padding: var(--space-1) var(--space-5); border-radius: var(--radius-pill);
+        color: var(--color-purple-light); border: 1px solid var(--color-purple-tag-border);
+        letter-spacing: 0.12em; text-transform: uppercase; font-size: 1rem; font-weight: 700; }
+.ed-pill svg { width: 16px; height: 16px; }
+.ed-hero__date { font-size: 1.15rem; color: var(--text-tertiary); font-weight: 600; }
+/* ---- Profile cards ---- */
+      .edp { background: linear-gradient(180deg, var(--color-bg-card) 0%, color-mix(in srgb, var(--color-bg-briefs-gradient-start) 42%, var(--color-bg-primary)) 100%);
+        border: 1px solid color-mix(in srgb, var(--color-purple-accent) 18%, transparent);
+        border-radius: var(--radius-3xl); padding: var(--space-10) var(--space-9); margin-bottom: var(--space-8); text-align: center; }
+.edp__av { width: 100px; height: 100px; border-radius: 50%; overflow: hidden;
+        border: 3px solid color-mix(in srgb, var(--color-blue) 35%, var(--color-bg-primary)); margin: 0 auto var(--space-7); }
+.edp__av img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.edp__name { font-size: 1.75rem; font-weight: 800; color: var(--text-primary); line-height: 1.2; margin-bottom: var(--space-2); }
+.edp__inst { font-size: 1.2rem; color: var(--text-tertiary); line-height: 1.4; margin-bottom: var(--space-8); }
+.edp__tag { display: inline-block; padding: 9px 20px; border-radius: var(--radius-pill);
+        background: var(--color-purple-tag-bg); border: 1px solid var(--color-purple-tag-border);
+        color: var(--color-purple-badge-text); font-size: 1.05rem; font-weight: 700; margin-bottom: var(--space-8); }
+.edp__soc { display: flex; gap: var(--space-4); justify-content: center; margin-bottom: var(--space-9); }
+.edp__soc a { width: 42px; height: 42px; border-radius: 50%; background: var(--surface-white-06);
+        display: flex; align-items: center; justify-content: center; color: var(--text-primary); }
+.edp__soc a svg { width: 18px; height: 18px; }
+.edp__bio { font-size: 1.15rem; color: var(--text-muted); line-height: 1.65; }
+
+/* ---- from brief-detail.html ---- */
+/* Reading-progress bar, pinned to the bottom edge of the app bar. Nested inside
+         .m-appbar so the mobile base-guard doesn't hide it. Uses the DS gradient token. */
+      .m-appbar .m-progress { position: absolute; top: 100%; left: 0; height: 3px; width: 0%;
+        background: var(--gradient-progress);
+        transition: width 0.1s linear; }
+.m-sources__menu { position: absolute; top: calc(100% + var(--space-3)); left: 0; z-index: 60;
+        min-width: 190px;
+        background: var(--color-purple-primary);
+        border: 1px solid var(--color-purple-hover);
+        border-radius: var(--radius-lg);
+        padding: var(--space-4) var(--space-5);
+        box-shadow: var(--shadow-dropdown);
+        display: none; }
+.m-sources__menu.is-open { display: block; }
+.m-sources__item { display: block; padding: var(--space-1) 0;
+        color: var(--text-bright); text-decoration: underline;
+        font-size: 1.1rem; font-weight: 600; }
+/* Related stories wrapped in one block (subtle dark, same as Summary) with nested cards. */
+      .m-related-block { background: var(--surface-white-05);
+        border: 1px solid var(--surface-white-border-12);
+        border-radius: var(--radius-2xl);
+        padding: var(--space-8);
+        margin-bottom: var(--space-8); }
+.m-related-block__sub { margin: -4px 0 var(--space-7); font-size: 1.1rem; color: var(--text-muted); line-height: 1.5; }
+.m-related-block .m-lcard { background: transparent;
+        border: 1px solid var(--surface-white-border-12); }
+.m-related-block .m-lcard:last-child { margin-bottom: 0; }
+
+/* ---- from briefs.html ---- */
+/* "For You" dropdown (opened from the filter-bar pill). No exact DS component exists;
+         built from tokens only — proposed as a small menu component (see BUILD-NOTES). */
+      .m-foryou { position: relative; }
+.m-foryou__menu { position: absolute; top: calc(100% + var(--space-2)); left: 0; z-index: 60;
+        min-width: 170px;
+        background: var(--color-bg-card);
+        border: 1px solid var(--surface-white-border-12);
+        border-radius: var(--radius-2xl);
+        padding: var(--space-2);
+        box-shadow: var(--shadow-dropdown);
+        display: none; }
+.m-foryou__menu.is-open { display: block; }
+.m-foryou__item { display: block; width: 100%; text-align: left;
+        padding: var(--space-4) var(--space-5);
+        border-radius: var(--radius-md);
+        background: transparent; border: none; cursor: pointer;
+        color: var(--text-body); font-family: var(--font-primary); font-size: 1.1rem; font-weight: 700; }
+.m-foryou__item.is-active { background: var(--color-purple-primary); color: var(--text-primary); }
+
+/* ---- from newsletter.html ---- */
+/* games glyph reads smaller — bump it */
+
+      /* Specialty select — hide the native arrow and show a custom chevron in the right
+         corner, with a little space from the edge. */
+      .m-select { position: relative; }
+.m-select .m-field__select { -webkit-appearance: none; -moz-appearance: none; appearance: none;
+        padding-right: var(--space-10); }
+.m-select__chev { position: absolute; right: var(--space-5); top: 50%; transform: translateY(-50%);
+        width: 20px; height: 20px; color: var(--text-muted); pointer-events: none; }

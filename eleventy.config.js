@@ -38,6 +38,10 @@ export default function (eleventyConfig) {
   // Docs' own stylesheet
   eleventyConfig.addPassthroughCopy({ "docs/docs-theme.css": "docs-theme.css" });
 
+  // Real page-local mobile CSS (ed-hero, edp, m-foryou, …) extracted from the golden
+  // pages so the isolated mobile-component specimens render faithfully in the harness.
+  eleventyConfig.addPassthroughCopy({ "docs/mobile-preview-extras.css": "mobile-preview-extras.css" });
+
   // Machine-readable surfaces, published so agents can fetch them from the site too
   eleventyConfig.addPassthroughCopy({ "package/tokens.json": "api/tokens.json" });
   eleventyConfig.addPassthroughCopy({ "package/components-manifest.json": "api/components-manifest.json" });

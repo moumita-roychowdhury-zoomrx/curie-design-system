@@ -26,6 +26,12 @@
         {% endfor %}
       </div>
       <div class="ds-nav-group">
+        <a href="/mobile/" class="{{ 'active' if nav == 'mobile' and not mobileComponentId }}">Mobile components</a>
+        {% for c in mobileManifest.components %}
+        <a class="ds-nav-sub {{ 'active' if mobileComponentId == c.id }}" href="/mobile/{{ c.id }}/">{{ c.name }}</a>
+        {% endfor %}
+      </div>
+      <div class="ds-nav-group">
         <a href="/assets-library/" class="{{ 'active' if nav == 'assets' }}">Assets</a>
         <a class="ds-nav-sub" href="/assets-library/#icons">Icons</a>
         <a class="ds-nav-sub" href="/assets-library/#illustrations">Illustrations</a>
