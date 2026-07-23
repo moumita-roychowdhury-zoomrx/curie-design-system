@@ -39,7 +39,10 @@
 
     /* The fixed .brief-detail-header is 100%-wide and top:0; the reading column
        clears it with top padding (mirrors the golden .brief-detail-content). */
-    .reading-column { padding-top: 6rem; padding-bottom: 5rem; }
+    /* Wider than the default narrow measure so the article doesn't look cramped
+       (matches the golden brief-detail reading width). */
+    .reading-column { max-width: 860px; padding-top: 6rem; padding-bottom: 5rem; }
+    @media (max-width: 600px) { .reading-column { padding-top: 5.5rem; } }
   </style>
 </head>
 <body class="pg-reading-layout">

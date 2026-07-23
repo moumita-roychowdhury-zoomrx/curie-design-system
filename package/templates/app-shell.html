@@ -3,201 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curie | App Shell — Starter Template</title>
+  <title>Curie · App-Shell Dashboard — Starter Template</title>
 
-  <!-- Brand fonts (same source the golden pages use). Manrope = --font-primary. -->
+  <!-- Brand fonts (same source the golden pages use). -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
-  <!-- Curie Design System — linked, never copied (same order/paths as package/examples). -->
+  <!-- Curie Design System — linked, never copied. The layout primitives (.app-shell,
+       .appbar, .container, .stack, .grid) and every component below ship in these files. -->
   <link rel="stylesheet" href="../tokens.css">
   <link rel="stylesheet" href="../layout.css">
   <link rel="stylesheet" href="../components.css">
   <link rel="stylesheet" href="../utilities.css">
 
-  <!--
-    NEW LAYOUT PRIMITIVES (.container / .stack / .grid / .app-shell / .appbar)
-    are shipping in layout.css via a parallel task. They are inlined here so this
-    starter renders visually complete on its own today — delete this <style> block
-    once the primitives land in layout.css. Layout-only; every value is a token.
-  -->
   <style>
-    /* ---- Centered width wrappers ---- */
-    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 var(--space-9); }
-    .container--narrow { max-width: 720px; }
-    .container--wide { max-width: 1320px; }
-
-    /* ---- Vertical rhythm ---- */
-    .stack { display: flex; flex-direction: column; gap: var(--space-6); }
-    .stack--sm { gap: var(--space-3); }
-    .stack--md { gap: var(--space-6); }
-    .stack--lg { gap: var(--space-10); }
-
-    /* ---- Responsive grids ---- */
-    .grid { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
-    .grid--2 { grid-template-columns: repeat(2, 1fr); }
-    .grid--3 { grid-template-columns: repeat(3, 1fr); }
-    .grid--4 { grid-template-columns: repeat(4, 1fr); }
-    .grid--auto { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-    @media (max-width: 900px) { .grid--3, .grid--4 { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .grid--2, .grid--3, .grid--4, .grid--auto { grid-template-columns: 1fr; } }
-
-    /* ---- App shell: fixed .side-nav + sticky app bar + offset content ---- */
-    .app-shell { min-height: 100vh; }
-    .app-shell__sidebar { /* the .side-nav inside positions itself (fixed, 4rem collapsed) */ }
-    .app-shell__header { position: sticky; top: 0; z-index: var(--z-header); margin-left: var(--sidebar-collapsed); }
-    .app-shell__main { margin-left: var(--sidebar-collapsed); padding: var(--space-10) 0 var(--space-11); }
-
-    /* ---- Top app bar ---- */
-    .appbar { display: flex; align-items: center; gap: var(--space-6);
-      padding: var(--space-5) var(--space-9);
-      background: rgba(20,13,44,0.72);
-      backdrop-filter: blur(var(--blur-medium)); -webkit-backdrop-filter: blur(var(--blur-medium));
-      border-bottom: 1px solid var(--color-divider); }
-    .appbar__brand { display: flex; align-items: center; gap: var(--space-3); }
-    .appbar__brand img { width: 26px; height: 26px; }
-    .appbar__brand-name { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.01em; }
-    .appbar__divider { width: 1px; height: 22px; background: var(--surface-white-border-18); }
-    .appbar__title { font-size: 1.1rem; font-weight: 700; color: var(--text-bright); }
-    .appbar__actions { margin-left: auto; display: flex; align-items: center; gap: var(--space-3); }
-    .appbar__icon-btn { position: relative; display: inline-flex; align-items: center; justify-content: center;
-      width: 40px; height: 40px; border-radius: var(--radius-md);
-      background: var(--surface-white-05); border: 1px solid var(--surface-white-border-12);
-      color: var(--text-bright); cursor: pointer;
-      transition: background var(--duration-standard) var(--easing-standard); }
-    .appbar__icon-btn:hover { background: var(--surface-white-08); }
-    .appbar__icon-btn svg { width: 20px; height: 20px; }
-    .appbar__icon-btn .dot { position: absolute; top: 8px; right: 9px; width: 7px; height: 7px;
-      border-radius: 50%; background: var(--color-teal-primary); border: 1.5px solid var(--color-bg-primary); }
-
-    /* ---- Stat tile (composition of .card; padding added inline, no new component) ---- */
-    .stat-tile { padding: var(--space-9); cursor: default; }
-    .stat-tile__value { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+    /* Stat tile — a composition of the existing .card (no new component). */
+    .stat-tile { padding: var(--space-9); }
+    .stat-tile__row { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); }
+    .stat-tile__value { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; color: var(--text-primary); }
     .stat-tile__label { margin-top: var(--space-2); font-size: 13px; color: var(--text-muted); }
-    .stat-tile__row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
   </style>
 </head>
-<body class="pg-app-shell">
+<body>
 
+  <!-- APP SHELL — the .app-shell grid primitive: in-flow sidebar + sticky header + scrollable content. -->
   <div class="app-shell">
 
-    <!-- SIDEBAR — the golden .side-nav, copied verbatim from package/examples -->
-    <div class="app-shell__sidebar">
-      <nav class="side-nav">
-        <div class="side-nav__logo"><img src="../Assets/curie-logo-white.svg" alt="Curie"><span class="side-nav__logo-label">Curie</span></div>
-        <ul class="side-nav__list">
-          <li><a class="side-nav__link active" href="#"><svg viewBox="0 0 34 34" fill="white" style="width:22px;height:22px"><path d="M15.17 4.34C16.24 3.54 17.7 3.54 18.77 4.34L28.09 11.33C28.84 11.9 29.29 12.78 29.29 13.73V27.7C29.29 29.36 27.94 30.7 26.29 30.7H23.21C21.56 30.7 20.21 29.36 20.21 27.7V21.8C20.21 21.25 19.77 20.8 19.21 20.8H14.73C14.18 20.8 13.73 21.25 13.73 21.8V27.7C13.73 29.36 12.39 30.7 10.73 30.7H7.66C6 30.7 4.66 29.36 4.66 27.7V13.73C4.66 12.78 5.1 11.9 5.86 11.33L15.17 4.34Z"/></svg><span class="side-nav__label">Home</span></a></li>
-          <li><a class="side-nav__link" href="reading-layout.html"><img src="../Assets/icons/brief.svg" alt="Briefs"><span class="side-nav__label">Briefs</span></a></li>
-          <li><a class="side-nav__link" href="#"><img src="../Assets/icons/podcast.svg" alt="Podcasts"><span class="side-nav__label">Podcasts</span></a></li>
-          <li><a class="side-nav__link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><path d="M18 3v18l-7-4H5a2 2 0 01-2-2V9a2 2 0 012-2h6l7-4z"/><line x1="21" y1="9" x2="21" y2="15"/><path d="M9 17v4"/></svg><span class="side-nav__label">Editorial</span></a></li>
-          <li><a class="side-nav__link" href="play-learn.html"><img src="../Assets/icons/game.svg" alt="Games"><span class="side-nav__label">Games</span></a></li>
-          <li><a class="side-nav__link" href="#"><img src="../Assets/icons/newesletter.svg" alt="Newsletter"><span class="side-nav__label">Newsletter</span></a></li>
-        </ul>
+    <!-- SIDEBAR -->
+    <aside class="app-shell__sidebar">
+      <div class="app-shell__brand"><img src="../Assets/curie-logo-white.svg" alt="">Curie</div>
+      <nav class="app-shell__nav">
+        <a class="app-shell__nav-item active" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+        <a class="app-shell__nav-item" href="reading-layout.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>Briefs</a>
+        <a class="app-shell__nav-item" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="21"/></svg>Podcasts</a>
+        <a class="app-shell__nav-item" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3v18l-7-4H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h6l7-4z"/></svg>Editorial</a>
+        <a class="app-shell__nav-item" href="play-learn.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="6"/><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/></svg>Games</a>
+        <a class="app-shell__nav-item" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Newsletter</a>
       </nav>
-    </div>
+    </aside>
 
-    <!-- HEADER — .appbar: brand + page title + action icon-buttons -->
-    <header class="app-shell__header">
-      <div class="appbar">
-        <div class="appbar__brand">
-          <img src="../Assets/curie-logo-white.svg" alt="Curie">
-          <span class="appbar__brand-name">Curie</span>
-        </div>
-        <span class="appbar__divider"></span>
+    <!-- HEADER — the .appbar primitive -->
+    <div class="app-shell__header">
+      <header class="appbar">
+        <div class="appbar__brand"><img src="../Assets/curie-logo-white.svg" alt="">Curie</div>
         <span class="appbar__title">Dashboard</span>
         <div class="appbar__actions">
-          <button class="appbar__icon-btn" type="button" aria-label="Search">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </button>
-          <button class="appbar__icon-btn" type="button" aria-label="Notifications">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            <span class="dot"></span>
-          </button>
-          <button class="appbar__icon-btn" type="button" aria-label="Settings">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-          <div class="user-avatar">mr</div>
+          <button class="appbar__action" type="button" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+          <button class="appbar__action" type="button" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
+          <button class="appbar__action" type="button" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+          <button class="appbar__action appbar__action--avatar" type="button" aria-label="Account">mr</button>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
 
-    <!-- CONTENT — .container wrapping a heading, stat row, and a card grid -->
+    <!-- CONTENT -->
     <main class="app-shell__main">
-      <div class="container">
-        <div class="stack stack--lg">
+      <div class="stack stack--lg">
 
-          <!-- Page heading -->
-          <div class="stack stack--sm">
-            <h1 class="page-header__title">Good morning, Dr. Roy</h1>
-            <p class="page-subtitle" style="margin:0">Here's what's moved in your specialties since you were last in. Pick up a brief, catch a podcast, or squeeze in a quick game between patients.</p>
-          </div>
-
-          <!-- Stat row -->
-          <div class="grid grid--4">
-            <div class="card stat-tile">
-              <div class="stat-tile__value">128</div>
-              <div class="stat-tile__label">Briefs read this month</div>
-            </div>
-            <div class="card stat-tile">
-              <div class="stat-tile__row">
-                <div class="stat-tile__value">14</div>
-                <span class="badge badge--teal">+3 today</span>
-              </div>
-              <div class="stat-tile__label">Bookmarked to review</div>
-            </div>
-            <div class="card stat-tile">
-              <div class="stat-tile__value">6</div>
-              <div class="stat-tile__label">CME credits earned</div>
-            </div>
-            <div class="card stat-tile">
-              <div class="stat-tile__row">
-                <div class="stat-tile__value">9-day</div>
-                <span class="badge badge--purple">Streak</span>
-              </div>
-              <div class="stat-tile__label">Daily game streak</div>
-            </div>
-          </div>
-
-          <!-- Card grid -->
-          <div class="stack stack--md">
-            <div class="section-title">Curie Tools</div>
-            <div class="grid grid--auto">
-
-              <div class="ai-tool-card">
-                <div class="ai-tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg></div>
-                <h3 class="ai-tool-card__title">Patient Handout Generator</h3>
-                <p class="ai-tool-card__desc">Generate a patient-ready handout for any regimen in seconds — written in plain language and sourced from approved labeling.</p>
-                <div class="ai-tool-card__tags"><span class="ai-tool-card__tag">Regimen-specific</span><span class="ai-tool-card__tag">FDA-sourced</span></div>
-                <div class="ai-tool-card__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>&lt;60 seconds · Built from FDA-approved labeling</div>
-                <button class="ai-tool-card__btn">Generate Handout<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></button>
-              </div>
-
-              <div class="ai-tool-card">
-                <div class="ai-tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                <h3 class="ai-tool-card__title">Prior Authorization</h3>
-                <p class="ai-tool-card__desc">Draft a payer-specific prior-authorization letter, auto-populated from the patient's chart and the plan's coverage criteria.</p>
-                <div class="ai-tool-card__tags"><span class="ai-tool-card__tag">Payer-specific</span><span class="ai-tool-card__tag">Auto-populated</span></div>
-                <div class="ai-tool-card__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>~45 seconds · Powered by AI</div>
-                <button class="ai-tool-card__btn">Create Letter<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></button>
-              </div>
-
-              <div class="ai-tool-card">
-                <div class="ai-tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5L3.5 13.5a5 5 0 017-7l7 7a5 5 0 01-7 7z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg></div>
-                <h3 class="ai-tool-card__title">PeerRx Drug Lookup</h3>
-                <p class="ai-tool-card__desc">Look up dosing, interactions, and how your peers are actually prescribing any drug — in one place.</p>
-                <div class="ai-tool-card__tags"><span class="ai-tool-card__tag">Interactions</span><span class="ai-tool-card__tag">Peer data</span></div>
-                <div class="ai-tool-card__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/></svg>Powered by AI</div>
-                <button class="ai-tool-card__btn">Look Up Drugs<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></button>
-              </div>
-
-            </div>
-          </div>
-
+        <div class="stack stack--sm">
+          <h1 class="page-header__title">Good morning, Dr. Roy</h1>
+          <p class="page-subtitle" style="margin:0">Here's what's moved in your specialties since you were last in. Pick up a brief, catch a podcast, or squeeze in a quick game between patients.</p>
         </div>
+
+        <!-- Stat row -->
+        <div class="grid grid--auto">
+          <div class="card stat-tile"><div class="stat-tile__row"><div class="stat-tile__value">128</div></div><div class="stat-tile__label">Briefs read this month</div></div>
+          <div class="card stat-tile"><div class="stat-tile__row"><div class="stat-tile__value">14</div><span class="badge badge--green">+3 today</span></div><div class="stat-tile__label">Bookmarked to review</div></div>
+          <div class="card stat-tile"><div class="stat-tile__row"><div class="stat-tile__value">6</div></div><div class="stat-tile__label">CME credits earned</div></div>
+          <div class="card stat-tile"><div class="stat-tile__row"><div class="stat-tile__value">9-day</div><span class="badge">Streak</span></div><div class="stat-tile__label">Daily game streak</div></div>
+        </div>
+
+        <!-- Curie Tools -->
+        <div class="stack stack--md">
+          <div class="section-title">Curie Tools</div>
+          <div class="grid grid--auto">
+            <div class="ai-tool-card">
+              <div class="ai-tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg></div>
+              <h3 class="ai-tool-card__title">Patient Handout Generator</h3>
+              <p class="ai-tool-card__desc">Generate a patient-ready handout for any regimen in seconds — written in plain language and sourced from approved labeling.</p>
+              <div class="ai-tool-card__tags"><span class="ai-tool-card__tag">Regimen-specific</span><span class="ai-tool-card__tag">FDA-sourced</span></div>
+              <button class="ai-tool-card__btn">Generate Handout<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></button>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <h3 class="ai-tool-card__title">Prior Authorization</h3>
+              <p class="ai-tool-card__desc">Draft a payer-specific prior-authorization letter, auto-populated from the patient's chart and the plan's coverage criteria.</p>
+              <div class="ai-tool-card__tags"><span class="ai-tool-card__tag">Payer-specific</span><span class="ai-tool-card__tag">Auto-populated</span></div>
+              <button class="ai-tool-card__btn">Create Letter<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></button>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5L3.5 13.5a5 5 0 017-7l7 7a5 5 0 01-7 7z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg></div>
+              <h3 class="ai-tool-card__title">PeerRx Drug Lookup</h3>
+              <p class="ai-tool-card__desc">Look up dosing, interactions, and how your peers are actually prescribing any drug — in one place.</p>
+              <div class="ai-tool-card__tags"><span class="ai-tool-card__tag">Interactions</span><span class="ai-tool-card__tag">Peer data</span></div>
+              <button class="ai-tool-card__btn">Look Up Drugs<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </main>
-
   </div>
 
 </body>
