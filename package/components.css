@@ -4975,3 +4975,13 @@ body.pg-home .user-avatar { background: #4b3fa7; }
 .chart-legend__swatch--c3 { background: var(--chart-3); }
 .chart-legend__swatch--c4 { background: var(--chart-4); }
 .chart-legend__swatch--c5 { background: var(--chart-5); }
+
+/* Radial (semicircle) stacked gauge — brand palette, center total */
+.chart-radial { --chart-1: var(--color-purple-primary); --chart-2: var(--color-teal-primary); }
+.chart-radial__svg { display: block; margin: 0 auto; width: 250px; height: auto; max-width: 100%; }
+.chart-radial__track { fill: none; stroke: var(--surface-white-05, rgba(255,255,255,0.05)); stroke-width: 26; }
+.chart-radial__seg { fill: none; stroke-width: 26; stroke-linecap: round; }
+.chart-radial__seg--desktop { stroke: var(--chart-1); }
+.chart-radial__seg--mobile { stroke: var(--chart-2); }
+.chart-radial__num { fill: var(--text-primary); font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+.chart-radial__label { fill: var(--text-muted); font-size: 13px; }

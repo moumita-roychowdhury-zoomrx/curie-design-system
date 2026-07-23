@@ -85,6 +85,31 @@
       "snippet": "<div class=\"chart-card chart-card--center chart-donut\"><div class=\"chart-card__header\"><h3 class=\"chart-card__title\">Pie Chart — Donut with Text</h3><p class=\"chart-card__desc\">January – June 2024</p></div><svg class=\"chart-donut__svg\" viewBox=\"0 0 200 200\" role=\"img\" aria-label=\"Donut chart of visitors by browser, total 1,125\"><g transform=\"rotate(-90 100 100)\"><circle class=\"chart-donut__seg chart-donut__seg--1\" cx=\"100\" cy=\"100\" r=\"75\" stroke-dasharray=\"113.19 358.05\" stroke-dashoffset=\"-0.00\"></circle><circle class=\"chart-donut__seg chart-donut__seg--2\" cx=\"100\" cy=\"100\" r=\"75\" stroke-dasharray=\"81.78 389.46\" stroke-dashoffset=\"-115.19\"></circle><circle class=\"chart-donut__seg chart-donut__seg--3\" cx=\"100\" cy=\"100\" r=\"75\" stroke-dasharray=\"118.22 353.02\" stroke-dashoffset=\"-198.97\"></circle><circle class=\"chart-donut__seg chart-donut__seg--4\" cx=\"100\" cy=\"100\" r=\"75\" stroke-dasharray=\"70.47 400.77\" stroke-dashoffset=\"-319.19\"></circle><circle class=\"chart-donut__seg chart-donut__seg--5\" cx=\"100\" cy=\"100\" r=\"75\" stroke-dasharray=\"77.59 393.65\" stroke-dashoffset=\"-391.65\"></circle></g><text text-anchor=\"middle\"><tspan class=\"chart-donut__num\" x=\"100\" y=\"100\">1,125</tspan><tspan class=\"chart-donut__label\" x=\"100\" y=\"122\">Visitors</tspan></text></svg><div class=\"chart-legend chart-legend--donut\"><span class=\"chart-legend__item\"><span class=\"chart-legend__swatch chart-legend__swatch--c1\"></span>Chrome</span><span class=\"chart-legend__item\"><span class=\"chart-legend__swatch chart-legend__swatch--c2\"></span>Safari</span><span class=\"chart-legend__item\"><span class=\"chart-legend__swatch chart-legend__swatch--c3\"></span>Firefox</span><span class=\"chart-legend__item\"><span class=\"chart-legend__swatch chart-legend__swatch--c4\"></span>Edge</span><span class=\"chart-legend__item\"><span class=\"chart-legend__swatch chart-legend__swatch--c5\"></span>Other</span></div><div class=\"chart-card__footer\"><div class=\"chart-card__trend\">Trending up by 5.2% this month <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"3 17 9 11 13 15 21 7\"/><polyline points=\"15 7 21 7 21 13\"/></svg></div><div class=\"chart-card__note\">Showing total visitors for the last 6 months</div></div></div>"
     },
     {
+      "id": "radial-chart-stacked",
+      "name": "Radial Gauge (Stacked)",
+      "category": "data-viz",
+      "status": "stable",
+      "purpose": "A semicircle radial gauge that stacks two parts of a total along a 180° arc, with the total called out in the center. Rebuilt on-brand from the shadcn/recharts “radial stacked” pattern as pure inline SVG (no chart library), framed for Curie: total briefs read, split by device.",
+      "whenToUse": "For a headline two-part total where the sum is the story and you want a compact, gauge-like readout (e.g. total briefs read = desktop + mobile). Label the parts in the legend.",
+      "whenNotToUse": "For more than 2–3 parts (use a donut or bar), for precise comparison (use a bar), or for trends over time (use a line chart).",
+      "anatomy": [
+        "chart-card",
+        "chart-card--center",
+        "chart-radial",
+        "chart-radial__svg",
+        "chart-radial__track",
+        "chart-radial__seg--desktop",
+        "chart-radial__seg--mobile",
+        "chart-radial__num",
+        "chart-legend"
+      ],
+      "interactions": "Static presentation specimen — in-app the arcs + tooltip are data-bound (e.g. Recharts). The two parts map --chart-1 / --chart-2 to Curie brand tokens (purple desktop + teal mobile); the arc is a 180° sweep with rounded ends and a faint full-arc track, total set in Manrope in the hole.",
+      "sourcePage": "components.css",
+      "previewWidth": 420,
+      "previewHeight": 440,
+      "snippet": "<div class=\"chart-card chart-card--center chart-radial\"><div class=\"chart-card__header\"><h3 class=\"chart-card__title\">Radial Chart — Stacked</h3><p class=\"chart-card__desc\">Briefs read · last 6 months</p></div><svg class=\"chart-radial__svg\" viewBox=\"0 0 200 150\" role=\"img\" aria-label=\"Semicircle stacked gauge — 1,830 briefs read, desktop 1,260 and mobile 570\"><path class=\"chart-radial__track\" d=\"M 16.00 125.00 A 84 84 0 0 1 184.00 125.00\"/><path class=\"chart-radial__seg chart-radial__seg--mobile\" d=\"M 16.00 125.00 A 84 84 0 0 1 51.90 56.14\"/><path class=\"chart-radial__seg chart-radial__seg--desktop\" d=\"M 54.33 54.50 A 84 84 0 0 1 184.00 125.00\"/><text text-anchor=\"middle\"><tspan class=\"chart-radial__num\" x=\"100\" y=\"102\">1,830</tspan><tspan class=\"chart-radial__label\" x=\"100\" y=\"122\">Briefs read</tspan></text></svg><div class=\"chart-legend\"><span class=\"chart-legend__item\"><span class=\"chart-legend__swatch chart-legend__swatch--desktop\"></span>Desktop</span><span class=\"chart-legend__item\"><span class=\"chart-legend__swatch chart-legend__swatch--mobile\"></span>Mobile</span></div><div class=\"chart-card__footer\"><div class=\"chart-card__trend\">Trending up by 5.2% this month <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"3 17 9 11 13 15 21 7\"/><polyline points=\"15 7 21 7 21 13\"/></svg></div><div class=\"chart-card__note\">Briefs read across desktop and mobile</div></div></div>"
+    },
+    {
       "id": "line-chart",
       "name": "Line Chart",
       "category": "data-viz",
