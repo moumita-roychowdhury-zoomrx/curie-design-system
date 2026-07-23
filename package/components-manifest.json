@@ -1537,44 +1537,46 @@
       "name": "Icon Button",
       "category": "actions",
       "status": "stable",
-      "purpose": "A circular, icon-only action for compact controls (play/pause, carousel nav, close, more) where a labelled button would be too heavy. It reuses the existing round-button family from the golden set rather than introducing new paint.",
-      "whenToUse": "For a single glyph action in tight space — media transport, card overflow menus, carousel arrows, toolbar controls. Always pair it with an accessible name (aria-label or a visually-hidden btn__sr span).",
-      "whenNotToUse": "When the action needs a text label to be understood, or when it is the page's single loud primary CTA (use the full pill Button instead). Never ship it without an accessible name.",
+      "purpose": "The compact, icon-only actions that ride on every brief and story card — mark read, bookmark, upvote / downvote, and share. Circular stroked buttons (.act) plus a segmented vote pill (.votes / .vbtn), each with a sentiment-tinted hover. These are the exact controls used on the golden Briefs and Home cards.",
+      "whenToUse": "For the per-card action row (read · bookmark · vote · share) and any compact glyph action in tight space. Reuse the same .act / .votes markup so every card reads as one system. Always give each control an accessible name (aria-label).",
+      "whenNotToUse": "When the action needs a visible text label to be understood, or when it is the page's single loud primary CTA (use the full pill Button instead). Never ship it without an accessible name.",
       "anatomy": [
-        "btn btn--round (base circle; add btn--primary for solid purple, btn--glass for frosted, btn--sm/btn--lg to resize)",
-        "inline svg glyph (18px default, scales with size)",
-        "btn__sr (optional visually-hidden accessible label)"
+        "actions (the flex row wrapping the card's action controls)",
+        "act (base circle, transparent with a 1px stroke; add read / bmark / share for the sentiment-tinted hover)",
+        "votes (segmented pill wrapping the two vote buttons)",
+        "vbtn up / vbtn dn (like / dislike segments; up tints green, dn tints red on hover)",
+        "inline svg glyph or brand-asset img (BookMark.svg, up arrow.svg, down arrow.svg)"
       ],
-      "interactions": "Hover lifts and brightens (scale + surface), focus shows a purple ring, active presses in (scale 0.96), disabled dims to 0.4 and blocks pointer events. Real states use :hover/:focus-visible/:active/:disabled; pinned .is-hover/.is-focus/.is-active/.is-disabled force a state for docs.",
+      "interactions": "Hover brightens the surface and lifts (scale 1.08); .act.read tints teal, .act.bmark tints gold, .act.share tints blue; .vbtn.up tints green and .vbtn.dn tints red (pinnable with .is-hover). Active presses in (scale 0.95).",
       "sourcePage": "components.css",
-      "previewWidth": 420,
-      "previewHeight": 570,
-      "snippet": "<div style=\"display:flex;gap:16px;align-items:center\">\n  <button class=\"btn btn--round\" aria-label=\"Previous\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"/></svg></button>\n  <button class=\"btn btn--round btn--primary\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg></button>\n  <button class=\"btn btn--round btn--glass\" aria-label=\"Next\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></button>\n  <button class=\"btn btn--round btn--lg\" aria-label=\"Add\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"19\"/><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/></svg></button>\n</div>",
-      "states": [
+      "previewWidth": 130,
+      "previewHeight": 220,
+      "snippet": "<div class=\"actions\">\n  <button class=\"act read\" type=\"button\" aria-label=\"Mark read\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"20,6 9,17 4,12\"/></svg></button>\n  <button class=\"act bmark\" type=\"button\" aria-label=\"Bookmark\"><img src=\"/assets/icons/BookMark.svg\" alt=\"\" style=\"width:20px;height:20px\"></button>\n  <div class=\"votes\"><button class=\"vbtn up\" type=\"button\" aria-label=\"Like\"><img src=\"/assets/icons/up arrow.svg\" alt=\"\" style=\"width:15px;height:15px\"></button><button class=\"vbtn dn\" type=\"button\" aria-label=\"Dislike\"><img src=\"/assets/icons/down arrow.svg\" alt=\"\" style=\"width:15px;height:15px\"></button></div>\n  <button class=\"act share\" type=\"button\" aria-label=\"Share\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"/><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"/></svg></button>\n</div>",
+      "variants": [
         {
-          "name": "default",
-          "label": "Default",
-          "snippet": "<button class=\"btn btn--round btn--primary\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg></button>"
+          "label": "Read",
+          "previewWidth": 100,
+          "snippet": "<div style=\"display:flex;justify-content:center;align-items:center;min-height:40px\"><button class=\"act read\" type=\"button\" aria-label=\"Mark read\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"20,6 9,17 4,12\"/></svg></button></div>"
         },
         {
-          "name": "hover",
-          "label": "Hover",
-          "snippet": "<button class=\"btn btn--round btn--primary is-hover\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg></button>"
+          "label": "Bookmark",
+          "previewWidth": 100,
+          "snippet": "<div style=\"display:flex;justify-content:center;align-items:center;min-height:40px\"><button class=\"act bmark\" type=\"button\" aria-label=\"Bookmark\"><img src=\"/assets/icons/BookMark.svg\" alt=\"\" style=\"width:20px;height:20px\"></button></div>"
         },
         {
-          "name": "focus",
-          "label": "Focus",
-          "snippet": "<button class=\"btn btn--round btn--primary is-focus\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg></button>"
+          "label": "Like",
+          "previewWidth": 100,
+          "snippet": "<div style=\"display:flex;justify-content:center;align-items:center;min-height:40px\"><div class=\"votes\"><button class=\"vbtn up\" type=\"button\" aria-label=\"Like\"><img src=\"/assets/icons/up arrow.svg\" alt=\"\" style=\"width:15px;height:15px\"></button></div></div>"
         },
         {
-          "name": "active",
-          "label": "Active",
-          "snippet": "<button class=\"btn btn--round btn--primary is-active\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg></button>"
+          "label": "Dislike",
+          "previewWidth": 100,
+          "snippet": "<div style=\"display:flex;justify-content:center;align-items:center;min-height:40px\"><div class=\"votes\"><button class=\"vbtn dn\" type=\"button\" aria-label=\"Dislike\"><img src=\"/assets/icons/down arrow.svg\" alt=\"\" style=\"width:15px;height:15px\"></button></div></div>"
         },
         {
-          "name": "disabled",
-          "label": "Disabled",
-          "snippet": "<button class=\"btn btn--round btn--primary is-disabled\" disabled aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg></button>"
+          "label": "Share",
+          "previewWidth": 100,
+          "snippet": "<div style=\"display:flex;justify-content:center;align-items:center;min-height:40px\"><button class=\"act share\" type=\"button\" aria-label=\"Share\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"/><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"/></svg></button></div>"
         }
       ]
     },

@@ -22,6 +22,8 @@
       html, body { overflow-x: hidden; max-width: 100%; }
       body.pg-editorial-detail .m-view { max-width: none; }
       body.pg-editorial-detail .m-drawer.is-open { visibility: visible; opacity: 1; }
+      /* Back button: match the brief-detail treatment (boxed + stroke). */
+      .m-appbar__btn--boxed { border: 1px solid var(--surface-white-border-18); }
       .m-tab svg, .m-tab img { width: 27px; height: 27px; }
       .m-tab[aria-label="Games"] img, .m-tab[aria-label="Games"] svg { width: 32px; height: 32px; }  /* games glyph reads smaller — bump it */
       .m-newsletter {
@@ -110,7 +112,7 @@
   <header class="m-appbar">
     <div class="m-appbar__left">
       <a class="m-appbar__btn m-appbar__btn--boxed" href="editorial.html" aria-label="Back to Editorial">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></svg>
       </a>
       <img class="m-appbar__logo" src="../Assets/curie-logo-white.svg" alt="Curie">
     </div>

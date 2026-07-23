@@ -22,6 +22,8 @@
 
       /* Full-width column, matching the other pages (removes the DS 460px cap). */
       body.pg-editorial .m-view { max-width: none; }
+      /* Back button: match the brief-detail treatment (boxed + stroke). */
+      .m-appbar__btn--boxed { border: 1px solid var(--surface-white-border-18); }
 
       /* DS specificity bug fix (state only): restore the drawer open state. */
       body.pg-editorial .m-drawer.is-open { visibility: visible; opacity: 1; }
@@ -49,6 +51,9 @@
   <!-- Top app bar — Editorial title (colourful megaphone) in the centre -->
   <header class="m-appbar">
     <div class="m-appbar__left">
+      <a class="m-appbar__btn m-appbar__btn--boxed" href="home.html" aria-label="Back to Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></svg>
+      </a>
       <img class="m-appbar__logo" src="../Assets/curie-logo-white.svg" alt="Curie">
     </div>
     <div class="m-appbar__title"><img class="m-appbar__icon" src="../Assets/icons/media.svg" alt="">Editorial</div>
