@@ -49,6 +49,20 @@
         </div>
       </div>
 
+      <div class="ds-nav-group ds-nav-collapsible{{ '' if (nav == 'charts' or chartId) else ' is-collapsed' }}" data-navkey="charts">
+        <div class="ds-nav-grouphead">
+          <a href="/charts/" class="{{ 'active' if nav == 'charts' and not chartId }}">Charts</a>
+          <button class="ds-nav-toggle" type="button" aria-label="Toggle Charts" aria-expanded="{{ 'true' if (nav == 'charts' or chartId) else 'false' }}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="ds-nav-sublist">
+          {% for c in chartsManifest.charts %}
+          <a class="ds-nav-sub {{ 'active' if chartId == c.id }}" href="/charts/{{ c.id }}/">{{ c.name }}</a>
+          {% endfor %}
+        </div>
+      </div>
+
       <div class="ds-nav-group ds-nav-collapsible{{ '' if (nav == 'assets') else ' is-collapsed' }}" data-navkey="assets">
         <div class="ds-nav-grouphead">
           <a href="/assets-library/" class="{{ 'active' if nav == 'assets' }}">Assets</a>

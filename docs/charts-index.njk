@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: Charts
+nav: charts
+permalink: /charts/
+---
+<div class="ds-eyebrow">Data visualization</div>
+<h1 class="ds-title">Charts</h1>
+<p class="ds-lede">On-brand chart specimens — pure HTML/CSS/inline-SVG, no chart library. Each maps its series colors (<code>--chart-1</code> / <code>--chart-2</code>) to the Curie brand tokens (purple + teal) and uses the system's typography and corner radii, so charts read as part of Curie. In-app the data would be bound with a chart library (e.g. Recharts); these show the target visual.</p>
+<div class="ds-example-grid">
+{% for c in chartsManifest.charts %}
+  <a class="ds-component-card" href="/charts/{{ c.id }}/">
+    <span class="cat">{{ c.category }}</span>
+    <h3>{{ c.name }}</h3>
+    <p>{{ c.purpose }}</p>
+  </a>
+{% endfor %}
+</div>

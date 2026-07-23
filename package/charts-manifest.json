@@ -1,0 +1,42 @@
+{
+  "$schema": "curie-charts-manifest/v1",
+  "name": "Curie Charts",
+  "description": "On-brand chart specimens for the Curie design system. Pure HTML/CSS/inline-SVG (no chart library); a chart's series colors map --chart-1/--chart-2 to Curie brand tokens. Rendered in the docs at /charts/.",
+  "version": "0.1.0",
+  "cssDependencies": [
+    "tokens.css",
+    "components.css",
+    "layout.css",
+    "utilities.css"
+  ],
+  "charts": [
+    {
+      "id": "bar-chart-stacked",
+      "name": "Stacked Bar Chart",
+      "category": "data-viz",
+      "status": "stable",
+      "purpose": "A vertical bar chart that stacks two series per category with a legend, footer trend line, and caption — for comparing a two-part total across a time range (e.g. desktop vs mobile visitors per month). Rebuilt on-brand from the shadcn/recharts “stacked + legend” pattern using pure HTML/CSS — no chart library.",
+      "whenToUse": "When each category's value splits into two meaningful parts and the combined total matters as much as the split. Keep it to 2–3 series; label them in the legend.",
+      "whenNotToUse": "For a single series (use a plain bar chart), for part-of-whole at one moment (use a donut), or for continuous trends (use a line chart). Not for precise value read-off — pair with a table when exact numbers matter.",
+      "anatomy": [
+        "chart-card",
+        "chart-card__header",
+        "chart-card__title",
+        "chart-card__desc",
+        "bar-stack",
+        "bar-stack__col",
+        "bar-stack__stack",
+        "bar-stack__seg--desktop",
+        "bar-stack__seg--mobile",
+        "bar-stack__labels",
+        "chart-legend",
+        "chart-card__footer"
+      ],
+      "interactions": "Static presentation specimen — in-app the bars, tooltip, and legend toggle are data-bound (e.g. Recharts). Series colors map --chart-1 / --chart-2 to the Curie brand tokens (purple + teal); bar corners use --radius-xs and the card uses --radius-2xl.",
+      "sourcePage": "components.css",
+      "previewWidth": 460,
+      "previewHeight": 460,
+      "snippet": "<div class=\"chart-card chart-bar-stacked\"><div class=\"chart-card__header\"><h3 class=\"chart-card__title\">Bar Chart — Stacked + Legend</h3><p class=\"chart-card__desc\">January – June 2024</p></div><div class=\"bar-stack\" role=\"img\" aria-label=\"Stacked bar chart of desktop and mobile visitors, January to June 2024\"><div class=\"bar-stack__col\"><div class=\"bar-stack__stack\"><div class=\"bar-stack__seg bar-stack__seg--mobile\" style=\"height:32px\"></div><div class=\"bar-stack__seg bar-stack__seg--desktop\" style=\"height:74px\"></div></div></div><div class=\"bar-stack__col\"><div class=\"bar-stack__stack\"><div class=\"bar-stack__seg bar-stack__seg--mobile\" style=\"height:80px\"></div><div class=\"bar-stack__seg bar-stack__seg--desktop\" style=\"height:122px\"></div></div></div><div class=\"bar-stack__col\"><div class=\"bar-stack__stack\"><div class=\"bar-stack__seg bar-stack__seg--mobile\" style=\"height:48px\"></div><div class=\"bar-stack__seg bar-stack__seg--desktop\" style=\"height:95px\"></div></div></div><div class=\"bar-stack__col\"><div class=\"bar-stack__stack\"><div class=\"bar-stack__seg bar-stack__seg--mobile\" style=\"height:76px\"></div><div class=\"bar-stack__seg bar-stack__seg--desktop\" style=\"height:29px\"></div></div></div><div class=\"bar-stack__col\"><div class=\"bar-stack__stack\"><div class=\"bar-stack__seg bar-stack__seg--mobile\" style=\"height:52px\"></div><div class=\"bar-stack__seg bar-stack__seg--desktop\" style=\"height:84px\"></div></div></div><div class=\"bar-stack__col\"><div class=\"bar-stack__stack\"><div class=\"bar-stack__seg bar-stack__seg--mobile\" style=\"height:56px\"></div><div class=\"bar-stack__seg bar-stack__seg--desktop\" style=\"height:86px\"></div></div></div></div><div class=\"bar-stack__labels\"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span></div><div class=\"chart-legend\"><span class=\"chart-legend__item\"><span class=\"chart-legend__swatch chart-legend__swatch--desktop\"></span>Desktop</span><span class=\"chart-legend__item\"><span class=\"chart-legend__swatch chart-legend__swatch--mobile\"></span>Mobile</span></div><div class=\"chart-card__footer\"><div class=\"chart-card__trend\">Trending up by 5.2% this month <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"3 17 9 11 13 15 21 7\"/><polyline points=\"15 7 21 7 21 13\"/></svg></div><div class=\"chart-card__note\">Showing total visitors for the last 6 months</div></div></div>"
+    }
+  ]
+}

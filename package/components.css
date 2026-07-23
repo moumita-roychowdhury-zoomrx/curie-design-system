@@ -4910,3 +4910,46 @@ body.pg-home .user-avatar { background: #4b3fa7; }
 .line-chart__legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 .line-chart__legend-dot--a { background: var(--color-blue); }
 .line-chart__legend-dot--b { background: var(--color-green); }
+
+/* ============================================================
+   CHARTS — static, on-brand chart specimens (no JS / no chart libs).
+   Series colors map --chart-1 / --chart-2 to Curie brand tokens so a chart
+   reads as Curie: brand purple + teal accent, Manrope type, token radii.
+   ============================================================ */
+.chart-card {
+  max-width: 460px; box-sizing: border-box;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-purple-card-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  font-family: var(--font-primary);
+}
+.chart-card__header { margin-bottom: var(--space-8); }
+.chart-card__title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin: 0 0 var(--space-2); letter-spacing: -0.01em; }
+.chart-card__desc { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
+.chart-card__footer { margin-top: var(--space-7); display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+.chart-card__trend { display: inline-flex; align-items: center; gap: var(--space-2); font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+.chart-card__trend svg { width: 16px; height: 16px; }
+.chart-card__note { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Stacked vertical bar chart */
+.chart-bar-stacked { --chart-1: var(--color-purple-primary); --chart-2: var(--color-teal-primary); }
+.bar-stack {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-5);
+  align-items: end; height: 220px;
+  border-bottom: 1px solid var(--surface-white-border-12, rgba(255,255,255,0.12));
+  background-image: repeating-linear-gradient(to top, var(--color-divider) 0, var(--color-divider) 1px, transparent 1px, transparent 44px);
+}
+.bar-stack__col { display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+.bar-stack__stack { display: flex; flex-direction: column; overflow: hidden; }
+.bar-stack__seg { width: 100%; }
+.bar-stack__seg--desktop { background: var(--chart-1); border-radius: 0 0 var(--radius-xs) var(--radius-xs); }
+.bar-stack__seg--mobile { background: var(--chart-2); border-radius: var(--radius-xs) var(--radius-xs) 0 0; }
+.bar-stack__labels { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-5); margin-top: var(--space-3); }
+.bar-stack__labels span { text-align: center; font-size: 0.8rem; color: var(--text-muted); }
+
+.chart-legend { display: flex; justify-content: center; gap: var(--space-7); margin-top: var(--space-6); }
+.chart-legend__item { display: inline-flex; align-items: center; gap: var(--space-2); font-size: 0.85rem; color: var(--text-secondary); }
+.chart-legend__swatch { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+.chart-legend__swatch--desktop { background: var(--chart-1); }
+.chart-legend__swatch--mobile { background: var(--chart-2); }

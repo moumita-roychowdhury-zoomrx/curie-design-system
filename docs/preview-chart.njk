@@ -1,0 +1,32 @@
+---
+pagination:
+  data: chartsManifest.charts
+  size: 1
+  alias: c
+permalink: "/chart-previews/{{ c.id }}/index.html"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/utilities.css">
+<style>
+  html { height: 100%; }
+  body { margin: 0; min-height: 100%; box-sizing: border-box;
+         display: flex; align-items: flex-start; justify-content: center;
+         padding: 40px 32px;
+         background: var(--color-bg-primary) !important; background-attachment: initial !important;
+         font-family: var(--font-primary); }
+  .preview-stage { width: 100%; max-width: {{ c.previewWidth }}px; }
+</style>
+</head>
+<body>
+<div class="preview-stage">
+{{ c.snippet | safe }}
+</div>
+</body>
+</html>

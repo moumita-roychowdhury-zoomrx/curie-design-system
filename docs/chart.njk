@@ -1,0 +1,32 @@
+---
+layout: base.njk
+nav: charts
+pagination:
+  data: chartsManifest.charts
+  size: 1
+  alias: c
+permalink: "/charts/{{ c.id }}/"
+eleventyComputed:
+  title: "{{ c.name }}"
+  chartId: "{{ c.id }}"
+---
+<div class="ds-eyebrow">{{ c.category }} · {{ c.status }}</div>
+<h1 class="ds-title">{{ c.name }}</h1>
+<p class="ds-lede">{{ c.purpose }}</p>
+
+<iframe class="ds-preview-frame" src="/chart-previews/{{ c.id }}/" height="{{ c.previewHeight }}" title="{{ c.name }} preview" loading="lazy"></iframe>
+<div class="ds-meta-line">Source of truth: <code>{{ c.sourcePage }}</code> · styling in <code>components.css</code></div>
+
+<div class="ds-usage-grid">
+  <div class="ds-usage do"><strong>When to use</strong>{{ c.whenToUse }}</div>
+  <div class="ds-usage dont"><strong>When not to use</strong>{{ c.whenNotToUse }}</div>
+</div>
+
+<h2 class="ds-section">Anatomy</h2>
+<div class="ds-anatomy">
+  {% for cls in c.anatomy %}<code>.{{ cls }}</code>{% endfor %}
+</div>
+<p class="ds-meta-line">{{ c.interactions }}</p>
+
+<h2 class="ds-section">Markup</h2>
+<pre class="ds-code">{{ c.snippet }}</pre>
